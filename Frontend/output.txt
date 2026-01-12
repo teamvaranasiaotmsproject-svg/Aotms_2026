@@ -1,0 +1,7 @@
+I have updated the Blog page with a professional two-column layout, as requested.
+
+The page now features:
+- A main content area with detailed blog post summaries (including images, metadata, and excerpts).
+- A sidebar with sections for Search, Categories, and Recent Posts.
+
+This aligns with the structure of the reference blog page you provided. Please let me know if you have any other questions or tasks.
