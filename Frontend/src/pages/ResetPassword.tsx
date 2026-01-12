@@ -36,7 +36,7 @@ const ResetPassword = () => {
 
         try {
             // Use env in production
-            const API_URL = "http://localhost:5000/api/auth";
+            const API_URL = "https://aotms-2026.onrender.com/api/auth";
 
             await axios.put(`${API_URL}/reset-password/${token}`, { password });
 

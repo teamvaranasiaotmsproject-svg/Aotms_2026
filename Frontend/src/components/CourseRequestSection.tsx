@@ -21,7 +21,7 @@ export const CourseRequestSection = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            await axios.post('http://localhost:5000/api/leads', formData);
+            await axios.post('https://aotms-2026.onrender.com/api/leads', formData);
             toast.success("Request submitted successfully!");
             setFormData({ name: "", email: "", phone: "", course: "" });
         } catch (error) {

@@ -18,7 +18,7 @@ export const Testimonials = () => {
     useEffect(() => {
         const fetchFeedback = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/feedback');
+                const res = await axios.get('https://aotms-2026.onrender.com/api/feedback');
                 const mappedData = res.data.map((item: FeedbackData) => ({
                     text: item.message,
                     image: `https://ui-avatars.com/api/?name=${encodeURIComponent(item.name)}&background=random&color=fff`,

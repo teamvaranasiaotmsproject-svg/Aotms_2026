@@ -25,7 +25,7 @@ export const RegistrationModal = ({ itemName, isOpen, onClose, eventType = 'work
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      await axios.post('http://localhost:5000/api/registrations', {
+      await axios.post('https://aotms-2026.onrender.com/api/registrations', {
         name,
         email,
         eventName: itemName,

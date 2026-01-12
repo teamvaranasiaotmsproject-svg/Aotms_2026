@@ -140,7 +140,7 @@ export const Header = () => {
   const handleAuthSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    const API_URL = "http://localhost:5000/api/auth";
+    const API_URL = "https://aotms-2026.onrender.com/api/auth";
 
     try {
       if (authMode === 'login') {

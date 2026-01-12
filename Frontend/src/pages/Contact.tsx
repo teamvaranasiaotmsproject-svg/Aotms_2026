@@ -32,7 +32,7 @@ const Contact = () => {
     }
 
     try {
-      const API_URL = "http://localhost:5000/api/contact";
+      const API_URL = "https://aotms-2026.onrender.com/api/contact";
       await axios.post(API_URL, formData);
       toast.success("Message sent successfully! We will get back to you soon.");
       setFormData({ name: '', email: '', phone: '', message: '' });

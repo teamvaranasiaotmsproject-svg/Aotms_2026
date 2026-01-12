@@ -27,12 +27,12 @@ export interface Course {
 }
 
 const fetchCourses = async (): Promise<Course[]> => {
-  const { data } = await axios.get('http://localhost:5000/api/courses');
+  const { data } = await axios.get('https://aotms-2026.onrender.com/api/courses');
   return data;
 };
 
 const fetchCourseBySlug = async (slug: string): Promise<Course> => {
-  const { data } = await axios.get(`http://localhost:5000/api/courses/${slug}`);
+  const { data } = await axios.get(`https://aotms-2026.onrender.com/api/courses/${slug}`);
   return data;
 };
 
