@@ -163,7 +163,7 @@ export default function CourseDetail() {
         e.preventDefault();
         setLeadLoading(true);
         try {
-            await axios.post('https://aotms-2026.onrender.com/api/leads', {
+            await axios.post(`${import.meta.env.VITE_API_URL}/api/leads`, {
                 ...leadForm,
                 course: course?.title || "Unknown Course"
             });

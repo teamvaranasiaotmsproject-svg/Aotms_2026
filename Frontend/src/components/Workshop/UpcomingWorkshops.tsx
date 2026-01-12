@@ -21,7 +21,7 @@ export const UpcomingWorkshops = ({ onSelect, selectedId }: UpcomingWorkshopsPro
     useEffect(() => {
         const fetchWorkshops = async () => {
             try {
-                const response = await fetch('https://aotms-2026.onrender.com/api/events?type=workshop');
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/events?type=workshop`);
                 if (!response.ok) throw new Error('Failed to fetch');
                 const data = await response.json();
                 setFetchedWorkshops(data);

@@ -21,7 +21,7 @@ export const UpcomingHackathons = ({ onSelect, selectedId }: UpcomingHackathonsP
     useEffect(() => {
         const fetchHackathons = async () => {
             try {
-                const response = await fetch('https://aotms-2026.onrender.com/api/events?type=hackathon');
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/events?type=hackathon`);
                 if (!response.ok) throw new Error('Failed to fetch');
                 const data = await response.json();
                 setFetchedHackathons(data);

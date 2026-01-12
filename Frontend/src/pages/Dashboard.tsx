@@ -38,7 +38,7 @@ const Dashboard = () => {
                 // In a real app, you'd filter by user ID/email on backend. 
                 // For now, we fetch all and filter client-side or assume an endpoint exists.
                 // Since our current feedback API returns all, we simulate "My Reviews"
-                const res = await axios.get('https://aotms-2026.onrender.com/api/feedback');
+                const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/feedback`);
                 // Filter by email if logged in user has email
                 const userReviews = res.data.filter((r: any) => r.email === user.email);
                 setMyReviews(userReviews);

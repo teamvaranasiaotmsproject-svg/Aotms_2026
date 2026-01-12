@@ -55,7 +55,7 @@ const HackathonsPage = () => {
     useEffect(() => {
         const fetchWinners = async () => {
             try {
-                const res = await axios.get('https://aotms-2026.onrender.com/api/winners');
+                const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/winners`);
                 setAllWinners(res.data);
             } catch (error) {
                 console.error("Failed to fetch winners:", error);

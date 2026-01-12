@@ -38,7 +38,7 @@ const FeedbackPage = () => {
         setLoading(true);
 
         try {
-            await axios.post('https://aotms-2026.onrender.com/api/feedback', { ...formData, rating });
+            await axios.post(`${import.meta.env.VITE_API_URL}/api/feedback`, { ...formData, rating });
             toast.success("Thank you for your feedback!", {
                 description: "We appreciate your input and will use it to improve."
             });

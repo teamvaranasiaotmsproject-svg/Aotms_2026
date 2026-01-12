@@ -29,7 +29,7 @@ export const HeroSection = () => {
   useEffect(() => {
     const fetchHeroImages = async () => {
       try {
-        const res = await axios.get('https://aotms-2026.onrender.com/api/hero');
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/hero`);
         if (res.data && res.data.length > 0) {
           // Map backend objects to just image URLs
           const urls = res.data.map((item: HeroImage) => item.imageUrl);

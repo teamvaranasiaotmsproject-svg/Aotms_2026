@@ -21,12 +21,12 @@ export interface DetailedPlacement {
 }
 
 const fetchStudentPlacements = async (): Promise<StudentPlacement[]> => {
-    const { data } = await axios.get('https://aotms-2026.onrender.com/api/placements/students');
+    const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/placements/students`);
     return data;
 };
 
 const fetchDetailedPlacements = async (): Promise<DetailedPlacement[]> => {
-    const { data } = await axios.get('https://aotms-2026.onrender.com/api/placements/detailed');
+    const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/placements/detailed`);
     return data;
 };
 
