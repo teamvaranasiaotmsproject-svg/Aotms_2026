@@ -328,19 +328,19 @@ export const Header = () => {
                   <div className="hidden md:flex items-center gap-3 text-xs">
                     <span className="opacity-80">Follow us :</span>
                     <div className="flex items-center gap-2.5">
-                      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-accent transition-colors">
+                      <a href="https://www.instagram.com/academyoftechmasters?igsh=enZ5YjYwOXg1cW80&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-accent transition-colors">
                         <FaInstagram className="w-3 h-3 md:w-3.5 md:h-3.5" />
                       </a>
-                      <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-accent transition-colors">
+                      <a href="https://youtube.com/@aotms?si=mj3-j_JH4lHC3zeF" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-accent transition-colors">
                         <FaYoutube className="w-3 h-3 md:w-3.5 md:h-3.5" />
                       </a>
-                      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-accent transition-colors">
+                      <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-accent transition-colors">
                         <FaLinkedin className="w-3 h-3 md:w-3.5 md:h-3.5" />
                       </a>
-                      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-accent transition-colors">
+                      <a href="https://twitter.com/aotms" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-accent transition-colors">
                         <FaTwitter className="w-3 h-3 md:w-3.5 md:h-3.5" />
                       </a>
-                      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-accent transition-colors">
+                      <a href="https://www.facebook.com/aotms" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-accent transition-colors">
                         <FaFacebook className="w-3 h-3 md:w-3.5 md:h-3.5" />
                       </a>
                       <a href="https://threads.net" target="_blank" rel="noopener noreferrer" aria-label="Threads" className="hover:text-accent transition-colors">
@@ -384,12 +384,12 @@ export const Header = () => {
         </AnimatePresence>
 
         {/* Main Navbar */}
-        <nav className={`bg-background/95 backdrop-blur-md border-b border-border/40 transition-all duration-300 flex items-center ${isScrolled ? 'h-16 md:h-20' : 'h-18 md:h-24'}`}>
+        <nav className={`bg-background/95 backdrop-blur-md border-b border-border/40 transition-all duration-300 flex items-center ${isScrolled ? 'h-16 md:h-16' : 'h-20 md:h-24'}`}>
           <div className="container mx-auto px-4 sm:px-6 flex items-center justify-between h-full">
 
             {/* Logo */}
             <Link to="/" className="flex-shrink-0">
-              <img src={logo} alt="AOTMS" className={`w-auto transition-all duration-300 hover:scale-105 ${isScrolled ? 'h-8 md:h-12' : 'h-14 md:h-24'}`} />
+              <img src={logo} alt="AOTMS" className={`w-auto transition-all duration-300 hover:scale-105 ${isScrolled ? 'h-10 md:h-12' : 'h-14 md:h-20'}`} />
             </Link>
 
             {/* Desktop Navigation */}
@@ -642,11 +642,11 @@ export const Header = () => {
 
                 {/* Social Links Mobile */}
                 <div className="flex items-center gap-4 mt-8 justify-center">
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="p-2.5 bg-slate-100 rounded-full text-slate-600 hover:bg-slate-200 transition"> <FaInstagram className="w-5 h-5" /> </a>
-                  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="p-2.5 bg-slate-100 rounded-full text-slate-600 hover:bg-slate-200 transition"> <FaYoutube className="w-5 h-5" /> </a>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-2.5 bg-slate-100 rounded-full text-slate-600 hover:bg-slate-200 transition"> <FaLinkedin className="w-5 h-5" /> </a>
-                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="p-2.5 bg-slate-100 rounded-full text-slate-600 hover:bg-slate-200 transition"> <FaTwitter className="w-5 h-5" /> </a>
-                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="p-2.5 bg-slate-100 rounded-full text-slate-600 hover:bg-slate-200 transition"> <FaFacebook className="w-5 h-5" /> </a>
+                  <a href="https://www.instagram.com/academyoftechmasters?igsh=enZ5YjYwOXg1cW80&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="p-2.5 bg-slate-100 rounded-full text-slate-600 hover:bg-slate-200 transition"> <FaInstagram className="w-5 h-5" /> </a>
+                  <a href="https://youtube.com/@aotms?si=mj3-j_JH4lHC3zeF" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="p-2.5 bg-slate-100 rounded-full text-slate-600 hover:bg-slate-200 transition"> <FaYoutube className="w-5 h-5" /> </a>
+                  <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-2.5 bg-slate-100 rounded-full text-slate-600 hover:bg-slate-200 transition"> <FaLinkedin className="w-5 h-5" /> </a>
+                  <a href="https://twitter.com/aotms" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="p-2.5 bg-slate-100 rounded-full text-slate-600 hover:bg-slate-200 transition"> <FaTwitter className="w-5 h-5" /> </a>
+                  <a href="https://www.facebook.com/aotms" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="p-2.5 bg-slate-100 rounded-full text-slate-600 hover:bg-slate-200 transition"> <FaFacebook className="w-5 h-5" /> </a>
                   <a href="https://threads.net" target="_blank" rel="noopener noreferrer" aria-label="Threads" className="p-2.5 bg-slate-100 rounded-full text-slate-600 hover:bg-slate-200 transition"> <SiThreads className="w-5 h-5" /> </a>
                 </div>
 

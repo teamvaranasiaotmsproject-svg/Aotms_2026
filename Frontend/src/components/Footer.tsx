@@ -80,20 +80,28 @@ export const Footer = () => {
               Transforming careers through industry-leading tech education. Master the future with Academy of Tech Masters.
             </p>
 
-            <div className="space-y-2 pt-1">
+            <div className="space-y-4 pt-1">
               {/* Contact Items */}
-              <div className="flex flex-col gap-2 text-xs md:text-sm">
-                <div className="flex items-start gap-3">
-                  <FaMapMarkerAlt className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                  <span className="text-white">Vijayawada - 520010, AP, India.</span>
-                </div>
+              <div className="flex flex-col gap-3 text-xs md:text-sm">
+                <a
+                  href="https://www.google.com/maps/search/Academy+of+Tech+Masters+Vijayawada"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 hover:text-accent transition-all group"
+                >
+                  <FaMapMarkerAlt className="w-4 h-4 text-accent shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                  <div className="flex flex-col">
+                    <span className="text-white font-medium">Vijayawada - 520010, AP, India.</span>
+                    <span className="text-[10px] text-accent font-bold uppercase tracking-wider mt-0.5">Get Directions</span>
+                  </div>
+                </a>
                 <div className="flex items-center gap-3">
                   <FaPhone className="w-4 h-4 text-accent shrink-0" />
-                  <a href="tel:+918019952233" className="text-white hover:text-accent transition-colors">+91 80199 52233</a>
+                  <a href="tel:+918019952233" className="text-white hover:text-accent font-medium transition-colors">+91 80199 52233</a>
                 </div>
                 <div className="flex items-center gap-3">
                   <FaEnvelope className="w-4 h-4 text-accent shrink-0" />
-                  <a href="mailto:Info@aotms.com" className="text-white hover:text-accent transition-colors">Info@aotms.com</a>
+                  <a href="mailto:Info@aotms.com" className="text-white hover:text-accent font-medium transition-colors">Info@aotms.com</a>
                 </div>
               </div>
             </div>

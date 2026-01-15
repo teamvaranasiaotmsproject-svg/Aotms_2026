@@ -105,8 +105,34 @@ export default function CourseDetail() {
     const addToCart = useCartStore((state) => state.addToCart);
     const { data: course, isLoading: isCourseLoading } = useCourseBySlug(slug || "");
     const { data: allCourses } = useCourses();
-    const [activeModule, setActiveModule] = useState<number | null>(0);
+    const [activeModule, setActiveModule] = useState<number | null>(null);
     const [activeSection, setActiveSection] = useState("curriculum");
+    const [isNavStuck, setIsNavStuck] = useState(false);
+
+    // Scroll Spy & Sticky Trigger Logic
+    useEffect(() => {
+        const sections = ["curriculum", "outcomes", "tools", "instructor", "hiring-partners", "certifications", "faq"];
+
+        const handleScroll = () => {
+            // Trigger appearance specifically after the hero section (around 600px+)
+            setIsNavStuck(window.scrollY > 600);
+
+            // Manual scroll spy for active section
+            for (const id of sections) {
+                const el = document.getElementById(id);
+                if (el) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top <= 200 && rect.bottom >= 200) {
+                        setActiveSection(id);
+                        break;
+                    }
+                }
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -228,7 +254,7 @@ export default function CourseDetail() {
     }
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-white w-full max-w-full overflow-x-hidden">
             <Header />
 
             {/* Premium Hero Section */}
@@ -243,14 +269,20 @@ export default function CourseDetail() {
             />
 
             {/* Clean Feature Grid Footer - Integrated below Hero */}
-            <div className="bg-white py-6 md:py-12 relative z-20 border-b border-slate-100">
-                <div className="container mx-auto px-3 sm:px-4 md:px-6">
+            <div className="relative z-20 bg-white py-6 md:py-12 border-b border-slate-100 w-full">
+                <div className="container mx-auto px-4 md:px-6">
                     <FeatureGrid />
                 </div>
             </div>
 
-            {/* Smart Sticky Navigation Bar - Mobile Optimized */}
-            <div className="sticky top-[64px] md:top-[68px] z-50 bg-white border-b border-slate-200 py-2 md:py-3 shadow-sm transition-all duration-300" style={{ position: '-webkit-sticky' } as any}>
+            {/* Smart Sticky Navigation Bar - Attached to Main Navbar */}
+            <div
+                className={cn(
+                    "sticky top-[64px] md:top-[80px] z-50 bg-white border-b border-slate-200 py-3 md:py-4 w-full overflow-hidden transition-all duration-300",
+                    isNavStuck ? "shadow-lg bg-white/95 backdrop-blur-md" : "shadow-sm"
+                )}
+                style={{ position: '-webkit-sticky' } as any}
+            >
                 <div className="container mx-auto px-2 sm:px-4 md:px-6">
                     <div className="overflow-x-auto pb-1 -mx-2 px-2 scrollbar-hide">
                         <div className="flex items-center gap-1.5 md:gap-3 md:justify-center min-w-max">
@@ -274,16 +306,16 @@ export default function CourseDetail() {
                                             e.preventDefault();
                                             const el = document.getElementById(item.id);
                                             if (el) {
-                                                const offset = window.innerWidth < 768 ? 120 : 140;
+                                                const offset = window.innerWidth < 768 ? 130 : 160;
                                                 const y = el.getBoundingClientRect().top + window.scrollY - offset;
                                                 window.scrollTo({ top: y, behavior: 'smooth' });
                                                 setActiveSection(item.id);
                                             }
                                         }}
                                         className={cn(
-                                            "flex items-center gap-1 md:gap-1.5 px-2 md:px-3 py-1 md:py-1.5 rounded-full text-[10px] md:text-xs font-bold border shrink-0 whitespace-nowrap transition-colors",
+                                            "flex items-center gap-1.5 md:gap-2 px-3 md:px-5 py-2 md:py-2.5 rounded-full text-[11px] md:text-sm font-bold border shrink-0 whitespace-nowrap transition-all duration-300",
                                             isActive
-                                                ? "bg-blue-600 text-white border-blue-600"
+                                                ? "bg-blue-600 text-white border-blue-600 shadow-md scale-105"
                                                 : "text-slate-600 hover:text-blue-600 hover:bg-blue-50 border-slate-200 bg-white"
                                         )}
                                     >
@@ -298,12 +330,12 @@ export default function CourseDetail() {
             </div>
 
             {/* Course Content */}
-            <section className="py-6 md:py-16 lg:py-24 bg-white">
-                <div className="container mx-auto px-3 sm:px-4 md:px-6">
-                    <div className="grid lg:grid-cols-12 gap-6 md:gap-8 lg:gap-16">
+            <section className="py-6 md:py-16 lg:py-24 bg-white w-full overflow-hidden">
+                <div className="container mx-auto px-4 md:px-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
 
                         {/* Main Content */}
-                        <div className="lg:col-span-8">
+                        <div className="col-span-12 lg:col-span-8">
                             <div id="curriculum" className="curriculum detailed-curriculum mb-8 md:mb-12 lg:mb-20 scroll-mt-28 md:scroll-mt-32 lg:scroll-mt-40">
                                 <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-[#FD5A1A] mb-3 md:mb-4 flex items-center gap-2 md:gap-3">
                                     <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-blue-100 flex items-center justify-center shrink-0">
@@ -373,7 +405,7 @@ export default function CourseDetail() {
                                             </div>
                                             Program Structure & Duration
                                         </h2>
-                                        <div className="bg-white rounded-2xl md:rounded-3xl p-4 sm:p-5 md:p-8 border border-slate-100 shadow-sm flex flex-col md:flex-row items-center gap-6 md:gap-8 lg:gap-12">
+                                        <div className="bg-white rounded-2xl md:rounded-3xl p-5 md:p-8 border border-slate-100 shadow-sm flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
                                             {/* Pie Chart Representation */}
                                             <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 shrink-0">
                                                 <div className={`w-full h-full rounded-full ${program.gradient} p-5 sm:p-6 md:p-8 shadow-inner`}>
@@ -383,10 +415,10 @@ export default function CourseDetail() {
                                                     </div>
                                                 </div>
                                                 {/* Legend overlay - Repositioned for mobile */}
-                                                <div className="md:absolute -bottom-4 -right-4 bg-white p-2.5 md:p-3 rounded-lg md:rounded-xl shadow-md border border-slate-100 text-[10px] md:text-xs text-slate-600 mt-4 md:mt-0">
+                                                <div className="flex flex-wrap justify-center gap-3 mt-6 lg:mt-0 lg:absolute lg:-bottom-4 lg:-right-4 bg-white p-3 rounded-xl shadow-md border border-slate-100 text-[10px] md:text-xs text-slate-600">
                                                     {program.legend.map((item, idx) => (
-                                                        <div key={idx} className="flex items-center gap-1.5 md:gap-2 mb-1 last:mb-0">
-                                                            <div className={`w-2.5 h-2.5 md:w-3 md:h-3 rounded-full ${item.color}`}></div>
+                                                        <div key={idx} className="flex items-center gap-2">
+                                                            <div className={`w-3 h-3 rounded-full ${item.color}`}></div>
                                                             <span>{item.label}</span>
                                                         </div>
                                                     ))}
@@ -502,7 +534,7 @@ export default function CourseDetail() {
                                             hidden: { opacity: 0, y: 10 },
                                             show: { opacity: 1, y: 0, transition: { staggerChildren: 0.1 } }
                                         }}
-                                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+                                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
                                     >
                                         {[
                                             { title: "Courses & Certifications", icon: Award, color: "text-blue-500", bg: "bg-blue-50", text: "Industry-recognized credentials" },
@@ -834,8 +866,8 @@ export default function CourseDetail() {
                         </div>
 
                         {/* Sidebar Sticky */}
-                        <div className="hidden lg:block lg:col-span-4">
-                            <div className="sticky top-[100px] lg:top-[120px] space-y-8">
+                        <div className="col-span-12 lg:col-span-4 mt-12 lg:mt-0">
+                            <div className="lg:sticky lg:top-[120px] space-y-8">
                                 {/* Course Image Box - Static */}
 
 
@@ -956,12 +988,14 @@ export default function CourseDetail() {
                                     </div>
                                 </div>
 
-                                {/* Certificate Preview with Highlight Animation */}
+                                {/* Professional Certificate Guarantee Section */}
                                 <div className="bg-slate-900 rounded-[2.5rem] p-8 text-white relative overflow-hidden group hover:scale-[1.02] transition-transform duration-500 cursor-default">
                                     {/* Shimmer/Spotlight Effect */}
                                     <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_50%,transparent_75%)] bg-[length:250%_250%,100%_100%] animate-[shimmer_3s_infinite]" />
 
                                     <div className="absolute top-0 right-0 w-40 h-40 bg-blue-500/20 rounded-full blur-3xl -mr-10 -mt-10" />
+
+
 
                                     <div className="relative z-10">
                                         <div className="flex justify-between items-start mb-2">
@@ -997,7 +1031,7 @@ export default function CourseDetail() {
             </section >
 
             {/* Related Courses */}
-            <section className="py-16 md:py-24 bg-slate-50">
+            <section className="py-16 md:py-24 bg-slate-50 w-full overflow-hidden">
                 <div className="container mx-auto px-6">
                     <div className="flex items-center justify-between mb-12">
                         <div>
@@ -1012,7 +1046,7 @@ export default function CourseDetail() {
                         </Link>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {allCourses
                             ?.filter(c => c.id !== course.id)
                             .slice(0, 3)
@@ -1026,24 +1060,7 @@ export default function CourseDetail() {
 
             <Footer />
 
-            {/* Mobile Sticky Bottom Bar */}
-            <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-4 z-50 md:hidden pb-safe shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
-                <div className="flex items-center gap-4">
-                    <div className="flex-1">
-                        <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-0.5">Total Price</div>
-                        <div className="flex items-baseline gap-2">
-                            <span className="text-2xl font-black text-slate-900">{course.price}</span>
-                            <span className="text-xs text-slate-400 line-through font-bold">{course.originalPrice}</span>
-                        </div>
-                    </div>
-                    <Button
-                        onClick={handleEnroll}
-                        className="flex-1 bg-[#FF6B35] hover:bg-[#ff8559] text-white rounded-xl font-bold text-base h-12 shadow-lg shadow-orange-500/20 active:scale-95 transition-all"
-                    >
-                        Enroll Now
-                    </Button>
-                </div>
-            </div>
+
         </div >
     );
 }
