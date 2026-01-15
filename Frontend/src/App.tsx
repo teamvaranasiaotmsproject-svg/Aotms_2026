@@ -69,6 +69,7 @@ const CustomCursor = () => {
 };
 
 import ScrollToTop from "./components/ScrollToTop";
+import { ScrollButtons } from "./components/ScrollButtons";
 
 const App = () => {
   useEffect(() => {
@@ -88,6 +89,7 @@ const App = () => {
       <TooltipProvider>
         <CustomCursor />
         <Chatbot />
+        <ScrollButtons />
         <Toaster />
         <Sonner />
         <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { sanitizeInput } from '@/utils/validation';
 import './Chatbot.css';
-import { MoreHorizontal, Send, MessageSquare, Smile, Copy, ThumbsUp, ThumbsDown, RefreshCw, MessageSquarePlus, MessageSquareX, History, X, ChevronUp } from 'lucide-react';
+import { MoreHorizontal, Send, MessageSquare, Smile, Copy, ThumbsUp, ThumbsDown, RefreshCw, MessageSquarePlus, MessageSquareX, History, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
@@ -18,7 +19,6 @@ const Chatbot: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
-  const [showScrollTop, setShowScrollTop] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const chatPanelRef = useRef<HTMLDivElement>(null);
@@ -71,15 +71,11 @@ const Chatbot: React.FC = () => {
         { id: 1, text: 'Hello! How can I help you today?', sender: 'bot' },
       ]);
     }
-  }, [isOpen, messages.length]);
+  }, [isOpen]);
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
     setShowMenu(false);
-  };
-
-  const handleScrollUp = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSendMessage = (e: React.FormEvent) => {
@@ -102,19 +98,6 @@ const Chatbot: React.FC = () => {
       setIsTyping(false);
     }, 1500);
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight;
-      const totalHeight = document.documentElement.scrollHeight;
-      // Show scroll top only when entering the footer area (last 600px of the page)
-      setShowScrollTop(scrollPosition > totalHeight - 600);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const handleStartNewChat = () => {
     setMessages([{ id: Date.now(), text: 'Hello! How can I help you today?', sender: 'bot' }]);
@@ -145,22 +128,20 @@ const Chatbot: React.FC = () => {
 
         {/* Header - White with Black Text */}
         <div className="chat-header relative">
-          <h2 className="text-black font-semibold text-base">Academy Of Tech Masters</h2>
+          <h2 className="text-white font-semibold text-base">Academy Of Tech Masters</h2>
           <div className="flex items-center gap-1">
             <button
               onClick={() => setShowMenu(!showMenu)}
-              className="text-black hover:bg-black/5 rounded-full p-2.5 sm:p-2 transition-colors relative"
-              title="Menu"
+              className="text-white hover:bg-white/10 rounded-full p-2 transition-colors relative"
             >
-              <MoreHorizontal className="w-6 h-6 sm:w-5 sm:h-5" />
+              <MoreHorizontal className="w-5 h-5" />
             </button>
             <button
               onClick={toggleChat}
-              className="text-black hover:bg-black/5 rounded-full p-2.5 sm:p-2 transition-colors"
+              className="text-white hover:bg-white/10 rounded-full p-2 transition-colors"
               aria-label="Close"
-              title="Close"
             >
-              <X className="w-6 h-6 sm:w-5 sm:h-5" />
+              <X className="w-5 h-5" />
             </button>
           </div>
 
@@ -192,18 +173,18 @@ const Chatbot: React.FC = () => {
                   {msg.text}
                 </div>
                 {msg.sender === 'bot' && (
-                  <div className="flex items-center gap-4 sm:gap-3 mt-2 sm:mt-1 ml-1 text-gray-400">
-                    <button className="hover:text-gray-600 transition-colors p-1" title="Copy" aria-label="Copy Message">
-                      <Copy className="w-4.5 h-4.5 sm:w-3.5 sm:h-3.5" />
+                  <div className="flex items-center gap-3 mt-1 ml-1 text-gray-400">
+                    <button className="hover:text-gray-600 transition-colors" title="Copy">
+                      <Copy className="w-3.5 h-3.5" />
                     </button>
-                    <button className="hover:text-gray-600 transition-colors p-1" title="Like" aria-label="Like Message">
-                      <ThumbsUp className="w-4.5 h-4.5 sm:w-3.5 sm:h-3.5" />
+                    <button className="hover:text-gray-600 transition-colors" title="Like">
+                      <ThumbsUp className="w-3.5 h-3.5" />
                     </button>
-                    <button className="hover:text-gray-600 transition-colors p-1" title="Dislike" aria-label="Dislike Message">
-                      <ThumbsDown className="w-4.5 h-4.5 sm:w-3.5 sm:h-3.5" />
+                    <button className="hover:text-gray-600 transition-colors" title="Dislike">
+                      <ThumbsDown className="w-3.5 h-3.5" />
                     </button>
-                    <button className="hover:text-gray-600 transition-colors p-1" title="Regenerate" aria-label="Regenerate Response">
-                      <RefreshCw className="w-4.5 h-4.5 sm:w-3.5 sm:h-3.5" />
+                    <button className="hover:text-gray-600 transition-colors" title="Regenerate">
+                      <RefreshCw className="w-3.5 h-3.5" />
                     </button>
                   </div>
                 )}
@@ -232,8 +213,6 @@ const Chatbot: React.FC = () => {
                   type="button"
                   onClick={() => onEmojiSelect(emoji)}
                   className="text-xl hover:bg-gray-100 p-1 rounded transition-colors"
-                  title={`Select ${emoji}`}
-                  aria-label={`Select ${emoji}`}
                 >
                   {emoji}
                 </button>
@@ -244,56 +223,34 @@ const Chatbot: React.FC = () => {
             <Input
               className="border-none focus-visible:ring-0 shadow-none bg-transparent"
               value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
+              onChange={(e) => setInputValue(sanitizeInput.text(e.target.value))}
               placeholder="Message..."
             />
             <div className="flex items-center gap-2 pr-2">
               <button
                 type="button"
                 onClick={() => setShowEmojiPicker(!showEmojiPicker)}
-                className={`transition-colors p-1 sm:p-0 ${showEmojiPicker ? 'text-primary' : 'text-gray-400 hover:text-gray-600'}`}
+                className={`transition-colors ${showEmojiPicker ? 'text-primary' : 'text-gray-400 hover:text-gray-600'}`}
               >
-                <Smile className="w-6 h-6 sm:w-5 sm:h-5" />
+                <Smile className="w-5 h-5" />
               </button>
-              <button type="submit" disabled={!inputValue.trim()} className="text-gray-400 hover:text-primary disabled:opacity-50 transition-colors p-1 sm:p-0" title="Send">
-                <Send className="w-6 h-6 sm:w-5 sm:h-5" />
+              <button type="submit" disabled={!inputValue.trim()} className="text-gray-400 hover:text-primary disabled:opacity-50 transition-colors">
+                <Send className="w-5 h-5" />
               </button>
             </div>
           </form>
         </div>
       </div>
 
-      {/* Floating Action Buttons Area */}
-      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 z-[9999] flex flex-col items-end gap-3 pointer-events-none">
-        {/* Scroll Top Button - Triggered at Footer */}
-        <div className="pointer-events-auto">
-          {showScrollTop && (
-            <button
-              onClick={handleScrollUp}
-              className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#004A99] hover:bg-[#003366] text-white flex items-center justify-center shadow-lg transition-all hover:scale-110 active:scale-95 border border-white/20 mb-1"
-              aria-label="Scroll Up"
-              title="Scroll to Top"
-            >
-              <ChevronUp className="w-6 h-6 sm:w-7 sm:h-7" />
-            </button>
-          )}
-        </div>
-
-        {/* Chat Toggle Button - Always Visible */}
-        <div className="pointer-events-auto">
-          {!isOpen && (
-            <button
-              ref={toggleBtnRef}
-              onClick={toggleChat}
-              className="h-12 sm:h-14 px-6 sm:px-8 rounded-full bg-[#004A99] hover:bg-[#003366] text-white shadow-xl hover:shadow-2xl transition-all flex items-center gap-3 border-2 border-white/20 animate-bounce-subtle"
-              title="AOTMS Chat"
-            >
-              <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6" />
-              <span className="font-bold text-[10px] sm:text-xs tracking-wider uppercase">AOTMS Chat</span>
-            </button>
-          )}
-        </div>
-      </div>
+      {/* Floating Toggle Button */}
+      {!isOpen && (
+        <button ref={toggleBtnRef} onClick={toggleChat} className="chat-toggle-btn shadow-xl hover:shadow-2xl transition-all">
+          <div className="flex items-center gap-2">
+            <MessageSquare className="w-5 h-5" />
+            <span className="font-semibold text-sm">AOTMS</span>
+          </div>
+        </button>
+      )}
     </div>
   );
 };

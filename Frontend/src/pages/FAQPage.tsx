@@ -110,7 +110,7 @@ const FAQPage = () => {
     })).filter(cat => cat.items.length > 0);
 
     return (
-        <div className="min-h-screen bg-slate-50 font-sans selection:bg-[#FF6B35]/20">
+        <div className="min-h-screen bg-slate-50 font-sans selection:bg-accent/20">
             <Helmet>
                 <title>FAQ | Academy of Tech Masters</title>
                 <meta name="description" content="Find answers to common questions about Academy of Tech Masters' IT courses, eligibility, placements, fees, and more." />
@@ -119,28 +119,34 @@ const FAQPage = () => {
             <Navbar />
 
             {/* Hero Section */}
-            <div className="pt-36 md:pt-48 pb-16 bg-[#003B95] relative overflow-hidden">
+            <div className="pt-32 md:pt-48 pb-12 bg-[#0066CC] relative overflow-hidden">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:32px_32px] opacity-5 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent pointer-events-none" />
+
+                {/* Subtle Orange Glows */}
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FF6B35] opacity-60 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FF6B35] opacity-40 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
                 <div className="container mx-auto px-4 relative z-10 text-center">
-                    <span className="inline-block py-1 px-3 rounded-full bg-[#FF6B35]/10 border border-[#FF6B35]/20 text-[#FF6B35] font-mono text-xs font-bold tracking-widest uppercase mb-4">
+                    <span className="inline-block py-1 px-3 rounded-full bg-accent/10 border border-accent/200 text-accent font-mono text-xs font-bold tracking-widest uppercase mb-6">
                         Got Questions?
                     </span>
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight">
-                        Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00C2CB] to-[#0066CC]">Questions</span>
+                        Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-accent">Questions</span>
                     </h1>
-                    <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">
+                    <p className="text-blue-100/80 max-w-2xl mx-auto text-lg leading-relaxed">
                         Find answers to common questions about our courses, admissions, placement support, and more.
                     </p>
 
                     {/* Search Bar */}
                     <div className="max-w-xl mx-auto mt-10 relative group">
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#0066CC] to-[#FF6B35] rounded-full blur opacity-20 group-hover:opacity-40 transition-opacity" />
-                        <div className="relative flex items-center bg-white/5 border border-white/10 rounded-full backdrop-blur-sm px-6 py-4 shadow-xl">
-                            <Search className="w-5 h-5 text-slate-400 mr-3" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-xl opacity-20 group-hover:opacity-30 transition-opacity" />
+                        <div className="relative flex items-center bg-white border border-slate-200 rounded-full px-6 py-4 shadow-xl">
+                            <Search className="w-5 h-5 text-primary mr-3" />
                             <input
                                 type="text"
                                 placeholder="Search for questions..."
-                                className="bg-transparent border-none outline-none text-white w-full placeholder:text-slate-500"
+                                className="bg-transparent border-none outline-none text-slate-800 w-full placeholder:text-slate-400 font-medium"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                             />
@@ -156,8 +162,8 @@ const FAQPage = () => {
                     <div className="space-y-12">
                         {filteredFAQs.map((category, catIdx) => (
                             <div key={catIdx} className="scroll-mt-24">
-                                <h3 className="text-xl font-bold text-[#0B1221] mb-6 flex items-center gap-2">
-                                    <span className="w-2 h-8 bg-[#FF6B35] rounded-full" />
+                                <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                                    <span className="w-2 h-8 bg-accent rounded-full" />
                                     {category.category}
                                 </h3>
                                 <div className="space-y-4">
@@ -168,16 +174,16 @@ const FAQPage = () => {
                                         return (
                                             <div
                                                 key={idx}
-                                                className={`bg-white rounded-xl border transition-all duration-300 overflow-hidden ${isOpen ? 'border-[#0066CC] shadow-lg shadow-[#0066CC]/5' : 'border-slate-200 hover:border-[#0066CC]/30'}`}
+                                                className={`bg-white rounded-xl border transition-all duration-300 overflow-hidden ${isOpen ? 'border-primary shadow-lg shadow-primary/5' : 'border-slate-200 hover:border-primary/30'}`}
                                             >
                                                 <button
                                                     onClick={() => toggleFAQ(id)}
                                                     className="w-full text-left px-6 py-5 flex items-start justify-between gap-4"
                                                 >
-                                                    <span className={`font-semibold text-lg transition-colors ${isOpen ? 'text-[#0066CC]' : 'text-slate-800'}`}>
+                                                    <span className={`font-semibold text-lg transition-colors ${isOpen ? 'text-primary' : 'text-slate-800'}`}>
                                                         {item.question}
                                                     </span>
-                                                    <span className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center border transition-all ${isOpen ? 'bg-[#0066CC] border-[#0066CC] text-white rotate-180' : 'bg-slate-50 border-slate-200 text-slate-400'}`}>
+                                                    <span className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center border transition-all ${isOpen ? 'bg-primary border-primary text-white rotate-180' : 'bg-slate-50 border-slate-200 text-slate-400'}`}>
                                                         {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                                                     </span>
                                                 </button>
@@ -209,7 +215,7 @@ const FAQPage = () => {
                         <p className="text-slate-500">We couldn't find any questions matching "{searchQuery}".</p>
                         <button
                             onClick={() => setSearchQuery("")}
-                            className="mt-6 text-[#0066CC] font-semibold hover:underline"
+                            className="mt-6 text-primary font-semibold hover:underline"
                         >
                             Clear Search
                         </button>
@@ -217,21 +223,23 @@ const FAQPage = () => {
                 )}
 
                 {/* Contact CTA */}
-                <div className="mt-20 bg-[#003B95] rounded-3xl p-8 md:p-12 text-center relative overflow-hidden group">
+                <div className="mt-20 bg-[#0066CC] rounded-3xl p-8 md:p-12 text-center relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
                     <div className="relative z-10">
                         <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6 backdrop-blur-sm border border-white/10 text-white">
                             <MessageCircle className="w-8 h-8" />
                         </div>
                         <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Still have questions?</h2>
-                        <p className="text-slate-400 mb-8 max-w-lg mx-auto">
+                        <p className="text-blue-100/80 mb-8 max-w-lg mx-auto">
                             Can't find the answer you're looking for? Our team is here to help you.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="/contact" className="px-8 py-3 bg-[#FF6B35] hover:bg-[#FF6B35]/90 text-white font-bold rounded-xl transition-all shadow-lg shadow-[#FF6B35]/20 hover:scale-105">
+                            <a href="/contact" className="px-8 py-3 bg-accent hover:bg-accent/90 text-white font-bold rounded-xl transition-all shadow-lg shadow-accent/20 hover:scale-105">
                                 Contact Us
                             </a>
-                            <a href="tel:+918019942233" className="px-8 py-3 bg-white hover:bg-slate-50 text-[#0B1221] font-bold rounded-xl transition-all hover:scale-105">
+                            <a href="tel:+918019942233" className="px-8 py-3 bg-white hover:bg-slate-50 text-primary font-bold rounded-xl transition-all hover:scale-105">
                                 Call Support
                             </a>
                         </div>
