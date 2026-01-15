@@ -155,14 +155,14 @@ const TestimonialCarousel = () => {
     <section className="py-20 md:py-28 bg-slate-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 text-orange-700 text-sm font-semibold mb-6">
-            <Quote className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50/50 backdrop-blur-sm border border-blue-200 text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A] text-sm font-black uppercase tracking-widest mb-6">
+            <Quote className="w-4 h-4 text-[#0075CF]" />
             Student Success Stories
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">
-            Hear From Our Alumni
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
+            Hear From Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Alumni</span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto font-medium">
             Real stories from students who transformed their careers with AOTMS
           </p>
         </div>
@@ -240,14 +240,14 @@ export const AboutUs = () => {
               transition={{ duration: 0.6 }}
               className="text-center lg:text-left"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-blue-100 text-blue-700 text-xs md:text-sm font-bold uppercase tracking-widest shadow-sm mb-6 hover:shadow-md transition-shadow">
-                <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50/50 backdrop-blur-sm border border-blue-200 text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A] text-xs md:text-sm font-black uppercase tracking-widest shadow-sm mb-6 hover:shadow-md transition-shadow">
+                <span className="w-2 h-2 rounded-full bg-[#FD5A1A] animate-pulse" />
                 Empowering the Next Gen of Innovators
               </div>
 
               <h1 className="text-3xl sm:text-4xl lg:text-6xl font-black text-slate-900 mb-6 leading-[1.15] tracking-tight">
                 Building Careers in <br className="hidden lg:block" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-500">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">
                   Data & Technology
                 </span>
               </h1>
@@ -336,8 +336,8 @@ export const AboutUs = () => {
       <section className="py-20 md:py-28 bg-slate-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">
-              Our Foundation
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Foundation</span>
             </h2>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
               Built on strong principles that guide our commitment to excellence in tech education

@@ -89,7 +89,7 @@ export const Footer = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <FaPhone className="w-4 h-4 text-accent shrink-0" />
-                  <a href="tel:+918019942233" className="text-white hover:text-accent transition-colors">+91 80199 52233</a>
+                  <a href="tel:+918019952233" className="text-white hover:text-accent transition-colors">+91 80199 52233</a>
                 </div>
                 <div className="flex items-center gap-3">
                   <FaEnvelope className="w-4 h-4 text-accent shrink-0" />
@@ -182,7 +182,7 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-6 border-t border-white/20 flex flex-col md:flex-row justify-between items-center gap-3 text-[10px] md:text-xs text-white/70">
+        <div className="pt-6 border-t border-white/20 flex flex-col md:flex-row justify-between items-center gap-3 text-xs md:text-sm text-white/70">
           <p>© {new Date().getFullYear()} AOTMS. All rights reserved. Engineered by Team AOTMS</p>
           <div className="flex gap-4">
             <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>

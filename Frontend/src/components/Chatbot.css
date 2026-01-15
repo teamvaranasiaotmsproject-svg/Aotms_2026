@@ -33,9 +33,9 @@
     bottom: 80px;
     /* Floating above the toggle button */
     right: 0;
-    width: 380px;
-    height: 600px;
-    max-height: 70vh;
+    width: 340px;
+    height: 480px;
+    max-height: 60vh;
     background-color: white;
     border-radius: 16px;
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
@@ -181,7 +181,7 @@
         width: 100%;
         width: calc(100vw - 2rem);
         bottom: 70px;
-        height: 80vh;
+        height: 60vh;
     }
 
     .chat-toggle-btn {

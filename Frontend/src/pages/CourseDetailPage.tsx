@@ -60,13 +60,87 @@ import {
     getCourseTheme
 } from "../data/courseMetadata";
 
+
+interface ShowMoreProps {
+    children: React.ReactNode;
+    initialHeight?: string;
+    showLabel?: string;
+    hideLabel?: string;
+}
+
+const ShowMore = ({ children, initialHeight = "300px", showLabel = "Show More", hideLabel = "Show Less" }: ShowMoreProps) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    return (
+        <div className="relative">
+            <div
+                className={cn(
+                    "overflow-hidden transition-all duration-500 ease-in-out",
+                    !isExpanded && "mask-linear-fade"
+                )}
+                style={{ maxHeight: isExpanded ? "2000px" : initialHeight }}
+            >
+                {children}
+            </div>
+            {!isExpanded && (
+                <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+            )}
+            <div className="mt-4 text-center">
+                <Button
+                    variant="ghost"
+                    onClick={() => setIsExpanded(!isExpanded)}
+                    className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 font-bold"
+                >
+                    {isExpanded ? hideLabel : showLabel}
+                    <ChevronDown className={cn("ml-2 w-4 h-4 transition-transform duration-300", isExpanded && "rotate-180")} />
+                </Button>
+            </div>
+        </div>
+    );
+};
+
 export default function CourseDetail() {
     const { slug } = useParams();
     const navigate = useNavigate();
     const addToCart = useCartStore((state) => state.addToCart);
     const { data: course, isLoading: isCourseLoading } = useCourseBySlug(slug || "");
     const { data: allCourses } = useCourses();
-    const [activeModule, setActiveModule] = useState<number | null>(null);
+    const [activeModule, setActiveModule] = useState<number | null>(0);
+    const [activeSection, setActiveSection] = useState("curriculum");
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const sections = [
+                "curriculum",
+                "outcomes",
+                "tools",
+                "instructor",
+                "hiring-partners",
+                "certifications",
+                "faq"
+            ];
+
+            // Find the current section
+            for (const section of sections) {
+                const element = document.getElementById(section);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    // If element top is within the viewing area (considering sticky header offset ~120px)
+                    if (rect.top >= 0 && rect.top <= 300) {
+                        setActiveSection(section);
+                        break;
+                    } else if (rect.top < 0 && rect.bottom > 120) {
+                        // If we're inside the section
+                        setActiveSection(section);
+                        break;
+                    }
+                }
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
     const [leadForm, setLeadForm] = useState({ name: "", email: "", phone: "" });
     const [leadLoading, setLeadLoading] = useState(false);
 
@@ -154,7 +228,7 @@ export default function CourseDetail() {
     }
 
     return (
-        <div className="min-h-screen bg-white overflow-x-hidden">
+        <div className="min-h-screen bg-white">
             <Header />
 
             {/* Premium Hero Section */}
@@ -169,94 +243,113 @@ export default function CourseDetail() {
             />
 
             {/* Clean Feature Grid Footer - Integrated below Hero */}
-            <div className="bg-white py-12 relative z-20 border-b border-slate-100">
-                <div className="container mx-auto px-6">
+            <div className="bg-white py-6 md:py-12 relative z-20 border-b border-slate-100">
+                <div className="container mx-auto px-3 sm:px-4 md:px-6">
                     <FeatureGrid />
                 </div>
             </div>
 
-            {/* Smart Sticky Navigation Bar */}
-            <div className="sticky top-[80px] lg:top-[96px] z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/60 py-2 md:py-4 mb-8 shadow-sm">
-                <div className="container mx-auto px-6 overflow-x-auto scrollbar-hide">
-                    <div className="flex items-center gap-2 md:gap-4 md:justify-center min-w-max py-1">
-                        {[
-                            { id: "curriculum", label: "Curriculum", icon: BookOpen },
-                            { id: "outcomes", label: "Outcomes", icon: CheckCircle2 },
-                            { id: "tools", label: "Tools", icon: Monitor },
-                            { id: "instructor", label: "Instructor", icon: Users },
-                            { id: "hiring-partners", label: "Partners", icon: Briefcase },
-                            { id: "certifications", label: "Certifications", icon: Award },
-                            { id: "faq", label: "FAQ", icon: MessageSquare },
-                        ].map((item) => {
-                            const Icon = item.icon;
-                            return (
-                                <a
-                                    key={item.id}
-                                    href={`#${item.id}`}
-                                    className="flex items-center gap-1 px-2.5 md:px-5 py-2 md:py-2.5 rounded-full text-[10px] md:text-sm font-black text-slate-500 hover:text-[#0066CC] hover:bg-blue-50 transition-all border border-slate-100 hover:border-blue-200 shrink-0"
-                                >
-                                    <Icon className="w-3 h-3 md:w-4 md:h-4" />
-                                    {item.label}
-                                </a>
-                            );
-                        })}
+            {/* Smart Sticky Navigation Bar - Mobile Optimized */}
+            <div className="sticky top-[64px] md:top-[68px] z-50 bg-white border-b border-slate-200 py-2 md:py-3 shadow-sm transition-all duration-300" style={{ position: '-webkit-sticky' } as any}>
+                <div className="container mx-auto px-2 sm:px-4 md:px-6">
+                    <div className="overflow-x-auto pb-1 -mx-2 px-2 scrollbar-hide">
+                        <div className="flex items-center gap-1.5 md:gap-3 md:justify-center min-w-max">
+                            {[
+                                { id: "curriculum", label: "Curriculum", icon: BookOpen },
+                                { id: "outcomes", label: "Outcomes", icon: CheckCircle2 },
+                                { id: "tools", label: "Tools", icon: Monitor },
+                                { id: "instructor", label: "Instructor", icon: Users },
+                                { id: "hiring-partners", label: "Partners", icon: Briefcase },
+                                { id: "certifications", label: "Certifications", icon: Award },
+                                { id: "faq", label: "FAQ", icon: MessageSquare },
+                            ].map((item) => {
+                                const Icon = item.icon;
+                                const isActive = activeSection === item.id;
+
+                                return (
+                                    <a
+                                        key={item.id}
+                                        href={`#${item.id}`}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            const el = document.getElementById(item.id);
+                                            if (el) {
+                                                const offset = window.innerWidth < 768 ? 120 : 140;
+                                                const y = el.getBoundingClientRect().top + window.scrollY - offset;
+                                                window.scrollTo({ top: y, behavior: 'smooth' });
+                                                setActiveSection(item.id);
+                                            }
+                                        }}
+                                        className={cn(
+                                            "flex items-center gap-1 md:gap-1.5 px-2 md:px-3 py-1 md:py-1.5 rounded-full text-[10px] md:text-xs font-bold border shrink-0 whitespace-nowrap transition-colors",
+                                            isActive
+                                                ? "bg-blue-600 text-white border-blue-600"
+                                                : "text-slate-600 hover:text-blue-600 hover:bg-blue-50 border-slate-200 bg-white"
+                                        )}
+                                    >
+                                        <Icon className={cn("w-3 h-3 md:w-3.5 md:h-3.5", isActive ? "text-white" : "")} />
+                                        <span className="hidden sm:inline">{item.label}</span>
+                                    </a>
+                                );
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>
 
             {/* Course Content */}
-            <section className="py-12 md:py-24 bg-white">
-                <div className="container mx-auto px-6">
-                    <div className="grid lg:grid-cols-12 gap-8 lg:gap-16">
+            <section className="py-6 md:py-16 lg:py-24 bg-white">
+                <div className="container mx-auto px-3 sm:px-4 md:px-6">
+                    <div className="grid lg:grid-cols-12 gap-6 md:gap-8 lg:gap-16">
 
                         {/* Main Content */}
                         <div className="lg:col-span-8">
-                            <div id="curriculum" className="curriculum detailed-curriculum mb-12 scroll-mt-40">
-                                <h2 className="text-xl md:text-3xl font-display font-bold text-slate-900 mb-4 flex items-center gap-3">
-                                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-blue-100 flex items-center justify-center shrink-0">
-                                        <BookOpen className="w-4 h-4 md:w-5 md:h-5 text-blue-600" />
+                            <div id="curriculum" className="curriculum detailed-curriculum mb-8 md:mb-12 lg:mb-20 scroll-mt-28 md:scroll-mt-32 lg:scroll-mt-40">
+                                <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-[#FD5A1A] mb-3 md:mb-4 flex items-center gap-2 md:gap-3">
+                                    <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-blue-100 flex items-center justify-center shrink-0">
+                                        <BookOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-blue-600" />
                                     </div>
                                     Detailed Curriculum
                                 </h2>
-                                <p className="text-slate-600 mb-8 max-w-2xl text-[10px] md:text-lg leading-relaxed">
-                                    Learn from Industry Professionals with 10+ Years of Experience <br />
+                                <p className="text-slate-600 mb-6 md:mb-8 max-w-2xl text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+                                    Learn from Industry Professionals with 10+ Years of Experience <br className="hidden md:inline" />
                                     At Academy Of Tech Masters, we believe that the right skills can transform into Professional careers. Our mission is to equip aspiring IT professionals with job-ready expertise through hands-on training, live projects, and expert mentorship.
                                 </p>
 
-                                <div className="modules space-y-4">
+                                <div className="modules space-y-3 md:space-y-4">
                                     {course.curriculum.map((module, mIdx) => (
                                         <div
                                             key={mIdx}
                                             className={cn(
-                                                "modules-grid border rounded-2xl transition-all duration-300 overflow-hidden",
-                                                activeModule === mIdx ? "shadow-md border-[#0066CC]/40 bg-blue-50/50" : "border-slate-100"
+                                                "modules-grid border rounded-xl md:rounded-2xl transition-all duration-300 overflow-hidden",
+                                                activeModule === mIdx ? "shadow-md border-blue-600/40 bg-blue-50/50" : "border-slate-100"
                                             )}
                                         >
                                             <button
                                                 onClick={() => setActiveModule(activeModule === mIdx ? null : mIdx)}
-                                                className="w-full flex items-center justify-between p-4 md:p-6 text-left"
+                                                className="w-full flex items-center justify-between p-3 sm:p-4 md:p-6 text-left"
                                             >
-                                                <div className="flex items-start gap-3 md:gap-4 pr-3">
+                                                <div className="flex items-start gap-2 sm:gap-3 md:gap-4 pr-2 md:pr-3">
                                                     <span
-                                                        className="w-7 h-7 md:w-8 md:h-8 rounded-full text-white text-[10px] md:text-xs font-bold flex items-center justify-center shrink-0 bg-[#0066CC] shadow-lg shadow-blue-500/20 mt-0.5"
+                                                        className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-full text-white text-[10px] sm:text-xs font-bold flex items-center justify-center shrink-0 bg-blue-600 shadow-lg shadow-blue-500/20 mt-0.5"
                                                     >
                                                         {mIdx + 1}
                                                     </span>
-                                                    <h3 className="text-base md:text-xl font-bold text-slate-900 leading-tight">{module.title}</h3>
+                                                    <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-slate-900 leading-tight">{module.title}</h3>
                                                 </div>
-                                                <ChevronDown className={cn("w-4 h-4 md:w-5 md:h-5 text-slate-400 transition-transform", activeModule === mIdx && "rotate-180")} />
+                                                <ChevronDown className={cn("w-4 h-4 md:w-5 md:h-5 text-slate-400 transition-transform shrink-0", activeModule === mIdx && "rotate-180")} />
                                             </button>
 
                                             <div className={cn(
                                                 "grid transition-all duration-300 ease-in-out",
-                                                activeModule === mIdx ? "grid-rows-[1fr] opacity-100 px-6 pb-6" : "grid-rows-[0fr] opacity-0"
+                                                activeModule === mIdx ? "grid-rows-[1fr] opacity-100 px-3 sm:px-4 md:px-6 pb-3 sm:pb-4 md:pb-6" : "grid-rows-[0fr] opacity-0"
                                             )}>
                                                 <div className="overflow-hidden">
-                                                    <ul className="space-y-3 pt-2">
+                                                    <ul className="space-y-2 md:space-y-3 pt-2">
                                                         {module.lessons.map((lesson, lIdx) => (
-                                                            <li key={lIdx} className="flex items-start gap-3 text-slate-600">
-                                                                <CheckCircle2 className="w-4 h-4 md:w-5 h-5 text-green-500 shrink-0 mt-1" />
-                                                                <span className="text-sm md:text-lg">{lesson}</span>
+                                                            <li key={lIdx} className="flex items-start gap-2 md:gap-3 text-slate-600">
+                                                                <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-green-500 shrink-0 mt-0.5 md:mt-1" />
+                                                                <span className="text-xs sm:text-sm md:text-base font-medium">{lesson}</span>
                                                             </li>
                                                         ))}
                                                     </ul>
@@ -273,27 +366,27 @@ export default function CourseDetail() {
                             {(() => {
                                 const program = getProgramDetails(course.category);
                                 return (
-                                    <div className="program-structure program-details mb-20 scroll-mt-40">
-                                        <h2 className="text-xl md:text-3xl font-display font-bold text-slate-900 mb-8 flex items-center gap-3">
-                                            <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-purple-100 flex items-center justify-center">
-                                                <PieChart className="w-4 h-4 text-purple-600" />
+                                    <div className="program-structure program-details mb-8 md:mb-12 lg:mb-20 scroll-mt-28 md:scroll-mt-32 lg:scroll-mt-40">
+                                        <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-[#FD5A1A] mb-6 md:mb-8 flex items-center gap-2 md:gap-3">
+                                            <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-purple-100 flex items-center justify-center shrink-0">
+                                                <PieChart className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-purple-600" />
                                             </div>
                                             Program Structure & Duration
                                         </h2>
-                                        <div className="bg-white rounded-3xl p-5 md:p-8 border border-slate-100 shadow-sm flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                                        <div className="bg-white rounded-2xl md:rounded-3xl p-4 sm:p-5 md:p-8 border border-slate-100 shadow-sm flex flex-col md:flex-row items-center gap-6 md:gap-8 lg:gap-12">
                                             {/* Pie Chart Representation */}
-                                            <div className="relative w-64 h-64 shrink-0">
-                                                <div className={`w-full h-full rounded-full ${program.gradient} p-6 md:p-8 shadow-inner`}>
+                                            <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 shrink-0">
+                                                <div className={`w-full h-full rounded-full ${program.gradient} p-5 sm:p-6 md:p-8 shadow-inner`}>
                                                     <div className="w-full h-full rounded-full bg-white flex items-center justify-center flex-col shadow-sm">
-                                                        <span className="text-2xl md:text-4xl font-bold text-slate-900">{program.duration}</span>
-                                                        <span className="text-[10px] md:text-sm font-medium text-slate-500 uppercase tracking-wide">{program.unit}</span>
+                                                        <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900">{program.duration}</span>
+                                                        <span className="text-[10px] sm:text-xs md:text-sm font-medium text-slate-500 uppercase tracking-wide">{program.unit}</span>
                                                     </div>
                                                 </div>
-                                                {/* Legend overlay */}
-                                                <div className="absolute -bottom-4 -right-4 bg-white p-3 rounded-xl shadow-md border border-slate-100 text-xs text-slate-600">
+                                                {/* Legend overlay - Repositioned for mobile */}
+                                                <div className="md:absolute -bottom-4 -right-4 bg-white p-2.5 md:p-3 rounded-lg md:rounded-xl shadow-md border border-slate-100 text-[10px] md:text-xs text-slate-600 mt-4 md:mt-0">
                                                     {program.legend.map((item, idx) => (
-                                                        <div key={idx} className="flex items-center gap-2 mb-1 last:mb-0">
-                                                            <div className={`w-3 h-3 rounded-full ${item.color}`}></div>
+                                                        <div key={idx} className="flex items-center gap-1.5 md:gap-2 mb-1 last:mb-0">
+                                                            <div className={`w-2.5 h-2.5 md:w-3 md:h-3 rounded-full ${item.color}`}></div>
                                                             <span>{item.label}</span>
                                                         </div>
                                                     ))}
@@ -301,38 +394,38 @@ export default function CourseDetail() {
                                             </div>
 
                                             {/* Structure Details */}
-                                            <div className="flex-1 space-y-6">
-                                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-                                                    <div className="bg-slate-50 p-3 md:p-4 rounded-xl border border-slate-100">
-                                                        <h4 className="font-bold text-slate-900 mb-1 flex items-center gap-2 text-xs md:text-base">
-                                                            <Clock className="w-3 h-3 text-emerald-500" /> {program.learning}
+                                            <div className="flex-1 space-y-4 md:space-y-6">
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 lg:gap-6">
+                                                    <div className="bg-slate-50 p-2.5 sm:p-3 md:p-4 rounded-lg md:rounded-xl border border-slate-100">
+                                                        <h4 className="font-bold text-slate-900 mb-1 flex items-center gap-1.5 md:gap-2 text-xs sm:text-sm md:text-base">
+                                                            <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-emerald-500" /> {program.learning}
                                                         </h4>
-                                                        <p className="text-[10px] md:text-sm text-slate-600">{program.learningText}</p>
+                                                        <p className="text-[10px] sm:text-xs md:text-sm text-slate-600">{program.learningText}</p>
                                                     </div>
-                                                    <div className="bg-slate-50 p-3 md:p-4 rounded-xl border border-slate-100">
-                                                        <h4 className="font-bold text-slate-900 mb-1 flex items-center gap-2 text-xs md:text-base">
-                                                            <Briefcase className="w-3 h-3 text-blue-500" /> {program.project}
+                                                    <div className="bg-slate-50 p-2.5 sm:p-3 md:p-4 rounded-lg md:rounded-xl border border-slate-100">
+                                                        <h4 className="font-bold text-slate-900 mb-1 flex items-center gap-1.5 md:gap-2 text-xs sm:text-sm md:text-base">
+                                                            <Briefcase className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-blue-500" /> {program.project}
                                                         </h4>
-                                                        <p className="text-[10px] md:text-sm text-slate-600">{program.projectText}</p>
+                                                        <p className="text-[10px] sm:text-xs md:text-sm text-slate-600">{program.projectText}</p>
                                                     </div>
                                                 </div>
 
-                                                <div className="space-y-3">
-                                                    <div className="flex items-start gap-3">
-                                                        <Zap className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-                                                        <div className="text-sm text-slate-600">
+                                                <div className="space-y-2 md:space-y-3">
+                                                    <div className="flex items-start gap-2 md:gap-3">
+                                                        <Zap className="w-4 h-4 md:w-5 md:h-5 text-amber-500 shrink-0 mt-0.5" />
+                                                        <div className="text-xs sm:text-sm md:text-base text-slate-600">
                                                             <strong className="text-slate-900">Activity:</strong> {program.activity}
                                                         </div>
                                                     </div>
-                                                    <div className="flex items-start gap-3">
-                                                        <CheckCircle2 className="w-5 h-5 text-purple-500 shrink-0 mt-0.5" />
-                                                        <div className="text-sm text-slate-600">
+                                                    <div className="flex items-start gap-2 md:gap-3">
+                                                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-purple-500 shrink-0 mt-0.5" />
+                                                        <div className="text-xs sm:text-sm md:text-base text-slate-600">
                                                             <strong className="text-slate-900">Mode:</strong> {program.mode}
                                                         </div>
                                                     </div>
-                                                    <div className="flex items-start gap-3">
-                                                        <Award className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
-                                                        <div className="text-sm text-slate-600">
+                                                    <div className="flex items-start gap-2 md:gap-3">
+                                                        <Award className="w-4 h-4 md:w-5 md:h-5 text-blue-500 shrink-0 mt-0.5" />
+                                                        <div className="text-xs sm:text-sm md:text-base text-slate-600">
                                                             <strong className="text-slate-900">Eligibility:</strong> {program.eligibility}
                                                         </div>
                                                     </div>
@@ -345,23 +438,23 @@ export default function CourseDetail() {
 
 
 
-                            <div id="outcomes" className="mb-20 scroll-mt-40">
-                                <div className="bg-slate-50/50 border border-slate-100 rounded-3xl p-5 md:p-8">
-                                    <div className="text-center mb-8">
-                                        <h2 className="text-xl md:text-2xl font-display font-bold text-slate-900 mb-2">Capstone Project Ideas</h2>
-                                        <p className="text-[10px] md:text-sm text-slate-500">Real-world projects you will build during this course</p>
+                            <div id="outcomes" className="mb-8 md:mb-12 lg:mb-20 scroll-mt-28 md:scroll-mt-32 lg:scroll-mt-40">
+                                <div className="bg-slate-50/50 border border-slate-100 rounded-2xl md:rounded-3xl p-4 sm:p-5 md:p-8">
+                                    <div className="text-center mb-6 md:mb-8">
+                                        <h2 className="text-lg sm:text-xl md:text-2xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-[#FD5A1A] mb-2">Capstone Project Ideas</h2>
+                                        <p className="text-xs sm:text-sm md:text-base text-slate-500">Real-world projects you will build during this course</p>
                                     </div>
-                                    <div className="flex flex-col gap-4">
+                                    <div className="flex flex-col gap-3 md:gap-4">
                                         {getCourseOutcomes(course.category).map((outcome, i) => {
                                             const [title, desc] = outcome.split(": ");
                                             return (
-                                                <div key={i} className="flex items-start gap-3 p-3 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                                                    <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-1">
-                                                        <span className="font-bold text-blue-600 text-sm">{i + 1}</span>
+                                                <div key={i} className="flex items-start gap-2 md:gap-3 p-2.5 sm:p-3 md:p-4 bg-white rounded-lg md:rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                                                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-0.5 md:mt-1">
+                                                        <span className="font-bold text-blue-600 text-xs sm:text-sm">{i + 1}</span>
                                                     </div>
                                                     <div>
-                                                        <h4 className="font-bold text-slate-900 text-xs md:text-sm mb-0.5">{title}</h4>
-                                                        <p className="text-[10px] md:text-sm text-slate-600 leading-relaxed">{desc}</p>
+                                                        <h4 className="font-bold text-slate-900 text-xs sm:text-sm md:text-base mb-0.5 md:mb-1">{title}</h4>
+                                                        <p className="text-[10px] sm:text-xs md:text-sm text-slate-600 leading-relaxed">{desc}</p>
                                                     </div>
                                                 </div>
                                             );
@@ -371,100 +464,104 @@ export default function CourseDetail() {
                             </div>
 
                             {/* Career Opportunities Dynamic */}
-                            <div className="mb-20 scroll-mt-40">
-                                <h2 className="text-xl md:text-2xl font-display font-bold text-slate-900 mb-6 flex items-center gap-3">
-                                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-indigo-100 flex items-center justify-center">
-                                        <Briefcase className="w-4 h-4 md:w-5 md:h-5 text-indigo-600" />
+                            <div className="mb-8 md:mb-12 lg:mb-20 scroll-mt-28 md:scroll-mt-32 lg:scroll-mt-40">
+                                <h2 className="text-lg sm:text-xl md:text-2xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-[#FD5A1A] mb-4 md:mb-6 flex items-center gap-2 md:gap-3">
+                                    <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-indigo-100 flex items-center justify-center shrink-0">
+                                        <Briefcase className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-indigo-600" />
                                     </div>
                                     Career Opportunities
                                 </h2>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-                                    {getProgramDetails(course.category).roles.map((role, idx) => (
-                                        <div key={idx} className="bg-white p-3 md:p-4 rounded-xl border border-slate-100 shadow-sm flex items-center gap-3 hover:shadow-md transition-all hover:border-indigo-100 group">
-                                            <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-indigo-50 transition-colors shrink-0">
-                                                <TrendingUp className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-500" />
+                                <ShowMore initialHeight="160px" showLabel="View All Careers">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
+                                        {getProgramDetails(course.category).roles.map((role, idx) => (
+                                            <div key={idx} className="bg-white p-2.5 sm:p-3 md:p-4 rounded-lg md:rounded-xl border border-slate-100 shadow-sm flex items-center gap-2 md:gap-3 hover:shadow-md transition-all hover:border-indigo-100 group">
+                                                <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-indigo-50 transition-colors shrink-0">
+                                                    <TrendingUp className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-slate-400 group-hover:text-indigo-500" />
+                                                </div>
+                                                <span className="font-bold text-slate-700 text-[10px] sm:text-xs md:text-sm leading-tight">{role}</span>
                                             </div>
-                                            <span className="font-bold text-slate-700 text-[10px] md:text-sm leading-tight">{role}</span>
-                                        </div>
-                                    ))}
-                                </div>
+                                        ))}
+                                    </div>
+                                </ShowMore>
                             </div>
 
                             {/* What You Will Get (Program Benefits) */}
-                            <div className="mb-20 scroll-mt-40">
-                                <h2 className="text-xl md:text-2xl font-display font-bold text-slate-900 mb-8 flex items-center gap-3">
-                                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-orange-100 flex items-center justify-center">
-                                        <Award className="w-4 h-4 md:w-5 md:h-5 text-orange-600" />
+                            <div className="mb-8 md:mb-12 lg:mb-20 scroll-mt-28 md:scroll-mt-32 lg:scroll-mt-40">
+                                <h2 className="text-lg sm:text-xl md:text-2xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-[#FD5A1A] mb-6 md:mb-8 flex items-center gap-2 md:gap-3">
+                                    <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-orange-100 flex items-center justify-center shrink-0">
+                                        <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-orange-600" />
                                     </div>
                                     What You Will Get
                                 </h2>
-                                <motion.div
-                                    initial="hidden"
-                                    whileInView="show"
-                                    viewport={{ once: true, margin: "-50px" }}
-                                    variants={{
-                                        hidden: { opacity: 0 },
-                                        show: { opacity: 1, transition: { staggerChildren: 0.1 } }
-                                    }}
-                                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
-                                >
-                                    {[
-                                        { title: "Courses & Certifications", icon: Award, color: "text-blue-500", bg: "bg-blue-50", text: "Industry-recognized credentials" },
-                                        { title: "LinkedIn & Naukri Support", icon: Users, color: "text-indigo-500", bg: "bg-indigo-50", text: "Profile optimization included" },
-                                        { title: "Corporate Task Handling", icon: Briefcase, color: "text-emerald-500", bg: "bg-emerald-50", text: "Real-world workflow simulation" },
-                                        { title: "Profile Marketing", icon: TrendingUp, color: "text-pink-500", bg: "bg-pink-50", text: "Stand out to recruiters" },
-                                        { title: "ATS CV Creation", icon: FileText, color: "text-purple-500", bg: "bg-purple-50", text: "Beat the automated filters" },
-                                        { title: "Interview Guidance", icon: Video, color: "text-orange-500", bg: "bg-orange-50", text: "Mock interviews & tips" },
-                                        { title: "Soft Skills Training", icon: MessageSquare, color: "text-cyan-500", bg: "bg-cyan-50", text: "Communication & leadership" },
-                                        { title: "Lifetime Portal Access", icon: Lock, color: "text-slate-500", bg: "bg-slate-50", text: "Learn at your own pace" },
-                                        { title: "Recorded Sessions", icon: PlayCircle, color: "text-red-500", bg: "bg-red-50", text: "Revisit anytime" },
-                                        { title: "100% Job Guidance", icon: Target, color: "text-amber-500", bg: "bg-amber-50", text: "Dedicated placement support" },
-                                        { title: "Beginner to PRO", icon: Zap, color: "text-yellow-500", bg: "bg-yellow-50", text: "Zero to Hero journey" },
-                                        { title: "Offline / Online", icon: Wifi, color: "text-green-500", bg: "bg-green-50", text: "Flexible learning modes" },
-                                    ].map((item, idx) => {
-                                        const Icon = item.icon;
-                                        return (
-                                            <motion.div
-                                                key={idx}
-                                                variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-                                                whileHover={{ scale: 1.02, y: -2, boxShadow: "0 4px 12px -2px rgba(0,0,0,0.08)" }}
-                                                className="flex flex-col items-center text-center p-3 rounded-lg border border-slate-100 hover:border-blue-100 transition-all bg-white group cursor-default"
-                                            >
-                                                <div className={cn("w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center shrink-0 transition-colors mb-2 md:mb-3", item.bg)}>
-                                                    <Icon className={cn("w-4 h-4 md:w-5 md:h-5", item.color)} />
-                                                </div>
-                                                <h4 className="font-bold text-slate-800 text-[10px] md:text-sm mb-1 flex items-center justify-center flex-wrap gap-1 leading-tight">
-                                                    {item.title === "Beginner to PRO" ? (
-                                                        <>
-                                                            Beginner
-                                                            <motion.span
-                                                                animate={{ x: [0, 2, 0], y: [0, -2, 0] }}
-                                                                transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-                                                            >
-                                                                <ArrowUpRight className="w-3 h-3 text-slate-400 group-hover:text-yellow-500" />
-                                                            </motion.span>
-                                                            PRO
-                                                        </>
-                                                    ) : item.title === "Offline / Online" ? (
-                                                        <>
-                                                            Offline
-                                                            <motion.span
-                                                                animate={{ x: [-2, 2, -2] }}
-                                                                transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-                                                            >
-                                                                <ArrowRightLeft className="w-3 h-3 text-slate-400 group-hover:text-green-500" />
-                                                            </motion.span>
-                                                            Online
-                                                        </>
-                                                    ) : (
-                                                        item.title
-                                                    )}
-                                                </h4>
-                                                <p className="text-[9px] md:text-xs text-slate-500 font-medium leading-tight">{item.text}</p>
-                                            </motion.div>
-                                        );
-                                    })}
-                                </motion.div>
+                                <ShowMore initialHeight="380px" showLabel="View All Benefits">
+                                    <motion.div
+                                        initial="hidden"
+                                        whileInView="show"
+                                        viewport={{ once: true, amount: 0.1 }}
+                                        variants={{
+                                            hidden: { opacity: 0, y: 10 },
+                                            show: { opacity: 1, y: 0, transition: { staggerChildren: 0.1 } }
+                                        }}
+                                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+                                    >
+                                        {[
+                                            { title: "Courses & Certifications", icon: Award, color: "text-blue-500", bg: "bg-blue-50", text: "Industry-recognized credentials" },
+                                            { title: "LinkedIn & Naukri Support", icon: Users, color: "text-indigo-500", bg: "bg-indigo-50", text: "Profile optimization included" },
+                                            { title: "Corporate Task Handling", icon: Briefcase, color: "text-emerald-500", bg: "bg-emerald-50", text: "Real-world workflow simulation" },
+                                            { title: "Profile Marketing", icon: TrendingUp, color: "text-pink-500", bg: "bg-pink-50", text: "Stand out to recruiters" },
+                                            { title: "ATS CV Creation", icon: FileText, color: "text-purple-500", bg: "bg-purple-50", text: "Beat the automated filters" },
+                                            { title: "Interview Guidance", icon: Video, color: "text-orange-500", bg: "bg-orange-50", text: "Mock interviews & tips" },
+                                            { title: "Soft Skills Training", icon: MessageSquare, color: "text-cyan-500", bg: "bg-cyan-50", text: "Communication & leadership" },
+                                            { title: "Lifetime Portal Access", icon: Lock, color: "text-slate-500", bg: "bg-slate-50", text: "Learn at your own pace" },
+                                            { title: "Recorded Sessions", icon: PlayCircle, color: "text-red-500", bg: "bg-red-50", text: "Revisit anytime" },
+                                            { title: "100% Job Guidance", icon: Target, color: "text-amber-500", bg: "bg-amber-50", text: "Dedicated placement support" },
+                                            { title: "Beginner to PRO", icon: Zap, color: "text-yellow-500", bg: "bg-yellow-50", text: "Zero to Hero journey" },
+                                            { title: "Offline / Online", icon: Wifi, color: "text-green-500", bg: "bg-green-50", text: "Flexible learning modes" },
+                                        ].map((item, idx) => {
+                                            const Icon = item.icon;
+                                            return (
+                                                <motion.div
+                                                    key={idx}
+                                                    variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
+                                                    whileHover={{ scale: 1.02, y: -2, boxShadow: "0 4px 12px -2px rgba(0,0,0,0.08)" }}
+                                                    className="flex flex-col items-center text-center p-3 rounded-lg border border-slate-100 hover:border-blue-100 transition-all bg-white group cursor-default"
+                                                >
+                                                    <div className={cn("w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center shrink-0 transition-colors mb-2 md:mb-3", item.bg)}>
+                                                        <Icon className={cn("w-4 h-4 md:w-5 md:h-5", item.color)} />
+                                                    </div>
+                                                    <h4 className="font-bold text-slate-800 text-xs md:text-sm mb-1 flex items-center justify-center flex-wrap gap-1 leading-tight">
+                                                        {item.title === "Beginner to PRO" ? (
+                                                            <>
+                                                                Beginner
+                                                                <motion.span
+                                                                    animate={{ x: [0, 2, 0], y: [0, -2, 0] }}
+                                                                    transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                                                                >
+                                                                    <ArrowUpRight className="w-3 h-3 text-slate-400 group-hover:text-yellow-500" />
+                                                                </motion.span>
+                                                                PRO
+                                                            </>
+                                                        ) : item.title === "Offline / Online" ? (
+                                                            <>
+                                                                Offline
+                                                                <motion.span
+                                                                    animate={{ x: [-2, 2, -2] }}
+                                                                    transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                                                                >
+                                                                    <ArrowRightLeft className="w-3 h-3 text-slate-400 group-hover:text-green-500" />
+                                                                </motion.span>
+                                                                Online
+                                                            </>
+                                                        ) : (
+                                                            item.title
+                                                        )}
+                                                    </h4>
+                                                    <p className="text-xs text-slate-500 font-medium leading-tight">{item.text}</p>
+                                                </motion.div>
+                                            );
+                                        })}
+                                    </motion.div>
+                                </ShowMore>
                             </div>
 
 
@@ -473,11 +570,11 @@ export default function CourseDetail() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.8, ease: "easeOut" }}
-                                id="tools" className="mb-20 scroll-mt-40"
+                                id="tools" className="mb-12 md:mb-20 scroll-mt-32 md:scroll-mt-40"
                             >
                                 <div className="text-center mb-10">
-                                    <h2 className="text-xl md:text-3xl font-display font-bold text-slate-900 mb-4 tracking-tight">Tools & Technologies</h2>
-                                    <p className="text-[10px] md:text-sm text-slate-500 font-medium">Master the essential software used in the industry</p>
+                                    <h2 className="text-xl md:text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A] mb-4 tracking-tight">Tools & Technologies</h2>
+                                    <p className="text-sm md:text-base text-slate-500 font-medium">Master the essential software used in the industry</p>
                                 </div>
                                 <div className="flex flex-col gap-6 w-full relative overflow-hidden">
                                     <div className="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-32 bg-gradient-to-r from-slate-50 to-transparent z-10" />
@@ -506,7 +603,7 @@ export default function CourseDetail() {
                                                                 <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white border border-slate-200/60 flex items-center justify-center p-4 shadow-sm group-hover:scale-110 group-hover:shadow-lg group-hover:border-blue-200 transition-all duration-300">
                                                                     <LogoImg className="w-full h-full" />
                                                                 </div>
-                                                                <span className="text-[10px] md:text-xs font-bold text-slate-400 group-hover:text-slate-800 transition-colors uppercase tracking-wider">{logo.name}</span>
+                                                                <span className="text-xs font-bold text-slate-400 group-hover:text-slate-800 transition-colors uppercase tracking-wider">{logo.name}</span>
                                                             </div>
                                                         );
                                                     })}
@@ -524,10 +621,10 @@ export default function CourseDetail() {
                                 </div>
                             </motion.div>
 
-                            <div id="instructor" className="mb-20 scroll-mt-40">
-                                <h2 className="text-xl md:text-3xl font-display font-bold text-slate-900 mb-8 flex items-center gap-3">
+                            <div id="instructor" className="mb-12 md:mb-20 scroll-mt-32 md:scroll-mt-40">
+                                <h2 className="text-xl md:text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A] mb-8 flex items-center gap-3">
                                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-blue-100 flex items-center justify-center">
-                                        <Users className="w-4 h-4 md:w-5 md:h-5 text-blue-600" />
+                                        <Users className="w-4 h-4 md:w-5 md:h-5 text-[#0075CF]" />
                                     </div>
                                     Meet Your Instructor
                                 </h2>
@@ -540,9 +637,9 @@ export default function CourseDetail() {
                                     <div>
                                         <div className="flex flex-wrap items-center gap-3 mb-4">
                                             <h3 className="text-xl md:text-2xl font-bold text-slate-900">{course.trainer}</h3>
-                                            <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-100 border-none px-2 md:px-3 py-0.5 md:py-1 text-[9px] md:text-[10px] font-bold uppercase tracking-wider">Lead Instructor</Badge>
+                                            <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-100 border-none px-2 md:px-3 py-1 font-bold uppercase tracking-wider text-xs">Lead Instructor</Badge>
                                         </div>
-                                        <p className="text-slate-600 leading-relaxed mb-6 text-[10px] md:text-base">
+                                        <p className="text-slate-600 leading-relaxed mb-6 text-sm md:text-base">
                                             With over 10+ years of industry experience, {course.trainer} has mentored thousands of students to successful careers in tech. Expert in {course.category} and real-world project delivery.
                                         </p>
                                         <div className="flex flex-wrap gap-4">
@@ -557,11 +654,11 @@ export default function CourseDetail() {
                                 </div>
                             </div>
 
-                            <div id="hiring-partners" className="mb-20 scroll-mt-40 text-center">
-                                <h2 className="text-lg md:text-3xl lg:text-4xl font-display font-bold text-[#4285F4] mb-4 md:mb-8">
+                            <div id="hiring-partners" className="mb-12 md:mb-20 scroll-mt-32 md:scroll-mt-40 text-center">
+                                <h2 className="text-xl md:text-3xl lg:text-4xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A] mb-4 md:mb-8">
                                     Companies where Our students got placed
                                 </h2>
-                                <p className="text-slate-600 mb-8 text-[10px] md:text-lg">
+                                <p className="text-slate-600 mb-8 text-sm md:text-lg">
                                     Our graduates are hired by top MNCs and product-based companies.
                                 </p>
                                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-10 items-center">
@@ -589,114 +686,116 @@ export default function CourseDetail() {
                                 </div>
                             </div>
 
-                            <div id="certifications" className="mb-12 scroll-mt-40">
-                                <h2 className="text-xl md:text-3xl font-display font-bold text-slate-900 mb-8 flex items-center gap-3">
+                            <div id="certifications" className="mb-12 md:mb-20 scroll-mt-32 md:scroll-mt-40">
+                                <h2 className="text-xl md:text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A] mb-8 flex items-center gap-3">
                                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-blue-100 flex items-center justify-center">
-                                        <Award className="w-4 h-4 md:w-5 md:h-5 text-blue-600" />
+                                        <Award className="w-4 h-4 md:w-5 md:h-5 text-[#0075CF]" />
                                     </div>
                                     Certifications & Career Preparation
                                 </h2>
-                                <div className="bg-slate-50 rounded-3xl p-5 md:p-8 border border-slate-100 text-left">
-                                    <h4 className="text-sm md:text-lg font-bold text-slate-900 mb-6">Certifications Covered / Recommended:</h4>
-                                    <ul className="space-y-4">
-                                        {(course.category === "AI/Machine Learning" ? [
-                                            "Microsoft Certified: Azure AI Engineer Associate (AI-102)",
-                                            "Google TensorFlow Developer Certificate",
-                                            "AWS Certified Machine Learning – Specialty",
-                                            "IBM AI Engineering Professional Certificate"
-                                        ] : course.category === "Data Analytics" ? [
-                                            "Microsoft Power BI Data Analyst (PL-300)",
-                                            "Google Data Analytics Professional Certificate",
-                                            "Tableau Desktop Specialist",
-                                            "Python for Data Science (Coursera / IBM)"
-                                        ] : course.category === "Cyber Security" ? [
-                                            "Certified Ethical Hacker (CEH)",
-                                            "CompTIA Security+",
-                                            "CISSP (Associate Level Knowledge)",
-                                            "OSCP (Foundation)"
-                                        ] : course.category === "Data Science" ? [
-                                            "Python for Data Science (Coursera / IBM / Google)",
-                                            "Machine Learning Specialization (DeepLearning.AI)",
-                                            "Tableau Desktop Specialist / Microsoft Power BI Data Analyst (PL-300)",
-                                            "AWS Certified Data Practitioner / Google Data Analytics"
-                                        ] : course.category === "Data Analytics" ? [
-                                            "Microsoft Power BI Data Analyst (PL-300)",
-                                            "Google Data Analytics Professional Certificate",
-                                            "Tableau Desktop Specialist",
-                                            "Python for Data Science (Coursera / IBM)"
-                                        ] : course.category === "Quantum Computing" ? [
-                                            "Certified Quantum Computing Developer (CQCD)",
-                                            "IBM Quantum Developer Certification (Optional)",
-                                            "Microsoft Azure Quantum Developer (Optional)",
-                                            "AWS Braket Practitioner Badge (Optional)",
-                                            "Qiskit Developer Certificate (Optional)"
-                                        ] : course.category === "Java Full Stack" ? [
-                                            "Oracle Certified Professional: Java SE Programmer",
-                                            "Spring Professional Certification (VMware)",
-                                            "Full Stack Java Developer Certificate (AOTMS)",
-                                            "AWS Certified Developer - Associate (Optional)"
-                                        ] : course.category === "Embedded Systems" ? [
-                                            "Certified Embedded Systems Engineer (CESE)",
-                                            "ARM Accredited Engineer (AAE)",
-                                            "Certified IoT Professional (CIoTP)",
-                                            "Linux Foundation Certified Engineer (Optional)"
-                                        ] : course.category === "DevOps" ? [
-                                            "AWS Certified DevOps Engineer – Professional",
-                                            "Microsoft Certified: DevOps Engineer Expert (AZ-400)",
-                                            "Google Professional Cloud DevOps Engineer",
-                                            "Certified Kubernetes Administrator (CKA)",
-                                            "HashiCorp Certified: Terraform Associate"
-                                        ] : course.category === "Python Full Stack" ? [
-                                            "Python Programming Certification (Python Institute / HackerRank)",
-                                            "Full Stack Web Development Certification (Meta / freeCodeCamp)",
-                                            "Django Developer Certificate (Udemy / Coursera)",
-                                            "AWS Cloud Practitioner (AWS Academy)",
-                                            "Git & Version Control Certificate",
-                                            "Internship Completion Certificate (Academy of Tech Masters)"
-                                        ] : course.category === "Data Engineering" ? [
-                                            "AWS Certified Data Engineer – Associate",
-                                            "Azure Data Engineer Associate (DP-203)",
-                                            "Google Professional Data Engineer",
-                                            "Databricks Certified Data Engineer Associate",
-                                            "Snowflake SnowPro Core Certification"
-                                        ] : course.category === "Cloud Consulting" ? [
-                                            "AWS Certified Cloud Practitioner / Solutions Architect – Associate",
-                                            "Microsoft Certified: Azure Fundamentals (AZ-900) / Administrator (AZ-104)",
-                                            "Google Associate Cloud Engineer (ACE)",
-                                            "HashiCorp Certified: Terraform Associate",
-                                            "Kubernetes Certified Administrator (CKA)",
-                                            "DevOps Foundation / AWS DevOps Engineer – Professional"
-                                        ] : course.category === "MERN Stack" ? [
-                                            "Certified MERN Full Stack Developer (CMFSD)",
-                                            "MongoDB University – Developer Certification",
-                                            "Meta Front-End Developer Certificate (Coursera)",
-                                            "AWS Cloud Practitioner or Render Deployment Badge"
-                                        ] : course.category === "MEAN Stack" ? [
-                                            "Certified MEAN Stack Developer",
-                                            "Google Angular Developer Certification",
-                                            "MongoDB Professional Developer",
-                                            "OpenJS Node.js Application Developer (JSNAD)"
-                                        ] : [
-                                            "Academy of Tech Masters – Certified UI/UX Designer",
-                                            "Figma Mastery Certificate (Advanced)",
-                                            "Google UX Design (Recommended External Certification)",
-                                            "Adobe XD Prototyping Certificate (Optional)"
-                                        ]).map((cert, i) => (
-                                            <li key={i} className="flex items-start gap-3 md:gap-4 p-3 md:p-4 bg-white rounded-2xl border border-slate-100 shadow-sm">
-                                                <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-green-100 flex items-center justify-center shrink-0 text-green-600">
-                                                    <CheckCircle2 className="w-3 h-3 md:w-4 md:h-4" />
-                                                </div>
-                                                <span className="font-bold text-slate-700 mt-0.5 text-[10px] md:text-base text-left leading-relaxed">{cert}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
+                                <ShowMore initialHeight="240px">
+                                    <div className="bg-slate-50 rounded-3xl p-5 md:p-8 border border-slate-100 text-left">
+                                        <h4 className="text-sm md:text-lg font-bold text-slate-900 mb-6">Certifications Covered / Recommended:</h4>
+                                        <ul className="space-y-4">
+                                            {(course.category === "AI/Machine Learning" ? [
+                                                "Microsoft Certified: Azure AI Engineer Associate (AI-102)",
+                                                "Google TensorFlow Developer Certificate",
+                                                "AWS Certified Machine Learning – Specialty",
+                                                "IBM AI Engineering Professional Certificate"
+                                            ] : course.category === "Data Analytics" ? [
+                                                "Microsoft Power BI Data Analyst (PL-300)",
+                                                "Google Data Analytics Professional Certificate",
+                                                "Tableau Desktop Specialist",
+                                                "Python for Data Science (Coursera / IBM)"
+                                            ] : course.category === "Cyber Security" ? [
+                                                "Certified Ethical Hacker (CEH)",
+                                                "CompTIA Security+",
+                                                "CISSP (Associate Level Knowledge)",
+                                                "OSCP (Foundation)"
+                                            ] : course.category === "Data Science" ? [
+                                                "Python for Data Science (Coursera / IBM / Google)",
+                                                "Machine Learning Specialization (DeepLearning.AI)",
+                                                "Tableau Desktop Specialist / Microsoft Power BI Data Analyst (PL-300)",
+                                                "AWS Certified Data Practitioner / Google Data Analytics"
+                                            ] : course.category === "Data Analytics" ? [
+                                                "Microsoft Power BI Data Analyst (PL-300)",
+                                                "Google Data Analytics Professional Certificate",
+                                                "Tableau Desktop Specialist",
+                                                "Python for Data Science (Coursera / IBM)"
+                                            ] : course.category === "Quantum Computing" ? [
+                                                "Certified Quantum Computing Developer (CQCD)",
+                                                "IBM Quantum Developer Certification (Optional)",
+                                                "Microsoft Azure Quantum Developer (Optional)",
+                                                "AWS Braket Practitioner Badge (Optional)",
+                                                "Qiskit Developer Certificate (Optional)"
+                                            ] : course.category === "Java Full Stack" ? [
+                                                "Oracle Certified Professional: Java SE Programmer",
+                                                "Spring Professional Certification (VMware)",
+                                                "Full Stack Java Developer Certificate (AOTMS)",
+                                                "AWS Certified Developer - Associate (Optional)"
+                                            ] : course.category === "Embedded Systems" ? [
+                                                "Certified Embedded Systems Engineer (CESE)",
+                                                "ARM Accredited Engineer (AAE)",
+                                                "Certified IoT Professional (CIoTP)",
+                                                "Linux Foundation Certified Engineer (Optional)"
+                                            ] : course.category === "DevOps" ? [
+                                                "AWS Certified DevOps Engineer – Professional",
+                                                "Microsoft Certified: DevOps Engineer Expert (AZ-400)",
+                                                "Google Professional Cloud DevOps Engineer",
+                                                "Certified Kubernetes Administrator (CKA)",
+                                                "HashiCorp Certified: Terraform Associate"
+                                            ] : course.category === "Python Full Stack" ? [
+                                                "Python Programming Certification (Python Institute / HackerRank)",
+                                                "Full Stack Web Development Certification (Meta / freeCodeCamp)",
+                                                "Django Developer Certificate (Udemy / Coursera)",
+                                                "AWS Cloud Practitioner (AWS Academy)",
+                                                "Git & Version Control Certificate",
+                                                "Internship Completion Certificate (Academy of Tech Masters)"
+                                            ] : course.category === "Data Engineering" ? [
+                                                "AWS Certified Data Engineer – Associate",
+                                                "Azure Data Engineer Associate (DP-203)",
+                                                "Google Professional Data Engineer",
+                                                "Databricks Certified Data Engineer Associate",
+                                                "Snowflake SnowPro Core Certification"
+                                            ] : course.category === "Cloud Consulting" ? [
+                                                "AWS Certified Cloud Practitioner / Solutions Architect – Associate",
+                                                "Microsoft Certified: Azure Fundamentals (AZ-900) / Administrator (AZ-104)",
+                                                "Google Associate Cloud Engineer (ACE)",
+                                                "HashiCorp Certified: Terraform Associate",
+                                                "Kubernetes Certified Administrator (CKA)",
+                                                "DevOps Foundation / AWS DevOps Engineer – Professional"
+                                            ] : course.category === "MERN Stack" ? [
+                                                "Certified MERN Full Stack Developer (CMFSD)",
+                                                "MongoDB University – Developer Certification",
+                                                "Meta Front-End Developer Certificate (Coursera)",
+                                                "AWS Cloud Practitioner or Render Deployment Badge"
+                                            ] : course.category === "MEAN Stack" ? [
+                                                "Certified MEAN Stack Developer",
+                                                "Google Angular Developer Certification",
+                                                "MongoDB Professional Developer",
+                                                "OpenJS Node.js Application Developer (JSNAD)"
+                                            ] : [
+                                                "Academy of Tech Masters – Certified UI/UX Designer",
+                                                "Figma Mastery Certificate (Advanced)",
+                                                "Google UX Design (Recommended External Certification)",
+                                                "Adobe XD Prototyping Certificate (Optional)"
+                                            ]).map((cert, i) => (
+                                                <li key={i} className="flex items-start gap-3 md:gap-4 p-3 md:p-4 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                                                    <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-green-100 flex items-center justify-center shrink-0 text-green-600">
+                                                        <CheckCircle2 className="w-3.5 h-3.5 md:w-4 md:h-4" />
+                                                    </div>
+                                                    <span className="font-bold text-slate-700 mt-0.5 text-sm md:text-base text-left leading-relaxed">{cert}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </ShowMore>
                             </div>
                             {/* FAQ Section */}
-                            <div id="faq" className="mb-20 scroll-mt-40">
-                                <h2 className="text-xl md:text-3xl font-display font-bold text-slate-900 mb-8 flex items-center gap-3">
+                            <div id="faq" className="mb-12 md:mb-20 scroll-mt-32 md:scroll-mt-40">
+                                <h2 className="text-xl md:text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A] mb-8 flex items-center gap-3">
                                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-orange-100 flex items-center justify-center">
-                                        <MessageSquare className="w-4 h-4 md:w-5 md:h-5 text-orange-600" />
+                                        <MessageSquare className="w-4 h-4 md:w-5 md:h-5 text-[#FD5A1A]" />
                                     </div>
                                     Frequently Asked Questions
                                 </h2>
@@ -719,14 +818,14 @@ export default function CourseDetail() {
                                                     setActiveModule(faqIdx as any);
                                                 }}
                                             >
-                                                <span className="font-bold text-slate-900 pr-3 text-[10px] md:text-base">{faq.q}</span>
+                                                <span className="font-bold text-slate-900 pr-3 text-sm md:text-base">{faq.q}</span>
                                                 <ChevronDown className={cn("w-4 h-4 md:w-5 md:h-5 text-slate-400 transition-transform duration-300", activeModule === i && "rotate-180")} />
                                             </button>
                                             <div className={cn(
                                                 "transition-all duration-300 ease-in-out",
                                                 activeModule === i ? "max-h-96 px-4 pb-4 opacity-100" : "max-h-0 px-4 pb-0 opacity-0 overflow-hidden"
                                             )}>
-                                                <p className="text-slate-600 leading-relaxed font-medium text-[10px] md:text-base">{faq.a}</p>
+                                                <p className="text-slate-600 leading-relaxed font-medium text-sm md:text-base">{faq.a}</p>
                                             </div>
                                         </motion.div>
                                     ))}
@@ -735,7 +834,7 @@ export default function CourseDetail() {
                         </div>
 
                         {/* Sidebar Sticky */}
-                        <div className="lg:col-span-4">
+                        <div className="hidden lg:block lg:col-span-4">
                             <div className="sticky top-[100px] lg:top-[120px] space-y-8">
                                 {/* Course Image Box - Static */}
 
@@ -746,7 +845,7 @@ export default function CourseDetail() {
                                         <img src={course.image} alt={course.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                                         <div className="absolute inset-0 bg-gradient-to-t from-[#003366] to-transparent opacity-90" />
                                         <div className="absolute bottom-0 left-0 p-6">
-                                            <span className="inline-block px-3 py-1 rounded-lg bg-orange-500 text-white text-[10px] font-bold uppercase tracking-widest shadow-lg mb-2">
+                                            <span className="inline-block px-3 py-1 rounded-lg bg-orange-500 text-white text-xs font-bold uppercase tracking-widest shadow-lg mb-2">
                                                 {course.category}
                                             </span>
                                             <h3 className="text-white font-bold text-xl leading-tight">{course.title}</h3>
@@ -778,7 +877,7 @@ export default function CourseDetail() {
                                                                     item.color === "blue" ? "text-[#0066CC]" : "text-[#0066CC]"
                                                                 )} />
                                                             </div>
-                                                            <span className="text-slate-500 font-bold text-[10px] uppercase tracking-wider">{item.label}</span>
+                                                            <span className="text-slate-500 font-bold text-xs uppercase tracking-wider">{item.label}</span>
                                                         </div>
                                                         <div className="text-right pt-1.5">
                                                             <span className={cn(
@@ -814,7 +913,7 @@ export default function CourseDetail() {
                                     <div className="bg-slate-50/50 p-8 border-t border-slate-100/80">
                                         <div className="flex items-center gap-3 mb-5">
                                             <div className="w-1 h-4 bg-blue-600 rounded-full" />
-                                            <h4 className="text-[11px] font-black text-slate-800 uppercase tracking-[0.15em]">Course Includes:</h4>
+                                            <h4 className="text-xs font-black text-slate-800 uppercase tracking-[0.15em]">Course Includes:</h4>
                                         </div>
                                         <ul className="grid grid-cols-1 gap-4">
                                             {[
@@ -849,7 +948,7 @@ export default function CourseDetail() {
                                                         </div>
                                                         <div>
                                                             <h5 className="text-sm font-bold text-slate-900 group-hover/item:text-blue-600 transition-colors line-clamp-1">{related.title}</h5>
-                                                            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1">{related.duration}</p>
+                                                            <p className="text-xs font-black uppercase tracking-widest text-slate-400 mt-1">{related.duration}</p>
                                                         </div>
                                                     </div>
                                                 </Link>
@@ -926,6 +1025,25 @@ export default function CourseDetail() {
 
 
             <Footer />
+
+            {/* Mobile Sticky Bottom Bar */}
+            <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-4 z-50 md:hidden pb-safe shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
+                <div className="flex items-center gap-4">
+                    <div className="flex-1">
+                        <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-0.5">Total Price</div>
+                        <div className="flex items-baseline gap-2">
+                            <span className="text-2xl font-black text-slate-900">{course.price}</span>
+                            <span className="text-xs text-slate-400 line-through font-bold">{course.originalPrice}</span>
+                        </div>
+                    </div>
+                    <Button
+                        onClick={handleEnroll}
+                        className="flex-1 bg-[#FF6B35] hover:bg-[#ff8559] text-white rounded-xl font-bold text-base h-12 shadow-lg shadow-orange-500/20 active:scale-95 transition-all"
+                    >
+                        Enroll Now
+                    </Button>
+                </div>
+            </div>
         </div >
     );
 }

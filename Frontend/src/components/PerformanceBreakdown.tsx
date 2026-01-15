@@ -55,7 +55,7 @@ export const PerformanceBreakdown = () => {
     };
 
     return (
-        <section className="py-12 md:py-24 bg-slate-50 overflow-hidden relative">
+        <section className="py-12 md:pb-12 bg-slate-50 overflow-hidden relative">
             {/* Background Animation Container (Academy Difference Style) */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
                 <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#0075CF]/5 rounded-full blur-[120px] opacity-60" />

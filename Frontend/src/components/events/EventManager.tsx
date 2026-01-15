@@ -79,15 +79,18 @@ export const EventManager = ({ events, title, subtitle }: EventManagerProps) => 
         const el = scrollRef.current;
         if (!el || isPaused) return;
 
+        // Disable auto-scroll on very small screens to improve performance
+        if (window.innerWidth < 640) return;
+
         let animationFrameId: number;
 
         const scroll = () => {
             if (isMobile) {
-                // Horizontal scroll for mobile
+                // Slower horizontal scroll for mobile
                 if (el.scrollLeft >= el.scrollWidth / 2) {
                     el.scrollLeft = 0;
                 } else {
-                    el.scrollLeft += 0.5;
+                    el.scrollLeft += 0.3; // Reduced from 0.5
                 }
             } else {
                 // Vertical scroll for desktop
@@ -236,7 +239,7 @@ export const EventManager = ({ events, title, subtitle }: EventManagerProps) => 
                             <div className="p-4 sm:p-6 space-y-8 max-h-[75vh] overflow-y-auto custom-scrollbar">
                                 {loadingWinners ? (
                                     <div className="flex justify-center p-12">
-                                        <div className="w-8 h-8 border-4 border-gray-200 border-t-[#0A3D91] rounded-full animate-spin" />
+                                        <div className="w-8 h-8 border-4 border-gray-200 border-t-[#0075CF] rounded-full animate-spin" />
                                     </div>
                                 ) : winnersData.length > 0 ? (
                                     winnersData.map((winner, idx) => (
@@ -246,6 +249,7 @@ export const EventManager = ({ events, title, subtitle }: EventManagerProps) => 
                                                 <img
                                                     src={winner.imageUrl}
                                                     alt={winner.teamName}
+                                                    loading="lazy"
                                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                                 />
                                                 <div className={cn(
@@ -260,7 +264,7 @@ export const EventManager = ({ events, title, subtitle }: EventManagerProps) => 
 
                                             <div className="flex-1 w-full text-center md:text-left space-y-3 pt-2">
                                                 <div>
-                                                    <p className="text-[#0A3D91] text-[11px] font-black uppercase tracking-[0.2em] mb-2">Team Name</p>
+                                                    <p className="text-[#0075CF] text-[11px] font-black uppercase tracking-[0.2em] mb-2">Team Name</p>
                                                     <h4 className="text-xl sm:text-2xl md:text-3xl font-black text-[#111111] leading-none mb-1">
                                                         {winner.teamName}
                                                     </h4>
@@ -279,7 +283,7 @@ export const EventManager = ({ events, title, subtitle }: EventManagerProps) => 
                                                         <div className="flex flex-wrap gap-2 justify-center md:justify-start">
                                                             {winner.members.map((member, mIdx) => (
                                                                 <div key={mIdx} className="flex items-center gap-1.5 px-3 py-1 bg-blue-50/50 text-[#0A3D91] rounded-lg border border-blue-100/50 font-bold text-[11px]">
-                                                                    <div className="w-1 h-1 rounded-full bg-[#0A3D91]" />
+                                                                    <div className="w-1 h-1 rounded-full bg-[#0075CF]" />
                                                                     {member}
                                                                 </div>
                                                             ))}
@@ -317,7 +321,7 @@ export const EventManager = ({ events, title, subtitle }: EventManagerProps) => 
                             className="bg-white rounded-[2.5rem] w-full max-w-lg overflow-hidden shadow-2xl relative"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <div className="bg-[#0A3D91] p-8 text-white relative">
+                            <div className="bg-[#0075CF] p-8 text-white relative">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-2xl" />
                                 <button
                                     onClick={() => setIsRegModalOpen(false)}
@@ -373,7 +377,7 @@ export const EventManager = ({ events, title, subtitle }: EventManagerProps) => 
                                             value={regFormData.phone}
                                             onChange={handleRegChange}
                                             placeholder="Mobile Number"
-                                            className="w-full pl-16 pr-6 py-4 rounded-2xl bg-gray-50 border border-gray-100 text-[#111111] font-bold text-sm focus:outline-none focus:ring-2 focus:ring-[#0A3D91] focus:bg-white transition-all"
+                                            className="w-full pl-16 pr-6 py-4 rounded-2xl bg-gray-50 border border-gray-100 text-[#111111] font-bold text-sm focus:outline-none focus:ring-2 focus:ring-[#0075CF] focus:bg-white transition-all"
                                             required
                                         />
                                     </div>
@@ -382,7 +386,7 @@ export const EventManager = ({ events, title, subtitle }: EventManagerProps) => 
                                 <button
                                     disabled={submittingReg}
                                     type="submit"
-                                    className="w-full py-5 bg-[#0A3D91] hover:bg-[#083075] text-white font-black rounded-[1.5rem] shadow-xl shadow-[#0A3D91]/20 hover:shadow-[#0A3D91]/30 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 disabled:opacity-70 mt-4"
+                                    className="w-full py-5 bg-[#0075CF] hover:bg-[#005fb0] text-white font-black rounded-[1.5rem] shadow-xl shadow-[#0075CF]/20 hover:shadow-[#0075CF]/30 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 disabled:opacity-70 mt-4"
                                 >
                                     {submittingReg ? (
                                         <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -403,7 +407,7 @@ export const EventManager = ({ events, title, subtitle }: EventManagerProps) => 
             <div className="w-full max-w-7xl mx-auto py-12 md:py-24 px-6 md:px-12 relative z-10">
                 {(title || subtitle) && (
                     <div className="mb-12 md:mb-20 text-center lg:text-left">
-                        <h2 className="text-4xl md:text-6xl font-black text-[#111111] tracking-tight mb-8">
+                        <h2 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A] tracking-tight mb-8">
                             {title}
                         </h2>
                         {subtitle && (
@@ -429,7 +433,7 @@ export const EventManager = ({ events, title, subtitle }: EventManagerProps) => 
                                         "lg:sticky lg:top-32 flex flex-col",
                                         isMobile ? "h-auto" : "h-[600px] lg:max-h-[80vh]"
                                     )}>
-                                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0A3D91] mb-4 hidden lg:block">
+                                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0075CF] mb-4 hidden lg:block">
                                             Browse {title}
                                         </p>
                                         <div
@@ -444,19 +448,17 @@ export const EventManager = ({ events, title, subtitle }: EventManagerProps) => 
                                             )}
                                         >
                                             {displayEvents.map((event, index) => {
-                                                const isDuplicate = index >= events.length;
-                                                const uniqueKey = isDuplicate ? `${event.id}-dup` : event.id;
-                                                const isSelected = selectedEvent?.id === event.id && !isDuplicate;
+                                                const isSelected = selectedEvent?.id === event.id && index < events.length;
 
                                                 return (
                                                     <button
-                                                        key={uniqueKey}
+                                                        key={`event-${event.id}-${index}`}
                                                         onClick={() => setSelectedEvent(event)}
                                                         className={cn(
                                                             "group text-left transition-all duration-300 rounded-xl overflow-hidden mb-1 relative flex flex-col items-start shrink-0",
                                                             isMobile ? "w-48" : "w-full",
                                                             isSelected
-                                                                ? "ring-2 ring-[#0A3D91] bg-white shadow-xl scale-[1.02] z-10"
+                                                                ? "ring-2 ring-[#0075CF] bg-white shadow-xl scale-[1.02] z-10"
                                                                 : "border border-gray-100 bg-[#F9FAFB] hover:border-gray-200"
                                                         )}
                                                     >
@@ -467,25 +469,29 @@ export const EventManager = ({ events, title, subtitle }: EventManagerProps) => 
                                                             <img
                                                                 src={event.thumbnailUrl}
                                                                 alt={event.name}
-                                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                                                loading="lazy"
+                                                                className={cn(
+                                                                    "w-full h-full object-cover transition-transform duration-700",
+                                                                    !isMobile && "group-hover:scale-110"
+                                                                )}
                                                             />
                                                         </div>
                                                         <span className={cn(
                                                             "absolute top-2 right-2 px-1.5 py-0.5 border backdrop-blur-md rounded text-[7px] font-black uppercase tracking-wider shadow-sm",
-                                                            isSelected ? "bg-[#0A3D91] text-white border-[#0A3D91]" : "bg-white/90 text-[#111111] border-gray-200"
+                                                            isSelected ? "bg-[#0075CF] text-white border-[#0075CF]" : "bg-white/90 text-[#111111] border-gray-200"
                                                         )}>
                                                             {event.mode}
                                                         </span>
                                                         <div className="p-3 w-full">
                                                             <h3 className={cn(
                                                                 "font-bold text-xs sm:text-sm leading-tight transition-colors line-clamp-1",
-                                                                isSelected ? "text-[#0A3D91]" : "text-[#111111]"
+                                                                isSelected ? "text-[#0075CF]" : "text-[#111111]"
                                                             )}>
                                                                 {event.name}
                                                             </h3>
                                                             <div className="flex items-center gap-2 mt-2 overflow-hidden">
                                                                 <div className="flex items-center gap-1.5 text-xs text-gray-400 font-bold uppercase tracking-wider whitespace-nowrap">
-                                                                    <Calendar className="w-3 h-3 text-[#0A3D91]" />
+                                                                    <Calendar className="w-3 h-3 text-[#0075CF]" />
                                                                     {event.date}
                                                                 </div>
                                                             </div>
@@ -503,8 +509,8 @@ export const EventManager = ({ events, title, subtitle }: EventManagerProps) => 
                                 !hasMultiple && "max-w-4xl mx-auto w-full",
                                 isMobile && "mt-0"
                             )}>
-                                {/* Animated Background for Preview */}
-                                <div className="absolute inset-0 bg-slate-50 opacity-50" />
+                                {/* Animated Background for Preview - Desktop Only */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-50 md:bg-slate-50 md:opacity-50" />
                                 <motion.div
                                     animate={{
                                         scale: [1, 1.2, 1],
@@ -512,7 +518,7 @@ export const EventManager = ({ events, title, subtitle }: EventManagerProps) => 
                                         opacity: [0.1, 0.2, 0.1]
                                     }}
                                     transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                                    className="absolute -top-[20%] -right-[20%] w-[60%] h-[60%] bg-blue-400 blur-[100px] rounded-full pointer-events-none"
+                                    className="hidden md:block absolute -top-[20%] -right-[20%] w-[60%] h-[60%] bg-blue-400 blur-[100px] rounded-full pointer-events-none"
                                 />
                                 <motion.div
                                     animate={{
@@ -521,9 +527,9 @@ export const EventManager = ({ events, title, subtitle }: EventManagerProps) => 
                                         opacity: [0.1, 0.3, 0.1]
                                     }}
                                     transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                                    className="absolute -bottom-[20%] -left-[20%] w-[70%] h-[70%] bg-indigo-400 blur-[120px] rounded-full pointer-events-none"
+                                    className="hidden md:block absolute -bottom-[20%] -left-[20%] w-[70%] h-[70%] bg-indigo-400 blur-[120px] rounded-full pointer-events-none"
                                 />
-                                <div className="absolute inset-0 backdrop-blur-[2px] pointer-events-none" />
+                                <div className="hidden md:block absolute inset-0 backdrop-blur-[2px] pointer-events-none" />
                                 <AnimatePresence mode="wait">
                                     {selectedEvent && (
                                         <motion.div
@@ -539,16 +545,20 @@ export const EventManager = ({ events, title, subtitle }: EventManagerProps) => 
                                                     <img
                                                         src={selectedEvent.bannerUrl}
                                                         alt={selectedEvent.name}
-                                                        className="w-full aspect-[4/5] sm:aspect-square lg:aspect-[4/5] object-cover transition-transform duration-1000 group-hover:scale-105"
+                                                        loading="lazy"
+                                                        className={cn(
+                                                            "w-full aspect-[4/5] sm:aspect-square lg:aspect-[4/5] object-cover transition-transform duration-1000",
+                                                            !isMobile && "group-hover:scale-105"
+                                                        )}
                                                     />
                                                 </div>
                                                 <div className="mt-3 flex flex-wrap gap-2 justify-center lg:justify-start">
                                                     <div className="px-2 py-1 bg-gray-50 rounded-md border border-gray-100 flex items-center gap-1">
-                                                        <Calendar className="w-3 h-3 text-[#0A3D91]" />
+                                                        <Calendar className="w-3 h-3 text-[#0075CF]" />
                                                         <span className="text-[9px] sm:text-[11px] font-bold text-[#111111]">{selectedEvent.date}</span>
                                                     </div>
                                                     <div className="px-2 py-1 bg-gray-50 rounded-md border border-gray-100 flex items-center gap-1">
-                                                        <Clock className="w-3 h-3 text-[#0A3D91]" />
+                                                        <Clock className="w-3 h-3 text-[#FD5A1A]" />
                                                         <span className="text-[9px] sm:text-[11px] font-bold text-[#111111]">{selectedEvent.duration}</span>
                                                     </div>
                                                 </div>
@@ -556,10 +566,10 @@ export const EventManager = ({ events, title, subtitle }: EventManagerProps) => 
 
                                             <div className="md:col-span-12 lg:col-span-7 space-y-5">
                                                 <div className="space-y-4">
-                                                    <span className="text-[#0A3D91] font-black text-[10px] sm:text-xs tracking-[0.2em] uppercase block">
+                                                    <span className="text-[#FD5A1A] font-black text-[10px] sm:text-xs tracking-[0.2em] uppercase block">
                                                         {selectedEvent.tagline}
                                                     </span>
-                                                    <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-[#0A3D91] leading-tight">
+                                                    <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A] leading-tight">
                                                         {selectedEvent.name}
                                                     </h2>
                                                     <p className="text-gray-500 text-[12px] sm:text-[13px] leading-relaxed max-w-full">
@@ -591,7 +601,7 @@ export const EventManager = ({ events, title, subtitle }: EventManagerProps) => 
                                                     <ul className="grid gap-2.5 sm:grid-cols-2">
                                                         {selectedEvent.whatYouWillLearn.map((item, i) => (
                                                             <li key={i} className="flex items-start gap-3">
-                                                                <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#0A3D91] shrink-0" />
+                                                                <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#FD5A1A] shrink-0" />
                                                                 <span className="text-[11px] sm:text-xs text-gray-600 font-medium leading-relaxed">{item}</span>
                                                             </li>
                                                         ))}

@@ -99,7 +99,7 @@ const Contact = () => {
             {/* Left Side: Get In Touch */}
             <div className="space-y-12">
               <div>
-                <h1 className="text-4xl font-black text-slate-900 mb-6">Get in Touch</h1>
+                <h1 className="text-4xl font-black text-slate-900 mb-6">Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Touch</span></h1>
                 <p className="text-lg text-slate-600 leading-relaxed mb-12">
                   Have questions about our courses or need career guidance?
                   Reach out to us directly or fill out the form.
@@ -109,7 +109,7 @@ const Contact = () => {
                 <div className="space-y-8">
                   {/* Phone */}
                   {/* Phone */}
-                  <a href="https://wa.me/918019942233?text=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20your%20courses." target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group">
+                  <a href="https://wa.me/918019952233?text=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20your%20courses." target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group">
                     <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white shrink-0">
                       <Phone className="w-6 h-6" />
                     </div>
@@ -172,10 +172,10 @@ const Contact = () => {
             </div>
 
             {/* Right Side: Contact Form */}
-            <div className="bg-gradient-to-br from-[#0066CC] via-[#0066CC] to-accent p-8 md:p-10 rounded-[32px] shadow-2xl shadow-[#0066CC]/20 relative overflow-hidden border border-white/10">
+            <div className="bg-gradient-to-br from-[#0066CC] via-[#005bb5] to-[#004e9a] p-8 md:p-10 rounded-[32px] shadow-2xl shadow-[#0066CC]/20 relative overflow-hidden border border-white/10">
               {/* Decorative Elements */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 -z-0" />
-              <div className="absolute bottom-0 left-0 w-40 h-40 bg-white/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2 -z-0" />
+              <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#FD5A1A]/20 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2 -z-0" />
 
               <h2 className="text-2xl font-bold text-white mb-2 relative z-10">Send a Message</h2>
               <p className="text-blue-100/70 mb-8 relative z-10">We usually respond within 24 hours.</p>
@@ -190,7 +190,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       maxLength={50}
-                      className="bg-white/5 border-white/10 h-12 px-4 rounded-xl text-white placeholder:text-white/30 focus-visible:ring-accent focus-visible:border-accent/50 transition-all"
+                      className="bg-white/5 border-white/10 h-12 px-4 rounded-xl text-white placeholder:text-white/30 focus-visible:ring-[#FD5A1A] focus-visible:border-[#FD5A1A]/50 transition-all font-medium"
                       placeholder="John Doe"
                     />
                   </div>
@@ -203,7 +203,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       maxLength={100}
-                      className="bg-white/5 border-white/10 h-12 px-4 rounded-xl text-white placeholder:text-white/30 focus-visible:ring-accent focus-visible:border-accent/50 transition-all"
+                      className="bg-white/5 border-white/10 h-12 px-4 rounded-xl text-white placeholder:text-white/30 focus-visible:ring-[#FD5A1A] focus-visible:border-[#FD5A1A]/50 transition-all font-medium"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -217,7 +217,7 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     maxLength={10}
-                    className="bg-white/5 border-white/10 h-12 px-4 rounded-xl text-white placeholder:text-white/30 focus-visible:ring-accent focus-visible:border-accent/50 transition-all"
+                    className="bg-white/5 border-white/10 h-12 px-4 rounded-xl text-white placeholder:text-white/30 focus-visible:ring-[#FD5A1A] focus-visible:border-[#FD5A1A]/50 transition-all font-medium"
                     placeholder="XXXXXXXXXX"
                   />
                 </div>
@@ -229,7 +229,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     maxLength={1000}
-                    className="bg-white/5 border-white/10 px-4 py-3 rounded-xl text-white placeholder:text-white/30 focus-visible:ring-accent focus-visible:border-accent/50 min-h-[120px] transition-all"
+                    className="bg-white/5 border-white/10 px-4 py-3 rounded-xl text-white placeholder:text-white/30 focus-visible:ring-[#FD5A1A] focus-visible:border-[#FD5A1A]/50 min-h-[120px] transition-all font-medium"
                     placeholder="How can we help you?"
                   />
                 </div>

@@ -60,15 +60,15 @@ const FeedbackPage = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent pointer-events-none" />
 
                 {/* Subtle Orange Glows */}
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FF6B35] opacity-60 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FF6B35] opacity-40 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FD5A1A] opacity-60 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FD5A1A] opacity-40 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
                 <div className="container mx-auto px-4 relative z-10 text-center">
-                    <span className="inline-block py-1 px-3 rounded-full bg-accent/10 border border-accent/200 text-accent font-mono text-xs font-bold tracking-widest uppercase mb-6">
+                    <span className="inline-block py-1.5 px-3 rounded-full bg-white/10 border border-white/20 text-white font-mono text-xs font-black tracking-widest uppercase mb-6 backdrop-blur-md">
                         Share Your Thoughts
                     </span>
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight">
-                        We Value Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-accent">Feedback</span>
+                        We Value Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-[#FD5A1A] drop-shadow-sm">Feedback</span>
                     </h1>
                     <p className="text-blue-100/80 max-w-2xl mx-auto text-lg leading-relaxed">
                         Your feedback helps us improve our courses and training methodology. Let us know how we're doing!
@@ -110,8 +110,8 @@ const FeedbackPage = () => {
                             <div className="absolute top-0 right-0 w-32 h-32 bg-accent/20 rounded-full blur-2xl translate-x-10 -translate-y-10" />
                             <h3 className="text-white font-bold text-lg mb-2 relative z-10">Need immediate help?</h3>
                             <p className="text-blue-100/80 text-sm mb-4 relative z-10">If you have a query that needs urgent attention, please contact our support team directly.</p>
-                            <a href="tel:+918019942233" className="inline-block text-white text-sm font-bold border-b border-accent pb-0.5 hover:text-accent transition-colors relative z-10">
-                                Call +91 80199 42233
+                            <a href="tel:+918019952233" className="inline-block text-white text-sm font-bold border-b border-accent pb-0.5 hover:text-accent transition-colors relative z-10">
+                                Call +91 80199 52233
                             </a>
                         </div>
                     </div>
@@ -202,7 +202,7 @@ const FeedbackPage = () => {
                             <Button
                                 type="submit"
                                 disabled={loading}
-                                className="w-full h-12 bg-accent hover:bg-orange-600 transition-colors text-white font-bold rounded-xl shadow-lg shadow-accent/20"
+                                className="w-full h-12 bg-[#FD5A1A] hover:bg-[#e04f16] transition-colors text-white font-bold rounded-xl shadow-lg shadow-[#FD5A1A]/20"
                             >
                                 {loading ? (
                                     <span className="flex items-center gap-2">

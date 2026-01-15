@@ -124,15 +124,15 @@ const FAQPage = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent pointer-events-none" />
 
                 {/* Subtle Orange Glows */}
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FF6B35] opacity-60 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FF6B35] opacity-40 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FD5A1A] opacity-60 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FD5A1A] opacity-40 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
                 <div className="container mx-auto px-4 relative z-10 text-center">
-                    <span className="inline-block py-1 px-3 rounded-full bg-accent/10 border border-accent/200 text-accent font-mono text-xs font-bold tracking-widest uppercase mb-6">
+                    <span className="inline-block py-1.5 px-3 rounded-full bg-white/10 border border-white/20 text-white font-mono text-xs font-black tracking-widest uppercase mb-6 backdrop-blur-md">
                         Got Questions?
                     </span>
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight">
-                        Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-accent">Questions</span>
+                        Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-[#FD5A1A] drop-shadow-sm">Questions</span>
                     </h1>
                     <p className="text-blue-100/80 max-w-2xl mx-auto text-lg leading-relaxed">
                         Find answers to common questions about our courses, admissions, placement support, and more.
@@ -225,7 +225,7 @@ const FAQPage = () => {
                 {/* Contact CTA */}
                 <div className="mt-20 bg-[#0066CC] rounded-3xl p-8 md:p-12 text-center relative overflow-hidden group">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#FD5A1A]/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
                     <div className="relative z-10">
                         <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6 backdrop-blur-sm border border-white/10 text-white">
@@ -236,10 +236,10 @@ const FAQPage = () => {
                             Can't find the answer you're looking for? Our team is here to help you.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="/contact" className="px-8 py-3 bg-accent hover:bg-accent/90 text-white font-bold rounded-xl transition-all shadow-lg shadow-accent/20 hover:scale-105">
+                            <a href="/contact" className="px-8 py-3 bg-[#FD5A1A] hover:bg-[#e04f16] text-white font-bold rounded-xl transition-all shadow-lg shadow-[#FD5A1A]/20 hover:scale-105">
                                 Contact Us
                             </a>
-                            <a href="tel:+918019942233" className="px-8 py-3 bg-white hover:bg-slate-50 text-primary font-bold rounded-xl transition-all hover:scale-105">
+                            <a href="tel:+91" className="px-8 py-3 bg-white hover:bg-slate-50 text-[#0075CF] font-bold rounded-xl transition-all hover:scale-105">
                                 Call Support
                             </a>
                         </div>

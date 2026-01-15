@@ -11,24 +11,24 @@ const trustStats = [
     value: 2000,
     suffix: "+",
     label: "Students Trained",
-    color: "text-[#0075CF]",
-    bgColor: "bg-[#0075CF]/10",
+    color: "text-black-500",
+    bgColor: "bg-black-500/10",
   },
   {
     icon: Award,
     value: 50,
     suffix: "+",
     label: "Workshops",
-    color: "text-orange-500",
-    bgColor: "bg-orange-500/10",
+    color: "text-black-500",
+    bgColor: "bg-black-500/10",
   },
   {
     icon: Clock,
     value: 10,
     suffix: "+",
     label: "Years Experience",
-    color: "text-[#0075CF]",
-    bgColor: "bg-[#0075CF]/10",
+    color: "text-black-500",
+    bgColor: "bg-black-500/10",
   },
 ];
 
@@ -126,7 +126,7 @@ export const HeroSection = () => {
                       <span className={`text-xl sm:text-2xl font-bold font-display flex items-baseline tracking-tight leading-none ${stat.color}`}>
                         <CountUpNumber end={stat.value} suffix={stat.suffix} />
                       </span>
-                      <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-muted-foreground font-semibold mt-0.5">
+                      <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground mt-0.5">
                         {stat.label}
                       </span>
                     </div>
@@ -139,7 +139,7 @@ export const HeroSection = () => {
           {/* Right Column: Visual (Slider) */}
           <div className="relative flex items-center justify-center lg:justify-end z-10 pl-0 lg:pl-10">
             {/* Slider Container Wrapper */}
-            <div className="relative w-full max-w-sm lg:max-w-md aspect-square flex items-center justify-center">
+            <div className="relative w-full max-w-md lg:max-w-xl aspect-square flex items-center justify-center">
 
               {/* Background Animations */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-gradient-to-tr from-primary/10 via-transparent to-accent/10 rounded-full blur-[80px] -z-20" />
@@ -170,16 +170,16 @@ export const HeroSection = () => {
               </div>
 
               {/* Floating "Excellence" Card */}
-              <div className="absolute -bottom-4 -left-2 bg-[#FD5A1A] p-3 rounded-xl shadow-lg border border-white/20 backdrop-blur-sm hidden md:block z-30 animate-[bounce_3s_infinite]">
+              <div className="absolute -bottom-4 -left-2 bg-white p-3 rounded-xl shadow-xl border border-slate-100 hidden md:block z-30 animate-[bounce_3s_infinite]">
                 <div className="flex items-center gap-3 mb-1">
-                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-                    <Award className="w-4 h-4 text-white" />
+                  <div className="w-8 h-8 rounded-full bg-[#FD5A1A]/10 flex items-center justify-center">
+                    <Award className="w-4 h-4 text-[#FD5A1A]" />
                   </div>
                   <div>
-                    <div className="text-xl font-bold font-display text-white">100%</div>
+                    <div className="text-xl font-bold font-display text-slate-900">100%</div>
                   </div>
                 </div>
-                <p className="text-[10px] text-white/90 font-medium whitespace-nowrap leading-tight">
+                <p className="text-xs text-slate-600 font-bold whitespace-nowrap leading-tight">
                   Career Support & Placement Assistance
                 </p>
               </div>

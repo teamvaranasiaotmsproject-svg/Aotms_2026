@@ -49,7 +49,7 @@ export const LearningProcess = () => {
           </div>
 
           <h2 className="text-4xl md:text-5xl lg:text-5xl font-black text-slate-900 font-display tracking-tight leading-[1.15]">
-            How Your <span className="text-orange-500">Training Unfolds</span>
+            How Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Training Unfolds</span>
           </h2>
 
           <p className="text-base md:text-lg text-slate-500 mt-4 leading-relaxed font-medium">

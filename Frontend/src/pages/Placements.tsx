@@ -77,7 +77,7 @@ const Placements = () => {
 
             {/* Compact Page Header with Tech Animations */}
             <section className="relative pt-28 pb-12 md:pt-40 md:pb-20 bg-slate-50 border-b border-slate-200 overflow-hidden">
-                <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute inset-0 pointer-events-none hidden md:block">
                     <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]" />
                     <motion.div
                         animate={{
@@ -129,15 +129,15 @@ const Placements = () => {
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.5 }}
                             >
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider mb-4 border border-blue-100">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50/50 md:backdrop-blur-sm border border-blue-100 text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A] text-xs font-black uppercase tracking-wider mb-4">
                                     <span className="relative flex h-2 w-2">
-                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FD5A1A] opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FD5A1A]"></span>
                                     </span>
                                     Career Impact
                                 </div>
                                 <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-4">
-                                    Student <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-500">Placements</span>
+                                    Student <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Placements</span>
                                 </h1>
                                 <p className="text-slate-600 max-w-xl text-lg leading-relaxed font-medium">
                                     Our alumni are engineering the future at leading technology companies worldwide.
@@ -149,7 +149,7 @@ const Placements = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="flex gap-4 md:gap-12 pb-2 bg-white/50 backdrop-blur-sm p-3 md:p-4 rounded-2xl border border-slate-200/50 shadow-sm"
+                            className="flex gap-4 md:gap-12 pb-2 bg-white/50 md:backdrop-blur-sm p-3 md:p-4 rounded-2xl border border-slate-200/50 shadow-sm"
                         >
                             <div className="text-center md:text-left flex-1 md:flex-none">
                                 <div className="text-xl md:text-3xl font-black text-slate-900">500+</div>
@@ -172,7 +172,7 @@ const Placements = () => {
 
             {/* Placements Carousel Section */}
             <section className="py-16 md:py-20 bg-[#F8FAFC] relative overflow-hidden">
-                <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute inset-0 pointer-events-none hidden md:block">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.03)_0%,transparent_70%)]" />
                     <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/5 rounded-full blur-[100px]" />
                     <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-orange-500/5 rounded-full blur-[100px]" />
@@ -180,13 +180,13 @@ const Placements = () => {
 
                 <div className="container mx-auto px-4 mb-8 relative z-10 text-center">
                     <div className="container mx-auto px-4 mb-12 relative z-10 text-center">
-                        <span className="inline-block px-4 py-1.5 rounded-full bg-white border border-blue-100 text-blue-600 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
-                            <span className="inline-block w-1.5 h-1.5 rounded-full bg-orange-400 mr-2 animate-pulse"></span>
+                        <span className="inline-block px-4 py-1.5 rounded-full bg-blue-50/50 md:backdrop-blur-sm border border-blue-100 text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A] text-xs font-black uppercase tracking-wider mb-4 shadow-sm">
+                            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#FD5A1A] mr-2 animate-pulse"></span>
                             Hall of Fame
                         </span>
                         <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight leading-tight">
-                            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Candidates</span> Working On <br className="hidden md:block" />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-500">Top Companies</span>
+                            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Candidates</span> Working On <br className="hidden md:block" />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Top Companies</span>
                         </h2>
                         <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
                             Meet the ambitious individuals who recently started their journey with top tech giants.
@@ -196,15 +196,15 @@ const Placements = () => {
 
                 <div className="w-full relative">
                     {/* Enhanced Track with Blue & Orange Glow */}
-                    <div className="absolute top-1/2 left-0 right-0 h-40 -translate-y-1/2">
+                    <div className="absolute top-1/2 left-0 right-0 h-40 -translate-y-1/2 hidden md:block">
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/5 to-transparent" />
                         <div className="absolute inset-0 border-y border-blue-500/10 backdrop-blur-sm" />
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-orange-400/50 to-transparent" />
                         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-orange-400/50 to-transparent" />
                     </div>
 
-                    <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none md:w-32" />
-                    <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none md:w-32" />
+                    <div className="absolute left-0 top-0 bottom-0 w-8 md:w-32 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
+                    <div className="absolute right-0 top-0 bottom-0 w-8 md:w-32 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
 
                     {infiniteStudents && infiniteStudents.length > 0 ? (
                         <div className="overflow-hidden py-4 px-4" ref={emblaRef}>
@@ -213,12 +213,13 @@ const Placements = () => {
                                     <div key={index} className="flex-[0_0_260px] min-w-0 mx-4 select-none relative z-10">
                                         <div className="flex flex-col items-center text-center cursor-pointer group h-full transition-all duration-300">
                                             <div className="relative mb-6">
-                                                <div className="relative w-[130px] h-[130px] rounded-full overflow-hidden border-4 border-white ring-4 ring-blue-500/10 group-hover:ring-blue-500 transition-all duration-500 shadow-xl">
+                                                <div className="relative w-[130px] h-[130px] rounded-full overflow-hidden border-4 border-white md:ring-4 md:ring-blue-500/10 group-hover:ring-blue-500 transition-all duration-500 md:shadow-xl shadow-md">
                                                     {student.image ? (
                                                         <img
                                                             src={student.image}
                                                             alt={student.name}
-                                                            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                                                            className="w-full h-full object-cover transform md:group-hover:scale-110 transition-transform duration-700"
+                                                            loading="lazy"
                                                         />
                                                     ) : (
                                                         <div className="w-full h-full bg-slate-100 flex items-center justify-center text-slate-300">
@@ -229,7 +230,7 @@ const Placements = () => {
                                                     )}
                                                 </div>
                                                 {/* Status Badge */}
-                                                <div className="absolute -bottom-2 right-2 bg-orange-500 text-white text-[8px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter shadow-lg border-2 border-white transform scale-0 group-hover:scale-100 transition-transform duration-300">
+                                                <div className="absolute -bottom-2 right-2 bg-orange-500 text-white text-[8px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter shadow-sm md:shadow-lg border-2 border-white transform scale-100 md:scale-0 md:group-hover:scale-100 transition-transform duration-300">
                                                     Hired
                                                 </div>
                                             </div>
@@ -240,7 +241,7 @@ const Placements = () => {
                                             <p className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 font-black text-xs uppercase tracking-widest mb-4">
                                                 {student.jobTitle}
                                             </p>
-                                            <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest bg-white px-4 py-2 rounded-xl border border-slate-100 shadow-sm group-hover:border-blue-200 group-hover:shadow-blue-200/20 transition-all group-hover:text-slate-900">
+                                            <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest bg-white px-4 py-2 rounded-xl border border-slate-100 shadow-sm transition-all group-hover:text-slate-900">
                                                 {student.companies.join(' / ')}
                                             </p>
                                         </div>
@@ -306,24 +307,24 @@ const Placements = () => {
             <section className="py-20 md:py-28 bg-slate-50 relative overflow-hidden">
                 {/* Background Decor */}
                 <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent opacity-50" />
-                <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl opacity-50 pointer-events-none" />
-                <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl opacity-50 pointer-events-none" />
+                <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#0066CC]/10 rounded-full blur-3xl opacity-50 pointer-events-none" />
+                <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#FF6B35]/10 rounded-full blur-3xl opacity-50 pointer-events-none" />
 
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-5xl mx-auto bg-white rounded-3xl shadow-xl shadow-slate-200/50 overflow-hidden border border-slate-100 flex flex-col md:flex-row">
 
                         {/* Interactive Left Side */}
-                        <div className="md:w-5/12 bg-slate-900 relative p-8 md:p-12 flex flex-col justify-between overflow-hidden group">
-                            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-20 mix-blend-overlay transition-transform duration-700 group-hover:scale-105" />
-                            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/0 via-slate-900/60 to-slate-900" />
+                        <div className="md:w-5/12 bg-[#003366] relative p-8 md:p-12 flex flex-col justify-between overflow-hidden group">
+                            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay transition-transform duration-700 group-hover:scale-105" />
+                            <div className="absolute inset-0 bg-gradient-to-b from-[#003366]/0 via-[#003366]/60 to-[#003366]" />
 
                             <div className="relative z-10">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 text-xs font-bold uppercase tracking-wider mb-6">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#FF6B35]/10 border border-[#FF6B35]/20 text-[#FF6B35] text-xs font-bold uppercase tracking-wider mb-6">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B35] animate-pulse" />
                                     Career Guidance
                                 </div>
                                 <h2 className="text-3xl font-black text-white mb-4 leading-tight">
-                                    Unlock Your <span className="text-blue-400">Potential</span>
+                                    Unlock Your <span className="text-[#FF6B35]">Potential</span>
                                 </h2>
                                 <p className="text-slate-300 text-sm leading-relaxed mb-8">
                                     Connect with our placement experts to analyze your profile and find the perfect roadmap for your tech career.
@@ -332,7 +333,7 @@ const Placements = () => {
 
                             <div className="relative z-10 space-y-4">
                                 <div className="flex items-center gap-4 text-white">
-                                    <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/10 text-orange-400 font-bold text-sm">
+                                    <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/10 text-[#FF6B35] font-bold text-sm">
                                         1k+
                                     </div>
                                     <div>
@@ -341,7 +342,7 @@ const Placements = () => {
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-4 text-white">
-                                    <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/10 text-blue-400 font-bold text-sm">
+                                    <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/10 text-[#FF6B35] font-bold text-sm">
                                         95%
                                     </div>
                                     <div>
@@ -366,9 +367,9 @@ const Placements = () => {
                                         onChange={handleChange}
                                         placeholder="Full Name"
                                         required
-                                        className="w-full h-12 bg-slate-50 border-b-2 border-slate-100 px-4 pt-1 font-medium text-slate-900 placeholder:text-transparent focus:outline-none focus:border-blue-500 focus:bg-blue-50/50 transition-all peer rounded-t-lg"
+                                        className="w-full h-12 bg-slate-50 border-b-2 border-slate-100 px-4 pt-1 font-medium text-slate-900 placeholder:text-transparent focus:outline-none focus:border-[#0066CC] focus:bg-blue-50/50 transition-all peer rounded-t-lg"
                                     />
-                                    <label className="absolute left-4 top-3 text-slate-400 text-sm font-medium transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-500 pointer-events-none">
+                                    <label className="absolute left-4 top-3 text-slate-400 text-sm font-medium transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-xs peer-focus:text-[#0066CC] pointer-events-none">
                                         Full Name
                                     </label>
                                 </div>
@@ -382,9 +383,9 @@ const Placements = () => {
                                             onChange={handleChange}
                                             placeholder="Phone Number"
                                             required
-                                            className="w-full h-12 bg-slate-50 border-b-2 border-slate-100 px-4 pt-1 font-medium text-slate-900 placeholder:text-transparent focus:outline-none focus:border-blue-500 focus:bg-blue-50/50 transition-all peer rounded-t-lg"
+                                            className="w-full h-12 bg-slate-50 border-b-2 border-slate-100 px-4 pt-1 font-medium text-slate-900 placeholder:text-transparent focus:outline-none focus:border-[#0066CC] focus:bg-blue-50/50 transition-all peer rounded-t-lg"
                                         />
-                                        <label className="absolute left-4 top-3 text-slate-400 text-sm font-medium transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-500 pointer-events-none">
+                                        <label className="absolute left-4 top-3 text-slate-400 text-sm font-medium transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-xs peer-focus:text-[#0066CC] pointer-events-none">
                                             Phone Number
                                         </label>
                                     </div>
@@ -396,9 +397,9 @@ const Placements = () => {
                                             onChange={handleChange}
                                             placeholder="Email Address"
                                             required
-                                            className="w-full h-12 bg-slate-50 border-b-2 border-slate-100 px-4 pt-1 font-medium text-slate-900 placeholder:text-transparent focus:outline-none focus:border-blue-500 focus:bg-blue-50/50 transition-all peer rounded-t-lg"
+                                            className="w-full h-12 bg-slate-50 border-b-2 border-slate-100 px-4 pt-1 font-medium text-slate-900 placeholder:text-transparent focus:outline-none focus:border-[#0066CC] focus:bg-blue-50/50 transition-all peer rounded-t-lg"
                                         />
-                                        <label className="absolute left-4 top-3 text-slate-400 text-sm font-medium transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-500 pointer-events-none">
+                                        <label className="absolute left-4 top-3 text-slate-400 text-sm font-medium transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-xs peer-focus:text-[#0066CC] pointer-events-none">
                                             Email Address
                                         </label>
                                     </div>
@@ -412,7 +413,7 @@ const Placements = () => {
                                         required
                                         aria-label="Select Interested Course"
                                         title="Select Interested Course"
-                                        className="w-full h-12 bg-slate-50 border-b-2 border-slate-100 px-4 pt-1 font-medium text-slate-900 focus:outline-none focus:border-blue-500 focus:bg-blue-50/50 transition-all rounded-t-lg cursor-pointer appearance-none"
+                                        className="w-full h-12 bg-slate-50 border-b-2 border-slate-100 px-4 pt-1 font-medium text-slate-900 focus:outline-none focus:border-[#0066CC] focus:bg-blue-50/50 transition-all rounded-t-lg cursor-pointer appearance-none"
                                     >
                                         <option value="" disabled className="text-slate-400">Select Interested Course</option>
                                         <option value="Full Stack Development">Full Stack Development</option>
@@ -431,7 +432,7 @@ const Placements = () => {
 
                                 <button
                                     disabled={loading}
-                                    className="w-full bg-slate-900 hover:bg-black text-white font-bold h-12 rounded-xl shadow-lg shadow-slate-900/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 md:text-md flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
+                                    className="w-full bg-[#FF6B35] hover:bg-[#E55A2B] text-white font-bold h-12 rounded-xl shadow-lg shadow-orange-500/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 md:text-md flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
                                 >
                                     {loading ? "Submitting Request..." : "Schedule Free Counseling"}
                                     {!loading && <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>}

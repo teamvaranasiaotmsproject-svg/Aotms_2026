@@ -244,66 +244,50 @@
   background-image: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0, 102, 204, 0.1) 2px, rgba(0, 102, 204, 0.1) 4px);
 }
 
-/* Course Details Mobile Fixes */
+/* Mobile Responsiveness Fixes for Course Details Page */
+/* Mobile Responsiveness Fixes for Course Details Page */
 @media (max-width: 768px) {
-  * {
-    max-width: 100%;
-    box-sizing: border-box;
+
+  /* Fix 1: Ensure containers are full-width on mobile */
+  .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
+  /* Fix 2: Remove aggressive transform overrides that break Framer Motion */
+  /* Instead rely on component-level responsive props */
+
+  /* Fix 3: Default grids to single column, but allow overrides */
+  /* Only apply to main layout grids, not small component grids */
+  .course-page .grid,
+  .hero .grid,
+  .curriculum .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Fix 4: Prevent horizontal overflow */
+  html,
   body {
     overflow-x: hidden;
+    width: 100%;
   }
 
-  .hero,
-  .course-hero {
-    display: flex !important;
-    flex-direction: column !important;
-    height: auto !important;
-    min-height: unset !important;
-    padding: 16px !important;
-    text-align: center !important;
-    position: static !important;
-    overflow: visible !important;
+  /* Fix 5: Ensure images/videos don't overflow */
+  img,
+  video,
+  iframe {
+    max-width: 100%;
+    height: auto;
   }
 
-  .curriculum,
-  .detailed-curriculum {
-    height: auto !important;
-    min-height: unset !important;
-    overflow: visible !important;
-    position: static !important;
-  }
-
-  .modules,
-  .modules-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 12px !important;
-    height: auto !important;
-    overflow: visible !important;
-  }
-
-  .program-structure,
-  .program-details {
-    position: static !important;
-    height: auto !important;
-    overflow: visible !important;
-    padding: 16px !important;
-  }
-
-  /* Final Rule Fixes for all content sections */
-  section,
-  [id="curriculum"],
-  [id="outcomes"],
-  [id="tools"],
-  [id="instructor"],
-  [id="hiring-partners"],
-  [id="certifications"],
-  [id="faq"] {
-    height: auto !important;
-    min-height: unset !important;
-    position: static !important;
-    overflow: visible !important;
+  /* Fix 6: Ensure readable text */
+  p,
+  li,
+  span,
+  div {
+    font-size: 1rem;
+    /* Base size 16px */
   }
 }

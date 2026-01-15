@@ -13,11 +13,11 @@ export const MentorsSection = () => {
 
       <div className="w-full px-4 sm:px-8 lg:px-16 relative z-10">
         <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-6xl font-black text-slate-900 mb-4 tracking-tight">
-            Learn from Our <span className="text-orange-500">Professional</span> <span className="text-blue-600">Industry Experts</span>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 tracking-tight leading-[1.15]">
+            Learn from Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Professional Industry Experts</span>
           </h2>
-          <p className="text-sm md:text-base text-slate-500 max-w-2xl mx-auto font-semibold leading-relaxed">
-            Our instructors are not just teachers; they are <span className="font-bold text-slate-900">seasoned professionals</span> from leading tech companies.
+          <p className="text-base text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
+            Our instructors are not just teachers; they are <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">seasoned professionals</span> from leading tech companies.
           </p>
         </div>
 

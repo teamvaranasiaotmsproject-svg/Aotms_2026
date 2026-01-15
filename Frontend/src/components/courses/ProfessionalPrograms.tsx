@@ -49,12 +49,12 @@ export const ProfessionalPrograms = () => {
             <div className="container mx-auto px-6">
                 {/* Header Section - Centered Hero Style */}
                 <div className="flex flex-col items-center text-center mb-8">
-                    <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-100 border-none px-4 py-1.5 text-xs font-bold uppercase tracking-widest mb-6">
+                    <Badge className="bg-blue-100/50 text-blue-700 hover:bg-blue-100 border-none px-4 py-1.5 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
                         <Sparkles className="w-3.5 h-3.5 mr-2 fill-current" />
                         World Class Education
                     </Badge>
-                    <h2 className="text-2xl md:text-6xl font-black text-slate-900 tracking-tighter mb-5 whitespace-nowrap overflow-hidden text-ellipsis">
-                        Professional <span className="text-blue-600">Training Programs</span>
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight mb-5 whitespace-nowrap overflow-hidden text-ellipsis text-slate-900">
+                        Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Training Programs</span>
                     </h2>
                     <p className="text-sm md:text-base text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto">
                         Accelerate your career with our industry-leading certification programs.

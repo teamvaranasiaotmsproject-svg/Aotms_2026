@@ -50,7 +50,7 @@ export const WhyChooseUs = () => {
   }
 
   return (
-    <section className="pt-4 md:pt-10 pb-12 md:pb-20 bg-background relative overflow-hidden">
+    <section className="pt-0 md:pt-4 pb-12 md:pb-20 bg-background relative overflow-hidden">
       {/* Background Accents */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none opacity-60" />
       <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px] pointer-events-none opacity-60" />
@@ -59,18 +59,16 @@ export const WhyChooseUs = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-10">
           <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-[10px] font-bold tracking-widest uppercase mb-3 border border-accent/20"
+            className="inline-block px-4 py-1.5 rounded-full bg-blue-100/50 backdrop-blur-sm border border-blue-200 text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A] text-xs font-black tracking-widest uppercase mb-4"
           >
             Why Choose AOTMS
           </motion.span>
-          <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tight mb-4 font-display">
-            The Academy <span className="text-accent">Difference</span>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight mb-5 font-display text-slate-900">
+            The Academy <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Difference</span>
           </h2>
-          <p className="text-xs md:text-sm text-muted-foreground font-semibold max-w-2xl mx-auto leading-relaxed">
-            We're more than just a training center. We're a <span className="text-primary font-bold">career launchpad</span>.
+          <p className="text-sm md:text-base text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto">
+            We're more than just a training center. We're a <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">career launchpad</span>.
           </p>
         </div>
 

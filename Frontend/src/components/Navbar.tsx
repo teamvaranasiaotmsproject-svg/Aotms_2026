@@ -73,7 +73,7 @@ const navLinks = [
     ]
   },
   {
-    name: "About Us",
+    name: "Who We Are",
     href: "/about-us",
     hasDropdown: false, // Changed to false as Info is now separate
   },
@@ -309,13 +309,13 @@ export const Header = () => {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="bg-[#0075CF] text-white text-[9px] md:text-xs font-semibold border-b border-primary-foreground/10 relative z-50 py-0.5 md:py-0"
+              className="bg-[#0075CF] text-white text-xs font-semibold border-b border-primary-foreground/10 relative z-50 py-1 md:py-0"
             >
               <div className="container mx-auto px-4 h-8 md:h-9 flex items-center justify-between">
                 <div className="flex items-center gap-3 md:gap-6">
-                  <a href="tel:+918019942233" className="flex items-center gap-1.5 hover:text-accent transition-colors">
+                  <a href="tel:+918019952233" className="flex items-center gap-1.5 hover:text-accent transition-colors">
                     <Phone className="w-3 h-3" />
-                    <span>8019942233</span>
+                    <span>8019952233</span>
                   </a>
                   <a href="mailto:Info@aotms.com" className="hidden sm:flex items-center gap-1.5 hover:text-accent transition-colors">
                     <Mail className="w-3 h-3" />
@@ -325,7 +325,7 @@ export const Header = () => {
 
                 <div className="flex items-center gap-4">
                   {/* Social Links */}
-                  <div className="hidden md:flex items-center gap-3 text-[10px] md:text-[11px]">
+                  <div className="hidden md:flex items-center gap-3 text-xs">
                     <span className="opacity-80">Follow us :</span>
                     <div className="flex items-center gap-2.5">
                       <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-accent transition-colors">
@@ -366,12 +366,12 @@ export const Header = () => {
                     </div>
                   ) : (
                     <div className="flex items-center gap-3">
-                      <Link to="/cart" className="flex items-center gap-1.5 hover:text-accent uppercase tracking-wider font-bold text-[9px] md:text-[10px] transition-colors">
-                        <FaBook className="w-3 h-3" />
+                      <Link to="/cart" className="flex items-center gap-1.5 hover:text-accent uppercase tracking-wider font-bold text-xs transition-colors">
+                        <FaBook className="w-3.5 h-3.5" />
                         <span>Cart ({cartItemCount})</span>
                       </Link>
                       <span className="text-white/30">|</span>
-                      <Link to="/dashboard" className="flex items-center gap-1.5 hover:text-accent uppercase tracking-wider font-bold text-[9px] md:text-[10px] transition-colors">
+                      <Link to="/dashboard" className="flex items-center gap-1.5 hover:text-accent uppercase tracking-wider font-bold text-xs transition-colors">
                         <User className="w-3 h-3" />
                         <span>Account</span>
                       </Link>
@@ -702,7 +702,7 @@ export const Header = () => {
                           onChange={(e) => setFirstName(e.target.value)}
                           className={cn("h-11 rounded-xl bg-slate-50 border-transparent focus:bg-white", errors.firstName && "border-red-500 bg-red-50/50")}
                         />
-                        {errors.firstName && <p className="text-[10px] text-red-500 ml-2 mt-1 font-bold">{errors.firstName}</p>}
+                        {errors.firstName && <p className="text-xs text-red-500 ml-2 mt-1 font-bold">{errors.firstName}</p>}
                       </div>
                       <div>
                         <Input
@@ -793,7 +793,7 @@ export const Header = () => {
 
                     <div className="grid grid-cols-2 gap-3">
                       <div className="space-y-1">
-                        <label className="text-[10px] font-black uppercase text-slate-400 ml-2">Degree</label>
+                        <label className="text-xs font-black uppercase text-slate-400 ml-2">Degree</label>
                         <select
                           aria-label="Degree"
                           value={degree}
@@ -805,7 +805,7 @@ export const Header = () => {
                       </div>
 
                       <div className="space-y-1">
-                        <label className="text-[10px] font-black uppercase text-slate-400 ml-2">Department</label>
+                        <label className="text-xs font-black uppercase text-slate-400 ml-2">Department</label>
                         <select
                           aria-label="Department"
                           value={department}
@@ -819,7 +819,7 @@ export const Header = () => {
 
                     <div className="grid grid-cols-2 gap-3">
                       <div className="space-y-1">
-                        <label className="text-[10px] font-black uppercase text-slate-400 ml-2">Passout Year</label>
+                        <label className="text-xs font-black uppercase text-slate-400 ml-2">Passout Year</label>
                         <select
                           title="Passout Year"
                           aria-label="Passout Year"
@@ -906,7 +906,7 @@ export const Header = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     className={cn("h-11 rounded-xl bg-slate-50 border-transparent focus:bg-white", errors.email && "border-red-500 bg-red-50/50")}
                   />
-                  {errors.email && <p className="text-[10px] text-red-500 ml-2 mt-1 font-bold">{errors.email}</p>}
+                  {errors.email && <p className="text-xs text-red-500 ml-2 mt-1 font-bold">{errors.email}</p>}
                 </div>
 
                 {authMode !== 'forgot' && (
@@ -922,7 +922,7 @@ export const Header = () => {
                       <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
                         {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
-                      {errors.password && <p className="text-[10px] text-red-500 ml-2 mt-1 font-bold">{errors.password}</p>}
+                      {errors.password && <p className="text-xs text-red-500 ml-2 mt-1 font-bold">{errors.password}</p>}
                     </div>
                     {authMode === 'register' && password && (
                       <div className="mt-2">

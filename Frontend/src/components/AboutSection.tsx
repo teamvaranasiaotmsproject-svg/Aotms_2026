@@ -52,16 +52,16 @@ export const AboutSection = () => {
           {/* Right Column - Content */}
           <div className="space-y-8 order-2 lg:order-2 text-center lg:text-left">
             <div className="flex flex-col gap-3 items-center lg:items-start">
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 text-[#0075CF] text-xs font-bold rounded-full uppercase tracking-widest shadow-sm">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50/50 backdrop-blur-sm border border-blue-200 text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A] text-xs font-black rounded-full uppercase tracking-widest shadow-sm">
                 About Our training model
               </span>
             </div>
 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 leading-[1.15]">
-              World-class education,<br className="hidden md:block" /> and the <span className="text-[#0075CF]">Academy</span> difference.
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-[1.15]">
+              World-class <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">education</span>,<br className="hidden md:block" /> and the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Academy</span> difference.
             </h2>
 
-            <p className="text-sm text-slate-500 mx-auto lg:mx-0 leading-relaxed font-medium max-w-lg">
+            <p className="text-base text-slate-500 mx-auto lg:mx-0 leading-relaxed font-medium max-w-xl">
               Learn from industry experts, explore our success stories, and step into the future.
               We are a professional IT training institute focused on real-world skills,
               industry-level projects, and career outcomes.

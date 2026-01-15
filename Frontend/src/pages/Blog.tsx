@@ -29,7 +29,7 @@ const Blog = () => {
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest uppercase mb-6"
+            className="inline-block px-4 py-1.5 rounded-full bg-blue-50/50 backdrop-blur-sm border border-blue-200 text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A] text-xs font-black tracking-widest uppercase mb-6"
           >
             Our Blog
           </motion.span>
@@ -37,9 +37,9 @@ const Blog = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-display font-black tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
+            className="text-4xl md:text-6xl font-display font-black tracking-tight mb-6 text-slate-900"
           >
-            Latest Insights & <span className="text-primary">News</span>
+            Latest Insights & <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">News</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

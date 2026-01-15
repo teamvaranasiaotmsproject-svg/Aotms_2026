@@ -50,13 +50,13 @@ export const Testimonials = () => {
                     className="flex flex-col items-center justify-center w-full mx-auto mb-8 text-center"
                 >
                     <div className="mb-4">
-                        <span className="text-xs font-bold tracking-widest uppercase text-primary border border-primary/20 py-1.5 px-4 rounded-full bg-primary/5">
+                        <span className="text-xs font-black tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A] border border-blue-200 py-1.5 px-4 rounded-full bg-blue-50/50 backdrop-blur-sm">
                             Alumni Reviews
                         </span>
                     </div>
 
-                    <h2 className="text-2xl md:text-5xl font-black text-slate-900 tracking-tight leading-[1.1]">
-                        Student <span className="text-primary">Honest</span> <span className="text-orange-500">Reviews</span>
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
+                        Student <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Honest Reviews</span>
                     </h2>
                     <p className="section-subheading mt-4 max-w-3xl">
                         Read honest reviews from our Verified Students.

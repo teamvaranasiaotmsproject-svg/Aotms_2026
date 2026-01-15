@@ -7,20 +7,21 @@ import {
     Trophy,
     Calendar,
     ArrowRight,
-    Download,
     LogOut,
     Star,
     BookOpen,
-    TrendingUp,
-    Book,
-    Play,
     Activity,
     LayoutDashboard,
-    Users
+    Users,
+    Sparkles,
+    Zap,
+    TrendingUp,
+    Award
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { cn } from "@/lib/utils";
 
 interface UserReview {
     _id: string;
@@ -68,29 +69,22 @@ const Dashboard = () => {
             const randomLead = allLeads[Math.floor(Math.random() * allLeads.length)];
             setCurrentPopLead(randomLead);
             setShowPopup(true);
-
-            // Hide after 5 seconds
             setTimeout(() => setShowPopup(false), 5000);
-        }, 12000); // Show every 12 seconds
+        }, 12000);
 
         return () => clearInterval(interval);
     }, [allLeads]);
 
-    // Fetch user's reviews
+    // Fetch user data
     useEffect(() => {
         const fetchUserData = async () => {
             if (!user?.email) return;
 
             try {
-                // In a real app, you'd filter by user ID/email on backend. 
-                // For now, we fetch all and filter client-side or assume an endpoint exists.
-                // Since our current feedback API returns all, we simulate "My Reviews"
                 const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/feedback`);
-                // Filter by email if logged in user has email
                 const userReviews = res.data.filter((r: UserReview) => r.email === user.email);
                 setMyReviews(userReviews);
 
-                // Fetch Events
                 const [wRes, hRes, aRes, lRes] = await Promise.all([
                     axios.get(`${import.meta.env.VITE_API_URL}/api/events?type=workshop`),
                     axios.get(`${import.meta.env.VITE_API_URL}/api/events?type=hackathon`),
@@ -111,352 +105,328 @@ const Dashboard = () => {
         fetchUserData();
     }, [user]);
 
-    // Calculate real stats based on fetched data
+    // Stats Data with logo colors (lighter blue)
     const statsData = [
-        { label: "Total Workshops", value: workshops.length.toString(), subtext: "Available to join", icon: Book, color: "blue" },
-        { label: "Community Feedbacks", value: myReviews.length.toString(), subtext: "Your contributions", icon: Trophy, color: "orange" },
-        { label: "Total Registrations", value: allLeads.length.toString(), subtext: "Active initiatives", icon: Users, color: "green" },
-        { label: "Tech Hackathons", value: hackathons.length.toString(), subtext: "Live opportunities", icon: Calendar, color: "blue" },
+        { label: "Active Courses", value: "0", subtext: "Start Learning", icon: BookOpen, gradient: "from-blue-600 to-blue-700" },
+        { label: "Workshops", value: workshops.length.toString(), subtext: "Available Now", icon: Zap, gradient: "from-[#FD5A1A] to-orange-600" },
+        { label: "Community", value: allLeads.length.toString(), subtext: "Students Active", icon: Users, gradient: "from-blue-600 to-[#FD5A1A]" },
+        { label: "Hackathons", value: hackathons.length.toString(), subtext: "Competitions", icon: Trophy, gradient: "from-[#FD5A1A] to-red-600" },
     ];
 
-    const upcomingActivities = activities.slice(0, 3).map(a => ({
-        id: a.id,
-        title: a.name,
-        date: a.date,
-        type: "Weekly Activity",
-        status: "Available"
-    }));
-
     return (
-        <div className="bg-white min-h-screen relative overflow-x-hidden">
+        <div className="bg-gradient-to-br from-slate-50 via-blue-50/20 to-orange-50/20 min-h-screen relative">
             <Header />
 
-            {/* Hurry Up Popup Notification */}
+            {/* Notification Popup - Optimized for mobile */}
             <AnimatePresence>
                 {showPopup && currentPopLead && (
                     <motion.div
-                        initial={{ opacity: 0, x: -100, scale: 0.9 }}
-                        animate={{ opacity: 1, x: 0, scale: 1 }}
-                        exit={{ opacity: 0, x: -100, scale: 0.9 }}
-                        className="fixed top-28 left-6 md:left-10 z-[100] w-72 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-100 p-4 flex items-center gap-4 overflow-hidden"
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className="fixed top-24 md:top-28 left-4 right-4 md:left-auto md:right-8 z-[9999] md:w-auto md:min-w-[320px] bg-white shadow-2xl rounded-2xl border-2 border-slate-200 p-3 md:p-4 flex items-center gap-3"
                     >
-                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-[#00388d]" />
-                        <div className="w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center shrink-0">
-                            <Trophy className="w-6 h-6" />
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#FD5A1A] to-orange-600 flex items-center justify-center text-white shadow-lg shrink-0">
+                            <Sparkles className="w-5 h-5" />
                         </div>
                         <div className="flex-1 min-w-0">
-                            <h4 className="text-[10px] font-black text-orange-500 uppercase tracking-[0.2em] mb-1 flex items-center gap-1">
-                                Hurry Up! <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-ping" />
-                            </h4>
-                            <p className="text-xs font-bold text-slate-900 leading-tight">
-                                <span className="text-blue-600 font-black">{currentPopLead.name.split(' ')[0]}</span> just registered for {currentPopLead.course || currentPopLead.event || "an initiative"}!
+                            <p className="text-xs md:text-sm text-slate-700 font-medium">
+                                <span className="font-bold text-slate-900">{currentPopLead.name.split(' ')[0]}</span> just joined{' '}
+                                <span className="text-blue-600 font-bold">{currentPopLead.course || "an event"}</span>!
                             </p>
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
 
-            <main className="pt-28 md:pt-36 pb-20 relative px-4 sm:px-6">
-                {/* Background Grid Pattern */}
-                <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none -z-10" />
+            <main className="pt-20 md:pt-28 pb-16 md:pb-20 px-3 sm:px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
 
-                <div className="container mx-auto max-w-7xl">
-                    {/* Welcome Section */}
-                    <div className="mb-12">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-600 rounded-lg text-[10px] font-black uppercase tracking-widest mb-4 border border-blue-100">
-                            <LayoutDashboard className="w-3 h-3" /> Student Dashboard
-                        </div>
-                        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                            <div>
-                                <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-3 tracking-tight">
-                                    Welcome back, <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">{user?.name?.split(' ')[0] || "Student"}!</span>
-                                </h1>
-                                <p className="text-slate-500 font-bold text-lg">Continue your learning journey and achieve your goals.</p>
-                            </div>
-                            <div className="flex gap-3">
-                                <Button
-                                    onClick={() => window.location.href = '/courses'}
-                                    className="gap-2 bg-[#00388d] hover:bg-blue-800 text-white font-bold h-12 rounded-xl shadow-lg shadow-blue-900/20"
-                                >
-                                    <BookOpen className="w-4 h-4" /> Browse Courses
-                                </Button>
-                                <Button variant="outline" onClick={logout} className="gap-2 text-slate-500 hover:text-red-500 hover:bg-red-50 border-slate-200 font-bold h-12 rounded-xl">
-                                    <LogOut className="w-4 h-4" />
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
+                {/* Welcome Header Section */}
+                <section className="bg-white rounded-2xl md:rounded-[2rem] p-5 md:p-8 lg:p-10 shadow-xl shadow-slate-200/50 border border-slate-100 relative overflow-hidden mb-6 md:mb-8">
+                    {/* Gradient Background - Hidden on mobile for performance */}
+                    <div className="hidden md:block absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-to-br from-blue-100 to-orange-100 rounded-full blur-3xl -mr-20 -mt-20 opacity-60 pointer-events-none" />
 
-                    {/* Stats Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-                        {statsData.map((stat, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: idx * 0.1 }}
-                                className="bg-white p-6 rounded-[28px] border border-slate-100 shadow-xl shadow-slate-200/40 relative group hover:-translate-y-1 transition-all duration-300"
+                    <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 md:gap-6">
+                        <div className="space-y-2 md:space-y-3 max-w-2xl">
+                            <div className="inline-flex items-center gap-1.5 px-2.5 md:px-3 py-1 bg-gradient-to-r from-blue-50 to-orange-50 backdrop-blur-sm border border-blue-200 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-blue-600 mb-1 md:mb-2">
+                                <LayoutDashboard className="w-3 h-3" /> Dashboard
+                            </div>
+                            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-[1.1]">
+                                Hello, <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-[#FD5A1A]">{user?.name?.split(' ')[0] || "Student"}</span> 👋
+                            </h1>
+                            <p className="text-slate-600 font-medium text-sm sm:text-base md:text-lg max-w-lg">
+                                Ready to level up? Explore new courses and track your progress here.
+                            </p>
+                        </div>
+                        <div className="flex items-center gap-2 md:gap-3 w-full md:w-auto">
+                            <Button
+                                onClick={() => window.location.href = '/courses'}
+                                className="h-11 md:h-12 px-4 md:px-6 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-600/90 hover:to-blue-700/90 text-white font-bold shadow-lg shadow-blue-900/20 flex-1 md:flex-none text-sm md:text-base"
                             >
-                                <div className="absolute top-6 right-6 text-slate-200 group-hover:text-blue-200 transition-colors">
-                                    <Activity className="w-5 h-5" />
-                                </div>
-
-                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 
-                                    ${stat.color === 'blue' ? 'bg-blue-50 text-blue-600' :
-                                        stat.color === 'orange' ? 'bg-orange-50 text-orange-600' :
-                                            'bg-green-50 text-green-600'}`}
-                                >
-                                    <stat.icon className="w-6 h-6" />
-                                </div>
-
-                                <div className="space-y-1">
-                                    <h3 className="text-3xl font-black text-slate-900">{stat.value}</h3>
-                                    <p className="text-sm font-bold text-slate-800">{stat.label}</p>
-                                    <p className="text-[11px] font-bold text-slate-400">{stat.subtext}</p>
-                                </div>
-                            </motion.div>
-                        ))}
+                                <BookOpen className="w-4 h-4 mr-2" /> <span className="hidden sm:inline">Browse</span> Courses
+                            </Button>
+                            <Button
+                                variant="outline"
+                                onClick={logout}
+                                className="h-11 md:h-12 w-11 md:w-12 rounded-xl border-slate-200 hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-colors"
+                            >
+                                <LogOut className="w-4 md:w-5 h-4 md:h-5" />
+                            </Button>
+                        </div>
                     </div>
+                </section>
 
-                    <div className="grid lg:grid-cols-3 gap-10">
-                        {/* Left Column Content */}
-                        <div className="lg:col-span-2 space-y-12">
-                            {/* Continue Learning */}
-                            <section>
-                                <div className="flex items-center justify-between mb-8">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center shadow-inner">
-                                            <Play className="w-5 h-5 fill-current" />
-                                        </div>
-                                        <h2 className="text-2xl font-black text-slate-900 tracking-tight">Continue Learning</h2>
+                {/* Stats Grid - Fully Responsive */}
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6 mb-6 md:mb-8">
+                    {statsData.map((stat, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: idx * 0.1, duration: 0.3 }}
+                            className="bg-white p-4 md:p-5 lg:p-6 rounded-xl md:rounded-2xl border border-slate-100 shadow-lg shadow-slate-200/40 relative group hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                        >
+                            <div className={cn(
+                                "w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl flex items-center justify-center mb-3 md:mb-4 bg-gradient-to-br",
+                                stat.gradient,
+                                "text-white shadow-lg"
+                            )}>
+                                <stat.icon className="w-5 h-5 md:w-6 md:h-6" />
+                            </div>
+                            <div className="space-y-0.5 md:space-y-1">
+                                <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-slate-900">{stat.value}</h3>
+                                <p className="text-[10px] md:text-xs lg:text-sm font-bold text-slate-700 uppercase tracking-wide leading-tight">{stat.label}</p>
+                                <p className="text-[9px] md:text-[10px] lg:text-[11px] font-medium text-slate-400">{stat.subtext}</p>
+                            </div>
+                            <div className="hidden md:block absolute top-4 lg:top-5 right-4 lg:right-5 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <ArrowRight className="w-4 h-4 text-slate-300" />
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* Main Content Layout */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-start">
+
+                    {/* Left Column (Main Content) */}
+                    <div className="lg:col-span-8 space-y-6 md:space-y-8">
+
+                        {/* Active Registrations Marquee - Performance optimized */}
+                        <section className="bg-white rounded-xl md:rounded-2xl border border-slate-100 shadow-lg p-4 md:p-6 overflow-hidden relative">
+                            <div className="flex items-center justify-between mb-4 md:mb-6">
+                                <div className="flex items-center gap-2 md:gap-3">
+                                    <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center text-green-600">
+                                        <TrendingUp className="w-4 h-4 md:w-5 md:h-5" />
                                     </div>
-                                    <button onClick={() => window.location.href = '/courses'} className="text-sm font-black text-blue-600 hover:text-blue-700 flex items-center gap-1 group">
-                                        View All <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                    </button>
+                                    <h3 className="font-black text-slate-900 text-base md:text-lg">Live Registrations</h3>
                                 </div>
+                                <span className="relative flex h-2 w-2 md:h-2.5 md:w-2.5">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-full w-full bg-green-500"></span>
+                                </span>
+                            </div>
 
-                                <div className="bg-slate-50/50 rounded-[32px] border border-dashed border-slate-200 p-12 text-center">
-                                    <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mx-auto mb-6">
-                                        <BookOpen className="w-8 h-8 text-slate-300" />
-                                    </div>
-                                    <h3 className="text-xl font-black text-slate-900 mb-2">Ongoing Course</h3>
-                                    <p className="text-slate-500 font-bold mb-8 max-w-sm mx-auto">You don't have any active courses. Start learning today to build your career!</p>
-                                    <Button onClick={() => window.location.href = '/courses'} className="bg-[#00388d] hover:bg-blue-800 font-black px-8 py-6 rounded-2xl">
-                                        Explores Courses
-                                    </Button>
-                                </div>
-                            </section>
-
-                            {/* Upcoming Events Section */}
-                            <section>
-                                <div className="flex items-center justify-between mb-8">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center shadow-inner">
-                                            <Calendar className="w-5 h-5" />
-                                        </div>
-                                        <h2 className="text-2xl font-black text-slate-900 tracking-tight">Upcoming Events</h2>
-                                    </div>
-                                    <div className="flex gap-2">
-                                        <button onClick={() => window.location.href = '/events'} className="text-xs font-black text-indigo-600 hover:text-indigo-700 flex items-center gap-1 group">
-                                            Manage <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    {[...workshops.slice(0, 1), ...hackathons.slice(0, 1), ...activities.slice(0, 2)].map((event, idx) => (
+                            <div className="relative -mx-4 md:-mx-6">
+                                <div className="absolute left-0 top-0 bottom-0 w-8 md:w-12 bg-gradient-to-r from-white to-transparent z-10" />
+                                <div className="absolute right-0 top-0 bottom-0 w-8 md:w-12 bg-gradient-to-l from-white to-transparent z-10" />
+                                <div className="flex overflow-hidden pb-3 md:pb-4">
+                                    {allLeads.length > 0 ? (
                                         <motion.div
-                                            key={idx}
-                                            initial={{ opacity: 0, scale: 0.95 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            transition={{ delay: idx * 0.1 }}
-                                            className="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm flex items-center gap-4 hover:border-indigo-200 transition-all group cursor-pointer"
-                                            onClick={() => window.location.href = event.id.includes('h') ? '/hackathon' : event.id.includes('w') ? '/workshop' : '/events'}
+                                            animate={{ x: [0, -180 * Math.min(allLeads.length, 10)] }}
+                                            transition={{
+                                                repeat: Infinity,
+                                                duration: Math.max(15, Math.min(allLeads.length, 10) * 4),
+                                                ease: "linear"
+                                            }}
+                                            className="flex gap-3 md:gap-4 px-4 md:px-6"
                                         >
-                                            <div className="w-20 h-20 rounded-2xl overflow-hidden bg-slate-100 shrink-0 shadow-inner relative">
-                                                <img src={event.thumbnailUrl || event.bannerUrl} alt={event.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                                                <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />
-                                            </div>
-                                            <div className="flex-1 min-w-0">
-                                                <div className="flex items-center gap-2 mb-1">
-                                                    <span className={`px-2 py-0.5 rounded-lg text-[8px] font-black uppercase tracking-widest
-                                                        ${idx === 0 ? 'bg-blue-50 text-blue-600' :
-                                                            idx === 1 ? 'bg-orange-50 text-orange-600' :
-                                                                'bg-indigo-50 text-indigo-600'}`}>
-                                                        {idx === 0 ? 'Workshop' : idx === 1 ? 'Hackathon' : 'Activity'}
-                                                    </span>
+                                            {[...allLeads.slice(0, 10), ...allLeads.slice(0, 10)].map((lead, idx) => (
+                                                <div key={`${idx}-lead`} className="flex items-center gap-2 md:gap-3 bg-gradient-to-br from-slate-50 to-blue-50/30 border border-slate-100 p-2.5 md:p-3 rounded-xl md:rounded-2xl w-[220px] md:w-[260px] shrink-0">
+                                                    <div className="h-9 w-9 md:h-10 md:w-10 rounded-lg md:rounded-xl bg-gradient-to-br from-blue-600 to-[#FD5A1A] shadow-sm flex items-center justify-center text-[10px] md:text-xs font-bold text-white">
+                                                        {lead.name.slice(0, 2).toUpperCase()}
+                                                    </div>
+                                                    <div className="min-w-0 flex-1">
+                                                        <p className="text-xs md:text-sm font-bold text-slate-900 truncate">{lead.name}</p>
+                                                        <p className="text-[9px] md:text-[10px] text-slate-500 font-medium truncate">
+                                                            Joined <span className="text-blue-600 font-bold">{lead.course || "Event"}</span>
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                <h4 className="font-black text-slate-900 text-sm truncate uppercase tracking-tight mb-1">{event.name}</h4>
-                                                <div className="flex items-center gap-3 text-[10px] font-bold text-slate-400 uppercase tracking-tighter">
-                                                    <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {event.date}</span>
-                                                    <span className="flex items-center gap-1"><ArrowRight className="w-3 h-3" /> {event.mode}</span>
-                                                </div>
-                                            </div>
+                                            ))}
                                         </motion.div>
-                                    ))}
+                                    ) : (
+                                        <div className="w-full text-center py-6 md:py-8 text-slate-400 text-xs md:text-sm font-medium px-4">No active registrations at the moment.</div>
+                                    )}
                                 </div>
-                            </section>
+                            </div>
+                        </section>
 
-                            {/* Registered Initiatives Section (Marquee View) */}
-                            <section className="overflow-hidden">
-                                <div className="flex items-center justify-between mb-8 px-1">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 bg-green-50 text-green-600 rounded-full flex items-center justify-center shadow-inner">
-                                            <Users className="w-5 h-5" />
-                                        </div>
-                                        <h2 className="text-2xl font-black text-slate-900 tracking-tight">Active Registrations</h2>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <span className="relative flex h-2 w-2">
-                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                                        </span>
-                                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Live Feed</span>
-                                    </div>
-                                </div>
-
-                                <div className="relative">
-                                    {/* Gradient Masks for smooth fade */}
-                                    <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-                                    <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-
-                                    <div className="flex overflow-hidden py-4">
-                                        {allLeads.length > 0 ? (
-                                            <motion.div
-                                                animate={{ x: [0, -100 * allLeads.length] }}
-                                                transition={{
-                                                    repeat: Infinity,
-                                                    duration: Math.max(20, allLeads.length * 3),
-                                                    ease: "linear"
-                                                }}
-                                                className="flex gap-6 shrink-0"
-                                            >
-                                                {[...allLeads, ...allLeads].map((lead, idx) => (
-                                                    <div
-                                                        key={`${lead.email}-${idx}`}
-                                                        className="w-[280px] bg-white p-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-green-100 transition-all flex items-center gap-4 shrink-0"
-                                                    >
-                                                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-black text-sm shadow-lg shrink-0 overflow-hidden uppercase">
-                                                            {lead.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
-                                                        </div>
-                                                        <div className="flex-1 min-w-0">
-                                                            <h4 className="font-bold text-slate-900 text-sm truncate">{lead.name}</h4>
-                                                            <div className="flex items-center gap-2 mt-1">
-                                                                <span className="px-1.5 py-0.5 bg-green-50 text-green-700 rounded text-[9px] font-black uppercase tracking-wider">
-                                                                    {lead.course || lead.event || "General"}
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                ))}
-                                            </motion.div>
-                                        ) : (
-                                            <div className="w-full py-12 text-center text-slate-300 font-bold italic border border-dashed border-slate-200 rounded-3xl">
-                                                Waiting for active registrations...
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                            </section>
-
-                            {/* My Reviews Section */}
-                            <section>
-                                <div className="flex items-center justify-between mb-8">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 bg-orange-50 text-orange-600 rounded-full flex items-center justify-center shadow-inner">
-                                            <MessageSquare className="w-5 h-5" />
-                                        </div>
-                                        <h2 className="text-2xl font-black text-slate-900 tracking-tight">Community Feedback</h2>
-                                    </div>
-                                </div>
-
-                                {loading ? (
-                                    <div className="text-center py-10 text-slate-400 font-bold">Checking records...</div>
-                                ) : myReviews.length > 0 ? (
-                                    <div className="grid sm:grid-cols-2 gap-4">
-                                        {myReviews.map((review, idx) => (
-                                            <motion.div
-                                                key={review._id}
-                                                initial={{ opacity: 0, scale: 0.95 }}
-                                                animate={{ opacity: 1, scale: 1 }}
-                                                transition={{ delay: idx * 0.1 }}
-                                                className="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all"
-                                            >
-                                                <div className="flex justify-between items-start mb-4">
-                                                    <span className="px-3 py-1 bg-blue-50 text-blue-600 rounded-lg text-[9px] font-black uppercase tracking-widest">
-                                                        {review.category || "General"}
-                                                    </span>
-                                                    <div className="flex gap-0.5">
-                                                        {[...Array(5)].map((_, i) => (
-                                                            <Star key={i} className={`w-3 h-3 ${i < review.rating ? "fill-orange-400 text-orange-400" : "text-slate-200"}`} />
-                                                        ))}
-                                                    </div>
+                        {/* Recent Events & Activities */}
+                        <section>
+                            <div className="flex items-center justify-between mb-4 md:mb-6">
+                                <h3 className="text-lg md:text-xl font-black text-slate-900">Upcoming Events</h3>
+                                <Button
+                                    variant="ghost"
+                                    className="text-blue-600 hover:text-[#FD5A1A] hover:bg-orange-50 font-bold text-xs md:text-sm h-7 md:h-8 px-2 md:px-3"
+                                    onClick={() => window.location.href = '/events'}
+                                >
+                                    View All
+                                </Button>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+                                {[...workshops.slice(0, 1), ...hackathons.slice(0, 1), ...activities.slice(0, 2)].map((event, idx) => (
+                                    <div
+                                        key={idx}
+                                        onClick={() => window.location.href = event.id.includes('h') ? '/hackathon' : event.id.includes('w') ? '/workshop' : '/events'}
+                                        className="bg-white p-3 md:p-4 rounded-xl md:rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-600/30 transition-all cursor-pointer group flex gap-3 md:gap-4 items-center"
+                                    >
+                                        <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-slate-100 overflow-hidden shrink-0 relative">
+                                            {event.thumbnailUrl ? (
+                                                <img src={event.thumbnailUrl} alt={event.name} className="w-full h-full object-cover" loading="lazy" />
+                                            ) : (
+                                                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-50 to-orange-50 text-blue-600">
+                                                    <Calendar className="w-6 h-6 md:w-8 md:h-8" />
                                                 </div>
-                                                <p className="text-slate-600 font-bold text-sm leading-relaxed line-clamp-3 italic">
-                                                    "{review.message}"
-                                                </p>
-                                            </motion.div>
-                                        ))}
+                                            )}
+                                        </div>
+                                        <div className="min-w-0 flex-1 py-1">
+                                            <div className="flex gap-1.5 md:gap-2 mb-1 md:mb-1.5">
+                                                <span className={cn(
+                                                    "px-1.5 md:px-2 py-0.5 rounded-md text-[8px] md:text-[9px] font-black uppercase tracking-wider",
+                                                    idx === 0 ? "bg-gradient-to-r from-[#FD5A1A]/10 to-orange-100 text-[#FD5A1A]" : "bg-gradient-to-r from-blue-100 to-blue-200 text-blue-600"
+                                                )}>
+                                                    {idx === 0 ? "Workshop" : "Event"}
+                                                </span>
+                                            </div>
+                                            <h4 className="font-bold text-slate-900 text-xs md:text-sm leading-tight mb-1 truncate group-hover:text-blue-600 transition-colors">{event.name}</h4>
+                                            <div className="flex items-center gap-2 md:gap-3 text-[9px] md:text-[10px] font-medium text-slate-400">
+                                                <span>{event.date}</span>
+                                                <span className="w-1 h-1 rounded-full bg-slate-300" />
+                                                <span>{event.mode}</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                ) : (
-                                    <div className="bg-white rounded-[32px] p-10 text-center border border-slate-100 shadow-sm">
-                                        <p className="text-slate-400 font-bold">No recent reviews submitted.</p>
+                                ))}
+                                {workshops.length === 0 && hackathons.length === 0 && (
+                                    <div className="col-span-full py-10 md:py-12 text-center bg-white rounded-xl md:rounded-2xl border border-dashed border-slate-200">
+                                        <Calendar className="w-10 h-10 md:w-12 md:h-12 text-slate-200 mx-auto mb-3" />
+                                        <p className="text-slate-400 font-bold text-sm md:text-base">No upcoming events scheduled.</p>
                                     </div>
                                 )}
-                            </section>
-                        </div>
-
-                        {/* Sidebar Column */}
-                        <div className="space-y-8">
-                            <h2 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-3">
-                                <Users className="w-6 h-6 text-indigo-600" /> My Profile
-                            </h2>
-
-                            {/* Redesigned Profile Card */}
-                            <div className="bg-blue-600 rounded-[40px] p-10 text-white shadow-2xl shadow-blue-900/20 relative overflow-hidden group">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-2xl group-hover:scale-110 transition-transform duration-500" />
-
-                                <div className="relative z-10 flex flex-col items-center">
-                                    <div className="w-24 h-24 rounded-full bg-white/20 backdrop-blur-md p-1 mb-6">
-                                        <div className="w-full h-full rounded-full bg-white text-blue-600 flex items-center justify-center text-3xl font-black shadow-xl">
-                                            {user?.name?.split(' ').map(n => n[0]).join('').toUpperCase() || "UN"}
-                                        </div>
-                                    </div>
-
-                                    <h3 className="text-2xl font-black mb-1">{user?.name}</h3>
-                                    <p className="text-blue-100 font-bold text-sm mb-6 opacity-80">{user?.email}</p>
-
-                                    <div className="flex justify-center gap-2">
-                                        <span className="px-4 py-1.5 bg-[#FD5A1A] text-white rounded-lg text-[10px] font-black uppercase tracking-widest shadow-lg">
-                                            STUDENT
-                                        </span>
-                                    </div>
-                                </div>
                             </div>
+                        </section>
 
-                            {/* Help & Support Widget */}
-                            <div className="bg-white rounded-[40px] p-8 border border-slate-100 shadow-xl shadow-slate-200/40">
-                                <h3 className="font-black text-slate-900 text-lg mb-4">Need Help?</h3>
-                                <div className="space-y-4 mb-8">
-                                    <div className="flex items-center gap-4 p-3 bg-slate-50 rounded-2xl">
-                                        <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center text-blue-600">
-                                            <MessageSquare className="w-5 h-5" />
+                        {/* Recent Reviews */}
+                        <section>
+                            <div className="flex items-center gap-3 mb-4 md:mb-6">
+                                <h3 className="text-lg md:text-xl font-black text-slate-900">Your Feedback</h3>
+                                <div className="h-px bg-slate-200 flex-1" />
+                            </div>
+                            {myReviews.length > 0 ? (
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+                                    {myReviews.slice(0, 4).map((review) => (
+                                        <div key={review._id} className="bg-white p-4 md:p-5 rounded-xl md:rounded-2xl border border-slate-100 shadow-sm relative">
+                                            <div className="absolute top-3 md:top-5 right-3 md:right-5 flex gap-0.5">
+                                                {[...Array(5)].map((_, i) => (
+                                                    <Star key={i} className={cn("w-2.5 h-2.5 md:w-3 md:h-3", i < review.rating ? "text-[#FD5A1A] fill-[#FD5A1A]" : "text-slate-200")} />
+                                                ))}
+                                            </div>
+                                            <span className="px-2 md:px-2.5 py-0.5 md:py-1 bg-gradient-to-r from-slate-50 to-blue-50 text-slate-700 rounded-lg text-[8px] md:text-[9px] font-black uppercase tracking-widest mb-2 md:mb-3 inline-block border border-slate-100">
+                                                {review.category}
+                                            </span>
+                                            <p className="text-xs md:text-sm font-medium text-slate-600 italic leading-relaxed line-clamp-3">"{review.message}"</p>
                                         </div>
-                                        <div>
-                                            <p className="text-xs font-black text-slate-900 tracking-tight">Academic Support</p>
-                                            <p className="text-[10px] font-bold text-slate-400">Response in 24h</p>
-                                        </div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <div className="bg-white p-6 md:p-8 rounded-xl md:rounded-2xl border border-slate-100 text-center">
+                                    <MessageSquare className="w-8 h-8 md:w-10 md:h-10 text-slate-200 mx-auto mb-3" />
+                                    <p className="text-slate-400 font-medium text-xs md:text-sm">You haven't submitted any feedback yet.</p>
+                                </div>
+                            )}
+                        </section>
+
+                    </div>
+
+                    {/* Right Column (Sidebar) */}
+                    <div className="lg:col-span-4 space-y-4 md:space-y-6">
+
+                        {/* Profile Card with Logo Colors */}
+                        <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl md:rounded-[2.5rem] p-6 md:p-8 text-white relative overflow-hidden shadow-2xl shadow-blue-900/20 group">
+                            <div className="absolute top-0 right-0 w-32 h-32 md:w-40 md:h-40 bg-[#FD5A1A]/20 rounded-full blur-3xl -mr-10 -mt-10 group-hover:scale-150 transition-transform duration-700" />
+                            <div className="absolute bottom-0 left-0 w-24 h-24 md:w-32 md:h-32 bg-white/10 rounded-full blur-2xl -ml-10 -mb-10" />
+
+                            <div className="relative z-10 flex flex-col items-center text-center">
+                                <div className="w-20 h-20 md:w-24 md:h-24 p-1.5 bg-white/10 backdrop-blur-md rounded-full mb-4 md:mb-5">
+                                    <div className="w-full h-full bg-white rounded-full flex items-center justify-center text-blue-600 text-2xl md:text-3xl font-black shadow-inner">
+                                        {user?.name?.charAt(0).toUpperCase()}
                                     </div>
                                 </div>
-                                <Button className="w-full bg-slate-900 hover:bg-black text-white font-black py-4 rounded-2xl transition-all" onClick={() => window.location.href = '/contact'}>
-                                    Contact Support
+                                <h3 className="text-xl md:text-2xl font-black mb-1 md:mb-1.5">{user?.name}</h3>
+                                <p className="text-blue-100/80 text-xs md:text-sm font-medium mb-4 md:mb-6 break-all px-2 md:px-4">{user?.email}</p>
+
+                                <div className="w-full bg-white/10 backdrop-blur-sm rounded-xl md:rounded-2xl p-3 md:p-4 flex justify-between items-center mb-4 md:mb-6 border border-white/10">
+                                    <div className="text-left">
+                                        <p className="text-[9px] md:text-[10px] font-bold text-blue-200 uppercase tracking-wider">Status</p>
+                                        <p className="font-bold text-xs md:text-sm">Active</p>
+                                    </div>
+                                    <div className="h-6 md:h-8 w-px bg-white/20" />
+                                    <div className="text-right">
+                                        <p className="text-[9px] md:text-[10px] font-bold text-blue-200 uppercase tracking-wider">Plan</p>
+                                        <p className="font-bold text-xs md:text-sm">Free</p>
+                                    </div>
+                                </div>
+
+                                <Button className="w-full bg-white text-blue-600 hover:bg-blue-50 font-black h-10 md:h-12 rounded-xl transition-colors text-sm md:text-base">
+                                    Edit Profile
                                 </Button>
                             </div>
                         </div>
+
+                        {/* Continue Learning Widget */}
+                        <div className="bg-white rounded-xl md:rounded-2xl p-5 md:p-6 border border-slate-100 shadow-lg shadow-slate-200/30">
+                            <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                                <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-indigo-50 to-purple-50 flex items-center justify-center text-indigo-600">
+                                    <Activity className="w-4 h-4 md:w-5 md:h-5" />
+                                </div>
+                                <h3 className="font-black text-slate-900 text-sm md:text-base">Current Progress</h3>
+                            </div>
+                            <div className="text-center py-4 md:py-6">
+                                <div className="inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full bg-slate-50 border-4 border-slate-100 text-slate-300 mb-2 md:mb-3">
+                                    <BookOpen className="w-5 h-5 md:w-6 h-6" />
+                                </div>
+                                <p className="text-xs md:text-sm font-bold text-slate-900 mb-1">No Active Courses</p>
+                                <p className="text-[10px] md:text-xs text-slate-400 font-medium mb-3 md:mb-4">Enroll in a course to track progress.</p>
+                                <Button
+                                    onClick={() => window.location.href = '/courses'}
+                                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-600/90 hover:to-blue-700/90 text-white font-bold h-9 md:h-10 rounded-xl text-xs md:text-sm"
+                                >
+                                    Start Learning
+                                </Button>
+                            </div>
+                        </div>
+
+                        {/* Help Widget */}
+                        <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl md:rounded-2xl p-5 md:p-6 text-white shadow-xl">
+                            <div className="flex items-center gap-2 mb-2">
+                                <Award className="w-5 h-5 text-[#FD5A1A]" />
+                                <h3 className="font-black text-base md:text-lg">Need Assistance?</h3>
+                            </div>
+                            <p className="text-slate-400 text-[10px] md:text-xs font-medium mb-4 md:mb-6 leading-relaxed">
+                                Our support team is here to help with any academic or technical issues.
+                            </p>
+                            <Button
+                                onClick={() => window.location.href = '/contact'}
+                                className="w-full bg-white/10 hover:bg-white/20 text-white border-none font-bold h-9 md:h-10 rounded-xl text-xs md:text-sm backdrop-blur-sm"
+                            >
+                                Contact Support
+                            </Button>
+                        </div>
+
                     </div>
                 </div>
-            </main>
 
+            </main>
             <Footer />
         </div>
     );

@@ -34,7 +34,7 @@ export const CourseDetailHero: React.FC<CourseDetailHeroProps> = ({ course, hand
             {/* Vibrant Background Effects */}
             <div className="absolute inset-0 pointer-events-none">
                 {/* Top Right Orange Blast */}
-                <div className="absolute top-[-10%] right-[-10%] w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] md:w-[800px] md:h-[800px] bg-[#FF6B35] opacity-40 rounded-full blur-[80px] md:blur-[120px] mix-blend-screen animate-pulse" />
+                <div className="absolute top-[-10%] right-[-10%] w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] md:w-[800px] md:h-[800px] bg-[#FD5A1A] opacity-40 rounded-full blur-[80px] md:blur-[120px] mix-blend-screen animate-pulse" />
 
                 {/* Bottom Left Blue Depth */}
                 <div className="absolute bottom-[-20%] left-[-10%] w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] md:w-[800px] md:h-[800px] bg-[#60a5fa] opacity-20 rounded-full blur-[60px] md:blur-[100px] mix-blend-overlay" />
@@ -49,28 +49,28 @@ export const CourseDetailHero: React.FC<CourseDetailHeroProps> = ({ course, hand
 
                     {/* LEFT SIDE: Content */}
                     <div className="text-white space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6B35]/10 border border-[#FF6B35]/30 text-[#FF6B35] text-xs font-bold uppercase tracking-wider">
-                            <span className="w-2 h-2 rounded-full bg-[#FF6B35] animate-pulse" />
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FD5A1A]/10 border border-[#FD5A1A]/30 text-[#FD5A1A] text-xs font-bold uppercase tracking-wider">
+                            <span className="w-2 h-2 rounded-full bg-[#FD5A1A] animate-pulse" />
                             Enrolling Now
                         </div>
 
-                        <h1 className="text-3xl sm:text-4xl md:text-6xl xl:text-7xl font-black leading-tight drop-shadow-lg">
+                        <h1 className="text-3xl sm:text-5xl md:text-6xl xl:text-7xl font-black leading-tight drop-shadow-lg">
                             <span className="text-white">Become A</span> <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-[#FF6B35] drop-shadow-2xl">{course.title} PRO</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-[#FD5A1A] drop-shadow-2xl">{course.title} PRO</span>
                         </h1>
 
-                        <p className="text-white text-base md:text-lg xl:text-xl font-normal leading-relaxed max-w-xl drop-shadow-md mx-auto lg:mx-0">
-                            Dominate the digital world with our comprehensive <span className="text-[#FF8C5A] font-bold">{course.category}</span> training program. Get placed in <span className="text-[#FF8C5A] font-bold">top MNCs</span>.
+                        <p className="text-white text-lg md:text-xl font-normal leading-relaxed max-w-xl drop-shadow-md mx-auto lg:mx-0">
+                            Dominate the digital world with our comprehensive <span className="text-[#FD5A1A] font-bold">{course.category}</span> training program. Get placed in <span className="text-[#FD5A1A] font-bold">top MNCs</span>.
                         </p>
 
                         <div className="flex flex-col sm:flex-row flex-wrap items-center lg:items-start justify-center lg:justify-start gap-4 sm:gap-6 pt-2 sm:pt-4">
                             {/* Duration Badge - Professional Look */}
                             <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl backdrop-blur-sm shadow-lg hover:bg-white/10 transition-colors">
-                                <div className="p-1.5 sm:p-2 bg-[#FF6B35]/20 rounded-xl">
-                                    <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF6B35]" />
+                                <div className="p-1.5 sm:p-2 bg-[#FD5A1A]/20 rounded-xl">
+                                    <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-[#FD5A1A]" />
                                 </div>
                                 <div className="text-left">
-                                    <div className="text-blue-200 text-[10px] font-bold uppercase tracking-wider mb-0.5 whitespace-nowrap">Course Duration</div>
+                                    <div className="text-blue-200 text-xs font-bold uppercase tracking-wider mb-0.5 whitespace-nowrap">Course Duration</div>
                                     <div className="text-white text-lg sm:text-xl font-bold">{course.duration}</div>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@ export const CourseDetailHero: React.FC<CourseDetailHeroProps> = ({ course, hand
                                     <span className="text-2xl sm:text-3xl font-black text-white">2k+</span>
                                     <span className="text-blue-200 font-medium text-base sm:text-lg">Students</span>
                                 </div>
-                                <div className="text-[10px] sm:text-sm text-white/60 font-medium">Currently Enrolled</div>
+                                <div className="text-xs sm:text-sm text-white/60 font-medium">Currently Enrolled</div>
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@ export const CourseDetailHero: React.FC<CourseDetailHeroProps> = ({ course, hand
                                 />
                             </div>
 
-                            <Button className="w-full h-12 sm:h-14 bg-[#FF6B35] hover:bg-orange-600 text-white rounded-xl font-bold text-lg sm:text-xl shadow-lg shadow-orange-500/20 transition-all mt-3 sm:mt-4">
+                            <Button className="w-full h-12 sm:h-14 bg-[#FD5A1A] hover:bg-[#e04f16] text-white rounded-xl font-bold text-lg sm:text-xl shadow-lg shadow-[#FD5A1A]/20 transition-all mt-3 sm:mt-4">
                                 Get Started Now
                             </Button>
                         </form>
