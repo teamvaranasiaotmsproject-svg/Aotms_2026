@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Header } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/Footer";
-import { EventManager, EventItem } from "@/components/events/EventManager";
+import { InternshipManager, EventItem } from "@/components/events/InternshipManager";
 import { useAuthStore } from "@/store/authStore";
 import { toast } from "sonner";
 
@@ -175,7 +175,7 @@ const InternshipsPage = () => {
         <div className="bg-white min-h-screen flex flex-col">
             <Header />
             <main className="pt-28 md:pt-32 flex-1 relative">
-                <EventManager
+                <InternshipManager
                     events={internships}
                     title="Internships"
                     subtitle="Join our industrial internships to work on real-world projects and gain professional exposure."
