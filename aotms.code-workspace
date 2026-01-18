@@ -1,0 +1,20 @@
+{
+    "folders": [
+        {
+            "name": "Frontend",
+            "path": "./Frontend"
+        },
+        {
+            "name": "Backend",
+            "path": "./Backend"
+        },
+        {
+            "name": "Root",
+            "path": "."
+        }
+    ],
+    "settings": {
+        "typescript.tsdk": "Frontend/node_modules/typescript/lib",
+        "typescript.enablePromptUseWorkspaceTsdk": true
+    }
+}

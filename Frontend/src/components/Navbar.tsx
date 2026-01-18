@@ -27,7 +27,6 @@ import { cn } from "@/lib/utils";
 import { TopNavbar } from "./TopNavbar";
 
 // --- Configuration & Data ---
-
 const courses = [
   { name: "AI & Machine Learning", href: "/course/ai-machine-learning", icon: FaBrain },
   { name: "Cyber Security", href: "/course/cyber-security", icon: FaShieldAlt },
@@ -54,7 +53,7 @@ const navLinks = [
     dropdownItems: [
       { name: "Placement", href: "/placements", icon: FaChartBar, desc: "Success records" },
       { name: "Internships", href: "/internships", icon: GraduationCap, desc: "Industrial training" },
-      { name: "Career Resources", href: "/Career Resources", icon: FaUserTie, desc: "Learning materials" },
+      { name: "Career Resources", href: "/resources", icon: FaUserTie, desc: "Learning materials" },
     ]
   },
   {
