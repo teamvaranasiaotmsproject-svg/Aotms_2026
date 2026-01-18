@@ -26,7 +26,7 @@ const trustStats = [
 ];
 
 export const HeroSection = () => {
-  const [heroImages, setHeroImages] = useState<string[]>([]);
+  const [heroImages, setHeroImages] = useState<string[]>(["/Andra-hackathon-2025_Data_AI_d2uquj.jpg"]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const shouldReduceMotion = useReducedMotion();
   const isMobile = useMemo(() => typeof window !== 'undefined' && window.innerWidth < 768, []);
@@ -38,7 +38,8 @@ export const HeroSection = () => {
           `${import.meta.env.VITE_API_URL}/api/hero`
         );
         if (Array.isArray(res.data)) {
-          setHeroImages(res.data.map((i: any) => i.imageUrl));
+          const apiImages = res.data.map((i: { imageUrl: string }) => i.imageUrl);
+          setHeroImages(["/Andra-hackathon-2025_Data_AI_d2uquj.jpg", ...apiImages]);
         }
       } catch (err) {
         console.error(err);
@@ -72,8 +73,7 @@ export const HeroSection = () => {
 
             {/* MOBILE HEADLINE */}
             <h1
-              className="sm:hidden font-display font-bold tracking-tight text-foreground leading-[1.1] mt-8"
-              style={{ fontSize: "clamp(2.3rem, 6vw, 3rem)" }}
+              className="sm:hidden font-display font-bold tracking-tight text-foreground leading-[1.1] mt-8 text-[clamp(2.3rem,6vw,3rem)]"
             >
               Become <span className="text-[#0075CF]">Job-Ready</span> in 90 Days with
               Expert-Led IT Training in{" "}
@@ -125,12 +125,13 @@ export const HeroSection = () => {
                 <ArrowRight className="ml-2 w-4 h-4" />
               </a>
 
-              <button className="inline-flex items-center justify-center h-11 px-8 text-sm font-medium text-[#0075CF] bg-[#0075CF]/5 border border-[#0075CF]/20 rounded-md hover:bg-[#0075CF]/10">
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center h-11 px-8 text-sm font-medium text-[#0075CF] bg-[#0075CF]/5 border border-[#0075CF]/20 rounded-md hover:bg-[#0075CF]/10 transition-colors"
+              >
                 <PlayCircle className="mr-2 w-4 h-4 text-orange-500" />
-                <a href="/contact">
-                  Book a Free Demo Class
-                </a>
-              </button>
+                Book a Free Demo Class
+              </a>
             </div>
 
             {/* STATS */}
@@ -188,3 +189,5 @@ export const HeroSection = () => {
     </section>
   );
 };
+
+// Refreshed Hero Section

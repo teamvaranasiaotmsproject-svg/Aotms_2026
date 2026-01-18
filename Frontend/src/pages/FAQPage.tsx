@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Header as Navbar } from "@/components/Navbar";
+import { Header as Navbar } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/Footer";
 import { Plus, Minus, Search, MessageCircle, HelpCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";

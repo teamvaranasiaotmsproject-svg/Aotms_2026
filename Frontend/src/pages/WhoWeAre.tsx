@@ -1,4 +1,4 @@
-import { Header } from "@/components/Navbar";
+import { Header } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Target, Eye, Award, Users, Building2, TrendingUp, CheckCircle, Quote } from "lucide-react";

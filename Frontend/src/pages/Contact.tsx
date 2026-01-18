@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { sanitizeInput, validate } from "@/utils/validation";
-import { Header } from "@/components/Navbar";
+import { Header } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/Footer";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -80,9 +80,9 @@ const Contact = () => {
       await axios.post(API_URL, formData);
       toast.success("Message sent successfully! We will get back to you soon.");
       setFormData({ name: '', email: '', phone: '', message: '' });
-    } catch (error: unknown) {
+    } catch (error: any) {
       console.error(error);
-      const errorMessage = (error as any).response?.data?.msg || "Something went wrong. Please try again.";
+      const errorMessage = error.response?.data?.msg || "Something went wrong. Please try again.";
       toast.error(errorMessage);
     } finally {
       setLoading(false);
@@ -149,17 +149,18 @@ const Contact = () => {
                     <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Follow Us</h3>
                     <div className="flex gap-4">
                       {[
-                        { icon: Youtube, href: "https://youtube.com/@aotms" },
-                        { icon: Instagram, href: "https://instagram.com/academyoftechmasters" },
-                        { icon: Linkedin, href: "https://linkedin.com" },
-                        { icon: Send, href: "https://t.me/aotms" },
-                        { icon: FaXTwitter, href: "https://twitter.com/aotms" },
+                        { icon: Youtube, href: "https://youtube.com/@aotms", title: "YouTube" },
+                        { icon: Instagram, href: "https://instagram.com/academyoftechmasters", title: "Instagram" },
+                        { icon: Linkedin, href: "https://linkedin.com", title: "LinkedIn" },
+                        { icon: Send, href: "https://t.me/aotms", title: "Telegram" },
+                        { icon: FaXTwitter, href: "https://twitter.com/aotms", title: "X (Twitter)" },
                       ].map((item, i) => (
                         <a
                           key={i}
                           href={item.href}
                           target="_blank"
                           rel="noreferrer"
+                          title={item.title}
                           className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white hover:scale-110 transition-all duration-300"
                         >
                           <item.icon className="w-5 h-5" />
@@ -248,8 +249,7 @@ const Contact = () => {
           <div className="w-full h-[350px] md:h-[450px] rounded-[24px] md:rounded-[32px] overflow-hidden shadow-xl border border-slate-200 relative z-0">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3825.5236791966513!2d80.64593811057928!3d16.49963922770637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35fb43b8f6af1d%3A0x18151e18505cbaf8!2sAcademy%20Of%20Tech%20Masters!5e0!3m2!1sen!2sin!4v1768037573566!5m2!1sen!2sin"
-              className="absolute inset-0 w-full h-full"
-              style={{ border: 0 }}
+              className="absolute inset-0 w-full h-full border-0"
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

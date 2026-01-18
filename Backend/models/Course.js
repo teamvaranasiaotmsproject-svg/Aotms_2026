@@ -1,10 +1,5 @@
 const mongoose = require('mongoose');
 
-const ModuleSchema = new mongoose.Schema({
-    title: { type: String, required: true },
-    lessons: [{ type: String }]
-});
-
 const CourseSchema = new mongoose.Schema({
     id: { type: Number, required: true, unique: true },
     slug: { type: String, required: true, unique: true },
@@ -19,8 +14,7 @@ const CourseSchema = new mongoose.Schema({
     price: { type: String, required: true },
     originalPrice: { type: String, required: true },
     rating: { type: Number, default: 5 },
-    themeColor: { type: String, default: "#0EA5E9" },
-    curriculum: [ModuleSchema]
+    themeColor: { type: String, default: "#0EA5E9" }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Course', CourseSchema);

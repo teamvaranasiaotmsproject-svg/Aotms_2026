@@ -66,7 +66,7 @@ export const AboutSection = () => {
 
             </div>
 
-            <h2 className="text-3xl md:text-4xl lg:text-6xl font-black tracking-tight text-slate-900 leading-[1.15]">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 leading-[1.15]">
               World-Class <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Education</span>,<br className="hidden md:block" /> and the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Academy</span> difference.
             </h2>
 

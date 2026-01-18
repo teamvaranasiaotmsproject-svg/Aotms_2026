@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Calendar } from "lucide-react";
-import { Header } from "@/components/Navbar";
+import { Header } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/Footer";
 import { EventManager, EventItem } from "@/components/events/EventManager";
 import { CertificateShowcase } from "@/components/CertificateShowcase";

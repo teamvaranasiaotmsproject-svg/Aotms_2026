@@ -137,6 +137,103 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// Auth Middleware
+const authMiddleware = async (req, res, next) => {
+    // Get token from header
+    const token = req.header('x-auth-token');
+
+    // Check if not token
+    if (!token) {
+        return res.status(401).json({ msg: 'No token, authorization denied' });
+    }
+
+    // Verify token
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret');
+        req.user = decoded.user;
+        next();
+    } catch (err) {
+        res.status(401).json({ msg: 'Token is not valid' });
+    }
+};
+
+// @route   GET api/auth/me
+// @desc    Get current user
+// @access  Private
+router.get('/me', authMiddleware, async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select('-password');
+        res.json(user);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// Google Authentication
+router.post('/google', async (req, res) => {
+    try {
+        const { email, name, avatar, googleId } = req.body;
+
+        // Check if user exists by email
+        let user = await User.findOne({ email });
+
+        if (!user) {
+            // Create new user if they don't exist
+            user = new User({
+                name,
+                email,
+                avatar: avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random`,
+                googleId,
+                role: 'user'
+            });
+            await user.save();
+        } else {
+            // ALWAYS update the avatar from Google to ensure it stays fresh in MongoDB
+            let updated = false;
+            if (avatar && user.avatar !== avatar) {
+                user.avatar = avatar;
+                updated = true;
+                console.log(`Updated avatar for user: ${email}`);
+            }
+            if (googleId && !user.googleId) {
+                user.googleId = googleId;
+                updated = true;
+            }
+            if (updated) await user.save();
+        }
+
+        // Return Token
+        const payload = {
+            user: {
+                id: user.id
+            }
+        };
+
+        const jwt = require('jsonwebtoken');
+        jwt.sign(
+            payload,
+            process.env.JWT_SECRET || 'secret',
+            { expiresIn: '7d' },
+            (err, token) => {
+                if (err) throw err;
+                res.json({
+                    token,
+                    user: {
+                        id: user.id,
+                        name: user.name,
+                        email: user.email,
+                        avatar: user.avatar,
+                        role: user.role
+                    }
+                });
+            }
+        );
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
 // Forgot Password
 router.post('/forgot-password', async (req, res) => {
     const { email } = req.body;

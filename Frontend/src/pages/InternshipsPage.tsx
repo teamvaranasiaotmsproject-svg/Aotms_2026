@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Header } from "@/components/Navbar";
+import { Header } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/Footer";
 import { EventManager, EventItem } from "@/components/events/EventManager";
 import { useAuthStore } from "@/store/authStore";

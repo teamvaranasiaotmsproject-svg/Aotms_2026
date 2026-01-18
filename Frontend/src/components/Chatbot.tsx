@@ -133,6 +133,8 @@ const Chatbot: React.FC = () => {
             <button
               onClick={() => setShowMenu(!showMenu)}
               className="text-white hover:bg-white/10 rounded-full p-2 transition-colors relative"
+              aria-label="More options"
+              title="More options"
             >
               <MoreHorizontal className="w-5 h-5" />
             </button>
@@ -174,16 +176,16 @@ const Chatbot: React.FC = () => {
                 </div>
                 {msg.sender === 'bot' && (
                   <div className="flex items-center gap-3 mt-1 ml-1 text-gray-400">
-                    <button className="hover:text-gray-600 transition-colors" title="Copy">
+                    <button className="hover:text-gray-600 transition-colors" title="Copy" aria-label="Copy message">
                       <Copy className="w-3.5 h-3.5" />
                     </button>
-                    <button className="hover:text-gray-600 transition-colors" title="Like">
+                    <button className="hover:text-gray-600 transition-colors" title="Like" aria-label="Like response">
                       <ThumbsUp className="w-3.5 h-3.5" />
                     </button>
-                    <button className="hover:text-gray-600 transition-colors" title="Dislike">
+                    <button className="hover:text-gray-600 transition-colors" title="Dislike" aria-label="Dislike response">
                       <ThumbsDown className="w-3.5 h-3.5" />
                     </button>
-                    <button className="hover:text-gray-600 transition-colors" title="Regenerate">
+                    <button className="hover:text-gray-600 transition-colors" title="Regenerate" aria-label="Regenerate response">
                       <RefreshCw className="w-3.5 h-3.5" />
                     </button>
                   </div>
@@ -231,10 +233,18 @@ const Chatbot: React.FC = () => {
                 type="button"
                 onClick={() => setShowEmojiPicker(!showEmojiPicker)}
                 className={`transition-colors ${showEmojiPicker ? 'text-primary' : 'text-gray-400 hover:text-gray-600'}`}
+                aria-label="Add emoji"
+                title="Add emoji"
               >
                 <Smile className="w-5 h-5" />
               </button>
-              <button type="submit" disabled={!inputValue.trim()} className="text-gray-400 hover:text-primary disabled:opacity-50 transition-colors">
+              <button
+                type="submit"
+                disabled={!inputValue.trim()}
+                className="text-gray-400 hover:text-primary disabled:opacity-50 transition-colors"
+                aria-label="Send message"
+                title="Send message"
+              >
                 <Send className="w-5 h-5" />
               </button>
             </div>
@@ -244,7 +254,13 @@ const Chatbot: React.FC = () => {
 
       {/* Floating Toggle Button */}
       {!isOpen && (
-        <button ref={toggleBtnRef} onClick={toggleChat} className="chat-toggle-btn shadow-xl hover:shadow-2xl transition-all">
+        <button
+          ref={toggleBtnRef}
+          onClick={toggleChat}
+          className="chat-toggle-btn shadow-xl hover:shadow-2xl transition-all"
+          aria-label="Open support chat"
+          title="Open support chat"
+        >
           <div className="flex items-center gap-2">
             <MessageSquare className="w-5 h-5" />
             <span className="font-semibold text-sm">AOTMS</span>

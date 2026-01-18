@@ -28,60 +28,38 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
     {
-        name: "Raviteja",
-        title: "Lead Cyber Security Analyst",
-        specialty: "Cyber Security",
+        name: "V. Adilakshmi",
+        title: "Data Analytics Expert",
+        specialty: "Data Analytics",
         experience: "8+ Years",
         description:
-            "Passionate about building secure systems and mentoring the next generation of security professionals. Specialist in network security and threat hunting. Secured 50+ enterprise networks.",
+            "Passionate about uncovering hidden patterns in data to drive business growth. Expert in statistical analysis, data visualization, and predictive modeling for real-world impact.",
         imageUrl:
             "/images/mentos-1.jpg",
         linkedinUrl: "#",
         githubUrl: "#",
     },
     {
-        name: "Divya Rani",
-        title: "Senior QA Automation Engineer",
-        specialty: "QA Automation",
+        name: "Intiaz",
+        title: "Cyber Security Specialist",
+        specialty: "Cyber Security",
         experience: "6+ Years",
         description:
-            "Focused on delivering high-quality software through advanced automation frameworks. Expert in Selenium, Playwright, and CI/CD integration. Built global scale QA framework.",
+            "Dedicated to protecting digital frontiers and fortifying enterprise defenses. Specialist in ethical hacking, network security, and incident response with a focus on zero-trust architectures.",
         imageUrl:
             "/images/mentos-2.jpg",
         linkedinUrl: "#",
         githubUrl: "#",
     },
     {
-        name: "Chaitanya",
-        title: "ServiceNow Architect",
-        specialty: "ServiceNow",
+        name: "P. Chaitanya",
+        title: "CRT Training Expert",
+        specialty: "CRT",
         experience: "10+ Years",
         description:
-            "Deep expertise in IT Service Management and enterprise workflow automation using ServiceNow. Help businesses transform their service delivery. Architected 20+ ServiceNow instances.",
+            "Empowering students with essential Campus Recruitment Training (CRT) skills. Focused on aptitude, soft skills, and interview preparation to ensure career success in the tech industry.",
         imageUrl:
             "/images/mentos-3.jpg",
-        linkedinUrl: "#",
-    },
-    {
-        name: "Kiran Kumar",
-        title: "Solutions Architect",
-        specialty: "Cloud Computing",
-        experience: "7+ Years",
-        description:
-            "Cloud native specialist with focus on AWS and Azure migrations. Helping students master the complexities of distributed systems. Managed 100+ cloud servers.",
-        imageUrl:
-            "/images/mentos-4.jpg",
-        linkedinUrl: "#",
-    },
-    {
-        name: "Lakshmi Priya",
-        title: "Principal Data Scientist",
-        specialty: "Data Analytics",
-        experience: "9+ Years",
-        description:
-            "Transforming big data into actionable insights. Expert in predictive modeling, statistical analysis, and machine learning pipelines. PhD in Applied Mathematics.",
-        imageUrl:
-            "/images/mentor-5.jpg",
         linkedinUrl: "#",
     }
 ];
@@ -127,7 +105,7 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
                         )}
                     >
                         <div className={cn(
-                            "w-14 h-14 md:w-16 md:h-16 rounded-full mb-2 transition-all duration-300",
+                            "w-14 h-14 md:w-16 md:h-16 rounded-full transition-all duration-300",
                             currentIndex === index
                                 ? "ring-2 ring-blue-600 ring-offset-2 scale-110"
                                 : "opacity-70 hover:opacity-100 filter grayscale hover:grayscale-0"
@@ -138,12 +116,6 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
                                 className="w-full h-full object-cover rounded-full"
                             />
                         </div>
-                        <span className={cn(
-                            "text-[10px] md:text-xs font-bold transition-colors uppercase tracking-tight",
-                            currentIndex === index ? "text-blue-700" : "text-slate-500"
-                        )}>
-                            {mentor.name.split(' ')[0]}
-                        </span>
                     </button>
                 ))}
             </div>

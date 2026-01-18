@@ -72,28 +72,28 @@ export const TopNavbar = ({ isScrolled, setAuthMode, setShowAuthModal }: TopNavb
                                         <div className="absolute top-0 left-1/2 -translate-x-1/2 md:left-auto md:right-4 md:translate-x-0 w-3 h-3 -mt-1.5 bg-white rotate-45 border-l border-t border-slate-100"></div>
 
                                         <div className="relative bg-white z-10 grid grid-cols-4 gap-3">
-                                            <a href="https://youtube.com/@aotms?si=mj3-j_JH4lHC3zeF" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-[#FF0000] hover:bg-[#CC0000] hover:scale-110 transition-all shadow-sm">
+                                            <a href="https://youtube.com/@aotms?si=mj3-j_JH4lHC3zeF" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-[#FF0000] hover:bg-[#CC0000] hover:scale-110 transition-all shadow-sm" aria-label="YouTube" title="YouTube">
                                                 <FaYoutube className="w-5 h-5" />
                                             </a>
-                                            <a href="https://www.instagram.com/academyoftechmasters?igsh=enZ5YjYwOXg1cW80&utm_source=qr" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:brightness-110 hover:scale-110 transition-all shadow-sm">
+                                            <a href="https://www.instagram.com/academyoftechmasters?igsh=enZ5YjYwOXg1cW80&utm_source=qr" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:brightness-110 hover:scale-110 transition-all shadow-sm" aria-label="Instagram" title="Instagram">
                                                 <FaInstagram className="w-5 h-5" />
                                             </a>
-                                            <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-[#0077B5] hover:bg-[#005582] hover:scale-110 transition-all shadow-sm">
+                                            <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-[#0077B5] hover:bg-[#005582] hover:scale-110 transition-all shadow-sm" aria-label="LinkedIn" title="LinkedIn">
                                                 <FaLinkedin className="w-5 h-5" />
                                             </a>
-                                            <a href="https://twitter.com/aotms" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-black hover:bg-[#222222] hover:scale-110 transition-all shadow-sm">
+                                            <a href="https://twitter.com/aotms" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-black hover:bg-[#222222] hover:scale-110 transition-all shadow-sm" aria-label="X (Twitter)" title="X (Twitter)">
                                                 <FaXTwitter className="w-5 h-5" />
                                             </a>
-                                            <a href="https://www.facebook.com/aotms" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-[#1877F2] hover:bg-[#155ab0] hover:scale-110 transition-all shadow-sm">
+                                            <a href="https://www.facebook.com/aotms" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-[#1877F2] hover:bg-[#155ab0] hover:scale-110 transition-all shadow-sm" aria-label="Facebook" title="Facebook">
                                                 <FaFacebook className="w-5 h-5" />
                                             </a>
-                                            <a href="https://wa.me/918019952233" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-[#25D366] hover:bg-[#20C055] hover:scale-110 transition-all shadow-sm">
+                                            <a href="https://wa.me/918019952233" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-[#25D366] hover:bg-[#20C055] hover:scale-110 transition-all shadow-sm" aria-label="WhatsApp" title="WhatsApp">
                                                 <FaWhatsapp className="w-5 h-5" />
                                             </a>
-                                            <a href="https://t.me/aotms" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-[#0088CC] hover:bg-[#0077B5] hover:scale-110 transition-all shadow-sm">
+                                            <a href="https://t.me/aotms" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-[#0088CC] hover:bg-[#0077B5] hover:scale-110 transition-all shadow-sm" aria-label="Telegram" title="Telegram">
                                                 <FaTelegram className="w-5 h-5" />
                                             </a>
-                                            <a href="mailto:[EMAIL_ADDRESS]" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-[#D44638] hover:bg-[#C33D2E] hover:scale-110 transition-all shadow-sm">
+                                            <a href="mailto:Info@aotms.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center text-white bg-[#D44638] hover:bg-[#C33D2E] hover:scale-110 transition-all shadow-sm" aria-label="Email Us" title="Email Us">
                                                 <Mail className="w-5 h-5" />
                                             </a>
                                         </div>
@@ -123,9 +123,15 @@ export const TopNavbar = ({ isScrolled, setAuthMode, setShowAuthModal }: TopNavb
                                         <span><span className="lg:hidden">Enroll Cart</span><span className="hidden lg:inline">Enroll Cart</span> ({cartItemCount})</span>
                                     </Link>
                                     <div className="hidden md:block w-px h-3 bg-white/60"></div>
-                                    <Link to="/dashboard" className="flex items-center gap-1.5 hover:text-accent uppercase tracking-wider font-bold text-xs transition-colors">
-                                        <User className="w-3 h-3" strokeWidth={3} />
-                                        <span><span className="lg:hidden">Profile</span><span className="hidden lg:inline">My Profile</span></span>
+                                    <Link to="/dashboard" className="flex items-center gap-1.5 hover:text-accent transition-colors">
+                                        <div className="w-6 h-6 rounded-full overflow-hidden border border-white/20 flex items-center justify-center bg-white/10 shrink-0">
+                                            {user?.avatar ? (
+                                                <img src={user.avatar} alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                                            ) : (
+                                                <User className="w-3 h-3 text-white" strokeWidth={3} />
+                                            )}
+                                        </div>
+                                        <span className="uppercase tracking-wider font-bold text-xs"><span className="lg:hidden">Profile</span><span className="hidden lg:inline">My Profile</span></span>
                                     </Link>
                                 </div>
                             )}

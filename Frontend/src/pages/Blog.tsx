@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from "framer-motion";
-import { Header } from "@/components/Navbar";
+import { Header } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/Footer";
 import { blogPostsData } from "@/data/blogPosts";
 import { BlogPostCard } from "@/components/BlogPostCard";

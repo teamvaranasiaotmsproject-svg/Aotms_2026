@@ -331,6 +331,7 @@ export const EventManager = ({ events, title, subtitle }: EventManagerProps) => 
                                 <button
                                     onClick={() => setIsRegModalOpen(false)}
                                     className="absolute top-6 right-6 p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+                                    title="Close registration modal"
                                 >
                                     <X className="w-5 h-5 text-white" />
                                 </button>

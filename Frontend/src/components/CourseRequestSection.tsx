@@ -90,7 +90,7 @@ export const CourseRequestSection = () => {
             <div className="w-full px-4 sm:px-6 md:px-12 lg:px-20 relative z-10">
                 <div className="flex flex-col lg:flex-row items-center justify-between relative gap-10 lg:gap-16">
                     {/* Right Side - Course Image Auto-Scroll Carousel */}
-                    <div className="lg:w-[50%] relative h-full min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] overflow-hidden flex flex-col justify-center gap-4 sm:gap-6 order-2 lg:order-2">
+                    <div className="lg:w-[50%] relative h-full min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] overflow-hidden flex flex-col justify-center gap-4 sm:gap-6 order-1 lg:order-2">
                         {/* Overlay Gradient for smooth fade on sides */}
                         <div className="absolute top-0 left-0 bottom-0 w-20 bg-gradient-to-r from-[#0066CC] to-transparent z-10" />
                         <div className="absolute top-0 right-0 bottom-0 w-20 bg-gradient-to-l from-[#0066CC] to-transparent z-10" />
@@ -156,7 +156,7 @@ export const CourseRequestSection = () => {
                     </div>
 
                     {/* Left Side - Content */}
-                    <div className="lg:w-[45%] flex flex-col justify-center relative z-10 w-full order-1 lg:order-1 text-center lg:text-left">
+                    <div className="lg:w-[45%] flex flex-col justify-center relative z-10 w-full order-2 lg:order-1 text-center lg:text-left">
 
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}

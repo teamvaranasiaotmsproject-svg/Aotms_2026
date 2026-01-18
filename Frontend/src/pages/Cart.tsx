@@ -1,7 +1,7 @@
 import { useCartStore } from "@/store/cartStore";
 import { Link } from "react-router-dom";
 import { Trash2, Wallet, ArrowRight, IndianRupee } from "lucide-react";
-import { Header } from "@/components/Navbar";
+import { Header } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/Footer";
 import scannerImg from "@/assets/Scanner.jpeg";
 import { FaWhatsapp, FaGooglePay } from "react-icons/fa";
@@ -24,7 +24,7 @@ const Cart = () => {
                         </div>
                         <h2 className="text-xl font-bold text-slate-900 mb-2">Your cart is empty</h2>
                         <p className="text-slate-500 mb-8 max-w-md mx-auto">Looks like you haven't added any courses yet. Explore our catalog to find the perfect course for your career.</p>
-                        <Link to="/#courses" className="btn-primary inline-flex items-center gap-2">
+                        <Link to="/courses" className="btn-primary inline-flex items-center gap-2">
                             Browse Courses <ArrowRight className="w-4 h-4" />
                         </Link>
                     </div>

@@ -80,9 +80,8 @@ export const CourseCard = ({ course }: CourseCardProps) => {
             <div className="absolute top-[115px] md:top-[135px] left-6 z-20"> {/* Adjusted Position */}
                 <div className="w-12 h-12 md:w-14 md:h-14 bg-white rounded-full shadow-lg flex items-center justify-center border border-slate-50">
                     <div
-                        className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center bg-[var(--course-color)]"
-                        /* webhint-disable-next-line no-inline-styles */
-                        style={{ '--course-color': course.themeColor } as React.CSSProperties}
+                        className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center"
+                        style={{ backgroundColor: course.themeColor }}
                     >
                         <Icon className="w-4 h-4 md:w-5 md:h-5 text-white" />
                     </div>

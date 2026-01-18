@@ -14,7 +14,7 @@ interface EventItem {
 }
 
 interface UpcomingEventsProps {
-    onSelect?: (event: any) => void;
+    onSelect?: (event: EventItem) => void;
     selectedId?: string;
 }
 

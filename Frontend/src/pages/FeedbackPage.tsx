@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { sanitizeInput, validate } from "@/utils/validation";
-import { Header as Navbar } from "@/components/Navbar";
+import { Header as Navbar } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/Footer";
 import { Star, Send, MessageSquare, ThumbsUp } from "lucide-react";
 import { motion } from "framer-motion";
@@ -41,9 +41,9 @@ const FeedbackPage = () => {
             });
             setFormData({ name: "", email: "", category: "Course Content", message: "" });
             setRating(0);
-        } catch (error: unknown) {
+        } catch (error: any) {
             console.error(error);
-            const errorMessage = (error as any).response?.data?.msg || "Failed to submit feedback. Please try again.";
+            const errorMessage = error.response?.data?.msg || "Failed to submit feedback. Please try again.";
             toast.error(errorMessage);
         } finally {
             setLoading(false);
@@ -130,6 +130,7 @@ const FeedbackPage = () => {
                                             onMouseEnter={() => setHoverRating(star)}
                                             onMouseLeave={() => setHoverRating(0)}
                                             onClick={() => setRating(star)}
+                                            title={`Rate ${star} star${star > 1 ? 's' : ''}`}
                                         >
                                             <Star
                                                 className={`w-8 h-8 transition-colors ${star <= (hoverRating || rating)
@@ -177,6 +178,7 @@ const FeedbackPage = () => {
                                     className="w-full h-12 px-3 rounded-md border border-slate-200 bg-slate-50 focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm"
                                     value={formData.category}
                                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                                    title="Select feedback category"
                                 >
                                     <option>Course Content</option>
                                     <option>Instructor Quality</option>
