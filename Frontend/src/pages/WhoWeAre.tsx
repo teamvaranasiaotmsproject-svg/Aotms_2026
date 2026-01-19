@@ -444,7 +444,7 @@ export const WhoWeAre = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="/course/ai-ml"
+              href="/courses"
               className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-blue-50 transition-all shadow-xl hover:scale-105"
             >
               Explore Courses
