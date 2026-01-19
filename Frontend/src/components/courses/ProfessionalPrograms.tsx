@@ -51,14 +51,14 @@ export const ProfessionalPrograms = () => {
                 <div className="flex flex-col items-center text-center mb-8">
                     <Badge className="bg-blue-100/50 text-blue-700 hover:bg-blue-100 border-none px-4 py-1.5 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
                         <Sparkles className="w-3.5 h-3.5 mr-2 fill-current" />
-                        World Class Education
+                        World Class Education in Vijayawada
                     </Badge>
                     <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight mb-5 whitespace-nowrap overflow-hidden text-ellipsis text-slate-900">
-                        Professional <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Training Programs</span>
+                        Professional <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Training Programs in Vijayawada</span> <br /><br />
                     </h2>
                     <p className="text-sm md:text-base text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto">
-                        Accelerate your career with our industry-leading certification programs.
-                        Designed by experts, delivered by professionals.
+                        Accelerate your career with our industry-leading certification programs in Vijayawada.
+                        Designed by experts, delivered by professionals in Vijayawada.
                     </p>
 
                     <div className="flex items-center gap-4 mt-6">

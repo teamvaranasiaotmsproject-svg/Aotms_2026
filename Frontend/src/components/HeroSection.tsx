@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ArrowRight, PlayCircle, Users, Award, Clock, ThumbsUp } from "lucide-react";
 import axios from "axios";
 import { CountUpNumber } from "./CountUpNumber";
+import { CourseEnrollmentModal } from "@/components/ui/CourseEnrollmentModal";
 
 const trustStats = [
   {
@@ -28,6 +29,14 @@ const trustStats = [
 export const HeroSection = () => {
   const [heroImages, setHeroImages] = useState<string[]>(["/Andra-hackathon-2025_Data_AI_d2uquj.jpg"]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isEnrollmentOpen, setIsEnrollmentOpen] = useState(false);
+  const [enrollmentSource, setEnrollmentSource] = useState("");
+
+  const handleOpenEnrollment = (source: string) => {
+    setEnrollmentSource(source);
+    setIsEnrollmentOpen(true);
+  };
+
   const shouldReduceMotion = useReducedMotion();
   const isMobile = useMemo(() => typeof window !== 'undefined' && window.innerWidth < 768, []);
 
@@ -112,27 +121,33 @@ export const HeroSection = () => {
             {/* SUBTEXT */}
             <p className="text-base sm:text-lg text-muted-foreground max-w-xl">
               Master AI, Cloud, DevOps & Full Stack development with real-world
-              projects and industry-recognized certification.
+              projects and industry-recognized certification in Vijayawada.
             </p>
 
             {/* CTA */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="/courses"
+              <button
+                onClick={() => handleOpenEnrollment("Start Journey - Hero Section")}
                 className="inline-flex items-center justify-center h-11 px-8 text-sm font-medium text-white bg-[#FD5A1A] rounded-md hover:bg-[#0066b3] active:scale-95 transition-all"
               >
                 Start Your Journey
                 <ArrowRight className="ml-2 w-4 h-4" />
-              </a>
+              </button>
 
-              <a
-                href="/contact"
+              <button
+                onClick={() => handleOpenEnrollment("Free Demo - Hero Section")}
                 className="inline-flex items-center justify-center h-11 px-8 text-sm font-medium text-[#0075CF] bg-[#0075CF]/5 border border-[#0075CF]/20 rounded-md hover:bg-[#0075CF]/10 active:scale-95 transition-all"
               >
                 <PlayCircle className="mr-2 w-4 h-4 text-orange-500" />
                 Book a Free Demo Class
-              </a>
+              </button>
             </div>
+
+            <CourseEnrollmentModal
+              isOpen={isEnrollmentOpen}
+              onClose={() => setIsEnrollmentOpen(false)}
+              source={enrollmentSource}
+            />
 
             {/* STATS */}
             <div className="flex flex-wrap gap-6 pt-6 border-t">

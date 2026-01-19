@@ -59,7 +59,7 @@ export const AboutSection = () => {
 
                 {/* TEXT — GRADIENT */}
                 <span className="text-xs font-black text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">
-                  About Our Training Model
+                  About Our Training Model in Vijayawada
                 </span>
 
               </span>
@@ -67,12 +67,12 @@ export const AboutSection = () => {
             </div>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 leading-[1.15]">
-              World-Class <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Education</span>,<br className="hidden md:block" /> and the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Academy</span> difference.
+              World-Class <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Education in Vijayawada</span>,<br className="hidden md:block" /> and the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Academy</span> difference.
             </h2>
 
             <p className="text-base text-slate-500 mx-auto lg:mx-0 leading-relaxed font-medium max-w-xl">
               Learn from industry experts, explore our success stories, and step into the future.
-              We are a professional IT training institute focused on real-world skills,
+              We are a professional IT training institute in Vijayawada focused on real-world skills,
               industry-level projects, and career outcomes.
             </p>
 
@@ -98,7 +98,7 @@ export const AboutSection = () => {
                 className="inline-flex items-center justify-center h-12 px-8 text-sm font-bold text-white transition-all bg-[#0075CF] rounded-full hover:bg-blue-700 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 shadow-lg shadow-blue-500/20"
               >
                 <ArrowRight />
-                <span className="ml-2">Know More About Us</span>
+                <span className="ml-2">Know More About Us in Vijayawada</span>
               </button>
             </div>
           </div>
@@ -147,7 +147,7 @@ export const AboutSection = () => {
           </motion.div>
 
         </div>
-      </div>
-    </section>
+      </div >
+    </section >
   );
 };

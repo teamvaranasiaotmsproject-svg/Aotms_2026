@@ -8,19 +8,19 @@ const fallbackReasons = [
   {
     _id: "1",
     title: "Our Mission",
-    description: "Empowering students with real-world IT skills and expert mentorship to bridge the gap between academics and industry.",
+    description: "Empowering students with real-world IT skills and expert mentorship to bridge the gap between academics and industry in Vijayawada.",
     image: "/Why Choose us-1.jpg",
   },
   {
     _id: "2",
     title: "Our Vision",
-    description: "To become the most trusted IT training institute by transforming passionate learners into job-ready tech leaders.",
+    description: "To become the most trusted IT training institute in Vijayawada by transforming passionate learners into job-ready tech leaders.",
     image: "/Why Choose us-2.jpg",
   },
   {
     _id: "3",
     title: "Why Choose Us",
-    description: "Cutting-edge courses, flexible learning, and 100% placement-focused support—all in one place.",
+    description: "Cutting-edge courses, flexible learning, and 100% placement-focused support in Vijayawada—all in one place.",
     image: "/Why Choose us-3.jpg",
   },
 ];
@@ -69,7 +69,7 @@ export const WhyChooseUs = () => {
 
             {/* TEXT — GRADIENT */}
             <span className="text-xs font-black text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">
-              Why Choose AOTMS
+              Why Choose AOTMS in Vijayawada
             </span>
 
           </motion.span>
@@ -77,7 +77,7 @@ export const WhyChooseUs = () => {
             The Academy <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Difference</span>
           </h2>
           <p className="text-sm md:text-base text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto">
-            We're more than just a training center. We're a <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">career launchpad</span>.
+            We're more than just a training center in Vijayawada. We're a <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">career launchpad</span>.
           </p>
         </div>
 

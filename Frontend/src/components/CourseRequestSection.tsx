@@ -165,7 +165,7 @@ export const CourseRequestSection = () => {
                             className="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-sm px-4 py-1.5 rounded-full text-white font-bold text-sm w-fit mb-6 shadow-sm mx-auto lg:mx-0"
                         >
                             <Zap className="w-4 h-4 fill-accent text-accent" />
-                            <span>Course Request</span>
+                            <span>Course Request in Vijayawada</span>
                         </motion.div>
 
                         <motion.h2
@@ -175,7 +175,7 @@ export const CourseRequestSection = () => {
                             transition={{ delay: 0.1 }}
                             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 font-display tracking-tight leading-[1.1]"
                         >
-                            Find Your Best Course With Us
+                            Find Your Best Course With Us in Vijayawada
                         </motion.h2>
 
                         <motion.p
@@ -185,7 +185,7 @@ export const CourseRequestSection = () => {
                             transition={{ delay: 0.2 }}
                             className="text-white/90 text-sm sm:text-base md:text-lg mb-8 font-medium max-w-xl mx-auto lg:mx-0 leading-relaxed"
                         >
-                            Start Your IT Career Today! Enroll Now for a Free Demo and get expert guidance from industry masters.
+                            Start Your IT Career Today! Enroll Now for a Free Demo in Vijayawada and get expert guidance from industry masters.
                         </motion.p>
 
                         <motion.form

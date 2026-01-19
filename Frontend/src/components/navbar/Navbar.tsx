@@ -13,6 +13,7 @@ import { TopNavbar } from "./TopNavbar";
 import { navLinks } from "./navData";
 import { AuthModal } from "./AuthModal";
 import { MobileMenu } from "./MobileMenu";
+import { CourseEnrollmentModal } from "@/components/ui/CourseEnrollmentModal";
 
 export const Header = () => {
   const location = useLocation();
@@ -31,6 +32,13 @@ export const Header = () => {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authMode, setAuthMode] = useState<'login' | 'register' | 'forgot'>('login');
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+
+  // Enrollment Modal State
+  const [isEnrollmentOpen, setIsEnrollmentOpen] = useState(false);
+
+  const handleOpenEnrollment = () => {
+    setIsEnrollmentOpen(true);
+  };
 
   // Scroll Lock for Mobile Menu & Modal
   useEffect(() => {
@@ -86,7 +94,7 @@ export const Header = () => {
   return (
     <>
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-[999] transition-all duration-300 ${isScrolled ? 'shadow-md' : ''}`}
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled ? 'shadow-md' : ''}`}
       >
         <TopNavbar
           isScrolled={isScrolled}
@@ -211,8 +219,8 @@ export const Header = () => {
                 </div>
               ) : (
                 <div className="flex items-center gap-3">
-                  <Button asChild className="h-10 px-6 font-bold rounded-full shadow-lg bg-[#0066CC] shadow-primary/20 hover:shadow-primary/30 hover:scale-105 active:scale-95 transition-all">
-                    <Link to="/contact">Book Free Demo</Link>
+                  <Button onClick={handleOpenEnrollment} className="h-10 px-6 font-bold rounded-full shadow-lg bg-[#0066CC] shadow-primary/20 hover:shadow-primary/30 hover:scale-105 active:scale-95 transition-all">
+                    Book Free Demo
                   </Button>
                   <Button variant="ghost" onClick={() => { setAuthMode('login'); setShowAuthModal(true); }} className="font-bold hover:bg-primary/5">
                     Login
@@ -255,6 +263,12 @@ export const Header = () => {
         setShowAuthModal={setShowAuthModal}
         authMode={authMode}
         setAuthMode={setAuthMode}
+      />
+
+      <CourseEnrollmentModal
+        isOpen={isEnrollmentOpen}
+        onClose={() => setIsEnrollmentOpen(false)}
+        source="Navbar - Free Demo"
       />
     </>
   );

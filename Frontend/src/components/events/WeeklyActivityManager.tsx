@@ -463,17 +463,7 @@ export const WeeklyActivityManager = ({ events, title, subtitle }: WeeklyActivit
                                                 </div>
 
                                                 <div className="pt-2 flex flex-col sm:flex-row gap-4">
-                                                    <button
-                                                        onClick={handleRegisterClick}
-                                                        className="group relative px-8 py-4 bg-[#111111] hover:bg-[#0A3D91] rounded-xl transition-all duration-300 shadow-xl shadow-gray-200 hover:shadow-[#0A3D91]/20 hover:-translate-y-1 w-full md:w-auto"
-                                                    >
-                                                        <div className="relative z-10 flex items-center justify-center gap-3">
-                                                            <span className="text-white font-black tracking-widest uppercase text-xs">
-                                                                Details
-                                                            </span>
-                                                            <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1.5 transition-transform" />
-                                                        </div>
-                                                    </button>
+                                                   
 
                                                     <button
                                                         disabled={selectedEvent.isRegistrationOpen === false}

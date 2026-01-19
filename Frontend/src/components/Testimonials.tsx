@@ -58,7 +58,7 @@ export const Testimonials = () => {
 
                             {/* TEXT — GRADIENT */}
                             <span className="text-xs font-black text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">
-                                Alumni Reviews
+                                Alumni Reviews in Vijayawada
                             </span>
 
                         </span>
@@ -68,7 +68,7 @@ export const Testimonials = () => {
                         Student <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Honest Reviews</span>
                     </h2>
                     <p className="section-subheading mt-4 max-w-3xl">
-                        Read honest reviews from our Verified Students.
+                        Read honest reviews from our Verified Students in Vijayawada.
                     </p>
                 </motion.div>
 

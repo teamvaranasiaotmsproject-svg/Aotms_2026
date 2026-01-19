@@ -78,7 +78,7 @@ export const Footer = () => {
             </div>
 
             <p className="text-xs md:text-sm text-white/100 leading-relaxed max-w-sm">
-              Transforming careers through industry-leading tech education. Master the future with Academy of Tech Masters.
+              Transforming careers through industry-leading tech education in Vijayawada. Master the future with Academy of Tech Masters.
             </p>
 
             <div className="space-y-4 pt-1">
