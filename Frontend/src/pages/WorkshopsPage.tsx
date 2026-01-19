@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Header } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/Footer";
-import { EventManager, EventItem } from "@/components/events/EventManager";
+import { WorkshopManager, EventItem } from "@/components/events/WorkshopManager";
 import { CertificateShowcase } from "@/components/CertificateShowcase";
 import { useAuthStore } from "@/store/authStore";
 import { toast } from "sonner";
@@ -68,7 +68,7 @@ const WorkshopsPage = () => {
         <div className="bg-white min-h-screen">
             <Header />
             <main className="pt-28 md:pt-32">
-                <EventManager
+                <WorkshopManager
                     events={events}
                     title="Workshops"
                     subtitle="Master in-demand skills with our expert-led intensive workshops."

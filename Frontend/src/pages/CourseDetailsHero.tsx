@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Clock } from "lucide-react";
+import { toast } from "sonner";
+import axios from "axios";
 
 interface CourseDetailHeroProps {
     course: {
@@ -13,6 +15,68 @@ interface CourseDetailHeroProps {
 }
 
 export const CourseDetailHero: React.FC<CourseDetailHeroProps> = ({ course, handleEnroll }) => {
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        phone: ""
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        if (name === 'phone') {
+            const numbers = value.replace(/[^0-9]/g, '');
+            if (numbers.length <= 10) setFormData(prev => ({ ...prev, [name]: numbers }));
+            return;
+        }
+        if (name === 'name') {
+            const alphas = value.replace(/[^a-zA-Z\s]/g, '');
+            setFormData(prev => ({ ...prev, [name]: alphas }));
+            return;
+        }
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const validateForm = () => {
+        if (!formData.name.trim() || formData.name.length < 3) {
+            toast.error("Please enter a valid name (min 3 characters)");
+            return false;
+        }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            toast.error("Please enter a valid email address");
+            return false;
+        }
+        const phoneRegex = /^\d{10}$/;
+        if (!phoneRegex.test(formData.phone)) {
+            toast.error("Please enter a valid 10-digit phone number");
+            return false;
+        }
+        return true;
+    };
+
+    const handleFormSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (!validateForm()) return;
+
+        setIsSubmitting(true);
+        try {
+            await axios.post(`${import.meta.env.VITE_API_URL}/api/leads`, {
+                ...formData,
+                type: 'course-inquiry',
+                courseName: course.title
+            });
+
+            toast.success("Details submitted successfully!");
+            handleEnroll();
+        } catch (error) {
+            console.error(error);
+            toast.error("Something went wrong. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
     return (
         <section className="hero course-hero relative pt-40 pb-16 md:pt-48 md:pb-20 bg-[#0066CC] overflow-hidden w-full">
             {/* Background Base with Rich Gradient */}
@@ -93,27 +157,39 @@ export const CourseDetailHero: React.FC<CourseDetailHeroProps> = ({ course, hand
                             <p className="text-blue-100/90 text-sm sm:text-base xl:text-lg font-medium">Fill the form below to get instant access to course curriculum.</p>
                         </div>
 
-                        <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); handleEnroll(); }}>
+                        <form className="space-y-4" onSubmit={handleFormSubmit}>
                             <div className="space-y-4">
                                 <input
                                     type="text"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
                                     placeholder="Your Name"
                                     className="w-full h-12 sm:h-14 rounded-xl bg-white/10 border border-white/10 text-white placeholder:text-blue-200/50 px-5 focus:outline-none focus:bg-white/20 focus:border-white/30 transition-all font-medium text-base sm:text-lg"
                                 />
                                 <input
                                     type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
                                     placeholder="Email Address"
                                     className="w-full h-12 sm:h-14 rounded-xl bg-white/10 border border-white/10 text-white placeholder:text-blue-200/50 px-5 focus:outline-none focus:bg-white/20 focus:border-white/30 transition-all font-medium text-base sm:text-lg"
                                 />
                                 <input
                                     type="tel"
+                                    name="phone"
+                                    value={formData.phone}
+                                    onChange={handleChange}
                                     placeholder="Phone Number"
                                     className="w-full h-12 sm:h-14 rounded-xl bg-white/10 border border-white/10 text-white placeholder:text-blue-200/50 px-5 focus:outline-none focus:bg-white/20 focus:border-white/30 transition-all font-medium text-base sm:text-lg"
                                 />
                             </div>
 
-                            <Button className="w-full h-12 sm:h-14 bg-[#FD5A1A] hover:bg-[#e04f16] text-white rounded-xl font-bold text-lg sm:text-xl shadow-lg shadow-[#FD5A1A]/20 transition-all mt-3 sm:mt-4">
-                                Get Started Now
+                            <Button
+                                disabled={isSubmitting}
+                                className="w-full h-12 sm:h-14 bg-[#FD5A1A] hover:bg-[#e04f16] text-white rounded-xl font-bold text-lg sm:text-xl shadow-lg shadow-[#FD5A1A]/20 transition-all mt-3 sm:mt-4"
+                            >
+                                {isSubmitting ? "Processing..." : "Get Started Now"}
                             </Button>
                         </form>
                     </div>

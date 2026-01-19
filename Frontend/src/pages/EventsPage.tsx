@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Calendar } from "lucide-react";
 import { Header } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/Footer";
-import { EventManager, EventItem } from "@/components/events/EventManager";
+import { WeeklyActivityManager, EventItem } from "@/components/events/WeeklyActivityManager";
 import { CertificateShowcase } from "@/components/CertificateShowcase";
 import { useAuthStore } from "@/store/authStore";
 import { toast } from "sonner";
@@ -107,7 +107,7 @@ const EventsPage = () => {
             <Header />
 
             <main className="flex-1 pt-28 md:pt-32">
-                <EventManager
+                <WeeklyActivityManager
                     events={events}
                     title="Weekly Activities"
                     subtitle="Join our webinars and expert talks organized regularly for our student community."
