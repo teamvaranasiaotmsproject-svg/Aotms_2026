@@ -129,9 +129,9 @@ export const CourseDetailHero: React.FC<CourseDetailHeroProps> = ({ course, hand
                             Enrolling Now
                         </div>
 
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black leading-tight drop-shadow-lg px-2">
-                            <span className="text-white">Become An</span> <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-[#FD5A1A] drop-shadow-2xl">{course.title} PRO in Vijayawada</span>
+                        <h1 className="text-4xl sm:text-7xl md:text-7xl xl:text-5xl font-black leading-tight drop-shadow-lg px-2">
+                            <span className="text-white">Launch Your Career as an</span> <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-[#FD5A1A] drop-shadow-2xl">{course.title} Professional in Vijayawada</span>
                         </h1>
 
                         <p className="text-base sm:text-lg md:text-xl font-medium leading-relaxed max-w-xl drop-shadow-md mx-auto lg:mx-0 px-4">
