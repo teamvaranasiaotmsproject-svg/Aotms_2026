@@ -27,6 +27,7 @@ const ComingSoon = lazy(() => import("./pages/ComingSoon"));
 const CoursesPage = lazy(() => import("./pages/CoursesPage"));
 const InternshipsPage = lazy(() => import("./pages/InternshipsPage"));
 const ResourcesPage = lazy(() => import("./pages/ResourcesPage"));
+const CareersPage = lazy(() => import("./pages/CareersPage"));
 
 import Chatbot from "./components/Chatbot";
 
@@ -120,6 +121,7 @@ const App = () => {
 
                 <Route path="/reset-password" element={<ResetPassword />} />
                 <Route path="/internships" element={<InternshipsPage />} />
+                <Route path="/careers" element={<CareersPage />} />
                 <Route path="/resources" element={<ResourcesPage />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>

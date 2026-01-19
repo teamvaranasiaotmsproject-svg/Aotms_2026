@@ -73,6 +73,10 @@ export const CourseCard = ({ course }: CourseCardProps) => {
                     alt={course.title}
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    onError={(e) => {
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80"; // Fallback tech image
+                        e.currentTarget.onerror = null; // Prevent infinite loop
+                    }}
                 />
             </div>
 

@@ -10,7 +10,7 @@ export const CourseObjectives = ({ objectives }: CourseObjectivesProps) => {
 
     return (
         <section id="objectives" className="scroll-mt-32 bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
-            <h2 className="text-2xl sm:text-3xl font-bold text-center text-[#0075CF] mb-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-center text-[#0075CF] mb-6 underline decoration-[#0075CF] underline-offset-8">
                 Course Objective
             </h2>
 
@@ -45,7 +45,7 @@ export const CourseLearningOutcomes = ({ outcomes }: CourseLearningOutcomesProps
 
     return (
         <section id="outcomes" className="scroll-mt-32 bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
-            <h2 className="text-2xl sm:text-3xl font-bold text-center text-[#0075CF] mb-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-center text-[#0075CF] mb-6 underline decoration-[#0075CF] underline-offset-8">
                 Learning Outcomes
             </h2>
 

@@ -22,7 +22,7 @@ export const CourseCurriculum = ({ curriculum, activeModule, setActiveModule }: 
                 <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
                     <BookOpen className="w-5 h-5 text-blue-600" />
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">Curriculum Designed for Vijayawada Job Market</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 underline decoration-[#0075CF] underline-offset-8">Curriculum</h2>
             </div>
 
             <div className="space-y-3">

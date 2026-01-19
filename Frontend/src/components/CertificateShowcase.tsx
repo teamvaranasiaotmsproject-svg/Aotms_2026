@@ -143,7 +143,7 @@ export const CertificateShowcase = ({
                                                 </div>
                                             </div>
                                         </div>
-                                        <p className="text-center text-xs text-gray-500 font-medium mt-4">Click any certificate to view in detail</p>
+                                        <p className="text-center text-xs text-black-900 font-bold mt-10 text-lg">Click any certificate to view in detail</p>
                                     </div>
                                 </div>
                             </div>

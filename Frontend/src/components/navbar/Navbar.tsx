@@ -114,7 +114,7 @@ export const Header = () => {
                 >
                   <Link
                     to={link.href}
-                    className={`flex items-center gap-1.5 text-sm font-semibold transition-colors duration-200 ${activeDropdown === link.name ? 'text-primary' : 'text-foreground/80 hover:text-primary'
+                    className={`flex items-center gap-1.5 text-base font-semibold transition-colors duration-200 ${activeDropdown === link.name ? 'text-primary' : 'text-foreground/90 hover:text-primary'
                       }`}
                   >
                     {link.name}
@@ -173,14 +173,7 @@ export const Header = () => {
             {/* Desktop Actions */}
             <div className="hidden lg:flex items-center gap-5">
               {/* Cart Icon */}
-              <Link to="/cart" className="relative p-2 text-slate-900">
-                <FaBook className="w-5 h-5" />
-                {cartItemCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-[#FF6B35] text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
-                    {cartItemCount}
-                  </span>
-                )}
-              </Link>
+
 
               {/* User Profile */}
               {isLoggedIn ? (
@@ -196,16 +189,18 @@ export const Header = () => {
                     <ChevronDown className="w-3 h-3 text-muted-foreground" />
                   </button>
 
-                  <div className="absolute right-0 top-[calc(100%+8px)] w-56 bg-white rounded-xl shadow-xl border border-border/50 p-2 invisible opacity-0 group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right">
-                    <div className="px-3 py-2 border-b border-border/50 mb-1">
-                      <p className="font-bold text-sm truncate">{user?.name}</p>
-                      <p className="text-xs text-muted-foreground truncate">{user?.email}</p>
+                  <div className="absolute right-0 top-[calc(100%+12px)] w-64 bg-white rounded-xl shadow-2xl border border-slate-100 p-2 invisible opacity-0 group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right z-50">
+                    <div className="px-4 py-3 border-b border-slate-100 mb-2">
+                      <p className="font-bold text-slate-900 text-base truncate">{user?.name}</p>
+                      <p className="text-xs text-slate-500 truncate mt-0.5">{user?.email}</p>
                     </div>
-                    <Link to="/dashboard" className="flex items-center gap-2 px-3 py-2 text-sm font-medium hover:bg-primary/5 rounded-lg text-foreground">
-                      <User className="w-4 h-4" /> Dashboard
+                    <Link to="/dashboard" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg transition-colors mb-1">
+                      <User className="w-4 h-4 text-slate-500" />
+                      Dashboard
                     </Link>
-                    <button onClick={logout} className="w-full flex items-center gap-2 px-3 py-2 text-sm font-medium hover:bg-red-50 text-red-600 rounded-lg">
-                      <LogOut className="w-4 h-4" /> Sign Out
+                    <button onClick={logout} className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-[#DC2626] hover:bg-red-50 rounded-lg transition-colors">
+                      <LogOut className="w-4 h-4" />
+                      Sign Out
                     </button>
                   </div>
                 </div>

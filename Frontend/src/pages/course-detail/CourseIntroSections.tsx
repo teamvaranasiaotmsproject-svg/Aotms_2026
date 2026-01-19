@@ -34,7 +34,7 @@ export const CourseIntroSections = ({ customSections }: CourseIntroSectionsProps
             {customSections.filter((s) => s.type === "about_us").map((section, idx) => (
                 <section key={`about-us-${idx}`} id="overview" className="scroll-mt-32 bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 mb-8">
                     <div className="flex items-center gap-2 mb-6">
-                        <h2 className="text-2xl font-bold text-slate-900 uppercase">ABOUT US - Best Training in Vijayawada</h2>
+                        <h2 className="text-2xl font-bold text-slate-900 uppercase underline decoration-[#0075CF] underline-offset-8">ABOUT US</h2>
                         <div className="w-2 h-2 rounded-full bg-orange-500"></div>
                     </div>
                     <div className="bg-blue-50 rounded-xl p-6 sm:p-8">

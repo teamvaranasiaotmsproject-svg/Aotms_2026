@@ -15,8 +15,8 @@ export const CourseCapstoneProjects = ({ projects }: CourseCapstoneProjectsProps
 
     return (
         <section id="projects" className="scroll-mt-32 bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
-            <h2 className="text-2xl sm:text-3xl font-bold text-center text-[#0075CF] mb-8">
-                Capstone Project Ideas in Vijayawada
+            <h2 className="text-2xl sm:text-3xl font-bold text-center text-[#0075CF] mb-8 underline decoration-[#0075CF] underline-offset-8">
+                Capstone Project Ideas
             </h2>
 
             <div className="space-y-4">

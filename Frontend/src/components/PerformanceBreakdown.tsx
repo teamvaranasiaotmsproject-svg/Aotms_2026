@@ -3,6 +3,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { motion } from 'framer-motion';
 
 const data = [
+
     { name: 'Practical Exposure', value: 50, color: '#0075CF' }, // Primary Blue
     { name: 'Live Projects', value: 20, color: '#0EA5E9' }, // Sky Blue
     { name: 'Theory Knowledge', value: 10, color: '#F97316' }, // Orange

@@ -133,7 +133,7 @@ export const AboutSection = () => {
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="bg-white/95 backdrop-blur-md p-4 rounded-xl border-l-4 border-accent shadow-lg flex items-center justify-between gap-4">
                   <div>
-                    <div className="text-2xl font-black text-primary leading-none">10+</div>
+                    <div className="text-2xl font-black text-primary leading-none">12+</div>
                     <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mt-1">Years of Excellence</div>
                   </div>
                   <div className="h-8 w-px bg-border" />
