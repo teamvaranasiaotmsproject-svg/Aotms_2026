@@ -261,9 +261,9 @@ export const WhoWeAre = () => {
                 <Link to="/events" className="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-600/30 hover:-translate-y-1 w-full sm:w-auto">
                   Our Journey
                 </Link>
-                <a href="/contact" className="px-8 py-4 bg-white text-slate-700 border border-slate-200 font-bold rounded-xl hover:bg-slate-50 hover:text-orange-500 transition-all shadow-sm hover:shadow-md hover:-translate-y-1 w-full sm:w-auto">
+                <Link to="/contact" className="px-8 py-4 bg-white text-slate-700 border border-slate-200 font-bold rounded-xl hover:bg-slate-50 hover:text-orange-500 transition-all shadow-sm hover:shadow-md hover:-translate-y-1 w-full sm:w-auto">
                   Contact Us
-                </a>
+                </Link>
               </div>
 
               {/* Trust Indicators */}
@@ -444,18 +444,18 @@ export const WhoWeAre = () => {
             Join 2500+ students who have successfully launched their tech careers with AOTMS
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/courses"
+            <Link
+              to="/courses"
               className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-blue-50 transition-all shadow-xl hover:scale-105"
             >
               Explore Courses
-            </a>
-            <a
-              href="/contact"
+            </Link>
+            <Link
+              to="/contact"
               className="inline-flex items-center justify-center px-8 py-4 bg-orange-500 text-white font-bold rounded-xl hover:bg-orange-600 transition-all shadow-xl hover:scale-105"
             >
               Get in Touch
-            </a>
+            </Link>
           </div>
         </div>
       </section>
