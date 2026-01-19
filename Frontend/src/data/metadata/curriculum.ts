@@ -812,128 +812,43 @@ export const getCourseCurriculum = (title: string, category: string = "") => {
     if (search.includes("python") && search.includes("stack")) {
         return [
             {
-                title: "Module 1: Programming Foundations (Python Basics)",
+                title: "Module 1: Python Fundamentals",
                 lessons: [
-                    "Introduction to Programming and Python Setup (VS Code, PyCharm)",
-                    "Python Syntax, Indentation, and Dynamic Typing",
-                    "Variables, Data Types, and Operators",
-                    "Control Flow: if, for, while, break, continue",
-                    "Functions, Arguments, Return Values, and Recursion",
-                    "Lists, Tuples, Sets, and Dictionaries",
-                    "Input/Output Handling",
-                    "Exception Handling (Try, Except, Finally)",
-                    "Mini Project: Console -Based Calculator / To -Do List"
+                    "Introduction to Python",
+                    "Data Types & Variables",
+                    "Control Flow",
+                    "Functions & OOP",
+                    "File Handling"
                 ]
             },
             {
-                title: "Module 2: Advanced & Object -Oriented Python",
+                title: "Module 2: Frontend Development",
                 lessons: [
-                    "Classes, Objects, Inheritance, Polymorphism, Encapsulation",
-                    "Modules, Packages, and Virtual Environments ( venv, pipenv)",
-                    "Decorators, Iterators, Generators",
-                    "File I/O Operations and Context Managers",
-                    "Regular Expressions",
-                    "Working with JSON, CSV, XML files",
-                    "Mini Project: Student Management CLI Tool"
+                    "HTML5 & CSS3",
+                    "Bootstrap & Tailwind",
+                    "JavaScript ES6+",
+                    "React.js Basics",
+                    "State Management"
                 ]
             },
             {
-                title: "Module 3: Data Handling & Database Management",
+                title: "Module 3: Backend with Flask & Django",
                 lessons: [
-                    "SQL Fundamentals (DDL, DML, Joins, Keys, Constraints)",
-                    "MySQL / PostgreSQL Setup and Integration",
-                    "Python-DB Connectivity using mysql- connector and psycopg2",
-                    "CRUD Operations via Python",
-                    "Introduction to NoSQL Databases (MongoDB)",
-                    "ORM Concepts: SQLAlchemy & Django ORM",
-                    "Mini Project: Library Database Management"
+                    "Flask Basics",
+                    "Django MVT Architecture",
+                    "Django ORM",
+                    "Building REST APIs",
+                    "Authentication"
                 ]
             },
             {
-                title: "Module 4: Front-End Web Development",
+                title: "Module 4: Database & Deployment",
                 lessons: [
-                    "HTML5 – Tags, Forms, Semantic Elements",
-                    "CSS3 – Styling, Animations, Flexbox, Grid",
-                    "Responsive Design using Bootstrap",
-                    "JavaScript (ES6+) – Variables, Functions, DOM Manipulation",
-                    "Event Handling, Fetch API, Promises, Async/Await",
-                    "JSON, AJAX, and REST API consumption",
-                    "Introduction to React.js: Components, Props, and State",
-                    "React Hooks and Conditional Rendering",
-                    "Routing with React Router",
-                    "Mini Project: Portfolio or Landing Page in React"
-                ]
-            },
-            {
-                title: "Module 5: Python Web Frameworks – Flask & Django",
-                lessons: [
-                    "Flask Setup and Routing",
-                    "Templates (Jinja2), Forms, and Sessions",
-                    "REST API development with Flask",
-                    "Integrating Flask with MySQL / MongoDB",
-                    "Blueprints and Modular App Design",
-                    "Authentication with Flask - Login / JWT",
-                    "Django Project Structure (MVT), Models, Views, Templates",
-                    "URL Routing and Static Files, Django ORM and QuerySets",
-                    "Admin Panel Customization, Authentication, Authorization, and Permissions",
-                    "Django REST Framework (DRF) – API Views, Serializers, Routers",
-                    "Mini Project: Blog API / Student Portal"
-                ]
-            },
-            {
-                title: "Module 6: Version Control & Deployment",
-                lessons: [
-                    "Git & GitHub Essentials ( init, commit, push, branching)",
-                    "Collaborating via Pull Requests",
-                    "Docker Basics (Containerizing Apps)",
-                    "Environment Variables & Secrets Management",
-                    "Deploying to Cloud Platforms (AWS EC2, Render, Heroku, PythonAnywhere)",
-                    "Continuous Integration/Deployment Overview (CI/CD Pipelines)",
-                    "Mini Project: Deploy Flask App on Render/Heroku"
-                ]
-            },
-            {
-                title: "Module 7: Testing, Debugging & Performance Optimization",
-                lessons: [
-                    "Unit Testing with unit test and pytest",
-                    "API Testing with Postman",
-                    "Debugging Tools and Loggers",
-                    "Exception Tracking with Sentry",
-                    "Code Optimization & Profiling Techniques",
-                    "Hands-on: Test a Django REST API"
-                ]
-            },
-            {
-                title: "Module 8: API Development & Real -World Integration",
-                lessons: [
-                    "RESTful API Principles",
-                    "Building Secure APIs with Django REST Framework",
-                    "JWT Authentication & OAuth 2.0",
-                    "Third-party API Integration (Google Maps, Razorpay , Twilio)",
-                    "Payment Gateway Integration (Stripe/ Razorpay Sandbox)",
-                    "Email, SMS, Push Notifications Integration",
-                    "Mini Project: API -Driven Dashboard Application"
-                ]
-            },
-            {
-                title: "Module 9: Cloud, DevOps & CI/CD Essentials",
-                lessons: [
-                    "AWS / GCP Overview",
-                    "Hosting Databases in the Cloud (RDS, Firebase)",
-                    "Docker Compose for Multi -Service Apps",
-                    "Basic Linux Commands for Deployment",
-                    "Introduction to Jenkins & GitHub Actions",
-                    "CI/CD Workflow Setup",
-                    "Mini Project: Automated Deployment Pipeline"
-                ]
-            },
-            {
-                title: "Module 10: Career Readiness & Capstone Projects",
-                lessons: [
-                    "Resume Building (Tech -focused)",
-                    "LinkedIn & GitHub Portfolio Enhancement",
-                    "Mock Technical & HR Interviews",
-                    "Final Capstone Project Development & Presentation"
+                    "SQL with MySQL/PostgreSQL",
+                    "NoSQL with MongoDB",
+                    "Docker Basics",
+                    "AWS Deployment",
+                    "CI/CD Pipelines"
                 ]
             }
         ];
@@ -1256,90 +1171,95 @@ export const getCourseCurriculum = (title: string, category: string = "") => {
     if (search.includes("artificial intelligence") || (search.includes("machine learning") && !search.includes("masterclass"))) {
         return [
             {
-                title: "Module 1 : Mathematical Refresh",
+                title: "Module 1: Python Foundations for AI",
                 lessons: [
-                    "Calculus",
-                    "Linear Algebra for AI",
-                    "Probabilistic Models"
+                    "Introduction to Python (Anaconda, Jupyter, VS Code setup)",
+                    "Data Structures: Lists, Tuples, Dictionaries, Sets",
+                    "Functions, Modules, and Libraries",
+                    "NumPy: Array operations, Broadcasting, Linear Algebra",
+                    "Pandas: Data Cleaning, Merging, Grouping, Aggregations",
+                    "Matplotlib & Seaborn: Data Visualization"
                 ]
             },
             {
-                title: "Module 2 : Machine Learning Advance",
+                title: "Module 2: Statistics & Mathematics for Machine Learning",
                 lessons: [
-                    "Ensemble Methods",
-                    "Boosting/Bagging",
-                    "Gradient Descent"
+                    "Descriptive & Inferential Statistics",
+                    "Probability, Distributions, and Hypothesis Testing",
+                    "Linear Algebra: Vectors, Matrices, Eigenvalues",
+                    "Calculus for Optimization (Gradients, Derivatives)",
+                    "Correlation, Covariance, and Feature Relationships"
                 ]
             },
             {
-                title: "Module 3 : Neural Network Architecture",
+                title: "Module 3: Machine Learning Fundamentals",
                 lessons: [
-                    "Perceptrons",
-                    "MLP",
-                    "Weight Initialization"
+                    "Supervised Learning",
+                    "Linear & Logistic Regression",
+                    "Decision Trees, Random Forests",
+                    "KNN, Naive Bayes, SVM",
+                    "Unsupervised Learning",
+                    "K-Means, DBSCAN, Hierarchical Clustering",
+                    "PCA, Dimensionality Reduction",
+                    "Model Evaluation: Accuracy, Precision, Recall, F1 -Score",
+                    "Hyperparameter Tuning, Cross -Validation"
                 ]
             },
             {
-                title: "Module 4 : Deep Learning (TensorFlow)",
+                title: "Module 4: Deep Learning with TensorFlow & Keras",
                 lessons: [
-                    "Building Models",
-                    "Keras API",
-                    "Loss Functions"
+                    "Neural Networks: Perceptron, MLP, Activation Functions",
+                    "Backpropagation & Optimization",
+                    "TensorFlow Basics (Tensors, Graphs, Sessions)",
+                    "Building ANN, CNN, and RNN Models",
+                    "Dropout, Batch Normalization, Regularization",
+                    "Model Saving, Loading, and Deployment"
                 ]
             },
             {
-                title: "Module 5 : Convolutional Neural Networks",
+                title: "Module 5: Computer Vision (CV)",
                 lessons: [
-                    "Image Classification",
-                    "Filters & Pooling",
-                    "Transfer Learning"
+                    "Object Detection (YOLO, SSD basics)",
+                    "Face Detection and Recognition",
+                    "Real-Time CV Projects using Webcam"
                 ]
             },
             {
-                title: "Module 6 : Recurrent Neural Networks",
+                title: "Module 6: Natural Language Processing (NLP)",
                 lessons: [
-                    "Sequence Data",
-                    "LSTM & GRU",
-                    "Time Series Forecast"
+                    "Text Cleaning, Tokenization, Stopword Removal",
+                    "Word Embeddings (TF -IDF, Word2Vec, GloVe )",
+                    "Sentiment Analysis",
+                    "Named Entity Recognition (NER)",
+                    "Chatbot Development using NLTK / spaCy",
+                    "Transformer Models (Intro to BERT, GPT Concepts)"
                 ]
             },
             {
-                title: "Module 7 : NLP and Transformers",
+                title: "Module 7: AI Model Deployment & MLOps",
                 lessons: [
-                    "BERT Basics",
-                    "Attention Mechanisms",
-                    "LLM Intro"
+                    "Introduction to Flask/Django for Model APIs",
+                    "Saving Models using Pickle/ Joblib",
+                    "Creating REST APIs for ML models",
+                    "Dockerizing ML Models",
+                    "Cloud Deployment: AWS, Azure, Google Cloud",
+                    "Continuous Integration (CI/CD) with GitHub Actions"
                 ]
             },
             {
-                title: "Module 8 : Computer Vision",
+                title: "Module 8: Data Science Integration & Real -World AI",
                 lessons: [
-                    "Object Detection",
-                    "Image Segmentation",
-                    "OpenCV"
+                    "End-to-End Data Pipeline (Data Cleaning → ML → Deployment)",
+                    "Handling Big Data (Intro to PySpark , Google Colab, Kaggle)",
+                    "Building Recommender Systems (Collaborative & Content -Based)",
+                    "Time Series Forecasting (ARIMA, Prophet, LSTM)",
+                    "AI in Business: Predictive Analytics, Automation, and Chatbots"
                 ]
             },
             {
-                title: "Module 9 : Reinforcement Learning",
+                title: "Module 9: Career Readiness & Industry Certifications",
                 lessons: [
-                    "Q-Learning",
-                    "Policy Gradients",
-                    "Agents"
-                ]
-            },
-            {
-                title: "Module 10 : AI Ethics & Deployment",
-                lessons: [
-                    "Bias & Fairness",
-                    "Model Serving with Flask"
-                ]
-            },
-            {
-                title: "Module 11 : Advanced AI Capstone",
-                lessons: [
-                    "Complex System Design",
-                    "Research Guidance",
-                    "Hire-ready Projects"
+                    "Resume Building for AI/ML Roles"
                 ]
             }
         ];

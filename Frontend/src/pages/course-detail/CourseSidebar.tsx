@@ -29,12 +29,12 @@ export const CourseSidebar = ({ course, programDetails, theme }: CourseSidebarPr
             />
 
             <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-                <h3 className="font-bold text-slate-900 mb-4">Request Callback</h3>
+                <h3 className="font-bold text-slate-900 mb-4">Request Callback in Vijayawada</h3>
                 <p className="text-sm text-slate-600 mb-4">
                     Have questions? Our counselor will help you choose the right path.
                 </p>
                 <Button className="w-full bg-blue-600 hover:bg-blue-700">
-                    Book Free Counseling
+                    Book Free Counseling in Vijayawada
                 </Button>
             </div>
         </div>

@@ -16,7 +16,7 @@ export const getCourseObjectives = (title: string, category: string = "") => {
             "Understand user research, persona creation, usability testing, and accessibility.",
             "Develop interactive front-end designs using HTML, CSS, and JavaScript.",
             "Build responsive and user-friendly web & mobile interfaces.",
-            "Become industry-ready for roles in UI/UX Design, Product Design, and Front-End Development."
+            "Become industry-ready for roles in UI/UX Design, Product Design, and Front-End Development in Vijayawada and beyond."
         ];
     }
 
@@ -27,7 +27,7 @@ export const getCourseObjectives = (title: string, category: string = "") => {
             "Master tools like Excel, SQL, Python, Power BI, and Tableau.",
             "Develop analytical, problem-solving, and business intelligence skills.",
             "Perform statistical analysis, create dashboards, and build predictive models.",
-            "Be industry-ready for data-centric roles in analytics, business intelligence, and data science."
+            "Be industry-ready for data-centric roles in analytics, business intelligence, and data science in Vijayawada."
         ];
     }
 
@@ -38,7 +38,7 @@ export const getCourseObjectives = (title: string, category: string = "") => {
             "Learn how to collect, clean, visualize, and analyze real-world data using modern tools.",
             "Build machine learning and deep learning models for predictive and intelligent systems.",
             "Work with data visualization tools, cloud-based analytics, and AI frameworks.",
-            "Become job-ready for roles in data analysis, data science, and AI development."
+            "Become job-ready for roles in data analysis, data science, and AI development in Vijayawada."
         ];
     }
 
@@ -50,7 +50,7 @@ export const getCourseObjectives = (title: string, category: string = "") => {
             "Implement computer vision projects using OpenCV and YOLO.",
             "Deploy AI models using Flask, Streamlit, and cloud platforms.",
             "Work with cutting-edge frameworks: TensorFlow, PyTorch, Keras.",
-            "Prepare for roles in AI Engineering, ML Ops, and Research."
+            "Prepare for roles in AI Engineering, ML Ops, and Research in Vijayawada."
         ];
     }
 
@@ -61,7 +61,7 @@ export const getCourseObjectives = (title: string, category: string = "") => {
             "Learn automation tools like Jenkins, Ansible, Terraform, and Docker for continuous integration and delivery.",
             "Gain hands-on expertise in cloud platforms – AWS, Azure, and Google Cloud (Multi-Cloud).",
             "Implement Infrastructure as Code (IaC), container orchestration, and scalable deployment pipelines.",
-            "Be ready for roles in DevOps, Cloud Engineering, Site Reliability Engineering (SRE), and Automation."
+            "Be ready for roles in DevOps, Cloud Engineering, Site Reliability Engineering (SRE), and Automation in Vijayawada."
         ];
     }
 
@@ -73,7 +73,7 @@ export const getCourseObjectives = (title: string, category: string = "") => {
             "Perform comprehensive API testing using Postman and REST Assured.",
             "Integrate automated tests into CI/CD pipelines using Jenkins.",
             "Gain proficiency in Java/Python programming for test scripting.",
-            "Become job-ready for QA Automation Engineer and SDET roles."
+            "Become job-ready for QA Automation Engineer and SDET roles in Vijayawada."
         ];
     }
 
@@ -85,7 +85,7 @@ export const getCourseObjectives = (title: string, category: string = "") => {
             "Interface sensors, actuators, and communication modules.",
             "Develop real-time embedded applications using C/C++ and Python.",
             "Gain exposure to IoT, real-time operating systems (RTOS), and hardware debugging.",
-            "Be industry-ready for embedded hardware, IoT, and firmware development roles"
+            "Be industry-ready for embedded hardware, IoT, and firmware development roles in Vijayawada"
         ];
     }
 
@@ -97,7 +97,7 @@ export const getCourseObjectives = (title: string, category: string = "") => {
             "Gain hands-on experience with data lakes, warehouses, and ETL/ELT pipelines.",
             "Work with cloud platforms (AWS, Azure, GCP) for scalable data solutions.",
             "Learn containerization, CI/CD, orchestration, and automation for modern data engineering workflows.",
-            "Prepare for real-world roles in data engineering, cloud data management, and analytics."
+            "Prepare for real-world roles in data engineering, cloud data management, and analytics in Vijayawada."
         ];
     }
 
@@ -144,7 +144,7 @@ export const getCourseObjectives = (title: string, category: string = "") => {
             "Design, develop, and deploy end-to-end web applications using Python frameworks (Flask, Django).",
             <>Build modern, responsive front-end interfaces with <strong className="font-black text-slate-900">HTML5, CSS3</strong>, JavaScript, and React.js.</>,
             <>Connect web apps to databases (<strong className="font-black text-slate-900">MySQL, PostgreSQL, MongoDB</strong>) with ORM integration.</>,
-            "Understand API development, authentication, DevOps, and cloud"
+            "Understand API development, authentication, DevOps, and cloud in Vijayawada"
         ];
     }
 
@@ -155,7 +155,7 @@ export const getCourseObjectives = (title: string, category: string = "") => {
             "Design and develop dynamic, scalable, and high-performance applications.",
             "Learn RESTful API creation, authentication, and full-stack deployment.",
             "Build and manage databases, handle server-side logic, and integrate frontend frameworks.",
-            "Become industry-ready for software, web, and application development roles"
+            "Become industry-ready for software, web, and application development roles in Vijayawada"
         ];
     }
 
@@ -166,7 +166,7 @@ export const getCourseObjectives = (title: string, category: string = "") => {
             "Build intelligent systems using Python, data preprocessing, and ML algorithms.",
             "Apply AI techniques in computer vision, NLP, and predictive analytics.",
             "Gain real-world exposure through end-to-end AI projects and cloud deployment.",
-            "Become job-ready for AI Engineer, ML Developer, and Data Science roles."
+            "Become job-ready for AI Engineer, ML Developer, and Data Science roles in Vijayawada."
         ];
     }
 
@@ -177,7 +177,7 @@ export const getCourseObjectives = (title: string, category: string = "") => {
             "Develop responsive front-end web applications using HTML5, CSS3, JavaScript, and React.js.",
             "Build, integrate, and deploy full-stack applications with Java backends and databases.",
             "Gain real-world experience with REST APIs, authentication, cloud deployment, and Git version control.",
-            "Be industry-ready for Java and full-stack developer roles in modern tech environments"
+            "Be industry-ready for Java and full-stack developer roles in modern tech environments in Vijayawada"
         ];
     }
 
@@ -211,7 +211,7 @@ export const getCourseObjectives = (title: string, category: string = "") => {
         "Master industry-standard tools and best practices.",
         "Develop problem-solving skills for technical challenges.",
         "Receive placement support and interview preparation.",
-        "Become job-ready for professional roles in the tech industry."
+        "Become job-ready for professional roles in the tech industry in Vijayawada."
     ];
 };
 
@@ -455,11 +455,11 @@ export const getCourseCapstoneProjects = (title: string, category: string = "") 
 
     // Default capstone projects
     return [
-        { title: "Full-Stack Web Application", description: "End-to-end project with frontend and backend." },
-        { title: "Data Analysis Dashboard", description: "Interactive visualization of real-world data." },
-        { title: "Mobile App Prototype", description: "Responsive mobile application design." },
-        { title: "API Development Project", description: "RESTful API with authentication and database." },
-        { title: "Portfolio Website", description: "Professional portfolio showcasing your skills." }
+        { title: "Full-Stack Web Application", description: "End-to-end project with frontend and backend in Vijayawada." },
+        { title: "Data Analysis Dashboard", description: "Interactive visualization of real-world data in Vijayawada." },
+        { title: "Mobile App Prototype", description: "Responsive mobile application design in Vijayawada." },
+        { title: "API Development Project", description: "RESTful API with authentication and database in Vijayawada." },
+        { title: "Portfolio Website", description: "Professional portfolio showcasing your skills in Vijayawada." }
     ];
 };
 
@@ -486,7 +486,7 @@ export const getCourseLearningOutcomes = (title: string, category: string = "") 
             "Build predictive models and deploy them using ML/DL frameworks.",
             "Apply AI and NLP for intelligent automation tasks.",
             "Work confidently with cloud, version control, and MLOps concepts.",
-            "Become ready for analytics, AI, and data-driven software roles."
+            "Become ready for analytics, AI, and data-driven software roles in Vijayawada."
         ];
     }
 
@@ -497,7 +497,7 @@ export const getCourseLearningOutcomes = (title: string, category: string = "") 
             "Build, test, and deploy scalable full-stack projects.",
             "Use Git, Docker, and cloud platforms for professional-grade deployment.",
             "Implement secure authentication and RESTful APIs.",
-            "Work confidently as junior full-stack developers or Python backend engineers."
+            "Work confidently as junior full-stack developers or Python backend engineers in Vijayawada."
         ];
     }
 
@@ -508,7 +508,7 @@ export const getCourseLearningOutcomes = (title: string, category: string = "") 
             "Detect, analyze, and mitigate cyberattacks across network and web layers.",
             "Use professional tools for ethical hacking, forensics, and network defense.",
             "Apply secure coding, encryption, and authentication techniques.",
-            "Prepare for top cybersecurity certifications and industry level interviews."
+            "Prepare for top cybersecurity certifications and industry level interviews in Vijayawada."
         ];
     }
 
@@ -520,7 +520,7 @@ export const getCourseLearningOutcomes = (title: string, category: string = "") 
             "Deploy and manage containerized applications on Kubernetes.",
             "Monitor and troubleshoot applications using Prometheus, Grafana, and ELK Stack.",
             "Work confidently with AWS, Azure, and GCP for multi-cloud deployments.",
-            "Become job-ready for DevOps Engineer, Cloud Engineer, and SRE roles."
+            "Become job-ready for DevOps Engineer, Cloud Engineer, and SRE roles in Vijayawada."
         ];
     }
 
@@ -556,7 +556,7 @@ export const getCourseLearningOutcomes = (title: string, category: string = "") 
             "Work with AWS, Azure, and GCP for cloud-native data solutions.",
             "Containerize and automate data systems with Docker, Terraform, and CI/CD.",
             "Implement real-time data streaming and analytics pipelines.",
-            "Become job-ready for Data Engineering & Cloud Data roles."
+            "Become job-ready for Data Engineering & Cloud Data roles in Vijayawada."
         ];
     }
 
@@ -601,7 +601,7 @@ export const getCourseLearningOutcomes = (title: string, category: string = "") 
             "Use MongoDB effectively for data modeling and operations.",
             "Manage version control and deploy full-stack applications to the cloud.",
             "Understand Agile workflows, DevOps basics, and CI/CD pipelines.",
-            "Be job-ready for web and software development roles."
+            "Be job-ready for web and software development roles in Vijayawada."
         ];
     }
 
@@ -612,7 +612,7 @@ export const getCourseLearningOutcomes = (title: string, category: string = "") 
             "Build intelligent, data-driven applications using Python, TensorFlow, and Scikit-Learn.",
             "Apply deep learning to CV, NLP, and time series data.",
             "Deploy AI models on cloud platforms and integrate APIs.",
-            "Confidently appear for technical interviews and AI certifications."
+            "Confidently appear for technical interviews and AI certifications in Vijayawada."
         ];
     }
 
@@ -640,12 +640,12 @@ export const getCourseLearningOutcomes = (title: string, category: string = "") 
 
     // Default learning outcomes
     return [
-        "Apply theoretical knowledge to practical projects.",
-        "Work independently and in team environments.",
+        "Apply theoretical knowledge to practical projects in Vijayawada.",
+        "Work independently and in team environments in Vijayawada.",
         "Debug and troubleshoot technical issues effectively.",
         "Follow industry best practices and standards.",
         "Communicate technical concepts clearly.",
-        "Build a professional portfolio of projects."
+        "Build a professional portfolio of projects in Vijayawada."
     ];
 };
 
@@ -800,9 +800,9 @@ export const getCourseCertifications = (title: string, category: string = "") =>
     }
 
     return [
-        "Academy of Tech Masters – Course Completion Certificate",
-        "Industry-Recognized Skill Certification",
-        "Project Portfolio Certificate"
+        "Academy of Tech Masters – Course Completion Certificate in Vijayawada",
+        "Industry-Recognized Skill Certification in Vijayawada",
+        "Project Portfolio Certificate in Vijayawada"
     ];
 };
 

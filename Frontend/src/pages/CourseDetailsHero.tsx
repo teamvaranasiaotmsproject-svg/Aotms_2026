@@ -130,12 +130,12 @@ export const CourseDetailHero: React.FC<CourseDetailHeroProps> = ({ course, hand
                         </div>
 
                         <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black leading-tight drop-shadow-lg px-2">
-                            <span className="text-white">Become A</span> <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-[#FD5A1A] drop-shadow-2xl">{course.title} PRO</span>
+                            <span className="text-white">Become An</span> <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-[#FD5A1A] drop-shadow-2xl">{course.title} PRO in Vijayawada</span>
                         </h1>
 
                         <p className="text-base sm:text-lg md:text-xl font-medium leading-relaxed max-w-xl drop-shadow-md mx-auto lg:mx-0 px-4">
-                            Dominate the digital world with our comprehensive <span className="text-[#FD5A1A] font-bold">{course.category}</span> training program. Get placed in <span className="text-[#FD5A1A] font-bold">top MNCs</span>.
+                            Dominate the digital world with our comprehensive <span className="text-[#FD5A1A] font-bold">{course.category}</span> training program in Vijayawada. Get placed in <span className="text-[#FD5A1A] font-bold">top MNCs</span> in Vijayawada and across India.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-8 sm:gap-6 pt-6 sm:pt-4 w-full px-4">
@@ -165,7 +165,7 @@ export const CourseDetailHero: React.FC<CourseDetailHeroProps> = ({ course, hand
                     <div className="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl sm:rounded-3xl p-5 md:p-8 xl:p-12 shadow-2xl max-w-xl mx-auto lg:ml-auto lg:mr-0 text-center lg:text-left">
                         <div className="mb-4 sm:mb-8">
                             <h3 className="text-2xl sm:text-3xl xl:text-4xl font-bold text-white mb-1 sm:mb-3">Book a Free Demo</h3>
-                            <p className="text-blue-100/90 text-sm sm:text-base xl:text-lg font-medium">Fill the form below to get instant access to course curriculum.</p>
+                            <p className="text-blue-100/90 text-sm sm:text-base xl:text-lg font-medium">Fill the form below to get instant access to our Vijayawada-based course curriculum.</p>
                         </div>
 
                         <form className="space-y-4" onSubmit={handleFormSubmit}>

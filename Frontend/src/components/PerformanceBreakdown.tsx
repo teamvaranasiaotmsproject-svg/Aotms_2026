@@ -3,9 +3,9 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { motion } from 'framer-motion';
 
 const data = [
-    { name: 'Practical Exposure', value: 60, color: '#0075CF' },
-    { name: 'Theory Presentation', value: 30, color: '#F97316' },
-    { name: 'Group Discussion', value: 10, color: '#64748B' },
+    { name: 'Practical Exposure', value: 70, color: '#0075CF' },
+    { name: 'Theory Presentation', value: 20, color: '#F97316' },
+    { name: 'Mock Interview', value: 10, color: '#64748B' },
 ];
 
 export const PerformanceBreakdown = () => {

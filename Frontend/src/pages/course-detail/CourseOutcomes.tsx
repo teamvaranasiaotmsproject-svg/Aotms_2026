@@ -51,7 +51,7 @@ export const CourseLearningOutcomes = ({ outcomes }: CourseLearningOutcomesProps
 
             <div className="bg-gradient-to-br from-slate-50 to-blue-50/30 rounded-xl p-6 sm:p-8 border border-slate-100">
                 <p className="text-slate-700 text-base sm:text-lg font-medium mb-6">
-                    After completing the course, students will be able to:
+                    After completing the course in Vijayawada, students will be able to:
                 </p>
 
                 <ul className="space-y-4">

@@ -34,7 +34,7 @@ export const CourseFeatures = ({ features, programDetails }: CourseFeaturesProps
     return (
         <section className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 border-b-4 border-blue-600 pb-2 inline-block mb-8 uppercase">
-                What You Will Get After Completion of This Course
+                What You Will Get After Completion of This Course in Vijayawada
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6">
                 {features.map((feature, idx) => {

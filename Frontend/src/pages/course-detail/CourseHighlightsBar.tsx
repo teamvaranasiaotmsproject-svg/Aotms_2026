@@ -6,7 +6,7 @@ export const CourseHighlightsBar = () => {
         <div className="bg-[#0075CF] py-8 border-y border-white/10">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-                    <HighlightItem icon={Briefcase} text="Hands-On Industry Projects" />
+                    <HighlightItem icon={Briefcase} text="Hands-On Industry Projects in Vijayawada" />
                     <HighlightItem icon={LayoutDashboard} text="AOTMS Learning Portal" />
                     <div className="flex items-center gap-3 bg-white rounded-full px-6 py-3 shadow-lg hover:scale-105 transition-transform cursor-default min-w-[200px] justify-center sm:justify-start">
                         <div className="flex gap-1">
@@ -15,7 +15,7 @@ export const CourseHighlightsBar = () => {
                         </div>
                         <span className="font-bold text-slate-800 text-sm sm:text-base">GitHub & LinkedIn Project Portfolio</span>
                     </div>
-                    <HighlightItem icon={Bell} text="Career & Job Alerts" />
+                    <HighlightItem icon={Bell} text="Career & Job Alerts in Vijayawada" />
                     <HighlightItem icon={TrendingUp} text="In-Demand Skill Development" />
                     <HighlightItem icon={BookOpen} text="Free Aptitude Training" />
                     <HighlightItem icon={Users} text="Corporate-Level Industry Interactions" />

@@ -15,7 +15,7 @@ export const CourseToolsTable = ({ toolsData }: CourseToolsTableProps) => {
     return (
         <section id="technologies" className="scroll-mt-32 bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
             <h2 className="text-2xl sm:text-3xl font-bold text-center text-[#0075CF] underline decoration-2 underline-offset-8 mb-8">
-                Tools & Technologies
+                Tools & Technologies Learned in Vijayawada
             </h2>
 
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-[5px] border-white">

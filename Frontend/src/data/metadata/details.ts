@@ -4,8 +4,8 @@ export const getProgramDetails = (category: string) => {
         unit: "Days",
         learning: "75 Days Learning",
         project: "15 Days Project",
-        learningText: "Comprehensive module-based learning",
-        projectText: "Real-world capstone project implementation",
+        learningText: "Comprehensive module-based learning in Vijayawada",
+        projectText: "Real-world capstone project implementation in Vijayawada",
         gradient: "bg-[conic-gradient(#3B82F6_0%_75%,#10B981_75%_100%)]",
         legend: [
             { label: "75 Days Learning", color: "bg-blue-500" },
@@ -13,7 +13,7 @@ export const getProgramDetails = (category: string) => {
         ],
         roles: ["Software Developer", "Full Stack Engineer", "Backend Developer", "Frontend Developer"],
         activity: "Practical Labs, Live Projects, Mock Tests",
-        mode: "Online + Offline (Hybrid)",
+        mode: "Online + Offline (Hybrid) in Vijayawada",
         eligibility: "Open to Undergraduates, Graduates & Working Professionals"
     };
 
@@ -21,67 +21,67 @@ export const getProgramDetails = (category: string) => {
         "Data Science": {
             duration: "90", unit: "Days",
             learning: "75 Days Learning", project: "15 Days Project",
-            learningText: "Statistics, Python, ML Algorithms", projectText: "End-to-end Data Science Lifecycle",
+            learningText: "Statistics, Python, ML Algorithms in Vijayawada", projectText: "End-to-end Data Science Lifecycle in Vijayawada",
             gradient: "bg-[conic-gradient(#8B5CF6_0%_83%,#F59E0B_83%_100%)]",
             legend: [{ label: "75 Days Learning", color: "bg-violet-500" }, { label: "15 Days Project", color: "bg-amber-500" }],
             roles: ["Data Scientist", "ML Engineer", "Data Analyst", "AI Researcher"],
             activity: "Hackathons, Research Paper Reading, Model Optimization",
-            mode: "Hybrid (Online Lectures + Offline Lab Access)",
+            mode: "Hybrid (Online Lectures + Offline Lab Access in Vijayawada)",
             eligibility: "STEM Background preferred, Statistics knowledge helpful"
         },
         "AI/Machine Learning": {
             duration: "90", unit: "Days",
             learning: "75 Days Learning", project: "15 Days Project",
-            learningText: "Deep Learning, NLP, Computer Vision", projectText: "AI Model Deployment",
+            learningText: "Deep Learning, NLP, Computer Vision in Vijayawada", projectText: "AI Model Deployment in Vijayawada",
             gradient: "bg-[conic-gradient(#EC4899_0%_83%,#3B82F6_83%_100%)]",
             legend: [{ label: "75 Days Learning", color: "bg-pink-500" }, { label: "15 Days Project", color: "bg-blue-500" }],
             roles: ["AI Engineer", "ML Ops Engineer", "NLP Specialist", "Computer Vision Engineer"],
             activity: "Hackathons, Research Paper Reading, Model Optimization.",
-            mode: "Hybrid (Online Lectures + Offline Lab Access).",
+            mode: "Hybrid (Online Lectures + Offline Lab Access in Vijayawada).",
             eligibility: "STEM Background preferred, Python knowledge helpful."
         },
         "UI/UX Design": {
             duration: "90", unit: "Days",
             learning: "75 Days Learning", project: "15 Days Project",
-            learningText: "Daily 90 mins \u2013 60 mins Class + 30 mins Practice", projectText: "Hands-On Project with Certification",
+            learningText: "Daily 90 mins \u2013 60 mins Class + 30 mins Practice in Vijayawada", projectText: "Hands-On Project with Certification in Vijayawada",
             gradient: "bg-[conic-gradient(#10B981_0%_83%,#3B82F6_83%_100%)]",
             legend: [{ label: "75 Days Learning", color: "bg-emerald-500" }, { label: "15 Days Project", color: "bg-blue-500" }],
             roles: ["UI/UX Designer", "Product Designer", "UX Researcher", "Interaction Designer"],
             activity: "Every Saturday Free Aptitude classes, Mock Interviews, Technical Tests and onboarding development skills.",
-            mode: "Classroom + Lab Practice + Simulations + Projects + Mock Interviews",
+            mode: "Classroom + Lab Practice + Simulations + Projects + Mock Interviews in Vijayawada",
             eligibility: "B.Tech, B.Sc, BCA, M.Tech, MCA Students as well as Job seekers, Job Switchers."
         },
         "UI/UX Design Masterclass": {
             duration: "90", unit: "Days",
             learning: "75 Days Learning", project: "15 Days Project",
-            learningText: "Design Systems, Wireframing, Prototyping", projectText: "Complete Product Design Portfolio",
+            learningText: "Design Systems, Wireframing, Prototyping in Vijayawada", projectText: "Complete Product Design Portfolio in Vijayawada",
             gradient: "bg-[conic-gradient(#10B981_0%_83%,#3B82F6_83%_100%)]",
             legend: [{ label: "75 Days Learning", color: "bg-emerald-500" }, { label: "15 Days Project", color: "bg-blue-500" }],
             roles: ["UI/UX Designer", "Product Designer", "UX Researcher", "Interaction Designer"],
             activity: "Every Saturday Free Aptitude classes, Mock Interviews, Technical Tests.",
-            mode: "Classroom + Lab Practice + Simulations + Projects + Mock Interviews.",
+            mode: "Classroom + Lab Practice + Simulations + Projects + Mock Interviews in Vijayawada.",
             eligibility: "B.Tech, B.Sc, BCA, M.Tech, MCA Students, Job seekers, Switchers."
         },
         "Full Stack": { // Generic for MERN/MEAN/Java/Python if not specific
             duration: "90", unit: "Days",
             learning: "75 Days Learning", project: "15 Days Project",
-            learningText: "Frontend, Backend, Database, Cloud", projectText: "Full Stack Application Development",
+            learningText: "Frontend, Backend, Database, Cloud in Vijayawada", projectText: "Full Stack Application Development in Vijayawada",
             gradient: "bg-[conic-gradient(#EF4444_0%_80%,#3B82F6_80%_100%)]",
             legend: [{ label: "75 Days Learning", color: "bg-red-500" }, { label: "15 Days Project", color: "bg-blue-500" }],
             roles: ["Full Stack Developer", "Backend Developer", "Frontend Architect", "API Specialist"],
             activity: "Live Coding Sessions, Hackathons, Project Reviews",
-            mode: "Online Live Classes + Recorded Sessions + Support",
+            mode: "Online Live Classes + Recorded Sessions + Support in Vijayawada",
             eligibility: "Any Graduate / Under-graduate with passion for coding"
         },
         "Cyber Security": {
             duration: "90", unit: "Days",
             learning: "75 Days Learning", project: "15 Days Project",
-            learningText: "Network Security, Ethical Hacking", projectText: "Vulnerability Assessment & Penetration Testing",
+            learningText: "Network Security, Ethical Hacking in Vijayawada", projectText: "Vulnerability Assessment & Penetration Testing in Vijayawada",
             gradient: "bg-[conic-gradient(#10B981_0%_75%,#EF4444_75%_100%)]",
             legend: [{ label: "75 Days Learning", color: "bg-emerald-500" }, { label: "15 Days Project", color: "bg-red-500" }],
             roles: ["Ethical Hacker", "Security Analyst", "Penetration Tester", "SOC Analyst"],
             activity: "CTF Challenges, Lab Simulations, Hackathons",
-            mode: "Hybrid (Online + Labs)",
+            mode: "Hybrid (Online + Labs in Vijayawada)",
             eligibility: "Networking Basics, Linux Interest"
         }
     };
@@ -136,25 +136,25 @@ export const getCourseFeatures = (category: string) => {
     return [
         {
             icon: "Award",
-            title: "Courses & Certifications",
+            title: "Courses & Certifications in Vijayawada",
             color: "text-blue-600",
             bgColor: "bg-blue-50"
         },
         {
             icon: "Linkedin",
-            title: "LINKEDIN & NAUKRI & GIT Profile Support",
+            title: "LINKEDIN, NAUKRI & GIT Profile Support in Vijayawada",
             color: "text-sky-700",
             bgColor: "bg-sky-50"
         },
         {
             icon: "Briefcase",
-            title: "Corp.. level tasks handling",
+            title: "Corp. level tasks handling in Vijayawada",
             color: "text-slate-700",
             bgColor: "bg-slate-50"
         },
         {
             icon: "Megaphone",
-            title: "Profile Marketing, Till you get the JOB",
+            title: "Profile Marketing in Vijayawada, Till you get the JOB",
             color: "text-purple-600",
             bgColor: "bg-purple-50"
         },
@@ -166,13 +166,13 @@ export const getCourseFeatures = (category: string) => {
         },
         {
             icon: "MessageSquare",
-            title: "Interview Guidance & Support",
+            title: "Interview Guidance & Support in Vijayawada",
             color: "text-orange-600",
             bgColor: "bg-orange-50"
         },
         {
             icon: "MessageCircle",
-            title: "Free Soft SKILLS Training",
+            title: "Free Soft SKILLS Training in Vijayawada",
             color: "text-pink-600",
             bgColor: "bg-pink-50"
         },
@@ -190,19 +190,19 @@ export const getCourseFeatures = (category: string) => {
         },
         {
             icon: "Handshake",
-            title: "100% Job Guidance",
+            title: "100% Job Guidance in Vijayawada",
             color: "text-cyan-600",
             bgColor: "bg-cyan-50"
         },
         {
             icon: "TrendingUp",
-            title: "Beginner to PRO",
+            title: "Beginner to PRO in Vijayawada",
             color: "text-yellow-600",
             bgColor: "bg-yellow-50"
         },
         {
             icon: "Globe",
-            title: "Offline / Online",
+            title: "Offline / Online in Vijayawada",
             color: "text-teal-600",
             bgColor: "bg-teal-50"
         }

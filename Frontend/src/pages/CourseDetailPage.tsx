@@ -122,8 +122,8 @@ export default function CourseDetail() {
 
             {/* SEO Meta Tags */}
             <Helmet>
-                <title>{course.title} Course | Academy of Tech Masters</title>
-                <meta name="description" content={`Learn ${course.title} with expert training. ${course.duration} course with placement assistance and certification.`} />
+                <title>{course.title} Training in Vijayawada | Academy of Tech Masters</title>
+                <meta name="description" content={`Learn ${course.title} with expert training in Vijayawada. ${course.duration} course with placement assistance and certification.`} />
                 <meta property="og:title" content={`${course.title} | AOTMS`} />
                 <meta property="og:image" content={course.image} />
                 <link rel="canonical" href={`https://aotms.in/course/${slug}`} />
