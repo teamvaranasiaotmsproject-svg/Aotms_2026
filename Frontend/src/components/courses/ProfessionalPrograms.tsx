@@ -53,7 +53,7 @@ export const ProfessionalPrograms = () => {
                         <Sparkles className="w-3.5 h-3.5 mr-2 fill-current" />
                         World Class Education
                     </Badge>
-                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight mb-5 whitespace-nowrap overflow-hidden text-ellipsis text-slate-900">
+                    <h2 className="text-lg sm:text-2xl md:text-5xl lg:text-6xl font-black tracking-tight mb-5 whitespace-normal md:whitespace-nowrap overflow-hidden text-ellipsis text-slate-900">
                         Professional <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Training Programs in Vijayawada</span> <br /><br />
                     </h2>
                     <p className="text-sm md:text-base text-slate-900 font-medium leading-relaxed max-w-2xl mx-auto">
