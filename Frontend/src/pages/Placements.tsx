@@ -312,7 +312,7 @@ const Placements = () => {
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-5xl font-bold text-[#4285F4] mb-2 tracking-tight">
-                            Our Clients
+                            Companies Where Our Students Got Placed
                         </h2>
                     </div>
 

@@ -12,28 +12,28 @@ const steps: Step[] = [
   {
     number: "01",
     title: "Strong Fundamentals",
-    description: "Industry-aligned concepts explained clearly from basics in Vijayawada",
+    description: "Industry-aligned concepts explained clearly from basics",
     icon: BookOpen,
     bgImage: "/images/fundamentals.jpg"
   },
   {
     number: "02",
     title: "Hands-On Practice",
-    description: "Daily labs, tasks, and mentor-guided practice in Vijayawada",
+    description: "Daily labs, tasks, and mentor-guided practice",
     icon: Terminal,
     bgImage: "/images/hands-on.png"
   },
   {
     number: "03",
     title: "Real-Time Projects",
-    description: "Build resume-ready projects based on real scenarios in Vijayawada",
+    description: "Build resume-ready projects based on real scenarios",
     icon: Laptop,
     bgImage: "/images/real-time-projects.png"
   },
   {
     number: "04",
     title: "Career & Placement",
-    description: "Mock interviews, resume help, and job assistance in Vijayawada",
+    description: "Mock interviews, resume help, and job assistance",
     icon: Briefcase,
     bgImage: "/images/career-placement.jpg"
   }
@@ -46,15 +46,15 @@ export const LearningProcess = () => {
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-[#0075CF] text-xs font-bold uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5 mr-2 fill-current" />
-            Our Learning Model in Vijayawada
+            Our Learning Model
           </div>
 
           <h2 className="text-4xl md:text-5xl lg:text-5xl font-black text-slate-900 font-display tracking-tight leading-[1.15]">
-            How Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Training Unfolds in Vijayawada</span>
+            How Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Training Unfolds</span>
           </h2>
 
-          <p className="text-base md:text-lg text-slate-500 mt-4 leading-relaxed font-medium">
-            A structured path designed to take you from a beginner to a <span className="text-[#0075CF] font-bold">Job-Ready Professional in Vijayawada</span>.
+          <p className="text-base md:text-lg text-slate-900 mt-4 leading-relaxed font-medium">
+            A structured path designed to take you from a beginner to a <span className="text-[#0075CF] font-bold">Job-Ready Professional</span>.
           </p>
         </div>
 
@@ -104,7 +104,7 @@ export const LearningProcess = () => {
             onClick={() => window.location.href = '/courses'}
             className="inline-flex items-center justify-center h-14 px-10 text-lg font-bold text-white transition-all bg-[#0075CF] rounded-full hover:bg-blue-700 hover:scale-105 active:scale-95 shadow-lg shadow-blue-500/25 ring-offset-2 focus:ring-2 focus:ring-blue-500"
           >
-            <span className="ml-2">Start Your Journey in Vijayawada</span>
+            <span className="ml-2">Start Your Journey</span>
             <ArrowRight className="w-6 h-6 ml-2" strokeWidth={2.5} />
           </button>
         </div>

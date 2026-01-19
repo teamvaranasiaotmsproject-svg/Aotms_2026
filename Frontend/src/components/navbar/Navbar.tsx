@@ -94,7 +94,7 @@ export const Header = () => {
   return (
     <>
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled ? 'shadow-md' : ''}`}
+        className={`fixed top-0 left-0 right-0 z-[200] transition-all duration-300 ${isScrolled ? 'shadow-md' : ''}`}
       >
         <TopNavbar
           isScrolled={isScrolled}
@@ -140,7 +140,7 @@ export const Header = () => {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 10, scale: 0.98 }}
                           transition={{ duration: 0.2 }}
-                          className={`absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 bg-popover rounded-xl shadow-xl border border-border/50 p-2 overflow-hidden z-50 ${link.isMegaMenu ? 'w-[600px] -left-20 translate-x-[-20%]' : 'w-64'
+                          className={`absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 bg-popover rounded-xl shadow-xl border border-border/50 p-2 overflow-hidden z-[150] ${link.isMegaMenu ? 'w-[600px] -left-20 translate-x-[-20%]' : 'w-64'
                             }`}
                         >
                           <div className="absolute top-0 left-1/2 -translate-x-1/2 -mt-1.5 w-3 h-3 bg-popover border-t border-l border-border/50 rotate-45" />
@@ -197,7 +197,7 @@ export const Header = () => {
                     <ChevronDown className="w-3 h-3 text-muted-foreground" />
                   </button>
 
-                  <div className="absolute right-0 top-[calc(100%+12px)] w-64 bg-white rounded-xl shadow-2xl border border-slate-100 p-2 invisible opacity-0 group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right z-50">
+                  <div className="absolute right-0 top-[calc(100%+12px)] w-64 bg-white rounded-xl shadow-2xl border border-slate-100 p-2 invisible opacity-0 group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right z-[150]">
                     <div className="px-4 py-3 border-b border-slate-100 mb-2">
                       <p className="font-bold text-slate-900 text-base truncate">{user?.name}</p>
                       <p className="text-xs text-slate-500 truncate mt-0.5">{user?.email}</p>

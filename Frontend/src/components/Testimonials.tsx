@@ -58,7 +58,7 @@ export const Testimonials = () => {
 
                             {/* TEXT — GRADIENT */}
                             <span className="text-xs font-black text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">
-                                Alumni Reviews in Vijayawada
+                                What Our Alumni from Vijayawada Say
                             </span>
 
                         </span>
@@ -67,7 +67,7 @@ export const Testimonials = () => {
                     <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
                         Student <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Honest Reviews</span>
                     </h2>
-                    <p className="section-subheading mt-4 max-w-3xl">
+                    <p className="section-subheading mt-4 text-slate-900 max-w-3xl">
                         Read honest reviews from our Verified Students in Vijayawada.
                     </p>
                 </motion.div>

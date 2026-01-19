@@ -47,7 +47,7 @@ const socialLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="bg-[#0066CC] pt-10 pb-6 md:pt-14 md:pb-8 border-t border-white/20 font-sans text-white relative z-50">
+    <footer className="bg-[#0066CC] pt-10 pb-28 md:pt-14 md:pb-8 border-t border-white/20 font-sans text-white relative z-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-2">
@@ -192,7 +192,7 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-6 border-t border-white/20 flex flex-col md:flex-row justify-between items-center gap-3 text-xs md:text-sm text-white/70">
+        <div className="pt-6 border-t border-white/20 flex flex-col md:flex-row justify-between items-center gap-3 text-xs md:text-sm text-white/70 md:pr-36">
           <p>© {new Date().getFullYear()} AOTMS. All rights reserved. Engineered by Team AOTMS</p>
           <div className="flex gap-4">
             <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>

@@ -76,7 +76,7 @@ export const WhyChooseUs = () => {
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight mb-5 font-display text-slate-900">
             The Academy <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">Difference</span>
           </h2>
-          <p className="text-sm md:text-base text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto">
+          <p className="text-sm md:text-base text-slate-900 font-medium leading-relaxed max-w-2xl mx-auto">
             We're more than just a training center in Vijayawada. We're a <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A]">career launchpad</span>.
           </p>
         </div>
