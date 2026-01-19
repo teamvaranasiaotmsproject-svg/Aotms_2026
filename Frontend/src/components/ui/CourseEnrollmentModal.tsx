@@ -98,9 +98,16 @@ export const CourseEnrollmentModal = ({ isOpen, onClose, defaultCourse = "", sou
                         <div className="inline-flex items-center justify-center p-2.5 bg-white/10 rounded-2xl mb-3 backdrop-blur-sm shadow-inner ring-1 ring-white/20">
                             <Sparkles className="w-5 h-5 text-[#FFD700]" strokeWidth={2.5} />
                         </div>
-                        <DialogTitle className="text-2xl font-black tracking-tight">{source === "Free Demo" ? "Book Free Demo" : "Start Your Journey"}</DialogTitle>
+                        <DialogTitle className="text-2xl font-black tracking-tight">
+                            {source.includes("50% Off") ? (
+                                <span className="flex flex-col gap-1">
+                                    <span className="text-yellow-300 text-lg uppercase tracking-widest">Limited Time Offer</span>
+                                    <span>Get 50% OFF Today</span>
+                                </span>
+                            ) : source === "Free Demo" ? "Book Free Demo" : "Start Your Journey"}
+                        </DialogTitle>
                         <DialogDescription className="text-blue-50 mt-1 font-medium text-sm max-w-xs mx-auto">
-                            Expert-led training in Vijayawada. <br /> Your career transformation starts here.
+                            {source.includes("50% Off") ? "Register now to claim your discount on any course!" : "Expert-led training in Vijayawada. Your career starts here."}
                         </DialogDescription>
                     </div>
                 </div>
@@ -204,7 +211,7 @@ export const CourseEnrollmentModal = ({ isOpen, onClose, defaultCourse = "", sou
                                             Processing...
                                         </>
                                     ) : (
-                                        source === "Free Demo" ? "Secure My Free Demo Slot" : "Start My Career Journey"
+                                        source.includes("50% Off") ? "Claim My 50% Discount" : source === "Free Demo" ? "Secure My Free Demo Slot" : "Start My Career Journey"
                                     )}
                                 </Button>
                             </DialogFooter>

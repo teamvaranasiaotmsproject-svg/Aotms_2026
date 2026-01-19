@@ -27,6 +27,7 @@ const ComingSoon = lazy(() => import("./pages/ComingSoon"));
 const CoursesPage = lazy(() => import("./pages/CoursesPage"));
 const InternshipsPage = lazy(() => import("./pages/InternshipsPage"));
 const ResourcesPage = lazy(() => import("./pages/ResourcesPage"));
+const CareersPage = lazy(() => import("./pages/CareersPage"));
 
 import Chatbot from "./components/Chatbot";
 
@@ -117,6 +118,7 @@ const App = () => {
                 <Route path="/events" element={<Events />} />
                 <Route path="/courses" element={<CoursesPage />} />
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/careers" element={<CareersPage />} />
 
                 <Route path="/reset-password" element={<ResetPassword />} />
                 <Route path="/internships" element={<InternshipsPage />} />

@@ -58,11 +58,19 @@ export const HeroSection = () => {
   }, []);
 
   useEffect(() => {
+    const autoTriggerTimer = setTimeout(() => {
+      // Trigger immediately (500ms buffer for smooth UX)
+      handleOpenEnrollment("Auto Popup - 50% Off");
+    }, 500);
+
     if (heroImages.length <= 1) return;
     const timer = setInterval(() => {
       setCurrentImageIndex((p) => (p + 1) % heroImages.length);
     }, 4000);
-    return () => clearInterval(timer);
+    return () => {
+      clearInterval(timer);
+      clearTimeout(autoTriggerTimer);
+    };
   }, [heroImages]);
 
   return (

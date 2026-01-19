@@ -97,10 +97,10 @@ export const CourseCard = ({ course }: CourseCardProps) => {
                         </h3>
                     </Link>
                     <p className="text-slate-500 text-sm line-clamp-1 mb-2 font-medium">
-                        Expertly crafted career path in {course.category}
+                        {course.fullDescription}
                     </p>
                     <p className="text-blue-600 text-[11px] md:text-xs font-bold uppercase tracking-wider">
-                        Instructor: {course.trainer} • {course.level}
+                        {course.trainer} • {course.level}
                     </p>
                 </div>
 

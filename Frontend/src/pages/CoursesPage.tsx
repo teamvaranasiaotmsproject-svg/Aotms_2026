@@ -141,7 +141,7 @@ const CoursesPage = () => {
                         <div>
                             <div className="flex items-center gap-2 md:gap-3 mb-1 md:mb-2">
                                 <div className="h-6 md:h-8 w-1 bg-blue-600 rounded-full" />
-                                <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">Certificate Programs</h2>
+                                <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">Professional Training Programs in Vijayawada</h2>
                             </div>
                             <p className="text-slate-500 text-xs md:text-sm font-semibold md:ml-4">Browse our industry-recognized courses</p>
                         </div>

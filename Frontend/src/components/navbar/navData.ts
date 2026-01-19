@@ -59,6 +59,11 @@ export const navLinks = [
         hasDropdown: false,
     },
     {
+        name: "Careers",
+        href: "/careers",
+        hasDropdown: false,
+    },
+    {
         name: "Insights",
         href: "#",
         hasDropdown: true,
