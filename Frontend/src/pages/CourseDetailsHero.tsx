@@ -129,12 +129,12 @@ export const CourseDetailHero: React.FC<CourseDetailHeroProps> = ({ course, hand
                             Enrolling Now
                         </div>
 
-                        <h1 className="text-4xl sm:text-7xl md:text-7xl xl:text-5xl font-black leading-tight drop-shadow-lg px-2">
+                        <h1 className="text-3xl sm:text-6xl md:text-5xl xl:text-5xl font-black leading-tight drop-shadow-lg px-1">
                             <span className="text-white">Launch Your Career as an</span> <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-[#FD5A1A] drop-shadow-2xl">{course.title} Professional in Vijayawada</span>
                         </h1>
 
-                        <p className="text-base sm:text-lg md:text-xl font-medium leading-relaxed max-w-xl drop-shadow-md mx-auto lg:mx-0 px-4">
+                        <p className="text-sm sm:text-base md:text-lg font-medium leading-relaxed max-w-xl drop-shadow-md mx-auto lg:mx-0 px-4">
                             Dominate the digital world with our comprehensive <span className="text-[#FD5A1A] font-bold">{course.title}</span> training program in Vijayawada. Get placed in <span className="text-[#FD5A1A] font-bold">top MNCs</span> in Vijayawada and across India.
                         </p>
 
@@ -145,8 +145,8 @@ export const CourseDetailHero: React.FC<CourseDetailHeroProps> = ({ course, hand
                                     <Clock className="w-6 h-6 sm:w-5 sm:h-5 text-[#FD5A1A]" />
                                 </div>
                                 <div className="text-left">
-                                    <div className="text-blue-200 text-xs font-bold uppercase tracking-wider mb-1 whitespace-nowrap">Course Duration</div>
-                                    <div className="text-white text-xl sm:text-xl font-bold">{course.duration}</div>
+                                    <div className="text-blue-200 text-sm font-bold uppercase tracking-wider mb-1 whitespace-nowrap">Course Duration</div>
+                                    <div className="text-white text-sm sm:text-xl font-bold">{course.duration}</div>
                                 </div>
                             </div>
 

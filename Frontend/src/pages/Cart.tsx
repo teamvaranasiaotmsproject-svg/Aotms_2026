@@ -12,6 +12,7 @@ const Cart = () => {
     const total = items.reduce((sum, item) => sum + (item.price || 0), 0);
 
     return (
+        
         <div className="min-h-screen bg-slate-50 font-inter">
             <Header />
             <main className="container mx-auto px-4 pt-36 pb-24 md:pt-48 md:pb-32">
