@@ -74,11 +74,7 @@ export const navLinks = [
             { name: "Contact", href: "/contact", icon: Mail, desc: "Get in touch" },
         ]
     },
-    {
-        name: "Careers",
-        href: "/careers",
-        hasDropdown: false,
-    },
+
 ];
 
 export const degrees = ["B.Tech", "M.Tech", "MCA", "MBA", "Others"];
