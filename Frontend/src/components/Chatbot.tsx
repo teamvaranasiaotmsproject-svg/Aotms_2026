@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
 import { FaRobot } from 'react-icons/fa6';
+import BotAvatar from './BotAvatar';
 
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -169,13 +170,8 @@ const Chatbot: React.FC = () => {
             {/* Header - White with Black Text */}
             <div className="chat-header relative">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                  <motion.div
-                    animate={{ rotateY: [0, 360] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                  >
-                    <FaRobot className="w-5 h-5 text-white" />
-                  </motion.div>
+                <div className="w-12 h-12 -ml-2 -my-2 flex items-center justify-center">
+                  <BotAvatar />
                 </div>
                 <h2 className="text-white font-semibold text-sm">Academy Of Tech Masters</h2>
               </div>
@@ -323,20 +319,9 @@ const Chatbot: React.FC = () => {
           title="Open support chat"
         >
           <div className="flex items-center gap-2 relative z-10">
-            <motion.div
-              animate={{
-                y: [0, -4, 0],
-                rotateZ: [0, -5, 5, 0]
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="perspective-1000"
-            >
-              <FaRobot className="w-5 h-5 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]" />
-            </motion.div>
+            <div className="w-14 h-14 -my-4 -ml-2">
+              <BotAvatar />
+            </div>
             <span className="font-bold text-sm tracking-wide">AOTMS</span>
           </div>
           {/* Animated Glow Background */}

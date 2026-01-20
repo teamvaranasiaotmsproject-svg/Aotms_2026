@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
 
-/* Ensure reCAPTCHA badge is in the front (on top of other elements) */
+/* Ensure reCAPTCHA badge is in the front (on top of other elements) and flush to bottom-left */
 .grecaptcha-badge {
   z-index: 10000 !important;
   visibility: visible !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: auto !important;
+  margin: 0 !important;
 }
 
 @tailwind base;
