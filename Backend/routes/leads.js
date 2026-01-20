@@ -25,10 +25,12 @@ router.post('/', async (req, res) => {
     try {
         const { name, email, phone, course, event, type, recaptchaToken } = req.body;
 
-        // Verify Recaptcha
-        const recaptchaResult = await verifyRecaptcha(recaptchaToken);
-        if (!recaptchaResult.success) {
-            return res.status(400).json({ message: recaptchaResult.message });
+        // Verify Recaptcha (Optional for now)
+        if (recaptchaToken) {
+            const recaptchaResult = await verifyRecaptcha(recaptchaToken);
+            if (!recaptchaResult.success) {
+                return res.status(400).json({ message: recaptchaResult.message });
+            }
         }
 
         // Validation for event registration

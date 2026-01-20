@@ -89,7 +89,7 @@ export const CourseDetailHero: React.FC<CourseDetailHeroProps> = ({ course, hand
         }
     };
     return (
-        <section className="hero course-hero relative pt-40 pb-16 md:pt-48 md:pb-20 bg-[#0066CC] overflow-hidden w-full">
+        <section className="hero course-hero relative pt-28 pb-12 sm:pt-40 sm:pb-16 md:pt-48 md:pb-20 bg-[#0066CC] overflow-hidden w-full">
             {/* Background Base with Rich Gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-[#020617] via-[#002855] to-[#00509d]" />
 
@@ -120,16 +120,16 @@ export const CourseDetailHero: React.FC<CourseDetailHeroProps> = ({ course, hand
             </div>
 
             <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-20 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 xl:gap-20 items-center">
 
                     {/* LEFT SIDE: Content */}
-                    <div className="text-white space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start w-full">
+                    <div className="text-white space-y-4 lg:space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start w-full">
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FD5A1A]/10 border border-[#FD5A1A]/30 text-[#FD5A1A] text-xs font-bold uppercase tracking-wider">
                             <span className="w-2 h-2 rounded-full bg-[#FD5A1A] animate-pulse" />
                             Enrolling Now
                         </div>
 
-                        <h1 className="text-3xl sm:text-6xl md:text-5xl xl:text-5xl font-black leading-tight drop-shadow-lg px-1">
+                        <h1 className="text-2xl sm:text-4xl md:text-5xl xl:text-5xl font-black leading-tight drop-shadow-lg px-1">
                             <span className="text-white">Launch Your Career as an</span> <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-[#FD5A1A] drop-shadow-2xl">{course.title} Professional in Vijayawada</span>
                         </h1>
@@ -138,45 +138,45 @@ export const CourseDetailHero: React.FC<CourseDetailHeroProps> = ({ course, hand
                             Dominate the digital world with our comprehensive <span className="text-[#FD5A1A] font-bold">{course.title}</span> training program in Vijayawada. Get placed in <span className="text-[#FD5A1A] font-bold">top MNCs</span> in Vijayawada and across India.
                         </p>
 
-                        <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-8 sm:gap-6 pt-6 sm:pt-4 w-full px-4">
+                        <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 sm:gap-6 pt-4 sm:pt-4 w-full px-4">
                             {/* Duration Badge - Professional Look */}
-                            <div className="w-full sm:w-auto flex items-center justify-center sm:justify-start gap-4 bg-white/5 border border-white/10 px-6 py-4 sm:px-5 sm:py-2.5 rounded-2xl backdrop-blur-sm shadow-lg hover:bg-white/10 transition-colors">
-                                <div className="p-2.5 sm:p-2 bg-[#FD5A1A]/20 rounded-xl">
-                                    <Clock className="w-6 h-6 sm:w-5 sm:h-5 text-[#FD5A1A]" />
+                            <div className="w-full sm:w-auto flex items-center justify-center sm:justify-start gap-4 bg-white/5 border border-white/10 px-5 py-3 sm:px-5 sm:py-2.5 rounded-2xl backdrop-blur-sm shadow-lg hover:bg-white/10 transition-colors">
+                                <div className="p-2 sm:p-2 bg-[#FD5A1A]/20 rounded-xl">
+                                    <Clock className="w-5 h-5 sm:w-5 sm:h-5 text-[#FD5A1A]" />
                                 </div>
                                 <div className="text-left">
-                                    <div className="text-blue-200 text-sm font-bold uppercase tracking-wider mb-1 whitespace-nowrap">Course Duration</div>
-                                    <div className="text-white text-sm sm:text-xl font-bold">{course.duration}</div>
+                                    <div className="text-blue-200 text-xs sm:text-sm font-bold uppercase tracking-wider mb-0.5 sm:mb-1 whitespace-nowrap">Course Duration</div>
+                                    <div className="text-white text-base sm:text-xl font-bold">{course.duration}</div>
                                 </div>
                             </div>
 
                             {/* Enrolled Stats - Text Only (Letters) */}
                             <div className="w-full sm:w-auto flex flex-col items-center sm:items-start sm:pl-4 sm:border-l border-white/10 text-center sm:text-left py-2">
                                 <div className="flex items-baseline gap-2">
-                                    <span className="text-4xl sm:text-3xl font-black text-white">2k+</span>
-                                    <span className="text-blue-200 font-medium text-lg sm:text-lg">Students</span>
+                                    <span className="text-3xl sm:text-3xl font-black text-white">2k+</span>
+                                    <span className="text-blue-200 font-medium text-base sm:text-lg">Students</span>
                                 </div>
-                                <div className="text-sm sm:text-sm text-white/60 font-bold">Currently Enrolled</div>
+                                <div className="text-xs sm:text-sm text-white/60 font-bold">Currently Enrolled</div>
                             </div>
                         </div>
                     </div>
 
                     {/* RIGHT SIDE: Form */}
-                    <div className="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl sm:rounded-3xl p-5 md:p-8 xl:p-12 shadow-2xl max-w-xl mx-auto lg:ml-auto lg:mr-0 text-center lg:text-left">
-                        <div className="mb-4 sm:mb-8">
-                            <h3 className="text-2xl sm:text-3xl xl:text-4xl font-bold text-white mb-1 sm:mb-3">Book a Free Demo</h3>
+                    <div className="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-8 xl:p-12 shadow-2xl max-w-xl mx-auto lg:ml-auto lg:mr-0 text-center lg:text-left">
+                        <div className="mb-3 sm:mb-8">
+                            <h3 className="text-xl sm:text-3xl xl:text-4xl font-bold text-white mb-1 sm:mb-3">Book a Free Demo</h3>
                             <p className="text-blue-100/90 text-sm sm:text-base xl:text-lg font-medium">Fill the form below to get instant access to our Vijayawada-based course curriculum.</p>
                         </div>
 
-                        <form className="space-y-4" onSubmit={handleFormSubmit}>
-                            <div className="space-y-4">
+                        <form className="space-y-3 sm:space-y-4" onSubmit={handleFormSubmit}>
+                            <div className="space-y-3 sm:space-y-4">
                                 <input
                                     type="text"
                                     name="name"
                                     value={formData.name}
                                     onChange={handleChange}
                                     placeholder="Your Name"
-                                    className="w-full h-12 sm:h-14 rounded-xl bg-white/10 border border-white/10 text-white placeholder:text-blue-200/50 px-5 focus:outline-none focus:bg-white/20 focus:border-white/30 transition-all font-medium text-base sm:text-lg"
+                                    className="w-full h-11 sm:h-12 md:h-14 rounded-xl bg-white/10 border border-white/10 text-white placeholder:text-blue-200/50 px-4 sm:px-5 focus:outline-none focus:bg-white/20 focus:border-white/30 transition-all font-medium text-base sm:text-lg"
                                 />
                                 <input
                                     type="email"
@@ -184,7 +184,7 @@ export const CourseDetailHero: React.FC<CourseDetailHeroProps> = ({ course, hand
                                     value={formData.email}
                                     onChange={handleChange}
                                     placeholder="Email Address"
-                                    className="w-full h-12 sm:h-14 rounded-xl bg-white/10 border border-white/10 text-white placeholder:text-blue-200/50 px-5 focus:outline-none focus:bg-white/20 focus:border-white/30 transition-all font-medium text-base sm:text-lg"
+                                    className="w-full h-11 sm:h-12 md:h-14 rounded-xl bg-white/10 border border-white/10 text-white placeholder:text-blue-200/50 px-4 sm:px-5 focus:outline-none focus:bg-white/20 focus:border-white/30 transition-all font-medium text-base sm:text-lg"
                                 />
                                 <input
                                     type="tel"
@@ -192,13 +192,13 @@ export const CourseDetailHero: React.FC<CourseDetailHeroProps> = ({ course, hand
                                     value={formData.phone}
                                     onChange={handleChange}
                                     placeholder="Phone Number"
-                                    className="w-full h-12 sm:h-14 rounded-xl bg-white/10 border border-white/10 text-white placeholder:text-blue-200/50 px-5 focus:outline-none focus:bg-white/20 focus:border-white/30 transition-all font-medium text-base sm:text-lg"
+                                    className="w-full h-11 sm:h-12 md:h-14 rounded-xl bg-white/10 border border-white/10 text-white placeholder:text-blue-200/50 px-4 sm:px-5 focus:outline-none focus:bg-white/20 focus:border-white/30 transition-all font-medium text-base sm:text-lg"
                                 />
                             </div>
 
                             <Button
                                 disabled={isSubmitting}
-                                className="w-full h-12 sm:h-14 bg-[#FD5A1A] hover:bg-[#e04f16] text-white rounded-xl font-bold text-lg sm:text-xl shadow-lg shadow-[#FD5A1A]/20 transition-all mt-3 sm:mt-4"
+                                className="w-full h-11 sm:h-12 md:h-14 bg-[#FD5A1A] hover:bg-[#e04f16] text-white rounded-xl font-bold text-lg sm:text-xl shadow-lg shadow-[#FD5A1A]/20 transition-all mt-3 sm:mt-4"
                             >
                                 {isSubmitting ? "Processing..." : "Get Started Now"}
                             </Button>

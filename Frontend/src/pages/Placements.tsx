@@ -19,7 +19,8 @@ const Placements = () => {
         name: "",
         email: "",
         phone: "",
-        course: ""
+        course: "",
+        customCourse: ""
     });
     const [loading, setLoading] = useState(false);
 
@@ -57,6 +58,10 @@ const Placements = () => {
             toast.error("Please select an interested course");
             return false;
         }
+        if (formData.course === 'Other' && (!formData.customCourse || formData.customCourse.trim().length < 2)) {
+            toast.error("Please specify your interested course");
+            return false;
+        }
         return true;
     };
 
@@ -75,9 +80,16 @@ const Placements = () => {
         setLoading(true);
         try {
             const token = await executeRecaptcha("placement_inquiry");
-            await axios.post(`${import.meta.env.VITE_API_URL}/api/leads`, { ...formData, recaptchaToken: token });
+
+            const submitData = {
+                ...formData,
+                course: formData.course === 'Other' ? formData.customCourse : formData.course,
+                recaptchaToken: token
+            };
+
+            await axios.post(`${import.meta.env.VITE_API_URL}/api/leads`, submitData);
             toast.success("Request submitted successfully!");
-            setFormData({ name: "", email: "", phone: "", course: "" });
+            setFormData({ name: "", email: "", phone: "", course: "", customCourse: "" });
         } catch (error) {
             console.error(error);
             toast.error("Failed to submit request.");
@@ -270,7 +282,7 @@ const Placements = () => {
                                                         <img
                                                             src={student.image}
                                                             alt={student.name}
-                                                            className="w-full h-full object-cover transform md:group-hover:scale-110 transition-transform duration-700"
+                                                            className="w-full h-full object-cover md:group-hover:scale-110 transition-transform duration-700 contrast-[1.15] brightness-[1.05] saturate-[1.1]"
                                                             loading="lazy"
                                                         />
                                                     ) : (
@@ -311,46 +323,131 @@ const Placements = () => {
 
 
 
-            {/* Hiring Partners Section (Logos) */}
+            {/* Hiring Partners Section (Logos) - Infinity Scroll */}
             <section className="py-20 bg-white border-y border-slate-200 relative overflow-hidden">
                 <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(66,133,244,0.05)_0%,transparent_70%)]" />
                 </div>
 
-                <div className="container mx-auto px-4 relative z-10">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-5xl font-bold text-[#4285F4] mb-2 tracking-tight">
-                            Companies Where Our Students Got Placed
-                        </h2>
+                <div className="container mx-auto px-4 relative z-10 mb-12">
+                    <div className="text-center max-w-4xl mx-auto">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6 }}
+                            viewport={{ once: true }}
+                        >
+                            <span className="inline-block px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-[#4285F4] text-xs font-black uppercase tracking-wider mb-4 shadow-sm">
+                                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#4285F4] mr-2 animate-pulse"></span>
+                                Top Recruiters
+                            </span>
+                            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
+                                Companies Where Our Students <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4285F4] via-[#0075CF] to-[#00C6FF] animate-gradient-shift">
+                                    Got Placed
+                                </span>
+                            </h2>
+                            <div className="w-24 h-1.5 bg-gradient-to-r from-[#4285F4] to-[#00C6FF] mx-auto rounded-full mb-8"></div>
+                        </motion.div>
+                    </div>
+                </div>
+
+                <div className="relative w-full space-y-12">
+                    {/* Gradient Masks for smooth fade edges */}
+                    <div className="absolute left-0 top-0 bottom-0 w-24 md:w-32 bg-gradient-to-r from-white to-transparent z-20 pointer-events-none" />
+                    <div className="absolute right-0 top-0 bottom-0 w-24 md:w-32 bg-gradient-to-l from-white to-transparent z-20 pointer-events-none" />
+
+                    {/* Row 1: Left Scroll */}
+                    <div className="flex overflow-hidden group">
+                        <motion.div
+                            className="flex gap-8 md:gap-16 items-center min-w-full pl-8 md:pl-16"
+                            animate={{ x: "-50%" }}
+                            transition={{
+                                repeat: Infinity,
+                                ease: "linear",
+                                duration: 30, // Adjust speed here
+                            }}
+                        >
+                            {[
+                                { name: "Google", src: "/images/Google-logo.png" },
+                                { name: "Meta", src: "/images/Meta-Logo.png" },
+                                { name: "Microsoft", src: "/images/Microsoft.webp" },
+                                { name: "Amazon", src: "/images/amazon-logo.webp" },
+                                { name: "Nvidia", src: "/images/Nvidia_logo.png" },
+                                { name: "Intel", src: "/images/intel.png" },
+                                { name: "IBM", src: "/images/IBM.png" },
+                                { name: "Flipkart", src: "/images/Flipkart.png" },
+                                { name: "TCS", src: "/images/TCS.png" },
+                                { name: "Infosys", src: "/images/Infosys.png" },
+                                // Duplicate for loop
+                                { name: "Google", src: "/images/Google-logo.png" },
+                                { name: "Meta", src: "/images/Meta-Logo.png" },
+                                { name: "Microsoft", src: "/images/Microsoft.webp" },
+                                { name: "Amazon", src: "/images/amazon-logo.webp" },
+                                { name: "Nvidia", src: "/images/Nvidia_logo.png" },
+                                { name: "Intel", src: "/images/intel.png" },
+                                { name: "IBM", src: "/images/IBM.png" },
+                                { name: "Flipkart", src: "/images/Flipkart.png" },
+                                { name: "TCS", src: "/images/TCS.png" },
+                                { name: "Infosys", src: "/images/Infosys.png" },
+                            ].map((company, idx) => (
+                                <div key={`row1-${idx}`} className="flex-shrink-0 w-32 md:w-48 h-20 md:h-24 bg-white rounded-xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] border border-slate-100 flex items-center justify-center p-4 md:p-6 hover:scale-105 transition-transform duration-300">
+                                    <img
+                                        src={company.src}
+                                        alt={company.name}
+                                        className="max-w-full max-h-full object-contain filter drop-shadow-sm"
+                                        loading="lazy"
+                                    />
+                                </div>
+                            ))}
+                        </motion.div>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8 items-center justify-items-center">
-                        {[
-                            { name: "Google", src: "/images/Google-logo.png" },
-                            { name: "TCS", src: "/images/TCS.png" },
-                            { name: "HCL", src: "/images/HCL.png" },
-                            { name: "Capgemini", src: "/images/Capgemini.png" },
-                            { name: "Microsoft", src: "/images/Microsoft.webp" },
-                            { name: "Amazon", src: "/images/amazon-logo.webp" },
-                            { name: "Infosys", src: "/images/Infosys.png" },
-                            { name: "Wipro", src: "/images/Wipro.png" },
-                            { name: "Accenture", src: "/images/Accenture.svg-1-1536x405-1-595xh.webp" },
-                            { name: "IBM", src: "/images/IBM.png" },
-                            { name: "Tech Mahindra", src: "/images/tech-mahindra-1.webp" },
-                            { name: "Mindtree", src: "/images/mindtree.png" }
-                        ].map((company, idx) => (
-                            <div key={idx} className="w-40 h-24 bg-white rounded-xl shadow-sm border border-slate-200 flex items-center justify-center p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group relative z-10">
-                                <img
-                                    src={company.src}
-                                    alt={company.name}
-                                    className="max-w-full max-h-full object-contain transition-all duration-300"
-                                    onError={(e) => {
-                                        (e.target as HTMLImageElement).style.display = 'none';
-                                        (e.target as HTMLImageElement).parentElement!.innerText = company.name;
-                                        (e.target as HTMLImageElement).parentElement!.className = "w-40 h-24 bg-white rounded-xl shadow-sm border border-slate-200 flex items-center justify-center p-6 text-sm font-bold text-slate-400 text-center";
-                                    }}
-                                />
-                            </div>
-                        ))}
+                    {/* Row 2: Right Scroll */}
+                    <div className="flex overflow-hidden group">
+                        <motion.div
+                            className="flex gap-8 md:gap-16 items-center min-w-full pl-8 md:pl-16"
+                            animate={{ x: "0%" }}
+                            initial={{ x: "-50%" }}
+                            transition={{
+                                repeat: Infinity,
+                                ease: "linear",
+                                duration: 35, // Adjust speed differently for visual interest
+                            }}
+                        >
+                            {[
+                                { name: "Accenture", src: "/images/Accenture.svg-1-1536x405-1-595xh.webp" },
+                                { name: "Capgemini", src: "/images/Capgemini.png" },
+                                { name: "Wipro", src: "/images/Wipro.png" },
+                                { name: "HCL", src: "/images/HCL.png" },
+                                { name: "PwC", src: "/images/pwc.png" },
+                                { name: "EY", src: "/images/EY_logo.png" },
+                                { name: "Mphasis", src: "/images/mphasis.webp" },
+                                { name: "Tech Mahindra", src: "/images/tech-mahindra-1.webp" },
+                                { name: "Mindtree", src: "/images/mindtree.png" },
+                                { name: "Myntra", src: "/images/myntra.png" },
+                                // Duplicate for loop
+                                { name: "Accenture", src: "/images/Accenture.svg-1-1536x405-1-595xh.webp" },
+                                { name: "Capgemini", src: "/images/Capgemini.png" },
+                                { name: "Wipro", src: "/images/Wipro.png" },
+                                { name: "HCL", src: "/images/HCL.png" },
+                                { name: "PwC", src: "/images/pwc.png" },
+                                { name: "EY", src: "/images/EY_logo.png" },
+                                { name: "Mphasis", src: "/images/mphasis.webp" },
+                                { name: "Tech Mahindra", src: "/images/tech-mahindra-1.webp" },
+                                { name: "Mindtree", src: "/images/mindtree.png" },
+                                { name: "Myntra", src: "/images/myntra.png" },
+                            ].map((company, idx) => (
+                                <div key={`row2-${idx}`} className="flex-shrink-0 w-32 md:w-48 h-20 md:h-24 bg-white rounded-xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] border border-slate-100 flex items-center justify-center p-4 md:p-6 hover:scale-105 transition-transform duration-300">
+                                    <img
+                                        src={company.src}
+                                        alt={company.name}
+                                        className="max-w-full max-h-full object-contain filter drop-shadow-sm"
+                                        loading="lazy"
+                                    />
+                                </div>
+                            ))}
+                        </motion.div>
                     </div>
                 </div>
             </section>
@@ -367,7 +464,7 @@ const Placements = () => {
 
                         {/* Interactive Left Side */}
                         <div className="md:w-5/12 bg-[#003366] relative p-8 md:p-12 flex flex-col justify-between overflow-hidden group">
-                            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay transition-transform duration-700 group-hover:scale-105" />
+                            <div className="absolute inset-0 bg-[url('/images/unlock-your-potential.jpg')] bg-cover bg-center opacity-10 mix-blend-overlay transition-transform duration-700 group-hover:scale-105" />
                             <div className="absolute inset-0 bg-gradient-to-b from-[#003366]/0 via-[#003366]/60 to-[#003366]" />
 
                             <div className="relative z-10">
@@ -411,73 +508,85 @@ const Placements = () => {
                             <p className="text-slate-500 mb-8 text-sm">Fill in your details and our team will get back to you shortly.</p>
 
                             <form className="space-y-6" onSubmit={handleSubmit}>
-                                <div className="relative">
+                                <div className="space-y-2">
+                                    <label className="text-sm font-bold text-slate-700 ml-1">Full Name</label>
                                     <input
                                         type="text"
                                         name="name"
                                         value={formData.name}
                                         onChange={handleChange}
-                                        placeholder="Full Name"
-                                        className="w-full h-12 bg-slate-50 border-b-2 border-slate-100 px-4 pt-1 font-medium text-slate-900 placeholder:text-transparent focus:outline-none focus:border-[#0066CC] focus:bg-blue-50/50 transition-all peer rounded-t-lg"
+                                        placeholder="Enter your full name"
+                                        className="w-full h-12 bg-slate-50 border border-slate-200 rounded-xl px-6 font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#0066CC] focus:bg-white focus:ring-4 focus:ring-blue-500/10 transition-all shadow-sm"
                                     />
-                                    <label className="absolute left-4 top-3 text-slate-400 text-sm font-medium transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-xs peer-focus:text-[#0066CC] pointer-events-none">
-                                        Full Name
-                                    </label>
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div className="relative">
+                                    <div className="space-y-2">
+                                        <label className="text-sm font-bold text-slate-700 ml-1">Phone Number</label>
                                         <input
                                             type="text"
                                             name="phone"
                                             value={formData.phone}
                                             onChange={handleChange}
-                                            placeholder="Phone Number"
-                                            className="w-full h-12 bg-slate-50 border-b-2 border-slate-100 px-4 pt-1 font-medium text-slate-900 placeholder:text-transparent focus:outline-none focus:border-[#0066CC] focus:bg-blue-50/50 transition-all peer rounded-t-lg"
+                                            placeholder="Enter 10-digit number"
+                                            className="w-full h-12 bg-slate-50 border border-slate-200 rounded-xl px-6 font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#0066CC] focus:bg-white focus:ring-4 focus:ring-blue-500/10 transition-all shadow-sm"
                                         />
-                                        <label className="absolute left-4 top-3 text-slate-400 text-sm font-medium transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-xs peer-focus:text-[#0066CC] pointer-events-none">
-                                            Phone Number
-                                        </label>
                                     </div>
-                                    <div className="relative">
+                                    <div className="space-y-2">
+                                        <label className="text-sm font-bold text-slate-700 ml-1">Email Address</label>
                                         <input
                                             type="email"
                                             name="email"
                                             value={formData.email}
                                             onChange={handleChange}
-                                            placeholder="Email Address"
-                                            className="w-full h-12 bg-slate-50 border-b-2 border-slate-100 px-4 pt-1 font-medium text-slate-900 placeholder:text-transparent focus:outline-none focus:border-[#0066CC] focus:bg-blue-50/50 transition-all peer rounded-t-lg"
+                                            placeholder="name@example.com"
+                                            className="w-full h-12 bg-slate-50 border border-slate-200 rounded-xl px-6 font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#0066CC] focus:bg-white focus:ring-4 focus:ring-blue-500/10 transition-all shadow-sm"
                                         />
-                                        <label className="absolute left-4 top-3 text-slate-400 text-sm font-medium transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-xs peer-focus:text-[#0066CC] pointer-events-none">
-                                            Email Address
-                                        </label>
                                     </div>
                                 </div>
 
-                                <div className="relative">
-                                    <select
-                                        name="course"
-                                        value={formData.course}
-                                        onChange={handleChange}
-                                        aria-label="Select Interested Course"
-                                        title="Select Interested Course"
-                                        className="w-full h-12 bg-slate-50 border-b-2 border-slate-100 px-4 pt-1 font-medium text-slate-900 focus:outline-none focus:border-[#0066CC] focus:bg-blue-50/50 transition-all rounded-t-lg cursor-pointer appearance-none"
-                                    >
-                                        <option value="" disabled className="text-slate-400">Select Interested Course</option>
-                                        <option value="Full Stack Development">Full Stack Development</option>
-                                        <option value="Data Science & AI">Data Science & AI</option>
-                                        <option value="UI/UX Design">UI/UX Design</option>
-                                        <option value="Cyber Security">Cyber Security</option>
-                                        <option value="Cloud Computing (AWS/Azure)">Cloud Computing (AWS/Azure)</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                    <label className="absolute left-4 top-1 text-xs text-slate-400 font-medium pointer-events-none">
-                                        Interested Course
-                                    </label>
-                                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
-                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                                <div className="space-y-2">
+                                    <label className="text-sm font-bold text-slate-700 ml-1">Interested Course</label>
+                                    <div className="relative">
+                                        <select
+                                            name="course"
+                                            value={formData.course}
+                                            onChange={handleChange}
+                                            className="w-full h-12 bg-slate-50 border border-slate-200 rounded-xl px-6 font-medium text-slate-900 focus:outline-none focus:border-[#0066CC] focus:bg-white focus:ring-4 focus:ring-blue-500/10 transition-all cursor-pointer appearance-none shadow-sm"
+                                        >
+                                            <option value="" disabled className="text-slate-400">Select your course</option>
+                                            <option value="Full Stack Development">Full Stack Development</option>
+                                            <option value="Data Science & AI">Data Science & AI</option>
+                                            <option value="UI/UX Design">UI/UX Design</option>
+                                            <option value="Cyber Security">Cyber Security</option>
+                                            <option value="Cloud Computing (AWS/Azure)">Cloud Computing (AWS/Azure)</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                        <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                                        </div>
                                     </div>
                                 </div>
+
+                                {/* Custom Course Input - Only shows when 'Other' is selected */}
+                                {formData.course === 'Other' && (
+                                    <motion.div
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: 'auto' }}
+                                        exit={{ opacity: 0, height: 0 }}
+                                        className="space-y-2"
+                                    >
+                                        <label className="text-sm font-bold text-slate-700 ml-1">Specify Course</label>
+                                        <input
+                                            type="text"
+                                            name="customCourse"
+                                            value={formData.customCourse}
+                                            onChange={handleChange}
+                                            placeholder="Type your course name..."
+                                            className="w-full h-12 bg-slate-50 border border-slate-200 rounded-xl px-6 font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#0066CC] focus:bg-white focus:ring-4 focus:ring-blue-500/10 transition-all shadow-sm"
+                                        />
+                                    </motion.div>
+                                )}
 
                                 <button
                                     disabled={loading}

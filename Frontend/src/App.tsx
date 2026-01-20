@@ -30,6 +30,7 @@ const ResourcesPage = lazy(() => import("./pages/ResourcesPage"));
 const CareersPage = lazy(() => import("./pages/CareersPage"));
 
 import Chatbot from "./components/Chatbot";
+import LimitedTimeOffer from "./components/LimitedTimeOffer";
 
 const queryClient = new QueryClient();
 
@@ -101,6 +102,7 @@ const App = () => {
           <Sonner />
           <HashRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <ScrollToTop />
+            <LimitedTimeOffer />
             <Suspense fallback={<LoadingFallback />}>
               <Routes>
                 <Route path="/" element={<Index />} />

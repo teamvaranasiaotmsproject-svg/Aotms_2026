@@ -4,6 +4,7 @@ import { ArrowRight, PlayCircle, Users, Award, Clock, ThumbsUp } from "lucide-re
 import axios from "axios";
 import { CountUpNumber } from "./CountUpNumber";
 import { CourseEnrollmentModal } from "@/components/ui/CourseEnrollmentModal";
+import { useUIStore } from "@/store/uiStore";
 
 const trustStats = [
   {
@@ -32,6 +33,8 @@ export const HeroSection = () => {
   const [isEnrollmentOpen, setIsEnrollmentOpen] = useState(false);
   const [enrollmentSource, setEnrollmentSource] = useState("");
 
+  const { openAuthModal } = useUIStore(); // Get openAuthModal
+
   const handleOpenEnrollment = (source: string) => {
     setEnrollmentSource(source);
     setIsEnrollmentOpen(true);
@@ -58,18 +61,12 @@ export const HeroSection = () => {
   }, []);
 
   useEffect(() => {
-    const autoTriggerTimer = setTimeout(() => {
-      // Trigger immediately (500ms buffer for smooth UX)
-      handleOpenEnrollment("Auto Popup - 50% Off");
-    }, 500);
-
     if (heroImages.length <= 1) return;
     const timer = setInterval(() => {
       setCurrentImageIndex((p) => (p + 1) % heroImages.length);
     }, 4000);
     return () => {
       clearInterval(timer);
-      clearTimeout(autoTriggerTimer);
     };
   }, [heroImages]);
 
@@ -135,7 +132,7 @@ export const HeroSection = () => {
             {/* CTA */}
             <div className="flex flex-col sm:flex-row gap-4">
               <button
-                onClick={() => handleOpenEnrollment("Start Journey - Hero Section")}
+                onClick={() => openAuthModal('register')}
                 className="inline-flex items-center justify-center h-11 px-8 text-sm font-medium text-white bg-[#FD5A1A] rounded-md hover:bg-[#0066b3] active:scale-95 transition-all"
               >
                 Start Your Journey
