@@ -9,7 +9,7 @@
 
 /* Toggle Button - Rounded Pill Style */
 .chat-toggle-btn {
-    padding: 10px 20px;
+    padding: 6px 12px;
     border-radius: 30px;
     background: #0066CC;
     color: white;
@@ -34,8 +34,8 @@
     /* Sticking to bottom */
     right: 0px;
     /* Sticking to right */
-    width: 300px;
-    height: 400px;
+    width: 340px;
+    height: 480px;
     max-height: 60vh;
     background-color: white;
     border-radius: 16px 16px 0 16px;
@@ -176,7 +176,8 @@
 /* Mobile Responsiveness */
 @media (max-width: 480px) {
     .chatbot-container {
-        right: 1rem;
+        right: 0;
+        bottom: 0;
     }
 
     .chat-panel {
@@ -187,7 +188,44 @@
     }
 
     .chat-toggle-btn {
-        padding: 10px 20px;
+        padding: 8px 16px;
         font-size: 0.85rem;
     }
+
+    /* Make the toggle button even smaller on mobile */
+    .chatbot-container button[aria-label="Open support chat"] {
+        padding: 8px 16px !important;
+    }
+
+    .chatbot-container button[aria-label="Open support chat"] span {
+        font-size: 0.8rem !important;
+    }
+
+    .chatbot-container button[aria-label="Open support chat"] .bot-icon-animated {
+        width: 1.5rem !important;
+        height: 1.5rem !important;
+    }
+
+    .chatbot-container button[aria-label="Open support chat"] .bot-icon-animated svg {
+        width: 1.2rem !important;
+        height: 1.2rem !important;
+    }
+}
+
+/* 3D-like Animation for the Bot Icon */
+@keyframes float-y {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.bot-icon-animated {
+    animation: float-y 3s ease-in-out infinite;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
 }

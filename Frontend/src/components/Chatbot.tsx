@@ -7,8 +7,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
 import { FaRobot } from 'react-icons/fa6';
-import BotAvatar from './BotAvatar';
-
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface Message {
@@ -170,8 +168,8 @@ const Chatbot: React.FC = () => {
             {/* Header - White with Black Text */}
             <div className="chat-header relative">
               <div className="flex items-center gap-2">
-                <div className="w-12 h-12 -ml-2 -my-2 flex items-center justify-center">
-                  <BotAvatar />
+                <div className="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full bot-icon-animated">
+                  <FaRobot className="w-6 h-6 text-blue-600" />
                 </div>
                 <h2 className="text-white font-semibold text-sm">AOTMS Assistant Bot</h2>
               </div>
@@ -319,8 +317,8 @@ const Chatbot: React.FC = () => {
           title="Open support chat"
         >
           <div className="flex items-center gap-2 relative z-10">
-            <div className="w-14 h-14 -my-4 -ml-2">
-              <BotAvatar />
+            <div className="w-8 h-8 flex items-center justify-center bot-icon-animated">
+              <FaRobot className="w-6 h-6 text-white" />
             </div>
             <span className="font-bold text-sm tracking-wide">AOTMS</span>
           </div>
