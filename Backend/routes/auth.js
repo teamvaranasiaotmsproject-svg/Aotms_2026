@@ -230,8 +230,8 @@ router.post('/google', async (req, res) => {
             }
         );
     } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
+        console.error("Google Auth Error:", err);
+        res.status(500).json({ msg: 'Server Error during Google Auth', error: err.message });
     }
 });
 // Forgot Password

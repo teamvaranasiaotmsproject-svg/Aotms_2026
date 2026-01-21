@@ -35,6 +35,9 @@ app.use(cors({
     credentials: true
 }));
 
+app.use(compression());
+app.use(express.json());
+
 // Health Check / Warm-up Endpoint
 app.get('/api/health', (req, res) => {
     res.status(200).json({ status: 'ok', message: 'Server is warm' });

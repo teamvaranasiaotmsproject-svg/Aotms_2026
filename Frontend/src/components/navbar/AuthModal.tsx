@@ -154,9 +154,14 @@ export const AuthModal = ({ showAuthModal, setShowAuthModal, authMode, setAuthMo
             toast.success(`Welcome ${user.displayName}!`);
             setShowAuthModal(false);
             navigate('/dashboard');
-        } catch (error) {
-            console.error(error);
-            toast.error("Google Sign-In failed");
+        } catch (error: any) {
+            console.error("Google Sign-In Error:", error);
+            if (axios.isAxiosError(error) && error.response) {
+                console.error("Backend Error Response:", error.response.data);
+                toast.error(error.response.data.msg || "Google Sign-In failed on server");
+            } else {
+                toast.error("Google Sign-In failed to initialize");
+            }
         } finally {
             setIsLoading(false);
         }
