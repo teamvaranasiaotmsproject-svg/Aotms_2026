@@ -133,13 +133,13 @@ const Contact = () => {
                   </a>
 
                   {/* Email */}
-                  <a href="mailto:info@aotms.com" className="flex items-start gap-4 group">
+                  <a href="mailto:info@aotms.in" className="flex items-start gap-4 group">
                     <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white shrink-0">
                       <Mail className="w-6 h-6" />
                     </div>
                     <div>
                       <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">Email</h3>
-                      <p className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">info@aotms.com</p>
+                      <p className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">info@aotms.in</p>
                     </div>
                   </a>
 

@@ -73,7 +73,7 @@ const PrivacyPolicy = () => {
 
                         <h2 className="text-xl font-bold text-slate-800 mt-8 mb-4">6. Contact Us</h2>
                         <p className="mb-4">
-                            If you have questions or comments about this policy, you may email us at <a href="mailto:info@aotms.com" className="text-blue-600 hover:underline">info@aotms.com</a> or by post to:
+                            If you have questions or comments about this policy, you may email us at <a href="mailto:info@aotms.in" className="text-blue-600 hover:underline">info@aotms.in</a> or by post to:
                         </p>
                         <address className="not-italic bg-slate-50 p-6 rounded-lg border border-slate-100">
                             <strong>Academy of Tech Masters</strong><br />

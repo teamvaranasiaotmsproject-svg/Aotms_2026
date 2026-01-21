@@ -27,9 +27,9 @@ export const TopNavbar = ({ isScrolled, setAuthMode, setShowAuthModal }: TopNavb
                             <Phone className="w-3 h-3" />
                             <span className="text-[10px] md:text-sm font-bold">8019952233</span>
                         </a>
-                        <a href="mailto:Info@aotms.com" className="hidden sm:flex items-center gap-1.5 hover:text-accent transition-colors">
+                        <a href="mailto:Info@aotms.in" className="hidden sm:flex items-center gap-1.5 hover:text-accent transition-colors">
                             <Mail className="w-3 h-3" />
-                            <span>Info@aotms.com</span>
+                            <span>Info@aotms.in</span>
                         </a>
                     </div>
 

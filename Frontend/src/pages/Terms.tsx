@@ -76,7 +76,7 @@ const Terms = () => {
                             Vijayawada,<br />
                             Andhra Pradesh 520010,<br />
                             India<br />
-                            <a href="mailto:info@aotms.com" className="text-blue-600 hover:underline mt-2 inline-block">info@aotms.com</a>
+                            <a href="mailto:info@aotms.in" className="text-blue-600 hover:underline mt-2 inline-block">info@aotms.in</a>
                         </address>
                     </div>
                 </div>

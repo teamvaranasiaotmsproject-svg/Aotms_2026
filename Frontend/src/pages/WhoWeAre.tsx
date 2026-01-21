@@ -54,77 +54,66 @@ const testimonials = [
     role: "Data Analyst at TCS",
     course: "Data Science & AI",
     text: "The Academy of Tech Masters completely transformed my career. The hands-on projects and expert mentorship gave me the confidence to land my dream job within 3 months of course completion.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
   },
   {
     name: "Arjun Reddy",
     role: "Full Stack Developer at Infosys",
     course: "Full Stack Development",
     text: "The curriculum is perfectly aligned with industry needs. The career guidance sessions and mock interviews were invaluable in preparing me for the job market.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
   },
   {
     name: "Neha Patel",
     role: "DevOps Engineer at Wipro",
     course: "Cloud & DevOps",
     text: "The practical labs and real-world scenarios helped me understand complex cloud concepts easily. I cracked multiple interviews and got placed as a DevOps Engineer.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop"
   },
   {
     name: "Rajesh Kumar",
     role: "Cyber Security Analyst at HCL",
     course: "Cyber Security",
     text: "AOTMS gave me the competitive edge I needed. The training on latest tools and live vulnerability assessment projects were game changers for my career.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop"
   },
   {
     name: "Sneha Gupta",
     role: "UI/UX Designer at Zomato",
     course: "UI/UX Design",
     text: "From wireframing to prototyping, the course covered everything. The design critiques and portfolio building sessions helped me land a job at a top product company.",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop"
   },
   {
     name: "Karthik Rao",
     role: "Python Developer at Tech Mahindra",
     course: "Python Full Stack",
     text: "I was from a non-IT background, but the step-by-step teaching methodology made coding easy for me. Today I am a confident developer working on enterprise applications.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop"
   },
   {
     name: "Ananya Desai",
     role: "Cloud Engineer at Capgemini",
     course: "Multi Cloud Engineering",
-    text: "Learning AWS and Azure together gave me a huge advantage. The real-time projects on cloud migration were exactly what companies are looking for.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop"
+    text: "Learning AWS and Azure together gave me a huge advantage. The real-time projects on cloud migration were exactly what companies are looking for.", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop"
   },
   {
     name: "Vikram Singh",
     role: "QA Automation Engineer at Accenture",
     course: "QA Automation",
     text: "The transition from manual to automation testing was seamless thanks to the expert trainers. Selenium and Java modules were taught in great depth.",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop"
   },
   {
     name: "Meera Nair",
     role: "React Developer at Mindtree",
     course: "MERN Stack",
     text: "Building a full-fledged e-commerce app during the course was the highlight. It helped me understand the entire development lifecycle and clear the technical rounds easily.",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop"
   },
   {
     name: "Rohan Mehta",
     role: "AI Engineer at IBM",
     course: "Artificial Intelligence & ML",
     text: "The depth of the AI/ML curriculum is unmatched. From basic statistics to deep learning models, everything was covered with practical examples.",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop"
   },
   {
     name: "Sanya Kaplan",
     role: "Business Analyst at Deloitte",
     course: "Data Analytics",
-    text: "Mastering Power BI and SQL through AOTMS changed my career trajectory. I can now tell compelling stories with data, which is a crucial skill in my role.",
-    image: "https://images.unsplash.com/photo-1598550874175-4d7112ee7f1e?w=100&h=100&fit=crop"
+    text: "Mastering Power BI and SQL through AOTMS changed my career trajectory. I can now tell compelling stories with data, which is a crucial skill in my role.", image: "https://images.unsplash.com/photo-1598550874175-4d7112ee7f1e?w=100&h=100&fit=crop"
   }
 ];
 
@@ -405,7 +394,7 @@ export const WhoWeAre = () => {
                   {/* Social Media Icons */}
                   <div className="flex items-center gap-3">
                     <a
-                      href="https://www.instagram.com/aotms.in/"
+                      href="https://www.instagram.com/mr_ameen_sayyed?igsh=MWc4emNrMjNtdnNkeg=="
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all hover:scale-110"
@@ -417,7 +406,7 @@ export const WhoWeAre = () => {
                     </a>
 
                     <a
-                      href="https://www.linkedin.com/company/academy-of-tech-masters/"
+                      href="https://www.linkedin.com/in/ameen-sayyed-1567b6156?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all hover:scale-110"
@@ -429,7 +418,7 @@ export const WhoWeAre = () => {
                     </a>
 
                     <a
-                      href="https://www.youtube.com/@AcademyofTechMasters"
+                      href="https://www.youtube.com/channel/UC5n8RN-p7ez3i39CCy85OWA"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all hover:scale-110"

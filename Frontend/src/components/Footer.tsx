@@ -40,7 +40,7 @@ const socialLinks = [
   { icon: FaXTwitter, href: "https://twitter.com/aotms", label: "X", color: "bg-[#000000] hover:bg-[#222222]" },
   { icon: FaFacebook, href: "https://www.facebook.com/aotms", label: "Facebook", color: "bg-[#1877F2] hover:bg-[#155ab0]" },
   { icon: FaWhatsapp, href: "https://wa.me/918019942233", label: "Whatsapp", color: "bg-[#25D366] hover:bg-[#1da851]" },
-  { icon: FaEnvelope, href: "mailto:Info@aotms.com", label: "Email", color: "bg-[#D44638] hover:bg-[#b03a2e]" },
+  { icon: FaEnvelope, href: "mailto:Info@aotms.in", label: "Email", color: "bg-[#D44638] hover:bg-[#b03a2e]" },
   { icon: FaMapMarkerAlt, href: "https://www.google.com/maps/search/Academy+of+Tech+Masters+Vijayawada", label: "Get Directions", color: "bg-[#0075CF] hover:bg-[#005582]" },
 ];
 
@@ -101,7 +101,7 @@ export const Footer = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <FaEnvelope className="w-4 h-4 text-accent shrink-0" />
-                  <a href="mailto:Info@aotms.com" className="text-white hover:text-accent font-medium transition-colors">Info@aotms.com</a>
+                  <a href="mailto:Info@aotms.in" className="text-white hover:text-accent font-medium transition-colors">Info@aotms.in</a>
                 </div>
               </div>
             </div>
