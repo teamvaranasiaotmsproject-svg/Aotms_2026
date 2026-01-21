@@ -36,11 +36,10 @@ const testimonials: Testimonial[] = [
             "Passionate about uncovering hidden patterns in data to drive business growth. Expert in statistical analysis, data visualization, and predictive modeling for real-world impact.",
         imageUrl:
             "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970599/mentos-1_ch1jur?_a=BAMAOGGo0",
-        linkedinUrl: "#",
-        githubUrl: "#",
+        linkedinUrl: "https://www.linkedin.com/in/adilakshmi-vemaala-6490bb342?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
     {
-        name: "Intiaz",
+        name: "Intiaz Shaik",
         title: "Cyber Security Specialist",
         specialty: "Cyber Security",
         experience: "6+ Years",
@@ -48,8 +47,7 @@ const testimonials: Testimonial[] = [
             "Dedicated to protecting digital frontiers and fortifying enterprise defenses. Specialist in ethical hacking, network security, and incident response with a focus on zero-trust architectures.",
         imageUrl:
             "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970599/mentos-2_hod2iu?_a=BAMAOGGo0",
-        linkedinUrl: "#",
-        githubUrl: "#",
+        linkedinUrl: "https://www.linkedin.com/in/intiaz-shaik-ba45891b8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
     {
         name: "P.Lakshmi Chaitanya",

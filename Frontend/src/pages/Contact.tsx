@@ -164,7 +164,7 @@ const Contact = () => {
                       {[
                         { icon: Youtube, href: "https://youtube.com/@aotms", title: "YouTube" },
                         { icon: Instagram, href: "https://instagram.com/academyoftechmasters", title: "Instagram" },
-                        { icon: Linkedin, href: "https://linkedin.com", title: "LinkedIn" },
+                        { icon: Linkedin, href: "https://www.linkedin.com/in/academy-of-tech-masters-aotms-82274537a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", title: "LinkedIn" },
                         { icon: Send, href: "https://t.me/aotms", title: "Telegram" },
                         { icon: FaXTwitter, href: "https://twitter.com/aotms", title: "X (Twitter)" },
                       ].map((item, i) => (

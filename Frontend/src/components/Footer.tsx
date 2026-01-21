@@ -36,7 +36,7 @@ const courses = footerCourses.map(course => ({
 const socialLinks = [
   { icon: FaYoutube, href: "https://youtube.com/@aotms?si=mj3-j_JH4lHC3zeF", label: "YouTube", color: "bg-[#FF0000] hover:bg-[#CC0000]" },
   { icon: FaInstagram, href: "https://www.instagram.com/academyoftechmasters?igsh=enZ5YjYwOXg1cW80&utm_source=qr", label: "Instagram", color: "bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:brightness-110" },
-  { icon: FaLinkedin, href: "https://www.linkedin.com/feed/", label: "LinkedIn", color: "bg-[#0077B5] hover:bg-[#005582]" },
+  { icon: FaLinkedin, href: "https://www.linkedin.com/in/academy-of-tech-masters-aotms-82274537a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", label: "LinkedIn", color: "bg-[#0077B5] hover:bg-[#005582]" },
   { icon: FaXTwitter, href: "https://twitter.com/aotms", label: "X", color: "bg-[#000000] hover:bg-[#222222]" },
   { icon: FaFacebook, href: "https://www.facebook.com/aotms", label: "Facebook", color: "bg-[#1877F2] hover:bg-[#155ab0]" },
   { icon: FaWhatsapp, href: "https://wa.me/918019942233", label: "Whatsapp", color: "bg-[#25D366] hover:bg-[#1da851]" },

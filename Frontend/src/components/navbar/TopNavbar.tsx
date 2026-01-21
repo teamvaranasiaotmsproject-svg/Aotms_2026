@@ -62,7 +62,7 @@ export const TopNavbar = ({ isScrolled, setAuthMode, setShowAuthModal }: TopNavb
 
                             {/* LinkedIn */}
                             <a
-                                href="https://www.linkedin.com/feed/"
+                                href="https://www.linkedin.com/in/academy-of-tech-masters-aotms-82274537a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-white bg-[#0077B5] hover:bg-[#005582] hover:scale-110 transition-all shadow-sm"
