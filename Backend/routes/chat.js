@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
 
         const axios = require('axios');
         const response = await axios.post("https://openrouter.ai/api/v1/chat/completions", {
-            model: "openai/gpt-3.5-turbo",
+            model: "google/gemini-2.0-flash-exp:free",
             messages: [
                 {
                     role: "system",
@@ -52,8 +52,23 @@ router.post('/', async (req, res) => {
 
     } catch (error) {
         console.error("Chat API Error:", error.message);
-        const errorMsg = error.response ? JSON.stringify(error.response.data) : error.message;
-        res.status(500).json({ message: "Failed to fetch chat response", details: errorMsg });
+        if (error.response) {
+            console.error("Error Response Data:", JSON.stringify(error.response.data));
+
+            // Handle specific status codes
+            if (error.response.status === 401) {
+                return res.status(401).json({
+                    message: "Authentication Failed: Invalid API Key. Please update OPEN_ROUTER_API_KEY in your backend .env file.",
+                    details: error.response.data
+                });
+            }
+
+            return res.status(error.response.status).json({
+                message: "External API Error",
+                details: error.response.data
+            });
+        }
+        res.status(500).json({ message: "Failed to fetch chat response", details: error.message });
     }
 
 
