@@ -5,7 +5,7 @@ import { Users, Globe, Calendar, Award, Trophy, Info, X } from "lucide-react";
 import { useState } from "react";
 
 // Certificate sample image
-import certificateSampleImg from "../../assets/certificate_sample_1.png";
+const certificateSampleImg = "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970861/certificate_sample_1_ifdee6?_a=BAMAOGGo0";
 const certificateSample = certificateSampleImg;
 
 interface HackathonDetailProps {

@@ -9,6 +9,7 @@ import { EmblaCarouselType } from "embla-carousel";
 import { useCallback, useState, useEffect } from "react";
 import { PerformanceBreakdown } from "@/components/PerformanceBreakdown";
 import { SEO } from "@/components/SEO";
+import ameenImg from "@/assets/ameen.jpeg";
 
 const stats = [
   { number: "2000+", label: "Successful Trainees", icon: Users },
@@ -392,7 +393,7 @@ export const WhoWeAre = () => {
             >
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="/about-director-v3.jpg"
+                  src={ameenImg}
                   alt="Mr. Ameen Sayyed - Founder & CEO"
                   className="w-full h-auto"
                 />

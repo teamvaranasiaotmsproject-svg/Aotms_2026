@@ -369,27 +369,27 @@ const Placements = () => {
                             }}
                         >
                             {[
-                                { name: "Google", src: "/images/Google-logo.png" },
-                                { name: "Meta", src: "/images/Meta-Logo.png" },
-                                { name: "Microsoft", src: "/images/Microsoft.webp" },
-                                { name: "Amazon", src: "/images/amazon-logo.webp" },
-                                { name: "Nvidia", src: "/images/Nvidia_logo.png" },
-                                { name: "Intel", src: "/images/intel.png" },
-                                { name: "IBM", src: "/images/IBM.png" },
-                                { name: "Flipkart", src: "/images/Flipkart.png" },
-                                { name: "TCS", src: "/images/TCS.png" },
-                                { name: "Infosys", src: "/images/Infosys.png" },
+                                { name: "Google", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970597/Google-logo_hn1cfz?_a=BAMAOGGo0" },
+                                { name: "Meta", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970600/Meta-Logo_kdt0sj?_a=BAMAOGGo0" },
+                                { name: "Microsoft", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970600/Microsoft_s8fsff?_a=BAMAOGGo0" },
+                                { name: "Amazon", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970595/amazon-logo_bw2tue?_a=BAMAOGGo0" },
+                                { name: "Nvidia", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970601/Nvidia_logo_db9zll?_a=BAMAOGGo0" },
+                                { name: "Intel", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970598/intel_ojir8t?_a=BAMAOGGo0" },
+                                { name: "IBM", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970598/IBM_e3fgo1?_a=BAMAOGGo0" },
+                                { name: "Flipkart", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970597/Flipkart_tejqy4?_a=BAMAOGGo0" },
+                                { name: "TCS", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970603/TCS_rvs1fy?_a=BAMAOGGo0" },
+                                { name: "Infosys", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970598/Infosys_mvhvzj?_a=BAMAOGGo0" },
                                 // Duplicate for loop
-                                { name: "Google", src: "/images/Google-logo.png" },
-                                { name: "Meta", src: "/images/Meta-Logo.png" },
-                                { name: "Microsoft", src: "/images/Microsoft.webp" },
-                                { name: "Amazon", src: "/images/amazon-logo.webp" },
-                                { name: "Nvidia", src: "/images/Nvidia_logo.png" },
-                                { name: "Intel", src: "/images/intel.png" },
-                                { name: "IBM", src: "/images/IBM.png" },
-                                { name: "Flipkart", src: "/images/Flipkart.png" },
-                                { name: "TCS", src: "/images/TCS.png" },
-                                { name: "Infosys", src: "/images/Infosys.png" },
+                                { name: "Google", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970597/Google-logo_hn1cfz?_a=BAMAOGGo0" },
+                                { name: "Meta", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970600/Meta-Logo_kdt0sj?_a=BAMAOGGo0" },
+                                { name: "Microsoft", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970600/Microsoft_s8fsff?_a=BAMAOGGo0" },
+                                { name: "Amazon", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970595/amazon-logo_bw2tue?_a=BAMAOGGo0" },
+                                { name: "Nvidia", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970601/Nvidia_logo_db9zll?_a=BAMAOGGo0" },
+                                { name: "Intel", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970598/intel_ojir8t?_a=BAMAOGGo0" },
+                                { name: "IBM", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970598/IBM_e3fgo1?_a=BAMAOGGo0" },
+                                { name: "Flipkart", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970597/Flipkart_tejqy4?_a=BAMAOGGo0" },
+                                { name: "TCS", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970603/TCS_rvs1fy?_a=BAMAOGGo0" },
+                                { name: "Infosys", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970598/Infosys_mvhvzj?_a=BAMAOGGo0" },
                             ].map((company, idx) => (
                                 <div key={`row1-${idx}`} className="flex-shrink-0 w-32 md:w-48 h-20 md:h-24 bg-white rounded-xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] border border-slate-100 flex items-center justify-center p-4 md:p-6 hover:scale-105 transition-transform duration-300">
                                     <img
@@ -416,27 +416,27 @@ const Placements = () => {
                             }}
                         >
                             {[
-                                { name: "Accenture", src: "/images/Accenture.svg-1-1536x405-1-595xh.webp" },
-                                { name: "Capgemini", src: "/images/Capgemini.png" },
-                                { name: "Wipro", src: "/images/Wipro.png" },
-                                { name: "HCL", src: "/images/HCL.png" },
-                                { name: "PwC", src: "/images/pwc.png" },
-                                { name: "EY", src: "/images/EY_logo.png" },
-                                { name: "Mphasis", src: "/images/mphasis.webp" },
-                                { name: "Tech Mahindra", src: "/images/tech-mahindra-1.webp" },
-                                { name: "Mindtree", src: "/images/mindtree.png" },
-                                { name: "Myntra", src: "/images/myntra.png" },
+                                { name: "Accenture", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970594/Accenture.svg-1-1536x405-1-595xh_higvnp?_a=BAMAOGGo0" },
+                                { name: "Capgemini", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970595/Capgemini_tn46rz?_a=BAMAOGGo0" },
+                                { name: "Wipro", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970603/Wipro_ke41mv?_a=BAMAOGGo0" },
+                                { name: "HCL", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970597/HCL_bpdnlu?_a=BAMAOGGo0" },
+                                { name: "PwC", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970602/pwc_qgmqsc?_a=BAMAOGGo0" },
+                                { name: "EY", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970596/EY_logo_oetjng?_a=BAMAOGGo0" },
+                                { name: "Mphasis", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970601/mphasis_cgqpho?_a=BAMAOGGo0" },
+                                { name: "Tech Mahindra", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970603/tech-mahindra-1_oys3h3?_a=BAMAOGGo0" },
+                                { name: "Mindtree", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970600/mindtree_wwuxyt?_a=BAMAOGGo0" },
+                                { name: "Myntra", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970601/myntra_dgzo21?_a=BAMAOGGo0" },
                                 // Duplicate for loop
-                                { name: "Accenture", src: "/images/Accenture.svg-1-1536x405-1-595xh.webp" },
-                                { name: "Capgemini", src: "/images/Capgemini.png" },
-                                { name: "Wipro", src: "/images/Wipro.png" },
-                                { name: "HCL", src: "/images/HCL.png" },
-                                { name: "PwC", src: "/images/pwc.png" },
-                                { name: "EY", src: "/images/EY_logo.png" },
-                                { name: "Mphasis", src: "/images/mphasis.webp" },
-                                { name: "Tech Mahindra", src: "/images/tech-mahindra-1.webp" },
-                                { name: "Mindtree", src: "/images/mindtree.png" },
-                                { name: "Myntra", src: "/images/myntra.png" },
+                                { name: "Accenture", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970594/Accenture.svg-1-1536x405-1-595xh_higvnp?_a=BAMAOGGo0" },
+                                { name: "Capgemini", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970595/Capgemini_tn46rz?_a=BAMAOGGo0" },
+                                { name: "Wipro", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970603/Wipro_ke41mv?_a=BAMAOGGo0" },
+                                { name: "HCL", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970597/HCL_bpdnlu?_a=BAMAOGGo0" },
+                                { name: "PwC", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970602/pwc_qgmqsc?_a=BAMAOGGo0" },
+                                { name: "EY", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970596/EY_logo_oetjng?_a=BAMAOGGo0" },
+                                { name: "Mphasis", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970601/mphasis_cgqpho?_a=BAMAOGGo0" },
+                                { name: "Tech Mahindra", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970603/tech-mahindra-1_oys3h3?_a=BAMAOGGo0" },
+                                { name: "Mindtree", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970600/mindtree_wwuxyt?_a=BAMAOGGo0" },
+                                { name: "Myntra", src: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970601/myntra_dgzo21?_a=BAMAOGGo0" },
                             ].map((company, idx) => (
                                 <div key={`row2-${idx}`} className="flex-shrink-0 w-32 md:w-48 h-20 md:h-24 bg-white rounded-xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] border border-slate-100 flex items-center justify-center p-4 md:p-6 hover:scale-105 transition-transform duration-300">
                                     <img
@@ -464,7 +464,7 @@ const Placements = () => {
 
                         {/* Interactive Left Side */}
                         <div className="md:w-5/12 bg-[#003366] relative p-8 md:p-12 flex flex-col justify-between overflow-hidden group">
-                            <div className="absolute inset-0 bg-[url('/images/unlock-your-potential.jpg')] bg-cover bg-center opacity-10 mix-blend-overlay transition-transform duration-700 group-hover:scale-105" />
+                            <div className="absolute inset-0 bg-[url('https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970603/unlock-your-potential_eg9dvb?_a=BAMAOGGo0')] bg-cover bg-center opacity-10 mix-blend-overlay transition-transform duration-700 group-hover:scale-105" />
                             <div className="absolute inset-0 bg-gradient-to-b from-[#003366]/0 via-[#003366]/60 to-[#003366]" />
 
                             <div className="relative z-10">

@@ -1,5 +1,6 @@
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { Factory, Users, Briefcase, Sparkles, ArrowRight } from "lucide-react";
+import ameenImg from "@/assets/ameen.jpeg";
 
 const highlights = [
   {
@@ -120,8 +121,8 @@ export const AboutSection = () => {
               {/* Main Image Container */}
               <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-white">
                 <img
-                  src="/about-director-v2.jpg"
-                  alt="Academy Director - Leading Tech Training"
+                  src={ameenImg}
+                  alt="Mr. Sayyed Ameenuddin - Academy Director"
                   className="w-full h-full object-cover scale-105 hover:scale-110 transition-transform duration-700 ease-out contrast-110 saturate-110 brightness-105"
                 />
 

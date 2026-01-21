@@ -14,28 +14,28 @@ const steps: Step[] = [
     title: "Strong Fundamentals",
     description: "Industry-aligned concepts explained clearly from basics",
     icon: BookOpen,
-    bgImage: "/images/fundamentals.jpg"
+    bgImage: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970597/fundamentals_synrkn?_a=BAMAOGGo0"
   },
   {
     number: "02",
     title: "Hands-On Practice",
     description: "Daily labs, tasks, and mentor-guided practice",
     icon: Terminal,
-    bgImage: "/images/hands-on.png"
+    bgImage: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970597/hands-on_uniwx0?_a=BAMAOGGo0"
   },
   {
     number: "03",
     title: "Real-Time Projects",
     description: "Build resume-ready projects based on real scenarios",
     icon: Laptop,
-    bgImage: "/images/real-time-projects.png"
+    bgImage: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970606/real-time-projects_gs69ei?_a=BAMAOGGo0"
   },
   {
     number: "04",
     title: "Career & Placement",
     description: "Mock interviews, resume help, and job assistance",
     icon: Briefcase,
-    bgImage: "/images/career-placement.jpg"
+    bgImage: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970596/career-placement_eb5dkh?_a=BAMAOGGo0"
   }
 ];
 

@@ -178,17 +178,17 @@ const whyWorkHere = [
 
 const cultureHighlights = [
     {
-        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+        image: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768973654/We_grow_together_uicwkf",
         caption: "We grow together",
         description: "Team collaboration and knowledge sharing"
     },
     {
-        image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&h=600&fit=crop",
+        image: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768973652/Learning_never_stops_qoz0mh",
         caption: "Learning never stops",
         description: "Continuous training and development"
     },
     {
-        image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop",
+        image: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768973652/Real_impact_real_people_gzdcwr",
         caption: "Real impact, real people",
         description: "Making a difference in students' lives"
     }
@@ -313,7 +313,7 @@ export default function CareersPage() {
                     >
                         <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                             <img
-                                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=600&fit=crop"
+                                src="https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768973654/We_grow_together_uicwkf"
                                 alt="AOTMS Team"
                                 className="w-full h-auto object-cover"
                             />

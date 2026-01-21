@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CheckCircle2, X, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import workshopCert1 from "@/assets/workshop_certificate_1.png";
+const workshopCert1 = "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970862/workshop_certificate_1_kpcscj?_a=BAMAOGGo0";
 
 interface CertificationProvider {
     name: string;

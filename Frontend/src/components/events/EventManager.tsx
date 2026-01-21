@@ -20,9 +20,9 @@ import {
 import { cn } from "@/lib/utils";
 import axios from "axios";
 import { toast } from "sonner";
-import workshopCert1 from "@/assets/workshop_certificate_1.png";
-import workshopCert2 from "@/assets/workshop_certificate_2.png";
-import workshopCert3 from "@/assets/workshop_certificate_3.png";
+const workshopCert1 = "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970862/workshop_certificate_1_kpcscj?_a=BAMAOGGo0";
+const workshopCert2 = "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970862/workshop_certificate_2_gv76ec?_a=BAMAOGGo0";
+const workshopCert3 = "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970862/workshop_certificate_3_kyvqmd?_a=BAMAOGGo0";
 
 export interface EventItem {
     id: string;

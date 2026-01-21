@@ -238,7 +238,7 @@ const PythonFullStackIntro = ({ section }: { section: Section }) => (
                     <div className="absolute inset-0 rounded-full border-4 border-dashed border-blue-600 animate-spin-slow"></div>
                     <div className="absolute inset-2 rounded-full overflow-hidden shadow-2xl">
                         <img
-                            src="/images/python-course-card.jpg"
+                            src="https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970602/python-course-card_knvxo9?_a=BAMAOGGo0"
                             alt="Python Full Stack Development"
                             className="w-full h-full object-cover"
                         />

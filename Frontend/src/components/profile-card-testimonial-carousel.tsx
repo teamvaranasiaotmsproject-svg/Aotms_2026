@@ -35,7 +35,7 @@ const testimonials: Testimonial[] = [
         description:
             "Passionate about uncovering hidden patterns in data to drive business growth. Expert in statistical analysis, data visualization, and predictive modeling for real-world impact.",
         imageUrl:
-            "/images/mentos-1.jpg",
+            "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970599/mentos-1_ch1jur?_a=BAMAOGGo0",
         linkedinUrl: "#",
         githubUrl: "#",
     },
@@ -47,7 +47,7 @@ const testimonials: Testimonial[] = [
         description:
             "Dedicated to protecting digital frontiers and fortifying enterprise defenses. Specialist in ethical hacking, network security, and incident response with a focus on zero-trust architectures.",
         imageUrl:
-            "/images/mentos-2.jpg",
+            "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970599/mentos-2_hod2iu?_a=BAMAOGGo0",
         linkedinUrl: "#",
         githubUrl: "#",
     },
@@ -59,7 +59,7 @@ const testimonials: Testimonial[] = [
         description:
             "Empowering students with essential Campus Recruitment Training (CRT) skills. Focused on aptitude, soft skills, and interview preparation to ensure career success in the tech industry.",
         imageUrl:
-            "/images/mentos-3.jpg",
+            "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970600/mentos-3_dxrrty?_a=BAMAOGGo0",
         linkedinUrl: "#",
     },
     {
@@ -70,7 +70,7 @@ const testimonials: Testimonial[] = [
         description:
             "Experienced educator and developer with a passion for teaching complex coding concepts in a simplified manner. dedicated to student success.",
         imageUrl:
-            "/images/mentos-4.jpg",
+            "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970600/mentos-4_s7n9dr?_a=BAMAOGGo0",
         linkedinUrl: "#",
     },
     {
@@ -81,7 +81,7 @@ const testimonials: Testimonial[] = [
         description:
             "Expert in manual and automated testing, ensuring robust software quality through comprehensive test strategies and automation frameworks.",
         imageUrl:
-            "/images/mentor-5.jpg",
+            "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970600/mentor-5_a4t9yq?_a=BAMAOGGo0",
         linkedinUrl: "#",
     }
 ];

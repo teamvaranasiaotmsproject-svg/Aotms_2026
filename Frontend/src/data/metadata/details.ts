@@ -229,17 +229,17 @@ export const getCourseFeatures = (category: string) => {
 
 export const getCourseHiringCompanies = (title: string, category: string = "") => {
     return [
-        { name: "Tech Mahindra", logo: "/images/tech-mahindra-1.webp" },
-        { name: "IBM", logo: "/images/IBM.png" },
-        { name: "Infosys", logo: "/images/Infosys.png" },
-        { name: "Accenture", logo: "/images/Accenture.svg-1-1536x405-1-595xh.webp" },
-        { name: "Wipro", logo: "/images/Wipro.png" },
+        { name: "Tech Mahindra", logo: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970603/tech-mahindra-1_oys3h3?_a=BAMAOGGo0" },
+        { name: "IBM", logo: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970598/IBM_e3fgo1?_a=BAMAOGGo0" },
+        { name: "Infosys", logo: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970598/Infosys_mvhvzj?_a=BAMAOGGo0" },
+        { name: "Accenture", logo: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970594/Accenture.svg-1-1536x405-1-595xh_higvnp?_a=BAMAOGGo0" },
+        { name: "Wipro", logo: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970603/Wipro_ke41mv?_a=BAMAOGGo0" },
         { name: "Cognizant", logo: "https://upload.wikimedia.org/wikipedia/commons/4/43/Cognizant_logo_2022.svg" },
-        { name: "Mindtree", logo: "/images/mindtree.png" },
-        { name: "Caterpillar", logo: "/images/caterpiller.png" },
-        { name: "Microsoft", logo: "/images/Microsoft.webp" },
-        { name: "Amazon", logo: "/images/amazon-logo.webp" },
-        { name: "Myntra", logo: "/images/myntra.png" },
-        { name: "Flipkart", logo: "/images/Flipkart.png" }
+        { name: "Mindtree", logo: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970600/mindtree_wwuxyt?_a=BAMAOGGo0" },
+        { name: "Caterpillar", logo: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970595/caterpiller_ieqjep?_a=BAMAOGGo0" },
+        { name: "Microsoft", logo: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970600/Microsoft_s8fsff?_a=BAMAOGGo0" },
+        { name: "Amazon", logo: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970595/amazon-logo_bw2tue?_a=BAMAOGGo0" },
+        { name: "Myntra", logo: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970601/myntra_dgzo21?_a=BAMAOGGo0" },
+        { name: "Flipkart", logo: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970597/Flipkart_tejqy4?_a=BAMAOGGo0" }
     ];
 };

@@ -8,8 +8,8 @@ import { useAuthStore } from "@/store/authStore";
 import { toast } from "sonner";
 import axios from "axios";
 import { SEO } from "@/components/SEO";
-import certSample1 from "@/assets/certificate_sample_1.png";
-import certSample2 from "@/assets/certificate_sample_2.png";
+const certSample1 = "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970861/certificate_sample_1_ifdee6?_a=BAMAOGGo0";
+const certSample2 = "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970862/certificate_sample_2_ybapx4?_a=BAMAOGGo0";
 
 const HackathonsPage = () => {
     const [events, setEvents] = useState<EventItem[]>([]);
