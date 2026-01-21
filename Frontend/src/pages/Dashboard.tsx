@@ -69,6 +69,9 @@ const Dashboard = () => {
     const [showPopup, setShowPopup] = useState(false);
     const [currentPopLead, setCurrentPopLead] = useState<Lead | null>(null);
 
+    const [totalHackathons, setTotalHackathons] = useState(0);
+    const [totalWorkshops, setTotalWorkshops] = useState(0);
+
     // Notification Popup Logic
     useEffect(() => {
         if (allLeads.length === 0) return;
@@ -93,15 +96,27 @@ const Dashboard = () => {
                 const userReviews = res.data.filter((r: UserReview) => r.email === user.email);
                 setMyReviews(userReviews);
 
+                // Fetch with all=true to get total counts for stats, filtering client-side for "Upcoming" list
                 const [wRes, hRes, aRes, lRes] = await Promise.all([
-                    axios.get(`${import.meta.env.VITE_API_URL}/api/events?type=workshop`),
-                    axios.get(`${import.meta.env.VITE_API_URL}/api/events?type=hackathon`),
-                    axios.get(`${import.meta.env.VITE_API_URL}/api/events?type=weekly-activity`),
+                    axios.get(`${import.meta.env.VITE_API_URL}/api/events?type=workshop&all=true`),
+                    axios.get(`${import.meta.env.VITE_API_URL}/api/events?type=hackathon&all=true`),
+                    axios.get(`${import.meta.env.VITE_API_URL}/api/events?type=weekly-activity`), // Keep default (upcoming) for activities if desired, or duplicate logic
                     axios.get(`${import.meta.env.VITE_API_URL}/api/leads`),
                 ]);
-                setWorkshops(wRes.data.slice(0, 3));
-                setHackathons(hRes.data.slice(0, 3));
-                setActivities(aRes.data.slice(0, 3));
+
+                // Store total counts
+                setTotalWorkshops(wRes.data.length);
+                setTotalHackathons(hRes.data.length);
+
+                // Filter for "Upcoming Events" list (exclude completed)
+                // The backend adds 'isCompleted' flag when 'all=true'
+                const upcomingWorkshops = wRes.data.filter((e: any) => !e.isCompleted);
+                const upcomingHackathons = hRes.data.filter((e: any) => !e.isCompleted);
+                const upcomingActivities = aRes.data.filter((e: any) => !e.isCompleted);
+
+                setWorkshops(upcomingWorkshops.slice(0, 3));
+                setHackathons(upcomingHackathons.slice(0, 3));
+                setActivities(upcomingActivities.slice(0, 3));
                 setAllLeads(lRes.data);
             } catch (error) {
                 console.error("Failed to fetch dashboard data", error);
@@ -110,7 +125,6 @@ const Dashboard = () => {
             }
         };
 
-        fetchUserData();
         fetchUserData();
     }, [user]);
 
@@ -152,9 +166,9 @@ const Dashboard = () => {
     // Stats Data with logo colors (lighter blue)
     const statsData = [
         { label: "Active Courses", value: "0", subtext: "Start Learning", icon: BookOpen, gradient: "from-[#0066CC] to-[#0052a3]" },
-        { label: "Workshops", value: workshops.length.toString(), subtext: "Available Now", icon: Zap, gradient: "from-[#FD5A1A] to-orange-600" },
+        { label: "Workshops", value: totalWorkshops.toString(), subtext: "Available Now", icon: Zap, gradient: "from-[#FD5A1A] to-orange-600" },
         { label: "Community", value: allLeads.length.toString(), subtext: "Students Active", icon: Users, gradient: "from-[#0066CC] to-[#FD5A1A]" },
-        { label: "Hackathons", value: hackathons.length.toString(), subtext: "Competitions", icon: Trophy, gradient: "from-[#FD5A1A] to-red-600" },
+        { label: "Hackathons", value: totalHackathons.toString(), subtext: "Competitions", icon: Trophy, gradient: "from-[#FD5A1A] to-red-600" },
     ];
 
     return (
