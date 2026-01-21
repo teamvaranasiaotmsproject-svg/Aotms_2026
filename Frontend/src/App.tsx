@@ -32,8 +32,8 @@ const CareersPage = lazy(() => import("./pages/CareersPage"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const Terms = lazy(() => import("./pages/Terms"));
 
-import Chatbot from "./components/Chatbot";
-import LimitedTimeOffer from "./components/LimitedTimeOffer";
+const Chatbot = lazy(() => import("./components/Chatbot"));
+const LimitedTimeOffer = lazy(() => import("./components/LimitedTimeOffer"));
 
 const queryClient = new QueryClient();
 
@@ -43,11 +43,17 @@ export const LoadingFallback = () => (
   </div>
 );
 
+import ScrollToTop from "./components/ScrollToTop";
+import { ScrollButtons } from "./components/ScrollButtons";
+
 const CustomCursor = () => {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
   useEffect(() => {
+    // Disable on touch devices
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
@@ -59,27 +65,23 @@ const CustomCursor = () => {
     };
   }, [cursorX, cursorY]);
 
+  // Don't render on small screens
+  // We use CSS hidden md:block, but we can also return null if we want to be stricter.
   return (
-    <>
-      <motion.div
-        className="fixed top-0 left-0 w-3.5 h-3.5 bg-orange-500 rounded-full pointer-events-none z-[99999] hidden md:block"
-        style={{
-          x: cursorX,
-          y: cursorY,
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
-        transition={{
-          duration: 0
-        }}
-      />
-    </>
+    <motion.div
+      className="fixed top-0 left-0 w-3.5 h-3.5 bg-orange-500 rounded-full pointer-events-none z-[99999] hidden md:block"
+      style={{
+        x: cursorX,
+        y: cursorY,
+        translateX: "-50%",
+        translateY: "-50%",
+      }}
+      transition={{
+        duration: 0
+      }}
+    />
   );
 };
-
-import ScrollToTop from "./components/ScrollToTop";
-import { ScrollButtons } from "./components/ScrollButtons";
-import AboutUs from "./pages/WhoWeAre";
 
 const App = () => {
   useEffect(() => {
@@ -95,17 +97,19 @@ const App = () => {
   }, []);
 
   return (
-    <MotionConfig reducedMotion="never">
+    <MotionConfig reducedMotion="user">
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <CustomCursor />
-          <Chatbot />
-          <ScrollButtons />
-          <Toaster />
-          <Sonner />
           <HashRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+            <Suspense fallback={null}>
+              <Chatbot />
+              <LimitedTimeOffer />
+            </Suspense>
+            <ScrollButtons />
             <ScrollToTop />
-            <LimitedTimeOffer />
+            <Toaster />
+            <Sonner />
             <Suspense fallback={<LoadingFallback />}>
               <Routes>
                 <Route path="/" element={<Index />} />
@@ -127,7 +131,6 @@ const App = () => {
 
                 <Route path="/reset-password" element={<ResetPassword />} />
                 <Route path="/internships" element={<InternshipsPage />} />
-                <Route path="/careers" element={<CareersPage />} />
                 <Route path="/resources" element={<ResourcesPage />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/terms" element={<Terms />} />

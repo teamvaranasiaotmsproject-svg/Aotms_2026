@@ -1,9 +1,10 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, lazy, Suspense } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ArrowRight, PlayCircle, Users, Award, Clock, ThumbsUp } from "lucide-react";
 import axios from "axios";
 import { CountUpNumber } from "./CountUpNumber";
-import { CourseEnrollmentModal } from "@/components/ui/CourseEnrollmentModal";
+// Lazy load modal
+const CourseEnrollmentModal = lazy(() => import("@/components/ui/CourseEnrollmentModal").then(module => ({ default: module.CourseEnrollmentModal })));
 import { useUIStore } from "@/store/uiStore";
 
 const trustStats = [
@@ -148,11 +149,15 @@ export const HeroSection = () => {
               </button>
             </div>
 
-            <CourseEnrollmentModal
-              isOpen={isEnrollmentOpen}
-              onClose={() => setIsEnrollmentOpen(false)}
-              source={enrollmentSource}
-            />
+            <Suspense fallback={null}>
+              {isEnrollmentOpen && (
+                <CourseEnrollmentModal
+                  isOpen={isEnrollmentOpen}
+                  onClose={() => setIsEnrollmentOpen(false)}
+                  source={enrollmentSource}
+                />
+              )}
+            </Suspense>
 
             {/* STATS */}
             <div className="flex flex-wrap gap-6 pt-6 border-t">

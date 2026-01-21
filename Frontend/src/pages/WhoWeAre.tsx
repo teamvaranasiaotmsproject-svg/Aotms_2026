@@ -6,8 +6,8 @@ import { Target, Eye, Award, Users, Building2, TrendingUp, CheckCircle, Quote } 
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { EmblaCarouselType } from "embla-carousel";
-import { useCallback, useState, useEffect } from "react";
-import { PerformanceBreakdown } from "@/components/PerformanceBreakdown";
+import { useCallback, useState, useEffect, lazy, Suspense } from "react";
+const PerformanceBreakdown = lazy(() => import("@/components/PerformanceBreakdown").then(module => ({ default: module.PerformanceBreakdown })));
 import { SEO } from "@/components/SEO";
 import ameenImg from "@/assets/ameen.jpeg";
 
@@ -332,7 +332,9 @@ export const WhoWeAre = () => {
       </section>
 
       {/* Performance Breakdown Chart */}
-      <PerformanceBreakdown />
+      <Suspense fallback={<div className="h-96 flex items-center justify-center">Loading...</div>}>
+        <PerformanceBreakdown />
+      </Suspense>
 
       {/* Mission, Vision, Values */}
       <section className="py-20 md:py-28 bg-slate-50">

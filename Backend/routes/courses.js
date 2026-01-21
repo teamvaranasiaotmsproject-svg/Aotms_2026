@@ -2,28 +2,26 @@ const express = require('express');
 const router = express.Router();
 const Course = require('../models/Course');
 
-// Get all courses
 router.get('/', async (req, res) => {
     try {
-        const courses = await Course.find({}).sort({ id: 1 });
+        const query = req.query.category ? { category: req.query.category } : {};
+        const courses = await Course.find(query)
+            .select('id slug title category image price originalPrice rating themeColor duration level')
+            .lean();
         res.json(courses);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).send('Server Error');
     }
 });
 
-// Get single course by slug
 router.get('/:slug', async (req, res) => {
     try {
-        const course = await Course.findOne({ slug: req.params.slug });
-        if (!course) return res.status(404).json({ message: 'Course not found' });
-
+        const course = await Course.findOne({ slug: req.params.slug }).lean();
+        if (!course) return res.status(404).send('Course not found');
         res.json(course);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).send('Server Error');
     }
 });
-
-
 
 module.exports = router;

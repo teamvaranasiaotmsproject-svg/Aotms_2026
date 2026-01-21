@@ -68,7 +68,7 @@ const testimonials: Testimonial[] = [
         description:
             "Experienced educator and developer with a passion for teaching complex coding concepts in a simplified manner. dedicated to student success.",
         imageUrl:
-            "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768970600/mentos-4_s7n9dr?_a=BAMAOGGo0",
+            "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768979471/Mentor_dvgns5.jpg",
         linkedinUrl: "#",
     },
     {

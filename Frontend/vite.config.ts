@@ -19,5 +19,17 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          utils: ['axios', 'date-fns'],
+          animations: ['framer-motion'],
+          ui: ['@radix-ui/react-slot', 'class-variance-authority', 'clsx', 'tailwind-merge'],
+          icons: ['lucide-react', 'react-icons']
+        }
+      }
+    },
+    chunkSizeWarningLimit: 1000
   }
 }));
