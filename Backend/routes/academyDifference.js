@@ -52,19 +52,19 @@ router.post('/seed', async (req, res) => {
             {
                 title: "Our Mission",
                 description: "Empowering students with real-world IT skills and expert mentorship to bridge the gap between academics and industry.",
-                image: "/Why Choose us-1.jpg",
+                image: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768212544/Why_Choose_us-1_iln8c8?_a=BAMAOGGo0",
                 order: 1
             },
             {
                 title: "Our Vision",
                 description: "To become the most trusted IT training institute by transforming passionate learners into job-ready tech leaders.",
-                image: "/Why Choose us-2.jpg",
+                image: "https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1768213107/Why_Choose_us-2_vofvbe?_a=BAMAOGGo0",
                 order: 2
             },
             {
                 title: "Why Choose Us",
                 description: "Cutting-edge courses, flexible learning, and 100% placement-focused support—all in one place.",
-                image: "/Why Choose us-3.jpg",
+                image: "https://res.cloudinary.com/dhrommrn4/image/upload/v1768149165/pl_kk3zak.jpg",
                 order: 3
             },
         ];
