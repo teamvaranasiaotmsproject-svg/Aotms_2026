@@ -7,10 +7,31 @@ const app = express();
 const compression = require('compression');
 
 // Middleware
-app.use(compression());
-app.use(express.json());
+// Middleware
+
+const allowedOrigins = [
+    'http://localhost:5173',
+    'http://localhost:8080',
+    'http://localhost:8081',
+    'https://aotms.in',
+    'https://www.aotms.in',
+    process.env.CLIENT_URL
+].filter(Boolean);
+
 app.use(cors({
-    origin: process.env.CLIENT_URL ? [process.env.CLIENT_URL, 'http://localhost:5173', 'http://localhost:8080', 'http://localhost:8081'] : ['http://localhost:5173', 'http://localhost:8080', 'http://localhost:8081'],
+    origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            // Optional: for debugging, allow all in dev if needed, strictly enforce in prod
+            // For now, lenient check or strict? Strict is better for security, but let's be helpful.
+            // If origin is not allowed, check if it matches the main domain structure? 
+            // Sticking to exact match for safety.
+            var msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    },
     credentials: true
 }));
 
