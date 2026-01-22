@@ -26,12 +26,21 @@ const JobApplicationSchema = new mongoose.Schema({
     },
     resumeLink: {
         type: String,
-        required: true,
+        required: false,
         trim: true
     },
     coverLetter: {
         type: String,
         trim: true
+    },
+    internshipType: {
+        type: String,
+        enum: ['Long Term', 'Short Term'],
+        required: false
+    },
+    internshipDuration: {
+        type: String, // e.g., "3 Months", "6 Months", "1 Month"
+        required: false
     },
     createdAt: {
         type: Date,

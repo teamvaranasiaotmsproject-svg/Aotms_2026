@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { Header } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/Footer";
 import { useAuthStore } from "@/store/authStore";
@@ -54,6 +55,7 @@ interface Lead {
 }
 
 const Dashboard = () => {
+    const navigate = useNavigate();
     const { user, logout, setAuth, token } = useAuthStore();
     const [isEditing, setIsEditing] = useState(false);
     const [editForm, setEditForm] = useState({
@@ -221,7 +223,7 @@ const Dashboard = () => {
                         </div>
                         <div className="flex items-center gap-2 md:gap-3 w-full md:w-auto">
                             <Button
-                                onClick={() => window.location.href = '/courses'}
+                                onClick={() => navigate('/courses')}
                                 className="h-11 md:h-12 px-4 md:px-6 rounded-xl bg-gradient-to-r from-[#0066CC] to-[#0052a3] hover:from-[#0066CC]/90 hover:to-[#0066CC]/90 text-white font-bold shadow-lg shadow-[#0066CC]/20 flex-1 md:flex-none text-sm md:text-base"
                             >
                                 <BookOpen className="w-4 h-4 mr-2" /> <span className="hidden sm:inline">Browse</span> Courses
@@ -329,7 +331,7 @@ const Dashboard = () => {
                                 <Button
                                     variant="ghost"
                                     className="text-[#0066CC] hover:text-[#FD5A1A] hover:bg-orange-50 font-bold text-xs md:text-sm h-7 md:h-8 px-2 md:px-3"
-                                    onClick={() => window.location.href = '/events'}
+                                    onClick={() => navigate('/events')}
                                 >
                                     View All
                                 </Button>
@@ -338,7 +340,7 @@ const Dashboard = () => {
                                 {[...workshops.slice(0, 1), ...hackathons.slice(0, 1), ...activities.slice(0, 2)].map((event, idx) => (
                                     <div
                                         key={idx}
-                                        onClick={() => window.location.href = event.id.includes('h') ? '/hackathon' : event.id.includes('w') ? '/workshop' : '/events'}
+                                        onClick={() => navigate(event.id.includes('h') ? '/hackathon' : event.id.includes('w') ? '/workshop' : '/events')}
                                         className="bg-white p-3 md:p-4 rounded-xl md:rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-600/30 transition-all cursor-pointer group flex gap-3 md:gap-4 items-center"
                                     >
                                         <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-slate-100 overflow-hidden shrink-0 relative">
@@ -520,7 +522,7 @@ const Dashboard = () => {
                                 <p className="text-xs md:text-sm font-bold text-slate-900 mb-1">No Active Courses</p>
                                 <p className="text-[10px] md:text-xs text-slate-400 font-medium mb-3 md:mb-4">Enroll in a course to track progress.</p>
                                 <Button
-                                    onClick={() => window.location.href = '/courses'}
+                                    onClick={() => navigate('/courses')}
                                     className="w-full bg-gradient-to-r from-[#0066CC] to-[#0052a3] hover:from-[#0066CC]/90 hover:to-[#0066CC]/90 text-white font-bold h-9 md:h-10 rounded-xl text-xs md:text-sm"
                                 >
                                     Start Learning

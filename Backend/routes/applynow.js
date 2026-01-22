@@ -12,8 +12,8 @@ router.post('/', upload.single('resume'), async (req, res) => {
     console.log("ApplyNow POST request received");
 
     try {
-        const { name, email, phone, position } = req.body;
-        console.log("Body:", { name, email, phone, position });
+        const { name, email, phone, position, internshipType, internshipDuration } = req.body;
+        console.log("Body:", { name, email, phone, position, internshipType, internshipDuration });
         console.log("File:", req.file ? "File received" : "No file");
 
         // Validation
@@ -21,7 +21,7 @@ router.post('/', upload.single('resume'), async (req, res) => {
             return res.status(400).json({ message: 'Please fill in all required fields' });
         }
 
-        if (!req.file) {
+        if (!req.file && !internshipType) {
             return res.status(400).json({ message: 'Please upload your resume' });
         }
 
@@ -37,43 +37,47 @@ router.post('/', upload.single('resume'), async (req, res) => {
             return res.status(400).json({ message: 'Phone number must be 10 digits' });
         }
 
-        // Upload to Pinata (IPFS)
-        const uploadToPinata = async (fileBuffer, fileName) => {
-            const formData = new FormData();
-            formData.append('file', fileBuffer, fileName);
+        let resumeLink = "Not Provided";
 
-            const pinataMetadata = JSON.stringify({
-                name: fileName
-            });
-            formData.append('pinataMetadata', pinataMetadata);
+        if (req.file) {
+            // Upload to Pinata (IPFS)
+            const uploadToPinata = async (fileBuffer, fileName) => {
+                const formData = new FormData();
+                formData.append('file', fileBuffer, fileName);
 
-            const pinataOptions = JSON.stringify({
-                cidVersion: 0,
-            });
-            formData.append('pinataOptions', pinataOptions);
+                const pinataMetadata = JSON.stringify({
+                    name: fileName
+                });
+                formData.append('pinataMetadata', pinataMetadata);
 
-            const res = await axios.post("https://api.pinata.cloud/pinning/pinFileToIPFS", formData, {
-                headers: {
-                    'Authorization': `Bearer ${process.env.PINATA_JWT}`,
-                    ...formData.getHeaders()
-                },
-                maxBodyLength: Infinity // Necessary for larger files
-            });
-            return res.data;
-        };
+                const pinataOptions = JSON.stringify({
+                    cidVersion: 0,
+                });
+                formData.append('pinataOptions', pinataOptions);
 
-        console.log("Uploading to Pinata IPFS...");
-        const result = await uploadToPinata(req.file.buffer, req.file.originalname);
-        console.log("Pinata Upload Success. CID:", result.IpfsHash);
+                const res = await axios.post("https://api.pinata.cloud/pinning/pinFileToIPFS", formData, {
+                    headers: {
+                        'Authorization': `Bearer ${process.env.PINATA_JWT}`,
+                        ...formData.getHeaders()
+                    },
+                    maxBodyLength: Infinity // Necessary for larger files
+                });
+                return res.data;
+            };
 
-        // Construct Gateway URL
-        const resumeLink = `https://gateway.pinata.cloud/ipfs/${result.IpfsHash}`;
+            console.log("Uploading to Pinata IPFS...");
+            const result = await uploadToPinata(req.file.buffer, req.file.originalname);
+            console.log("Pinata Upload Success. CID:", result.IpfsHash);
+            resumeLink = `https://gateway.pinata.cloud/ipfs/${result.IpfsHash}`;
+        }
 
         const newApplication = new JobApplication({
             name,
             email,
             phone,
             position,
+            internshipType,
+            internshipDuration,
             resumeLink
         });
 
@@ -83,7 +87,6 @@ router.post('/', upload.single('resume'), async (req, res) => {
         res.status(201).json({
             message: 'Application submitted successfully',
             ApplicationId: newApplication._id,
-            ipfsHash: result.IpfsHash,
             resumeLink: resumeLink
         });
 

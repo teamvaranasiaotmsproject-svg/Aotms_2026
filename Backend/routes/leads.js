@@ -35,20 +35,7 @@ router.post('/', async (req, res) => {
 
         // Validation for event registration
         if (type === 'event-registration') {
-            const eventName = event || course;
-            let targetEvent = await Workshop.findOne({ name: eventName });
-            if (!targetEvent) targetEvent = await Hackathon.findOne({ name: eventName });
-            if (!targetEvent) targetEvent = await WeeklyActivity.findOne({ name: eventName });
-
-            if (targetEvent) {
-                const now = new Date();
-                const isStatusOpen = targetEvent.registrationStatus === 'OPEN';
-                const isDateValid = !targetEvent.endDate || new Date(targetEvent.endDate) >= now;
-
-                if (!isStatusOpen || !isDateValid) {
-                    return res.status(400).json({ message: 'Registration for this event is currently closed.' });
-                }
-            }
+            return res.status(403).json({ message: 'Event registration is disabled.' });
         }
 
         const newLead = new Lead({

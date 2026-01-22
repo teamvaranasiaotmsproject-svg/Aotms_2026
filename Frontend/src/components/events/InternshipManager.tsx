@@ -7,6 +7,7 @@ import {
     Tag,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ResumeUploadModal } from "../ResumeUploadModal";
 
 export interface EventItem {
     id: string;
@@ -34,6 +35,7 @@ interface InternshipManagerProps {
 
 export const InternshipManager = ({ events, title, subtitle }: InternshipManagerProps) => {
 
+    const [isApplicationModalOpen, setIsApplicationModalOpen] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState<EventItem>(events[0]);
     const [isMobile, setIsMobile] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -84,7 +86,7 @@ export const InternshipManager = ({ events, title, subtitle }: InternshipManager
 
     const handleApplyClick = () => {
         if (selectedEvent) {
-            window.location.href = `/contact?internship=${selectedEvent.id}`;
+            setIsApplicationModalOpen(true);
         }
     };
 
@@ -353,6 +355,15 @@ export const InternshipManager = ({ events, title, subtitle }: InternshipManager
                         border-radius: 10px;
                     }
                 `}</style>
+
+                {selectedEvent && (
+                    <ResumeUploadModal
+                        isOpen={isApplicationModalOpen}
+                        onClose={() => setIsApplicationModalOpen(false)}
+                        position={selectedEvent.name}
+                        isInternshipMode={true}
+                    />
+                )}
             </div>
         </div>
     );

@@ -575,30 +575,7 @@ export const WeeklyActivityManager = ({ events, title, subtitle }: WeeklyActivit
                                                     </ul>
                                                 </div>
 
-                                                <div className="pt-2 flex flex-col sm:flex-row gap-4">
 
-
-                                                    <button
-                                                        disabled={selectedEvent.isRegistrationOpen === false}
-                                                        onClick={handleRegisterClick}
-                                                        className={cn(
-                                                            "group relative px-8 py-4 border-2 rounded-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 w-full md:w-auto overflow-hidden",
-                                                            selectedEvent.isRegistrationOpen === false
-                                                                ? "bg-gray-100 border-gray-200 text-gray-400 cursor-not-allowed"
-                                                                : "bg-[#111111] border-[#111111] hover:bg-[#0A3D91] hover:border-[#0A3D91] text-white"
-                                                        )}
-                                                    >
-                                                        <div className="relative z-10 flex items-center justify-center gap-3">
-                                                            <span className="font-black tracking-widest uppercase text-xs">
-                                                                {selectedEvent.isRegistrationOpen === false ? "Registration Closed" : "Register Now"}
-                                                            </span>
-                                                            <ArrowRight className={cn(
-                                                                "w-4 h-4 transition-transform group-hover:translate-x-1.5",
-                                                                selectedEvent.isRegistrationOpen === false ? "text-gray-400" : "text-inherit"
-                                                            )} />
-                                                        </div>
-                                                    </button>
-                                                </div>
                                             </div>
                                         </motion.div>
                                     )}
