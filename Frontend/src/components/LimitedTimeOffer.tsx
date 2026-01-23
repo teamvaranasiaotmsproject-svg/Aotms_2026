@@ -49,6 +49,7 @@ const LimitedTimeOffer = () => {
     useEffect(() => {
         if (isVisible && !isSubmitted) {
             if (countdown <= 0) {
+                window.dispatchEvent(new Event('aotms-open-chatbot'));
                 closeForever(); // Auto-close when countdown finishes
                 return;
             }

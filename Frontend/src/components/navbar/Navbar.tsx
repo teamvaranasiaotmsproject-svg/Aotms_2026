@@ -167,12 +167,12 @@ export const Header = () => {
         />
 
         {/* Main Navbar */}
-        <nav className={`bg-background/95 backdrop-blur-md border-b border-border/40 transition-all duration-300 flex items-center ${isScrolled ? 'h-16 md:h-16' : 'h-20 md:h-24'}`}>
+        <nav className={`bg-background/95  py-2 backdrop-blur-md border-b border-border/40 transition-all duration-500 flex items-center ${isScrolled ? 'h-18 md:h-20' : 'h-20 md:h-24'}`}>
           <div className="container mx-auto px-4 sm:px-6 flex items-center justify-between h-full">
 
             {/* Logo */}
             <Link to="/" className="flex-shrink-0">
-              <img src={logo} alt="AOTMS" className={`w-auto transition-all duration-300 hover:scale-105 ${isScrolled ? 'h-14 md:h-16' : 'h-16 md:h-20'}`} />
+              <img src={logo} alt="AOTMS" className={`w-auto transition-all duration-300 hover:scale-105 ${isScrolled ? 'h-10 md:h-12' : 'h-16 md:h-20'}`} />
             </Link>
 
             {/* Desktop Navigation */}

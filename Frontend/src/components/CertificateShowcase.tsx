@@ -73,13 +73,14 @@ export const CertificateShowcase = ({
             <div className="w-full bg-gradient-to-br from-orange-50 via-amber-50/30 to-orange-50 py-16 md:py-24">
                 <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
                     {/* Section Header */}
-                    <div className="text-center mb-12">
+                    <div className="text-center mb-13">
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 border border-orange-200 rounded-full text-xs font-black uppercase tracking-widest mb-6 text-[#FD5A1A]">
                             <Award className="w-4 h-4" />
                             Official Certifications
                         </div>
-                        <h2 className="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A] tracking-tight mb-4">
-                            Earn Recognized Certificates
+                        <h2 className="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#0075CF] to-[#FD5A1A] tracking-tight mb-5">
+                            Earn Recognized Certificat
+                            <br />
                         </h2>
                         <p className="text-gray-600 text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
                             Participate in our events and earn industry-recognized certificates that validate your skills and boost your professional profile.

@@ -18,7 +18,7 @@ export const TopNavbar = ({ isScrolled, setAuthMode, setShowAuthModal }: TopNavb
 
     return (
         <div
-            className={`bg-[#0066CC] text-white text-xs font-semibold border-b border-primary-foreground/10 relative z-50 transition-all duration-500 ease-in-out overflow-hidden ${!isScrolled ? 'max-h-[52px] opacity-100' : 'max-h-0 opacity-0'}`}
+            className={`bg-[#0066CC] text-white text-xs font-semibold border-b border-primary-foreground/10 relative z-50 transition-all duration-500 ease-in-out overflow-hidden max-h-[52px] opacity-100`}
         >
             <div className="py-1 md:py-0">
                 <div className="container mx-auto px-4 h-8 md:h-9 flex items-center justify-between">

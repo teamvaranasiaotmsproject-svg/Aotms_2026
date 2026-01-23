@@ -14,15 +14,23 @@ export const ProfessionalPrograms = () => {
     const { data: courses, isLoading } = useCourses();
     const [emblaRef, emblaApi] = useEmblaCarousel(
         { loop: true, align: "start", skipSnaps: false, dragFree: true },
-        [AutoScroll({ playOnInit: true, stopOnInteraction: false, stopOnMouseEnter: true, speed: 1 })]
+        [AutoScroll({ playOnInit: true, stopOnInteraction: true, stopOnMouseEnter: true, speed: 1 })]
     );
 
     const scrollPrev = useCallback(() => {
-        if (emblaApi) emblaApi.scrollPrev();
+        if (emblaApi) {
+            const autoScroll = emblaApi.plugins().autoScroll;
+            if (autoScroll) autoScroll.stop();
+            emblaApi.scrollPrev();
+        }
     }, [emblaApi]);
 
     const scrollNext = useCallback(() => {
-        if (emblaApi) emblaApi.scrollNext();
+        if (emblaApi) {
+            const autoScroll = emblaApi.plugins().autoScroll;
+            if (autoScroll) autoScroll.stop();
+            emblaApi.scrollNext();
+        }
     }, [emblaApi]);
 
     if (isLoading) {

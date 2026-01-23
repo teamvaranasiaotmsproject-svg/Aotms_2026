@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { sanitizeInput } from '@/utils/validation';
 import './Chatbot.css';
-import { MoreHorizontal, Send, MessageSquare, Smile, Copy, ThumbsUp, ThumbsDown, RefreshCw, MessageSquarePlus, MessageSquareX, History, X } from 'lucide-react';
+import { MoreHorizontal, Send, MessageSquare, Smile, Copy, ThumbsUp, ThumbsDown, RefreshCw, MessageSquarePlus, MessageSquareX, History, X, Maximize2, Minimize2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
@@ -21,6 +21,7 @@ const Chatbot: React.FC = () => {
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -35,6 +36,15 @@ const Chatbot: React.FC = () => {
   };
 
   useEffect(scrollToBottom, [messages, isTyping, isOpen]);
+
+  // Handle auto-open events and initial state
+  useEffect(() => {
+    setIsOpen(false);
+
+    const handleOpenRequest = () => setIsOpen(true);
+    window.addEventListener('aotms-open-chatbot', handleOpenRequest);
+    return () => window.removeEventListener('aotms-open-chatbot', handleOpenRequest);
+  }, []);
 
   // Close menu, chatbot and emoji picker when clicking outside
   useEffect(() => {
@@ -71,22 +81,46 @@ const Chatbot: React.FC = () => {
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       setMessages([
-        { id: 1, text: 'Hello! How can I help you today?', sender: 'bot' },
+        {
+          id: 1,
+          text: `Hello! Welcome to Academy of Tech Masters.
+We are offering specialized training in top technologies.
+
+Here are the top courses offered by AOTMS Institute with exclusive prices:
+
+1. Data Science: ₹45,000 (Special Offer)
+2. Java Full Stack: ₹35,000
+3. Cybersecurity: ₹35,000
+4. Embedded Systems: ₹35,000
+5. DevOps: ₹35,000
+
+How can I assist you with enrollment today?`,
+          sender: 'bot'
+        },
       ]);
     }
   }, [isOpen, messages.length]);
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
+    if (!isOpen) {
+      setIsExpanded(false);
+    }
     setShowMenu(false);
   };
 
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
 
-  const handleSendMessage = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!inputValue.trim()) return;
 
-    const userMessage: Message = { id: Date.now(), text: inputValue, sender: 'user' };
+  const handleSendMessage = async (e?: React.FormEvent, overrideText?: string) => {
+    if (e) e.preventDefault();
+
+    const textToSend = overrideText || inputValue;
+    if (!textToSend.trim()) return;
+
+    const userMessage: Message = { id: Date.now(), text: textToSend, sender: 'user' };
 
     // Optimistically update UI
     setMessages(prev => [...prev, userMessage]);
@@ -163,7 +197,7 @@ const Chatbot: React.FC = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="chat-panel open"
+            className={`chat-panel open ${isExpanded ? 'expanded' : ''}`}
           >
             {/* Header - White with Black Text */}
             <div className="chat-header relative">
@@ -181,6 +215,14 @@ const Chatbot: React.FC = () => {
                   title="More options"
                 >
                   <MoreHorizontal className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={toggleExpand}
+                  className="text-white hover:bg-white/10 rounded-full p-2 transition-colors relative"
+                  aria-label={isExpanded ? "Minimize" : "Maximize"}
+                  title={isExpanded ? "Minimize" : "Maximize"}
+                >
+                  {isExpanded ? <Minimize2 className="w-5 h-5" /> : <Maximize2 className="w-5 h-5" />}
                 </button>
                 <button
                   onClick={toggleChat}
@@ -246,11 +288,34 @@ const Chatbot: React.FC = () => {
                   </div>
                 </div>
               )}
+              {/* Suggestions */}
+              {messages.filter(m => m.sender === 'user').length === 0 && (
+                <div className="pb-2 flex flex-wrap gap-2 animate-fade-in-up mt-4 justify-end">
+                  {[
+                    { label: "Course Prices 💰", text: "What are the prices for all courses?" },
+                    { label: "DS Duration ⏳", text: "How on many months is the Data Science course?" },
+                    { label: "Enroll CyberSec 🛡️", text: "I want to enroll for the Cybersecurity course." },
+                    { label: "Data Analytics Price 📊", text: "What is the course price of Data-analytics?" },
+                    { label: "Java Full Stack Details ☕", text: "Tell me about the Java Full Stack course fee and duration." },
+                    { label: "Internship Process 🎓", text: "How can I apply for an internship?" }
+                  ].map((suggestion, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => handleSendMessage(undefined, suggestion.text)}
+                      className="text-xs bg-gray-100 hover:bg-[#0066CC] hover:text-white text-gray-700 font-medium py-1.5 px-3 rounded-full transition-colors border border-gray-200"
+                    >
+                      {suggestion.label}
+                    </button>
+                  ))}
+                </div>
+              )}
               <div ref={messagesEndRef} />
             </div>
 
+
+
             {/* Input Area - Floating Style */}
-            <div className="chat-input-area border-t pt-2">
+            <div className="chat-input-area">
               {showEmojiPicker && (
                 <div ref={emojiPickerRef} className="absolute bottom-16 left-4 bg-white border rounded-lg shadow-lg p-2 flex flex-wrap gap-2 z-50 animate-fade-in-up w-56">
                   {commonEmojis.map((emoji, index) => (
