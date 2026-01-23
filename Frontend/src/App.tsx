@@ -37,11 +37,9 @@ const LimitedTimeOffer = lazy(() => import("./components/LimitedTimeOffer"));
 
 const queryClient = new QueryClient();
 
-export const LoadingFallback = () => (
-  <div className="flex items-center justify-center min-h-screen bg-slate-50">
-    <div className="w-16 h-16 border-4 border-blue-600/30 border-t-blue-600 rounded-full animate-spin" />
-  </div>
-);
+import { BrandLoader } from "@/components/ui/BrandLoader";
+
+export const LoadingFallback = () => <BrandLoader />;
 
 import ScrollToTop from "./components/ScrollToTop";
 import { ScrollButtons } from "./components/ScrollButtons";

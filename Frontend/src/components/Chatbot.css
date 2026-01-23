@@ -262,3 +262,22 @@
 .animate-fade-in-up {
     animation: fadeInUp 0.4s ease-out forwards;
 }
+
+/* Floating Button Animation */
+@keyframes float-btn {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        box-shadow: 0 4px 14px rgba(11, 78, 150, 0.3);
+    }
+
+    50% {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 20px rgba(11, 78, 150, 0.2);
+    }
+}
+
+.animate-float {
+    animation: float-btn 3s ease-in-out infinite;
+}

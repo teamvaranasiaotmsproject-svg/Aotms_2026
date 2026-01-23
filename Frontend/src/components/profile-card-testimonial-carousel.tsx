@@ -141,72 +141,78 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
             </div>
 
             {/* 2. Detail View - Image Left | Content Right */}
-            <AnimatePresence mode='wait'>
-                <motion.div
-                    key={activeMentor.name}
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
-                    className="bg-white dark:bg-slate-900 rounded-[2rem] shadow-xl shadow-blue-900/5 border border-slate-100 dark:border-slate-800 overflow-hidden max-w-5xl mx-auto"
-                >
-                    <div className="flex flex-col md:row min-h-[350px] md:flex-row">
-                        {/* Image Side (Left) */}
-                        <div className="w-full md:w-[35%] relative group h-[250px] md:h-auto">
-                            <img
-                                src={activeMentor.imageUrl}
-                                alt={activeMentor.name}
-                                className="w-full h-full object-cover"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-white dark:to-slate-900 hidden md:block" />
+            <div className="relative">
+                <AnimatePresence mode='wait'>
+                    <motion.div
+                        key={currentIndex}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute inset-0"
+                    >
+                        <div className="bg-white dark:bg-slate-900 rounded-[2rem] shadow-xl shadow-blue-900/5 border border-slate-100 dark:border-slate-800 overflow-hidden max-w-5xl mx-auto">
+                            <div className="flex flex-col md:row min-h-[350px] md:flex-row">
+                                {/* Image Side (Left) */}
+                                <div className="w-full md:w-[35%] relative group h-[250px] md:h-auto">
+                                    <img
+                                        src={activeMentor.imageUrl}
+                                        alt={activeMentor.name}
+                                        className="w-full h-full object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-white dark:to-slate-900 hidden md:block" />
 
-                            {/* Specialty Badge */}
-                            <div className="absolute top-4 left-4 px-3 py-1.5 bg-blue-600/90 backdrop-blur-md rounded-lg text-white text-[9px] font-black uppercase tracking-[0.15em] shadow-lg">
-                                {activeMentor.specialty}
-                            </div>
-                        </div>
-
-                        {/* Content Side (Right) */}
-                        <div className="w-full md:w-[65%] p-6 md:p-8 flex flex-col justify-center">
-                            <div className="mb-4">
-                                <div className="flex items-center gap-2 mb-1">
-                                    <h2 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white">
-                                        {activeMentor.name}
-                                    </h2>
-                                    <div className="h-1.5 w-1.5 rounded-full bg-blue-600" />
+                                    {/* Specialty Badge */}
+                                    <div className="absolute top-4 left-4 px-3 py-1.5 bg-blue-600/90 backdrop-blur-md rounded-lg text-white text-[9px] font-black uppercase tracking-[0.15em] shadow-lg">
+                                        {activeMentor.specialty}
+                                    </div>
                                 </div>
-                                <div className="flex flex-wrap items-center gap-3 text-blue-600 font-bold uppercase tracking-wider text-[11px]">
-                                    <span>{activeMentor.title}</span>
-                                    <span className="h-3 w-px bg-slate-200 hidden sm:block" />
-                                    <div className="flex items-center gap-1.5 text-slate-500 font-semibold tracking-normal text-xs capitalize">
-                                        <Briefcase className="w-4 h-4 text-blue-500" />
-                                        {activeMentor.experience} Exp
+
+                                {/* Content Side (Right) */}
+                                <div className="w-full md:w-[65%] p-6 md:p-8 flex flex-col justify-center">
+                                    <div className="mb-4">
+                                        <div className="flex items-center gap-2 mb-1">
+                                            <h2 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white">
+                                                {activeMentor.name}
+                                            </h2>
+                                            <div className="h-1.5 w-1.5 rounded-full bg-blue-600" />
+                                        </div>
+                                        <div className="flex flex-wrap items-center gap-3 text-blue-600 font-bold uppercase tracking-wider text-[11px]">
+                                            <span>{activeMentor.title}</span>
+                                            <span className="h-3 w-px bg-slate-200 hidden sm:block" />
+                                            <div className="flex items-center gap-1.5 text-slate-500 font-semibold tracking-normal text-xs capitalize">
+                                                <Briefcase className="w-4 h-4 text-blue-500" />
+                                                {activeMentor.experience} Exp
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed mb-6 italic font-medium">
+                                        "{activeMentor.description}"
+                                    </p>
+
+                                    <div className="flex flex-wrap items-center gap-4 mt-auto">
+                                        <div className="flex gap-3">
+                                            {socialIcons.map(({ icon: Icon, label, url }) => (
+                                                <a
+                                                    key={label}
+                                                    href={url || '#'}
+                                                    className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-600 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md active:scale-95"
+                                                    aria-label={label}
+                                                >
+                                                    <Icon className="w-4 h-4" />
+                                                </a>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed mb-6 italic font-medium">
-                                "{activeMentor.description}"
-                            </p>
-
-                            <div className="flex flex-wrap items-center gap-4 mt-auto">
-                                <div className="flex gap-3">
-                                    {socialIcons.map(({ icon: Icon, label, url }) => (
-                                        <a
-                                            key={label}
-                                            href={url || '#'}
-                                            className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-600 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md active:scale-95"
-                                            aria-label={label}
-                                        >
-                                            <Icon className="w-4 h-4" />
-                                        </a>
-                                    ))}
-                                </div>
-                            </div>
                         </div>
-                    </div>
-                </motion.div>
-            </AnimatePresence>
+                    </motion.div>
+                </AnimatePresence>
+                {/* Spacer to maintain height */}
+                <div className="min-h-[350px] md:min-h-[400px]" aria-hidden="true" />
+            </div>
         </div>
     );
 }

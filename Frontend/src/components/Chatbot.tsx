@@ -368,16 +368,7 @@ How can I assist you with enrollment today?`,
         <button
           ref={toggleBtnRef}
           onClick={toggleChat}
-          className="fixed bottom-0 right-0 rounded-tl-2xl rounded-tr-none rounded-br-none rounded-bl-none shadow-xl hover:shadow-2xl transition-all duration-300 hover:px-7 z-[19999] group overflow-hidden"
-          style={{
-            padding: '10px 20px',
-            background: '#0066CC',
-            color: 'white',
-            border: '2px solid white',
-            borderRight: 'none',
-            borderBottom: 'none',
-            boxShadow: '-4px -4px 14px rgba(11, 78, 150, 0.3)'
-          }}
+          className="chat-toggle-btn animate-float z-[19999] group overflow-hidden relative"
           aria-label="Open support chat"
           title="Open support chat"
         >
