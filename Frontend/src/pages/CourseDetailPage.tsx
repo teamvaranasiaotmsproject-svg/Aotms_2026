@@ -18,7 +18,7 @@ import { CourseObjectives, CourseLearningOutcomes } from "./course-detail/Course
 import { CourseCapstoneProjects } from "./course-detail/CourseCapstoneProjects";
 import { CourseCurriculum } from "./course-detail/CourseCurriculum";
 import { CourseFeatures } from "./course-detail/CourseFeatures";
-import { CourseCertifications } from "./course-detail/CourseCertifications";
+
 import { CourseCareerOpportunities } from "./course-detail/CourseCareerOpportunities";
 import { CourseHiringCompanies } from "./course-detail/CourseHiringCompanies";
 import { CourseSidebar } from "./course-detail/CourseSidebar";
@@ -32,7 +32,7 @@ import {
     getCourseObjectives,
     getCourseCapstoneProjects,
     getCourseLearningOutcomes,
-    getCourseCertifications,
+
     getCourseCareerRoles,
     getCourseHiringCompanies,
     getCourseCurriculum,
@@ -111,7 +111,7 @@ export default function CourseDetail() {
     const objectives = getCourseObjectives(course.title, course.category || "");
     const capstoneProjects = getCourseCapstoneProjects(course.title, course.category || "");
     const learningOutcomes = getCourseLearningOutcomes(course.title, course.category || "");
-    const certifications = getCourseCertifications(course.title, course.category || "");
+
     const careerRoles = getCourseCareerRoles(course.title, course.category || "");
     const hiringCompanies = getCourseHiringCompanies(course.title, course.category || "");
     const curriculumData = getCourseCurriculum(course.title, course.category || "");
@@ -171,7 +171,7 @@ export default function CourseDetail() {
 
                         <CourseFeatures features={features} programDetails={programDetails} />
 
-                        <CourseCertifications certifications={certifications} />
+
 
                         <CourseCareerOpportunities careerRoles={careerRoles} />
 

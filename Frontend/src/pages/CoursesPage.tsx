@@ -7,6 +7,7 @@ import { Search, Users, Laptop, Trophy, GraduationCap, Loader2, X } from "lucide
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { SEO } from "@/components/SEO";
+import { CertificateShowcase } from "@/components/CertificateShowcase";
 
 const CoursesPage = () => {
     const { data: courses, isLoading } = useCourses();
@@ -186,8 +187,11 @@ const CoursesPage = () => {
                 </div>
             </section>
 
+            {/* Certificate Showcase Section */}
+            <CertificateShowcase />
+
             <Footer />
-        </div>
+        </div >
     );
 };
 

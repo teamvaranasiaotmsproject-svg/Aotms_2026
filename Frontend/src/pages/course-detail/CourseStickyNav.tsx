@@ -12,7 +12,7 @@ export const CourseStickyNav = ({ activeSection, setActiveSection }: CourseStick
         { id: "curriculum", label: "Curriculum" },
         { id: "technologies", label: "Tools" },
         { id: "projects", label: "Projects" },
-        { id: "certifications", label: "Certifications" },
+
         { id: "careers", label: "Careers" },
         { id: "hiring", label: "Hiring" },
     ];
