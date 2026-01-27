@@ -18,7 +18,7 @@ export const CourseStickyNav = ({ activeSection, setActiveSection }: CourseStick
     ];
 
     return (
-        <div className="sticky top-20 z-40 bg-white/90 backdrop-blur-md border border-slate-200 rounded-2xl shadow-sm mb-8 overflow-hidden">
+        <div className="sticky top-[4.5rem] md:top-20 z-40 bg-white/90 backdrop-blur-md border border-slate-200 rounded-2xl shadow-sm mb-8 overflow-hidden">
             <div className="flex overflow-x-auto p-2 gap-2 pb-4 scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-transparent">
                 {navItems.map((item) => (
                     <button
