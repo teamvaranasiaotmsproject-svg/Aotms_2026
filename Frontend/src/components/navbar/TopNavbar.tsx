@@ -78,12 +78,12 @@ export const TopNavbar = ({ isScrolled, setAuthMode, setShowAuthModal }: TopNavb
 
                         {!isLoggedIn ? (
                             <div className="flex items-center gap-3">
-                                <button type="button" onClick={() => { setAuthMode('login'); setShowAuthModal(true); }} className="flex items-center gap-1.5 hover:text-accent uppercase tracking-wider font-bold text-[9px] md:text-[10px] transition-colors">
+                                <button type="button" onClick={() => setAuthMode('login')} className="flex items-center gap-1.5 hover:text-accent uppercase tracking-wider font-bold text-[9px] md:text-[10px] transition-colors">
                                     <LogIn className="w-3 h-3" />
                                     Sign In
                                 </button>
                                 <span className="text-white/30">|</span>
-                                <button type="button" onClick={() => { setAuthMode('register'); setShowAuthModal(true); }} className="flex items-center gap-1.5 hover:text-accent uppercase tracking-wider font-bold text-[9px] md:text-[10px] transition-colors">
+                                <button type="button" onClick={() => setAuthMode('register')} className="flex items-center gap-1.5 hover:text-accent uppercase tracking-wider font-bold text-[9px] md:text-[10px] transition-colors">
                                     <UserPlus className="w-3 h-3" />
                                     Register
                                 </button>
