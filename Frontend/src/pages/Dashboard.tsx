@@ -568,11 +568,11 @@ const Dashboard = () => {
                             <div className="space-y-4 mb-8">
                                 <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100">
                                     <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Phone Support</p>
-                                    <p className="text-xl font-black text-slate-900">8019952233</p>
+                                    <a href="tel:8019952233" className="text-xl font-black text-slate-900 hover:text-[#0066CC] transition-colors block">8019952233</a>
                                 </div>
                                 <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100">
                                     <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Email Support</p>
-                                    <p className="text-xl font-black text-slate-900">Info@aotms.in</p>
+                                    <a href="mailto:Info@aotms.in" className="text-xl font-black text-slate-900 hover:text-[#0066CC] transition-colors block">Info@aotms.in</a>
                                 </div>
                             </div>
 
