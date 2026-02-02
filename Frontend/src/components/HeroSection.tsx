@@ -29,7 +29,7 @@ const trustStats = [
 ];
 
 export const HeroSection = () => {
-  const [heroImages, setHeroImages] = useState<string[]>(["https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1767886980/Andra-hackathon-2025_Data_AI_d2uquj?_a=BAMAOGGo0"]);
+  const [heroImages, setHeroImages] = useState<string[]>(["/Herosection.jpeg"]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isEnrollmentOpen, setIsEnrollmentOpen] = useState(false);
   const [enrollmentSource, setEnrollmentSource] = useState("");
@@ -52,7 +52,7 @@ export const HeroSection = () => {
         );
         if (Array.isArray(res.data)) {
           const apiImages = res.data.map((i: { imageUrl: string }) => i.imageUrl);
-          setHeroImages(["https://res.cloudinary.com/dhrommrn4/image/upload/f_auto,q_auto,w_600/v1767886980/Andra-hackathon-2025_Data_AI_d2uquj?_a=BAMAOGGo0", ...apiImages]);
+          setHeroImages(["/Herosection.jpeg", ...apiImages]);
         }
       } catch (err) {
         console.error(err);
