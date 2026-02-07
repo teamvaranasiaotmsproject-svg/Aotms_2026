@@ -6,11 +6,11 @@ import { cn } from "@/lib/utils";
 
 const quickLinks = [
   { name: "Home", href: "/" },
-  { name: "About Us", href: "/who-we-are" },
-  { name: "Resources", href: "#" },
+  { name: "About Us", href: "/about-us" },
+  { name: "Resources", href: "/resources" },
   { name: "Contact Us", href: "/contact" },
   { name: "Blog", href: "/blog" },
-  { name: "FAQ", href: "/FAQ" },
+  { name: "FAQ", href: "/faq" },
   { name: "Feedback", href: "/feedback" },
   { name: "Terms & Conditions", href: "/terms" },
 ];
@@ -54,7 +54,7 @@ export const Footer = () => {
           {/* Column 1: Brand & Contact (Span 3) */}
           <div className="md:col-span-2 lg:col-span-3 space-y-4">
             <div className="flex flex-col items-start gap-6 lg:block">
-              <Link to="/" className="inline-block bg-white p-3 rounded-2xl shadow-md transform transition-transform hover:scale-105">
+              <Link to="/" onClick={() => window.scrollTo(0, 0)} className="inline-block bg-white p-3 rounded-2xl shadow-md transform transition-transform hover:scale-105">
                 <img src={logo} alt="AOTMS Logo" className="h-22 md:h-25 w-auto" />
               </Link>
               {/* Mobile Socials */}
@@ -115,6 +115,7 @@ export const Footer = () => {
                 <li key={link.name}>
                   <Link
                     to={link.href}
+                    onClick={() => window.scrollTo(0, 0)}
                     className="text-xs md:text-sm text-white hover:text-accent transition-colors block"
                   >
                     {link.name}
@@ -204,8 +205,8 @@ export const Footer = () => {
 
           <div className="flex flex-col items-center lg:items-end gap-3">
             <div className="flex gap-6">
-              <Link to="/privacy-policy" className="hover:text-accent transition-colors">▫️Privacy Policy</Link>
-              <Link to="/terms" className="hover:text-accent transition-colors">▫️Terms of Service</Link>
+              <Link to="/privacy-policy" onClick={() => window.scrollTo(0, 0)} className="hover:text-accent transition-colors">▫️Privacy Policy</Link>
+              <Link to="/terms" onClick={() => window.scrollTo(0, 0)} className="hover:text-accent transition-colors">▫️Terms of Service</Link>
             </div>
             <p className="text-[10px] text-white/90 text-center lg:text-right max-w-md">
               This site is protected by reCAPTCHA and the Google{" "}

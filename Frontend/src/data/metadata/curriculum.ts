@@ -5,118 +5,112 @@ export const getCourseCurriculum = (title: string, category: string = "") => {
     if (search.includes("data science") && !search.includes("artificial") && !search.includes("machine")) {
         return [
             {
-                title: "Module 1 : Python for Data Science (Foundations)",
+                title: "Module 1: Introduction to Data Analytics",
                 lessons: [
-                    "Introduction to Python and Jupyter Notebook",
-                    "Data Types, Variables, Loops, and Functions, File Handling",
-                    "Working with Libraries: NumPy, Pandas",
-                    "Exploratory Data Analysis (EDA) Basics",
-                    "Importing and Cleaning Datasets"
+                    "What is Data Analytics?",
+                    "Data Analytics vs Data Science vs Data Engineering",
+                    "Data Lifecycle & Ecosystem",
+                    "Roles and Responsibilities of a Data Analyst",
+                    "Real-World Case Studies (Finance, Retail, Healthcare, etc.)"
                 ]
             },
             {
-                title: "Module 2: Data Handling & Manipulation",
+                title: "Module 2: Excel for Data Analytics",
                 lessons: [
-                    "Pandas: Series, Data Frames, Indexing, Group By",
-                    "Data Cleaning & Transformation Techniques",
-                    "Handling Missing Data and Outliers",
-                    "Merging, Joining, Concatenation",
-                    "Working with JSON, CSV, and Excel Files, Data Wrangling Projects"
+                    "Data Cleaning & Formatting",
+                    "Formulas, Functions (VLOOKUP, INDEX -MATCH, etc.)",
+                    "Pivot Tables, Charts, and Slicers",
+                    "Conditional Formatting & Data Validation",
+                    "Excel Dashboard Creation",
+                    "Automation using Excel Macros"
                 ]
             },
             {
-                title: "Module 3: Data Visualization",
+                title: "Module 3: SQL for Data Analytics",
                 lessons: [
-                    "Introduction to Matplotlib & Seaborn",
-                    "Plot Types: Line, Bar, Pie, Heatmaps, Pairplots",
-                    "Advanced Visualization: Plotly, Power BI, Tableau",
-                    "Storytelling with Data: Dashboards & Reports"
+                    "Introduction to Databases & SQL",
+                    "CRUD Operations (SELECT, INSERT, UPDATE, DELETE)",
+                    "Filtering, Sorting, and Aggregations",
+                    "Joins, Subqueries, and Window Functions",
+                    "Data Extraction for Reporting",
+                    "Connecting SQL with Python (mysql-connector, psycopg2)"
                 ]
             },
             {
-                title: "Module 4: Statistics & Probability for Data Science",
+                title: "Module 4: Python for Data Analytics",
                 lessons: [
-                    "Descriptive Statistics: Mean, Median, Mode, Variance",
-                    "Probability Concepts and Distributions",
-                    "Hypothesis Testing, p-values, z-test, t-test",
-                    "Correlation, Regression, and Covariance",
-                    "Sampling, Confidence Intervals, and A/B Testing"
+                    "Python Installation & Jupyter Notebook Setup",
+                    "Data Types, Variables, Loops, and Functions",
+                    "Libraries: NumPy, Pandas, Matplotlib, Seaborn",
+                    "Data Cleaning, Manipulation, and Exploration",
+                    "Handling Missing Values, Outliers, and Duplicates",
+                    "Exploratory Data Analysis (EDA)",
+                    "Working with CSV, Excel, JSON, API, and Web Scraping"
                 ]
             },
             {
-                title: "Module 5: Machine Learning – Fundamentals",
+                title: "Module 5: Statistics & Data Interpretation",
                 lessons: [
-                    "Machine Learning Workflow & Concepts, Supervised vs Unsupervised",
-                    "Regression Algorithms: Linear, Polynomial, Ridge, Lasso",
-                    "Classification: Logistic Regression, KNN, SVM, Naive Bayes, Decision Trees, Random Forest",
-                    "Clustering: K-Means, Hierarchical, DBSCAN",
-                    "Model Evaluation Metrics (Accuracy, Precision, Recall, F1-Score, ROC-AUC)"
+                    "Descriptive Statistics (Mean, Median, Mode, SD, Variance)",
+                    "Probability Basics",
+                    "Hypothesis Testing (t-test, Chi -Square, ANOVA)",
+                    "Correlation and Regression Analysis",
+                    "Sampling Methods & Data Distributions",
+                    "Practical Case Studies in Business Context"
                 ]
             },
             {
-                title: "Module 6: Advanced Machine Learning & Feature Engineering",
+                title: "Module 6: Data Visualization & Business Intelligence Tools",
                 lessons: [
-                    "Feature Selection and Dimensionality Reduction (PCA, LDA)",
-                    "Cross-Validation & Hyperparameter Tuning",
-                    "Ensemble Methods: Bagging, Boosting, Stacking",
-                    "Model Deployment using Streamlit/Gradio",
-                    "ML Project: Predictive Analytics on Real Dataset"
+                    "Power BI Desktop Overview",
+                    "Data Import, Transformation (Power Query)",
+                    "DAX Formulas and Measures",
+                    "Interactive Dashboard Design",
+                    "Publishing and Sharing Reports",
+                    "Tableau Basics & Interface",
+                    "Connecting to Data Sources",
+                    "Calculated Fields and Parameters",
+                    "Charts, Maps, and Dashboards",
+                    "Real-Time Data Visualization Projects"
                 ]
             },
             {
-                title: "Module 7: Deep Learning & Neural Networks",
+                title: "Module 7: Advanced Excel & Automation",
                 lessons: [
-                    "Introduction to Deep Learning & AI, ANN Basics",
-                    "TensorFlow & Keras Fundamentals",
-                    "Convolutional Neural Networks (CNN) for Image Data",
-                    "Recurrent Neural Networks (RNN, LSTM) for Sequential Data",
-                    "Deep Learning Project: Image or Text Classification"
+                    "Power Query and Power Pivot",
+                    "Data Models and Relationships",
+                    "Forecasting and Trend Analysis",
+                    "Excel + Python Integration",
+                    "Excel Reports Automation"
                 ]
             },
             {
-                title: "Module 8: Data Engineering & Big Data Overview",
+                title: "Module 8: Introduction to Machine Learning for Analytics",
                 lessons: [
-                    "Data Pipelines & ETL Concepts",
-                    "Introduction to SQL and NoSQL (MySQL, MongoDB)",
-                    "Data Warehousing (Snowflake, Redshift Basics)",
-                    "Big Data Ecosystem Overview – Hadoop, Spark, PySpark"
+                    "Understanding ML for Analysts",
+                    "Supervised vs Unsupervised Learning",
+                    "Linear Regression, Decision Trees",
+                    "Model Evaluation (MAE, RMSE, Accuracy)",
+                    "Predictive Analytics Workflow",
+                    "Real-Time Case Study: Predicting Sales or Customer Churn"
                 ]
             },
             {
-                title: "Module 9: Cloud & MLOps Integration",
+                title: "Module 9: Version Control, Deployment & Reporting",
                 lessons: [
-                    "Introduction to Cloud Platforms (AWS, Azure, GCP)",
-                    "Cloud-based Data Storage & Analysis",
-                    "Containerization using Docker for ML Models",
-                    "CI/CD for Data Science Projects",
-                    "Model Deployment on AWS, Render, or HuggingFace Spaces"
+                    "Git & GitHub for Analysts",
+                    "Sharing Analytical Workbooks & Reports",
+                    "Documentation Best Practices",
+                    "Project Deployment on Web (Streamlit / Flask Apps for Visualization)"
                 ]
             },
             {
-                title: "Module 10: Natural Language Processing (NLP)",
+                title: "Module 10: Capstone Projects & Career Readiness",
                 lessons: [
-                    "Text Preprocessing: Tokenization, Stopwords, Lemmatization",
-                    "Bag of Words, TF-IDF, Word2Vec",
-                    "Sentiment Analysis, Topic Modeling (LDA)",
-                    "Transformer Models (Intro to BERT/GPT APIs)",
-                    "NLP Project: Sentiment Analysis or Chatbot"
-                ]
-            },
-            {
-                title: "Module 11: Business Analytics & Visualization",
-                lessons: [
-                    "Excel for Data Analytics, Power BI Dashboard Development",
-                    "Data Storytelling and Presentation",
-                    "KPI Measurement and Business Case Studies"
-                ]
-            },
-            {
-                title: "Module 12: Capstone & Career Readiness",
-                lessons: [
-                    "Resume Building and LinkedIn Optimization",
-                    "Mock Technical & HR Interviews",
-                    "Final Project Development & Presentation",
-                    "Portfolio Preparation on GitHub / Kaggle"
+                    "Resume Building for Data Analyst Roles",
+                    "LinkedIn Optimization",
+                    "Mock Interviews (Technical + HR)",
+                    "Project Showcase & Presentation"
                 ]
             }
         ];
@@ -225,35 +219,43 @@ export const getCourseCurriculum = (title: string, category: string = "") => {
             {
                 title: "Module 1: Introduction to Data Analytics",
                 lessons: [
-                    "What is Data Analytics? Analytics vs Data Science",
+                    "What is Data Analytics?",
+                    "Data Analytics vs Data Science vs Data Engineering",
                     "Data Lifecycle & Ecosystem",
                     "Roles and Responsibilities of a Data Analyst",
-                    "Real-World Case Studies (Finance, Retail, Healthcare)"
+                    "Real-World Case Studies (Finance, Retail, Healthcare, etc.)"
                 ]
             },
             {
                 title: "Module 2: Excel for Data Analytics",
                 lessons: [
-                    "Data Cleaning & Formatting, Formulas (VLOOKUP, INDEX-MATCH)",
-                    "Pivot Tables, Charts, Slicers, Conditional Formatting",
-                    "Excel Dashboard Creation, Automation using Excel Macros"
+                    "Data Cleaning & Formatting",
+                    "Formulas, Functions (VLOOKUP, INDEX -MATCH, etc.)",
+                    "Pivot Tables, Charts, and Slicers",
+                    "Conditional Formatting & Data Validation",
+                    "Excel Dashboard Creation",
+                    "Automation using Excel Macros"
                 ]
             },
             {
                 title: "Module 3: SQL for Data Analytics",
                 lessons: [
-                    "Introduction to Databases & SQL, CRUD Operations",
-                    "Filtering, Sorting, Aggregations, Joins, Subqueries",
-                    "Window Functions, Data Extraction for Reporting",
+                    "Introduction to Databases & SQL",
+                    "CRUD Operations (SELECT, INSERT, UPDATE, DELETE)",
+                    "Filtering, Sorting, and Aggregations",
+                    "Joins, Subqueries, and Window Functions",
+                    "Data Extraction for Reporting",
                     "Connecting SQL with Python (mysql-connector, psycopg2)"
                 ]
             },
             {
                 title: "Module 4: Python for Data Analytics",
                 lessons: [
-                    "Python Installation & Jupyter Setup, Basics of Python",
+                    "Python Installation & Jupyter Notebook Setup",
+                    "Data Types, Variables, Loops, and Functions",
                     "Libraries: NumPy, Pandas, Matplotlib, Seaborn",
-                    "Data Cleaning, Manipulation, Handling Missing Values",
+                    "Data Cleaning, Manipulation, and Exploration",
+                    "Handling Missing Values, Outliers, and Duplicates",
                     "Exploratory Data Analysis (EDA)",
                     "Working with CSV, Excel, JSON, API, and Web Scraping"
                 ]
@@ -261,49 +263,64 @@ export const getCourseCurriculum = (title: string, category: string = "") => {
             {
                 title: "Module 5: Statistics & Data Interpretation",
                 lessons: [
-                    "Descriptive Statistics (Mean, Median, Mode, SD)",
-                    "Probability Basics, Hypothesis Testing (t-test, Chi-Square)",
-                    "Correlation, Regression, Sampling Methods",
+                    "Descriptive Statistics (Mean, Median, Mode, SD, Variance)",
+                    "Probability Basics",
+                    "Hypothesis Testing (t-test, Chi -Square, ANOVA)",
+                    "Correlation and Regression Analysis",
+                    "Sampling Methods & Data Distributions",
                     "Practical Case Studies in Business Context"
                 ]
             },
             {
                 title: "Module 6: Data Visualization & Business Intelligence Tools",
                 lessons: [
-                    "Power BI: Desktop Overview, Power Query, DAX, Dashboards",
-                    "Tableau: Basics, Connecting Data, Calculated Fields, Dashboards",
+                    "Power BI Desktop Overview",
+                    "Data Import, Transformation (Power Query)",
+                    "DAX Formulas and Measures",
+                    "Interactive Dashboard Design",
+                    "Publishing and Sharing Reports",
+                    "Tableau Basics & Interface",
+                    "Connecting to Data Sources",
+                    "Calculated Fields and Parameters",
+                    "Charts, Maps, and Dashboards",
                     "Real-Time Data Visualization Projects"
                 ]
             },
             {
                 title: "Module 7: Advanced Excel & Automation",
                 lessons: [
-                    "Power Query and Power Pivot, Data Models",
+                    "Power Query and Power Pivot",
+                    "Data Models and Relationships",
                     "Forecasting and Trend Analysis",
-                    "Excel + Python Integration, Reports Automation"
+                    "Excel + Python Integration",
+                    "Excel Reports Automation"
                 ]
             },
             {
                 title: "Module 8: Introduction to Machine Learning for Analytics",
                 lessons: [
-                    "Understanding ML for Analysts, Supervised vs Unsupervised",
+                    "Understanding ML for Analysts",
+                    "Supervised vs Unsupervised Learning",
                     "Linear Regression, Decision Trees",
                     "Model Evaluation (MAE, RMSE, Accuracy)",
-                    "Predictive Analytics Workflow, Customer Churn Case Study"
+                    "Predictive Analytics Workflow",
+                    "Real-Time Case Study: Predicting Sales or Customer Churn"
                 ]
             },
             {
                 title: "Module 9: Version Control, Deployment & Reporting",
                 lessons: [
                     "Git & GitHub for Analysts",
-                    "Sharing Analytical Workbooks & Reports, Documentation",
-                    "Project Deployment on Web (Streamlit / Flask)"
+                    "Sharing Analytical Workbooks & Reports",
+                    "Documentation Best Practices",
+                    "Project Deployment on Web (Streamlit / Flask Apps for Visualization)"
                 ]
             },
             {
                 title: "Module 10: Capstone Projects & Career Readiness",
                 lessons: [
-                    "Resume Building, LinkedIn Optimization",
+                    "Resume Building for Data Analyst Roles",
+                    "LinkedIn Optimization",
                     "Mock Interviews (Technical + HR)",
                     "Project Showcase & Presentation"
                 ]
@@ -312,97 +329,7 @@ export const getCourseCurriculum = (title: string, category: string = "") => {
     }
 
     // 4. DevOps Masterclass
-    if (search.includes("devops") && !search.includes("engineering")) {
-        return [
-            {
-                title: "Module 1: Introduction to DevOps & Software Development Lifecycle",
-                lessons: [
-                    "What is DevOps? DevOps Culture, Practices, and Tools",
-                    "Traditional SDLC vs. Agile vs. DevOps",
-                    "Continuous Integration, Continuous Delivery (CI/CD) Overview",
-                    "Key DevOps Metrics and Success Factors"
-                ]
-            },
-            {
-                title: "Module 2: Linux, Shell Scripting & Networking Fundamentals",
-                lessons: [
-                    "Linux Commands, File Systems, Permissions, Process Management",
-                    "Package Management, Shell Scripting (Bash) for Automation",
-                    "Networking Basics: IP, DNS, HTTP, Ports, Firewalls",
-                    "System Monitoring & Troubleshooting Commands"
-                ]
-            },
-            {
-                title: "Module 3: Version Control with Git & GitHub",
-                lessons: [
-                    "Git Basics: Init, Commit, Branching, Merging",
-                    "GitHub Collaboration, Pull Requests, Issues",
-                    "Working with Git Workflows (Gitflow, Trunk-based)",
-                    "Integrating Git with Jenkins and CI Pipelines"
-                ]
-            },
-            {
-                title: "Module 4: Continuous Integration with Jenkins",
-                lessons: [
-                    "Jenkins Installation & Configuration, Pipelines, Jobs, Plugins",
-                    "Automated Build and Testing with Git Integration",
-                    "Jenkinsfile & Declarative Pipelines",
-                    "Integrating Jenkins with Docker, GitHub, and AWS"
-                ]
-            },
-            {
-                title: "Module 5: Containerization & Orchestration",
-                lessons: [
-                    "Docker: Containers vs VMs, Images, Dockerfile, Docker Compose",
-                    "Kubernetes (K8s): Pods, Deployments, ReplicaSets, Services",
-                    "Helm Charts, Kubernetes on AWS (EKS), Azure (AKS), GCP (GKE)"
-                ]
-            },
-            {
-                title: "Module 6: Infrastructure as Code (IaC)",
-                lessons: [
-                    "Terraform: Scripts, Multi-Cloud Infrastructure, State Management",
-                    "Ansible: Playbooks, Roles, Inventories, Configuration Management",
-                    "Integrating Ansible with Jenkins and Cloud"
-                ]
-            },
-            {
-                title: "Module 7: Cloud Platforms (Multi-Cloud Approach)",
-                lessons: [
-                    "AWS: EC2, S3, VPC, IAM, RDS, CloudWatch, Automation",
-                    "Microsoft Azure: VMs, Storage, Azure Pipelines, ARM Templates",
-                    "GCP: Compute Engine, Cloud Storage, Pub/Sub, GKE, Terraform on GCP"
-                ]
-            },
-            {
-                title: "Module 8: Monitoring, Logging & Security",
-                lessons: [
-                    "Monitoring Tools: Prometheus, Grafana",
-                    "Centralized Logging with ELK Stack (Elasticsearch, Logstash, Kibana)",
-                    "Alerting & Incident Management (CloudWatch, Azure Monitor)",
-                    "Security Best Practices in DevOps (DevSecOps)"
-                ]
-            },
-            {
-                title: "Module 9: CI/CD and Deployment Automation",
-                lessons: [
-                    "Continuous Deployment Pipelines, Blue-Green & Canary Deployments",
-                    "Infrastructure Testing & Validation",
-                    "Integration with Docker, Terraform, and Kubernetes",
-                    "Automated Rollback Strategies"
-                ]
-            },
-            {
-                title: "Module 10: Capstone Projects & Career Preparation",
-                lessons: [
-                    "Resume & LinkedIn Optimization for DevOps Roles",
-                    "Mock Interviews (Technical + HR)",
-                    "Building a Personal DevOps Portfolio on GitHub",
-                    "Final Project Presentation"
-                ]
-            }
-        ];
-    }
+    
 
     // 5. Multi Cloud Engineering
     if (search.includes("multi") && search.includes("cloud") && search.includes("engineering")) {
@@ -1770,19 +1697,95 @@ export const getCourseCurriculum = (title: string, category: string = "") => {
         ];
     }
 
-    // Default Fallback Curriculum
-    return [
-        {
-            title: "Module 1: Foundations",
-            lessons: ["Basic concepts", "Environment setup", "Introductory projects"]
-        },
-        {
-            title: "Module 2: Advanced Topics",
-            lessons: ["Advanced techniques", "Framework deep-dive", "Best practices"]
-        },
-        {
-            title: "Module 3: Capstone Project",
-            lessons: ["Real-world application", "Final implementation", "Presentation"]
-        }
-    ];
+  {
+        return [
+            {
+                title: "Module 1: Introduction to DevOps & Software Development Lifecycle",
+                lessons: [
+                    "What is DevOps? DevOps Culture, Practices, and Tools",
+                    "Traditional SDLC vs. Agile vs. DevOps",
+                    "Continuous Integration, Continuous Delivery (CI/CD) Overview",
+                    "Key DevOps Metrics and Success Factors"
+                ]
+            },
+            {
+                title: "Module 2: Linux, Shell Scripting & Networking Fundamentals",
+                lessons: [
+                    "Linux Commands, File Systems, Permissions, Process Management",
+                    "Package Management, Shell Scripting (Bash) for Automation",
+                    "Networking Basics: IP, DNS, HTTP, Ports, Firewalls",
+                    "System Monitoring & Troubleshooting Commands"
+                ]
+            },
+            {
+                title: "Module 3: Version Control with Git & GitHub",
+                lessons: [
+                    "Git Basics: Init, Commit, Branching, Merging",
+                    "GitHub Collaboration, Pull Requests, Issues",
+                    "Working with Git Workflows (Gitflow, Trunk-based)",
+                    "Integrating Git with Jenkins and CI Pipelines"
+                ]
+            },
+            {
+                title: "Module 4: Continuous Integration with Jenkins",
+                lessons: [
+                    "Jenkins Installation & Configuration, Pipelines, Jobs, Plugins",
+                    "Automated Build and Testing with Git Integration",
+                    "Jenkinsfile & Declarative Pipelines",
+                    "Integrating Jenkins with Docker, GitHub, and AWS"
+                ]
+            },
+            {
+                title: "Module 5: Containerization & Orchestration",
+                lessons: [
+                    "Docker: Containers vs VMs, Images, Dockerfile, Docker Compose",
+                    "Kubernetes (K8s): Pods, Deployments, ReplicaSets, Services",
+                    "Helm Charts, Kubernetes on AWS (EKS), Azure (AKS), GCP (GKE)"
+                ]
+            },
+            {
+                title: "Module 6: Infrastructure as Code (IaC)",
+                lessons: [
+                    "Terraform: Scripts, Multi-Cloud Infrastructure, State Management",
+                    "Ansible: Playbooks, Roles, Inventories, Configuration Management",
+                    "Integrating Ansible with Jenkins and Cloud"
+                ]
+            },
+            {
+                title: "Module 7: Cloud Platforms (Multi-Cloud Approach)",
+                lessons: [
+                    "AWS: EC2, S3, VPC, IAM, RDS, CloudWatch, Automation",
+                    "Microsoft Azure: VMs, Storage, Azure Pipelines, ARM Templates",
+                    "GCP: Compute Engine, Cloud Storage, Pub/Sub, GKE, Terraform on GCP"
+                ]
+            },
+            {
+                title: "Module 8: Monitoring, Logging & Security",
+                lessons: [
+                    "Monitoring Tools: Prometheus, Grafana",
+                    "Centralized Logging with ELK Stack (Elasticsearch, Logstash, Kibana)",
+                    "Alerting & Incident Management (CloudWatch, Azure Monitor)",
+                    "Security Best Practices in DevOps (DevSecOps)"
+                ]
+            },
+            {
+                title: "Module 9: CI/CD and Deployment Automation",
+                lessons: [
+                    "Continuous Deployment Pipelines, Blue-Green & Canary Deployments",
+                    "Infrastructure Testing & Validation",
+                    "Integration with Docker, Terraform, and Kubernetes",
+                    "Automated Rollback Strategies"
+                ]
+            },
+            {
+                title: "Module 10: Capstone Projects & Career Preparation",
+                lessons: [
+                    "Resume & LinkedIn Optimization for DevOps Roles",
+                    "Mock Interviews (Technical + HR)",
+                    "Building a Personal DevOps Portfolio on GitHub",
+                    "Final Project Presentation"
+                ]
+            }
+        ];
+    }
 };

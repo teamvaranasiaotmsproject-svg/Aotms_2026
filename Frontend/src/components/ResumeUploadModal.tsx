@@ -4,6 +4,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Upload, Send, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import axios from "axios";
 import { toast } from "sonner";
 
@@ -151,9 +158,13 @@ export const ResumeUploadModal = ({
       }, 2000);
     } catch (error: any) {
       console.error("Application error:", error);
-      toast.error(
-        error.response?.data?.message || "Failed to submit application",
-      );
+      if (axios.isAxiosError(error)) {
+        toast.error(
+          error.response?.data?.message || "Failed to submit application",
+        );
+      } else {
+        toast.error("Failed to submit application");
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -273,39 +284,46 @@ export const ResumeUploadModal = ({
                         <label className="text-sm font-bold text-slate-700">
                           Internship Type
                         </label>
-                        <select
+                        <Select
                           value={formData.internshipType}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              internshipType: e.target.value,
-                            })
+                          onValueChange={(value) =>
+                            setFormData({ ...formData, internshipType: value })
                           }
-                          className="w-full h-12 rounded-xl bg-slate-50 border border-slate-200 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#0075CF] transition-all"
                         >
-                          <option value="Short Term">Short Term</option>
-                          <option value="Long Term">Long Term</option>
-                        </select>
+                          <SelectTrigger className="w-full h-12 rounded-xl bg-slate-50 border-slate-200 px-4">
+                            <SelectValue placeholder="Select type" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="Short Term">
+                              Short Term
+                            </SelectItem>
+                            <SelectItem value="Long Term">Long Term</SelectItem>
+                          </SelectContent>
+                        </Select>
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-bold text-slate-700">
                           Duration
                         </label>
-                        <select
+                        <Select
                           value={formData.internshipDuration}
-                          onChange={(e) =>
+                          onValueChange={(value) =>
                             setFormData({
                               ...formData,
-                              internshipDuration: e.target.value,
+                              internshipDuration: value,
                             })
                           }
-                          className="w-full h-12 rounded-xl bg-slate-50 border border-slate-200 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#0075CF] transition-all"
                         >
-                          <option value="1 Month">1 Month</option>
-                          <option value="2 Months">2 Months</option>
-                          <option value="3 Months">3 Months</option>
-                          <option value="6 Months">6 Months</option>
-                        </select>
+                          <SelectTrigger className="w-full h-12 rounded-xl bg-slate-50 border-slate-200 px-4">
+                            <SelectValue placeholder="Select duration" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="1 Month">1 Month</SelectItem>
+                            <SelectItem value="2 Months">2 Months</SelectItem>
+                            <SelectItem value="3 Months">3 Months</SelectItem>
+                            <SelectItem value="6 Months">6 Months</SelectItem>
+                          </SelectContent>
+                        </Select>
                       </div>
                     </div>
                   )}
@@ -321,8 +339,16 @@ export const ResumeUploadModal = ({
                         onDrop={handleDrop}
                         className={`
                                                     relative border-2 border-dashed rounded-xl p-6 text-center transition-all cursor-pointer
-                                                    ${isDragging ? "border-[#0075CF] bg-blue-50" : "border-slate-200 hover:border-blue-400 hover:bg-slate-50"}
-                                                    ${formData.resume ? "bg-green-50 border-green-200" : ""}
+                                                    ${
+                                                      isDragging
+                                                        ? "border-[#0075CF] bg-blue-50"
+                                                        : "border-slate-200 hover:border-blue-400 hover:bg-slate-50"
+                                                    }
+                                                    ${
+                                                      formData.resume
+                                                        ? "bg-green-50 border-green-200"
+                                                        : ""
+                                                    }
                                                 `}
                       >
                         <input

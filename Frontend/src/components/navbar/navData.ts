@@ -9,7 +9,7 @@ import { FaBookOpen } from "react-icons/fa6";
 
 export const courses = [
     {
-        category: "Full Stack Development",
+        category: "Full Stack ",
         courses: [
             { name: "Java Full Stack", href: "/course/java-full-stack", icon: FaJava },
             { name: "Python Full Stack", href: "/course/python-full-stack", icon: FaPython },
