@@ -6,7 +6,6 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import { motion, useMotionValue, MotionConfig } from "framer-motion";
 import { useEffect, Suspense, lazy } from "react";
 
-
 // Lazy Load Pages
 const Index = lazy(() => import("./pages/Index"));
 const CourseDetail = lazy(() => import("./pages/CourseDetailPage"));
@@ -15,6 +14,7 @@ const WhatWeDo = lazy(() => import("./pages/WhatWeDo"));
 const WhoWeAre = lazy(() => import("./pages/WhoWeAre"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Blog = lazy(() => import("./pages/Blog"));
+const BlogDetailPage = lazy(() => import("./pages/BlogDetailPage"));
 const Placements = lazy(() => import("./pages/Placements"));
 const Hackathon = lazy(() => import("./pages/HackathonsPage"));
 const Workshop = lazy(() => import("./pages/WorkshopsPage"));
@@ -75,7 +75,7 @@ const CustomCursor = () => {
         translateY: "-50%",
       }}
       transition={{
-        duration: 0
+        duration: 0,
       }}
     />
   );
@@ -86,7 +86,9 @@ const App = () => {
     // Backend Warm-up / Anti-Cold-Start ping
     const warmUpBackend = async () => {
       try {
-        await fetch(`${import.meta.env.VITE_API_URL}/api/health`).catch(() => { });
+        await fetch(`${import.meta.env.VITE_API_URL}/api/health`).catch(
+          () => {},
+        );
       } catch (e) {
         // Silent fail
       }
@@ -99,7 +101,9 @@ const App = () => {
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <CustomCursor />
-          <HashRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+          <HashRouter
+            future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+          >
             <Suspense fallback={null}>
               <Chatbot />
               <LimitedTimeOffer />
@@ -117,6 +121,7 @@ const App = () => {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/feedback" element={<FeedbackPage />} />
                 <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:slug" element={<BlogDetailPage />} />
                 <Route path="/placements" element={<Placements />} />
                 <Route path="/faq" element={<FAQPage />} />
                 <Route path="/cart" element={<Cart />} />
