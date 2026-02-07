@@ -1,73 +1,168 @@
-# Welcome to your Lovable project
+# AOTMS - Academy of Tech Masters
 
-## Project info
+<div align="center">
+  <img src="https://aotms.in/logo.png" alt="AOTMS Logo" width="200"/>
+  
+  **Empowering Students with Industry-Ready Tech Skills**
+  
+  [![Live Website](https://img.shields.io/badge/Live-aotms.in-blue?style=for-the-badge)](https://aotms.in)
+  [![React](https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=for-the-badge&logo=typescript)](https://typescriptlang.org)
+  [![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev)
+</div>
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+---
 
-## How can I edit this code?
+## 📋 About AOTMS
 
-There are several ways of editing your application.
+**Academy of Tech Masters (AOTMS)** is a premier tech education platform based in Vijayawada, Andhra Pradesh. We provide comprehensive training programs, workshops, hackathons, and hands-on learning experiences to help students become industry-ready professionals.
 
-**Use Lovable**
+### 🎯 Our Mission
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+To bridge the gap between academic knowledge and industry requirements by providing practical, hands-on training in cutting-edge technologies.
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## ✨ Features
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- 🎓 **Courses** - Comprehensive training programs in Web Development, AI/ML, Cybersecurity, and more
+- 🛠️ **Workshops** - Intensive hands-on sessions led by industry experts
+- 🏆 **Hackathons** - Competitive events to test and showcase your skills
+- 📅 **Weekly Activities** - Regular webinars and tech talks
+- 📜 **Certifications** - Industry-recognized certificates upon completion
+- 📝 **Blog** - Tech insights, tutorials, and industry updates
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## 🛠️ Tech Stack
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+| Category             | Technologies                        |
+| -------------------- | ----------------------------------- |
+| **Frontend**         | React 18, TypeScript, Vite          |
+| **Styling**          | Tailwind CSS, shadcn/ui             |
+| **State Management** | Zustand, React Query                |
+| **Animations**       | Framer Motion, GSAP                 |
+| **Forms**            | React Hook Form, Zod                |
+| **Backend**          | Node.js, Express, MongoDB           |
+| **Authentication**   | Firebase Auth                       |
+| **Deployment**       | Vercel (Frontend), Render (Backend) |
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🚀 Getting Started
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/jayaveerR/Aotms_2026.git
+
+# Navigate to the Frontend directory
+cd Aotms_2026/Frontend
+
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be available at `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Environment Variables
 
-**Use GitHub Codespaces**
+Create a `.env` file in the Frontend directory:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```env
+VITE_API_URL=your_backend_api_url
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_firebase_project_id
+```
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## 📁 Project Structure
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```
+Frontend/
+├── src/
+│   ├── components/     # Reusable UI components
+│   │   ├── ui/         # shadcn/ui components
+│   │   ├── navbar/     # Navigation components
+│   │   ├── events/     # Event management components
+│   │   └── courses/    # Course-related components
+│   ├── pages/          # Page components
+│   ├── data/           # Static data and constants
+│   ├── hooks/          # Custom React hooks
+│   ├── lib/            # Utility functions
+│   ├── store/          # Zustand stores
+│   └── styles/         # Global styles
+├── public/             # Static assets
+└── index.html          # Entry HTML file
+```
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## 📦 Available Scripts
 
-## Can I connect a custom domain to my Lovable project?
+| Script            | Description              |
+| ----------------- | ------------------------ |
+| `npm run dev`     | Start development server |
+| `npm run build`   | Build for production     |
+| `npm run preview` | Preview production build |
+| `npm run lint`    | Run ESLint               |
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🌐 Deployment
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+The frontend is deployed on **Vercel** with automatic deployments on push to the main branch.
+
+### Build Command
+
+```bash
+npm run build
+```
+
+### Output Directory
+
+```
+dist/
+```
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📞 Contact
+
+- **Website**: [aotms.in](https://aotms.in)
+- **Email**: info@aotms.in
+- **Location**: Vijayawada, Andhra Pradesh, India
+
+---
+
+## 📄 License
+
+This project is proprietary software owned by Academy of Tech Masters.
+
+---
+
+<div align="center">
+  <p>Made with ❤️ by the AOTMS Team</p>
+  <p>© 2024-2026 Academy of Tech Masters. All rights reserved.</p>
+</div>
