@@ -1,0 +1,13 @@
+{
+  "name": "aotms-e-commerce",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "cd Frontend && npm run dev",
+    "build": "cd Frontend && npm install && npm run build",
+    "preview": "cd Frontend && npm run preview"
+  },
+  "devDependencies": {
+    "vite": "^7.3.1"
+  }
+}
