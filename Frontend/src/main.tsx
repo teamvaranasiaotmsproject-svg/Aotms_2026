@@ -7,6 +7,8 @@ import { HelmetProvider } from "react-helmet-async";
 
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
+import { SpeedInsights } from "@vercel/speed-insights/react";
+
 createRoot(document.getElementById("root")!).render(
     <HelmetProvider>
         <GoogleReCaptchaProvider
@@ -18,6 +20,7 @@ createRoot(document.getElementById("root")!).render(
             }}
         >
             <App />
+            <SpeedInsights />
         </GoogleReCaptchaProvider>
     </HelmetProvider>
 );
