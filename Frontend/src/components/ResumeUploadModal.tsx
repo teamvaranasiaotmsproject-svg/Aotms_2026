@@ -156,7 +156,7 @@ export const ResumeUploadModal = ({
           coverLetter: "",
         });
       }, 2000);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Application error:", error);
       if (axios.isAxiosError(error)) {
         toast.error(
@@ -181,44 +181,44 @@ export const ResumeUploadModal = ({
             className="bg-white rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl relative my-8"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-[#0075CF] to-[#0066CC] p-6 text-white relative">
+            <div className="bg-gradient-to-r from-[#0075CF] to-[#0066CC] p-4 md:p-5 text-white relative flex-shrink-0">
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 p-2 bg-white/20 hover:bg-white/30 rounded-full transition-colors"
+                className="absolute top-3 right-3 p-1.5 bg-white/20 hover:bg-white/30 rounded-full transition-colors"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4" />
               </button>
-              <h2 className="text-2xl font-bold mb-1">Apply Now</h2>
+              <h2 className="text-xl md:text-2xl font-bold mb-0.5">Apply Now</h2>
               {/* Hide position text if it's General Application, as the user will type it */}
               {position !== "General Application" && (
-                <p className="text-blue-100 text-sm font-medium">
+                <p className="text-blue-100 text-xs md:text-sm font-medium">
                   Position: {position}
                 </p>
               )}
             </div>
 
             {/* Body */}
-            <div className="p-6 md:p-8">
+            <div className="p-4 md:p-6 overflow-y-auto custom-scrollbar flex-1 max-h-[75vh]">
               {isSuccess ? (
-                <div className="text-center py-12">
+                <div className="text-center py-8">
                   {/* ... success state ... */}
-                  <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <CheckCircle className="w-10 h-10 text-green-600" />
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle className="w-8 h-8 text-green-600" />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
                     Application Sent!
                   </h3>
-                  <p className="text-slate-600">
+                  <p className="text-sm text-slate-600">
                     Thanks for applying. Our team will review your application
                     and get back to you soon.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
                   {/* Show Subject/Position input ONLY if General Application */}
                   {position === "General Application" && (
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold text-slate-700">
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
                         Applying For / Position
                       </label>
                       <Input
@@ -227,13 +227,13 @@ export const ResumeUploadModal = ({
                         onChange={(e) =>
                           setFormData({ ...formData, subject: e.target.value })
                         }
-                        className="h-12 rounded-xl bg-slate-50 border-slate-200 px-4"
+                        className="h-10 rounded-lg bg-slate-50 border-slate-200 px-3 text-sm"
                       />
                     </div>
                   )}
 
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-700">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
                       Full Name
                     </label>
                     <Input
@@ -242,13 +242,13 @@ export const ResumeUploadModal = ({
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
                       }
-                      className="h-12 rounded-xl bg-slate-50 border-slate-200 px-4"
+                      className="h-10 rounded-lg bg-slate-50 border-slate-200 px-3 text-sm"
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold text-slate-700">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
                         Email Address
                       </label>
                       <Input
@@ -257,11 +257,11 @@ export const ResumeUploadModal = ({
                         onChange={(e) =>
                           setFormData({ ...formData, email: e.target.value })
                         }
-                        className="h-12 rounded-xl bg-slate-50 border-slate-200 px-4"
+                        className="h-10 rounded-lg bg-slate-50 border-slate-200 px-3 text-sm"
                       />
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold text-slate-700">
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
                         Phone Number
                       </label>
                       <Input
@@ -273,15 +273,15 @@ export const ResumeUploadModal = ({
                             .slice(0, 10);
                           setFormData({ ...formData, phone: val });
                         }}
-                        className="h-12 rounded-xl bg-slate-50 border-slate-200 px-4"
+                        className="h-10 rounded-lg bg-slate-50 border-slate-200 px-3 text-sm"
                       />
                     </div>
                   </div>
 
                   {isInternship && (
-                    <div className="grid grid-cols-2 gap-5">
-                      <div className="space-y-2">
-                        <label className="text-sm font-bold text-slate-700">
+                    <div className="grid grid-cols-2 gap-3 md:gap-4">
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
                           Internship Type
                         </label>
                         <Select
@@ -290,7 +290,7 @@ export const ResumeUploadModal = ({
                             setFormData({ ...formData, internshipType: value })
                           }
                         >
-                          <SelectTrigger className="w-full h-12 rounded-xl bg-slate-50 border-slate-200 px-4">
+                          <SelectTrigger className="w-full h-10 rounded-lg bg-slate-50 border-slate-200 px-3 text-sm">
                             <SelectValue placeholder="Select type" />
                           </SelectTrigger>
                           <SelectContent>
@@ -301,8 +301,8 @@ export const ResumeUploadModal = ({
                           </SelectContent>
                         </Select>
                       </div>
-                      <div className="space-y-2">
-                        <label className="text-sm font-bold text-slate-700">
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
                           Duration
                         </label>
                         <Select
@@ -314,7 +314,7 @@ export const ResumeUploadModal = ({
                             })
                           }
                         >
-                          <SelectTrigger className="w-full h-12 rounded-xl bg-slate-50 border-slate-200 px-4">
+                          <SelectTrigger className="w-full h-10 rounded-lg bg-slate-50 border-slate-200 px-3 text-sm">
                             <SelectValue placeholder="Select duration" />
                           </SelectTrigger>
                           <SelectContent>
@@ -329,8 +329,8 @@ export const ResumeUploadModal = ({
                   )}
 
                   {!isInternship && (
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold text-slate-700">
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
                         Resume Upload
                       </label>
                       <div
@@ -338,17 +338,15 @@ export const ResumeUploadModal = ({
                         onDragLeave={handleDragLeave}
                         onDrop={handleDrop}
                         className={`
-                                                    relative border-2 border-dashed rounded-xl p-6 text-center transition-all cursor-pointer
-                                                    ${
-                                                      isDragging
-                                                        ? "border-[#0075CF] bg-blue-50"
-                                                        : "border-slate-200 hover:border-blue-400 hover:bg-slate-50"
-                                                    }
-                                                    ${
-                                                      formData.resume
-                                                        ? "bg-green-50 border-green-200"
-                                                        : ""
-                                                    }
+                                                    relative border-2 border-dashed rounded-xl p-4 md:p-5 text-center transition-all cursor-pointer
+                                                    ${isDragging
+                            ? "border-[#0075CF] bg-blue-50"
+                            : "border-slate-200 hover:border-blue-400 hover:bg-slate-50"
+                          }
+                                                    ${formData.resume
+                            ? "bg-green-50 border-green-200"
+                            : ""
+                          }
                                                 `}
                       >
                         <input
@@ -359,26 +357,26 @@ export const ResumeUploadModal = ({
                         />
 
                         {formData.resume ? (
-                          <div className="flex flex-col items-center gap-2">
-                            <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                              <CheckCircle className="w-6 h-6" />
+                          <div className="flex flex-col items-center gap-1">
+                            <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                              <CheckCircle className="w-5 h-5" />
                             </div>
-                            <p className="text-sm font-bold text-slate-900">
+                            <p className="text-sm font-bold text-slate-900 truncate max-w-[200px]">
                               {formData.resume.name}
                             </p>
-                            <p className="text-xs text-green-600 font-medium">
+                            <p className="text-[10px] text-green-600 font-medium">
                               Ready to upload
                             </p>
                           </div>
                         ) : (
-                          <div className="flex flex-col items-center gap-2">
-                            <div className="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center text-[#0075CF]">
-                              <Upload className="w-5 h-5" />
+                          <div className="flex flex-col items-center gap-1">
+                            <div className="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center text-[#0075CF]">
+                              <Upload className="w-4 h-4" />
                             </div>
-                            <p className="text-sm font-bold text-slate-900">
-                              Click to upload or drag and drop
+                            <p className="text-xs md:text-sm font-bold text-slate-900">
+                              Click to upload or drag & drop
                             </p>
-                            <p className="text-xs text-slate-400">
+                            <p className="text-[10px] text-slate-400">
                               PDF, Word (max 5MB)
                             </p>
                           </div>
@@ -387,10 +385,10 @@ export const ResumeUploadModal = ({
                     </div>
                   )}
 
-                  <div className="pt-6">
+                  <div className="pt-2 md:pt-4">
                     <Button
                       type="submit"
-                      className="w-full h-12 rounded-xl bg-[#0075CF] hover:bg-[#0066CC] text-white font-bold text-lg shadow-lg flex items-center justify-center gap-2"
+                      className="w-full h-10 md:h-11 rounded-xl bg-[#0075CF] hover:bg-[#0066CC] text-white font-bold text-sm md:text-base shadow-lg flex items-center justify-center gap-2 transform active:scale-[0.98] transition-all"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
@@ -398,7 +396,7 @@ export const ResumeUploadModal = ({
                       ) : (
                         <>
                           Submit Application
-                          <Send className="w-5 h-5" />
+                          <Send className="w-4 h-4" />
                         </>
                       )}
                     </Button>
