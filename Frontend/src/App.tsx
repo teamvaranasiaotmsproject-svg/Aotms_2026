@@ -1,6 +1,7 @@
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { motion, useMotionValue, MotionConfig } from "framer-motion";
@@ -87,7 +88,7 @@ const App = () => {
     const warmUpBackend = async () => {
       try {
         await fetch(`${import.meta.env.VITE_API_URL}/api/health`).catch(
-          () => {},
+          () => { },
         );
       } catch (e) {
         // Silent fail
@@ -143,6 +144,7 @@ const App = () => {
           </HashRouter>
         </TooltipProvider>
       </QueryClientProvider>
+      <SpeedInsights />
     </MotionConfig>
   );
 };
