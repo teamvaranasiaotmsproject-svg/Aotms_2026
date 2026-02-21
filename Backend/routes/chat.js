@@ -1,77 +1,70 @@
 const express = require('express');
 const router = express.Router();
+const axios = require('axios');
 
 router.post('/', async (req, res) => {
     try {
         const { messages } = req.body;
 
-        if (!process.env.OPEN_ROUTER_API_KEY) {
-            console.error("Missing OPEN_ROUTER_API_KEY in environment variables");
-            return res.status(500).json({ message: "Chat service configuration error" });
-        }
-
         if (!messages || !Array.isArray(messages)) {
             return res.status(400).json({ message: "Invalid messages format" });
         }
 
+        // The correct URL provided by the user for n8n integration
+        const n8nWebhookUrl = "https://aotms.app.n8n.cloud/webhook/Aotms_chatbot";
+        
         const lastMessage = messages[messages.length - 1];
-        if (lastMessage && lastMessage.role === 'user') {
-            const lowerText = lastMessage.content.trim().toLowerCase();
-            if (lowerText === 'hi' || lowerText === 'hello') {
-                return res.json({
-                    choices: [{
-                        message: {
-                            role: "assistant",
-                            content: "Sure! The Academy of Tech Masters offers premium training in Java, Python, and Full Stack Development. Would you like to know about a specific course?"
-                        }
-                    }]
-                });
-            }
-        }
+        const chatInput = lastMessage ? lastMessage.content : "";
 
-        const axios = require('axios');
-        const response = await axios.post("https://openrouter.ai/api/v1/chat/completions", {
-            model: "meta-llama/llama-3.3-70b-instruct:free",
-            messages: [
-                {
-                    role: "system",
-                    content: "You are a helpful and knowledgeable AI assistant for the Academy of Technology Masters (AOTMS). \n\n**Course Pricing & Duration:**\n- **Data Science**: ₹45,000 (Special Offer) | Duration: 6 Months\n- **Java Full Stack**: ₹35,000 | Duration: 5-6 Months\n- **Python Full Stack**: ₹35,000 | Duration: 5-6 Months\n- **Cybersecurity**: ₹35,000 | Duration: 6 Months\n- **Embedded Systems**: ₹35,000 | Duration: 5-6 Months\n- **DevOps**: ₹35,000 | Duration: 3-4 Months\n- **Data Analytics**: ₹35,000 | Duration: 4-5 Months\n\n**Enrollment:**\nTo enroll, users can call **+91 8019952233**, email **Info@aotms.in**, or visit the website contact page. \n\n**Goal:**\nAssist students with course inquiries, placements, and enrollment. Be polite, professional, and concise. If asked about a course not listed, encourage checking the website or contacting support."
-                },
-                ...messages
-            ]
-        }, {
-            headers: {
-                "Authorization": `Bearer ${process.env.OPEN_ROUTER_API_KEY}`,
-                "Content-Type": "application/json",
-                "HTTP-Referer": process.env.CLIENT_URL || "http://localhost:5173",
-                "X-Title": "AOTMS Chatbot",
-            }
+        // Sending a clean structure for n8n. In n8n AI node, use: {{ $json.body.message }}
+        const response = await axios.post(n8nWebhookUrl, {
+            message: chatInput
         });
 
-        res.json(response.data);
+        // n8n response handling:
+        // robustly extracting the message from various n8n output formats
+        let botContent = "";
+        
+        const data = response.data;
+        const firstElement = Array.isArray(data) ? data[0] : data;
+
+        if (typeof data === 'string') {
+            botContent = data;
+        } else if (firstElement) {
+            botContent = firstElement.output || 
+                         firstElement.response || 
+                         firstElement.message || 
+                         firstElement.text || 
+                         firstElement.answer || 
+                         (firstElement.choices && firstElement.choices[0]?.message?.content) ||
+                         JSON.stringify(data);
+        } else {
+            botContent = "I received an empty response. Please try again.";
+        }
+
+        res.json({
+            choices: [{
+                message: {
+                    role: "assistant",
+                    content: botContent
+                }
+            }]
+        });
 
     } catch (error) {
-        console.error("Chat API Error:", error.message);
+        console.error("Chat API Error (n8n):", error.message);
         if (error.response) {
-            console.error("Error Response Data:", JSON.stringify(error.response.data));
-
-            // Handle specific status codes
-            if (error.response.status === 401) {
-                return res.status(401).json({
-                    message: "Authentication Failed: Invalid API Key. Please update OPEN_ROUTER_API_KEY in your backend .env file.",
-                    details: error.response.data
-                });
-            }
-
+            console.error("n8n Error Response Data:", JSON.stringify(error.response.data));
             return res.status(error.response.status).json({
-                message: "External API Error",
+                message: "n8n Workflow Error",
                 details: error.response.data
             });
         }
-        res.status(500).json({ message: "Failed to fetch chat response", details: error.message });
+        res.status(500).json({ 
+            message: "Failed to fetch response from n8n workflow", 
+            details: error.message 
+        });
     }
-
-
 });
 
 module.exports = router;
